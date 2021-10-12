@@ -317,9 +317,10 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                            <h4><a href="">Lorem Ipsum</a></h4>
-                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                            <!-- <div class="icon"><i class="bx bxl-dribbble"></i></div> -->
+                            <img src="assets/frontend/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="" height="190" width="150">
+                            <h4><a href="">PMII deleniti atque corrupti quos dolores et quas molestias Lorem Ipsum</a></h4>
+                            <!-- <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p> -->
                         </div>
                     </div>
 
