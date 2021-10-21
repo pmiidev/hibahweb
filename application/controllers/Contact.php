@@ -7,16 +7,23 @@ class Contact extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Contact_model', 'contact_model');
+		$this->load->model('Site_model', 'site_model');
 		$this->load->model('Visitor_model', 'visitor_model');
 		$this->visitor_model->count_visitor();
 	}
 	function index()
 	{
-		//$this->output->enable_profiler(TRUE);
+		$site = $this->site_model->get_site_data()->row_array();
+		$data['title'] = $site['site_title'];
+		$data['desc'] = $site['site_description'];
+		$data['site_name'] = $site['site_name'];
+		$data['site_image'] = $site['site_logo_big'];
+		$data['site_twitter'] = $site['site_twitter'];
+
 		$site_info = $this->db->get('tbl_site', 1)->row();
-		$v['logo'] =  $site_info->site_logo_header;
+		$data['logo'] =  $site_info->site_logo_header;
 		$data['icon'] = $site_info->site_favicon;
-		$data['header'] = $this->load->view('layout/header', $v, TRUE);
+		$data['header'] = $this->load->view('layout/header', $data, TRUE);
 		$data['footer'] = $this->load->view('layout/footer', '', TRUE);
 		$this->load->view('contact_view', $data);
 	}
