@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>PMII | Pergerakan Mahasiswa Islam Indonesia</title>
+    <title>PR PMII | Pergerakan Mahasiswa Islam Indonesia</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -60,8 +60,8 @@
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
         <div class="container" data-aos="zoom-out" data-aos-delay="100">
-            <h1>Welcome to <span>PMII Dev</span></h1>
-            <h2>We are Indonesian Moslem Student Movement</h2>
+            <h1>Welcome to <span>PR PMII</span></h1>
+            <h2>District Board of Indonesian Moslem Student Movement</h2>
             <div class="d-flex">
                 <a href="#about" class="btn-get-started scrollto">Get Started</a>
                 <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
@@ -79,7 +79,7 @@
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                             <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                            <h4 class="title"><a href="">VISI</a></h4>
+                            <h4 class="title"><a href="">Adaptif</a></h4>
                             <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                             <div class="icon"><i class="bx bx-file"></i></div>
-                            <h4 class="title"><a href="">MISI</a></h4>
+                            <h4 class="title"><a href="">Komunikatif</a></h4>
                             <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
                             <div class="icon"><i class="bx bx-tachometer"></i></div>
-                            <h4 class="title"><a href="">TUJUAN</a></h4>
+                            <h4 class="title"><a href="">Inovatif</a></h4>
                             <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
                             <div class="icon"><i class="bx bx-world"></i></div>
-                            <h4 class="title"><a href="">STRATEGI</a></h4>
+                            <h4 class="title"><a href="">Kolaboratif</a></h4>
                             <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                         </div>
                     </div>
@@ -120,41 +120,52 @@
 
                 <div class="section-title">
                     <h2>About</h2>
-                    <h3>Find Out More <span>About Us</span></h3>
-                    <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+                    <h3>Pengurus <span>Rayon</span></h3>
+                    <p>Pergerakan Mahasiswa Islam Indonesia</p>
                 </div>
 
                 <div class="row">
                     <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
-                        <img src="assets/frontend/img/about.jpg" class="img-fluid" alt="">
+                        <img src="assets/frontend/img/about1.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
-                        <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+                        <h3>VISI</h3>
                         <p class="fst-italic">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
                             magna aliqua.
                         </p>
+                        <h3>MISI</h3>
                         <ul>
                             <li>
-                                <i class="bx bx-store-alt"></i>
+                                <i class="bx bx-shield"></i>
                                 <div>
-                                    <h5>Ullamco laboris nisi ut aliquip consequat</h5>
+                                    <h5>Adaptif</h5>
                                     <p>Magni facilis facilis repellendus cum excepturi quaerat praesentium libre trade</p>
                                 </div>
                             </li>
                             <li>
-                                <i class="bx bx-images"></i>
+                                <i class="bx bx-key"></i>
                                 <div>
-                                    <h5>Magnam soluta odio exercitationem reprehenderi</h5>
+                                    <h5>Komunikatif</h5>
+                                    <p>Quo totam dolorum at pariatur aut distinctio dolorum laudantium illo direna pasata redi</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="bx bx-laptop"></i>
+                                <div>
+                                    <h5>Inovatif</h5>
+                                    <p>Quo totam dolorum at pariatur aut distinctio dolorum laudantium illo direna pasata redi</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="bx bx-user-plus"></i>
+                                <div>
+                                    <h5>Kolaboratif</h5>
                                     <p>Quo totam dolorum at pariatur aut distinctio dolorum laudantium illo direna pasata redi</p>
                                 </div>
                             </li>
                         </ul>
-                        <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum
-                        </p>
+
                     </div>
                 </div>
 
@@ -304,8 +315,8 @@
         </section> -->
         <!-- End Clients Section -->
 
-        <!-- ======= Services Section ======= -->
-        <section id="services" class="services">
+        <!-- ======= Services Section = dokumen ======= -->
+        <!-- <section id="services" class="services">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
@@ -317,10 +328,9 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon-box">
-                            <!-- <div class="icon"><i class="bx bxl-dribbble"></i></div> -->
-                            <img src="assets/frontend/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="" height="190" width="150">
-                            <h4><a href="">PMII deleniti atque corrupti quos dolores et quas molestias Lorem Ipsum</a></h4>
-                            <!-- <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p> -->
+                            <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                            <h4><a href="">Sed ut perspiciatis</a></h4>
+                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
                         </div>
                     </div>
 
@@ -367,7 +377,7 @@
                 </div>
 
             </div>
-        </section>
+        </section> -->
         <!-- End Services Section -->
 
         <!-- ======= Testimonials Section ======= -->
