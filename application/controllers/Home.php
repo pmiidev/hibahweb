@@ -5,6 +5,7 @@ class Home extends CI_Controller
 {
 	function __construct()
 	{
+		
 		parent::__construct();
 		$this->load->model('Visitor_model', 'visitor_model');
 		$this->load->model('Home_model', 'home_model');
@@ -15,6 +16,7 @@ class Home extends CI_Controller
 	}
 	function index()
 	{
+		
 		//$this->output->enable_profiler(TRUE);
 		$site = $this->site_model->get_site_data()->row_array();
 		$data['site_name'] = $site['site_name'];

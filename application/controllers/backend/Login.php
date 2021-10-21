@@ -3,6 +3,7 @@ class Login extends CI_Controller
 {
 	function __construct()
 	{
+		
 		parent::__construct();
 		$this->load->model('backend/Login_model', 'login_model');
 		error_reporting(0);
@@ -15,7 +16,7 @@ class Login extends CI_Controller
 	}
 
 	function auth()
-	{
+	{ 
 		$username = str_replace("'", "", htmlspecialchars($this->input->post('username', TRUE), ENT_QUOTES));
 		$password = str_replace("'", "", htmlspecialchars($this->input->post('password', TRUE), ENT_QUOTES));
 		$validate_us = $this->login_model->validasi_username($username);
