@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>PMII | Pergerakan Mahasiswa Islam Indonesia</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+    <title><?= $site_name; ?> | <?= $site_title; ?></title>
+    <meta content="<?= $site_desc; ?>" name="description">
+    <meta content="PMII, PR, PK, PC, PKC, PB, Pergerakan Mahasiswa Islam Indonesia" name="keywords">
 
     <!-- Favicons -->
     <link href="<?= base_url() ?>assets/frontend/img/favicon.png" rel="icon">
@@ -65,9 +65,9 @@
                     <h2>Gallery</h2>
                     <h3>Galeri <span>Rayon</span></h3>
                     <p>Pergerakan Mahasiswa Islam Indonesia</p>
-                </div>
+                </div><br>
 
-                <div class="row" data-aos="fade-up" data-aos-delay="100">
+                <!-- <div class="row" data-aos="fade-up" data-aos-delay="100">
                     <div class="col-lg-12 d-flex justify-content-center">
                         <ul id="portfolio-flters">
                             <li data-filter="*" class="filter-active">All</li>
@@ -76,100 +76,20 @@
                             <li data-filter=".filter-web">Web</li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="assets/frontend/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 1</h4>
-                            <p>App</p>
-                            <a href="assets/frontend/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                    <?php foreach ($data->result() as $apost) : ?>
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+                            <img src="<?= base_url() . 'assets/backend/images/thumb/' . $apost->post_image; ?>" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4><?php echo date('d M Y', strtotime($apost->post_date)); ?></h4>
+                                <p><?php echo $apost->post_title; ?></p>
+                                <a href="<?= base_url() . 'assets/backend/images/thumb/' . $apost->post_image; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="<?php echo $apost->post_title; ?>"><i class="bx bx-plus"></i></a>
+                                <a href="<?= site_url('post/' . $apost->post_slug); ?>" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="assets/frontend/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 3</h4>
-                            <p>Web</p>
-                            <a href="assets/frontend/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="assets/frontend/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 2</h4>
-                            <p>App</p>
-                            <a href="assets/frontend/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <img src="assets/frontend/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 2</h4>
-                            <p>Card</p>
-                            <a href="assets/frontend/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="assets/frontend/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 2</h4>
-                            <p>Web</p>
-                            <a href="assets/frontend/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <img src="assets/frontend/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>App 3</h4>
-                            <p>App</p>
-                            <a href="assets/frontend/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <img src="assets/frontend/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 1</h4>
-                            <p>Card</p>
-                            <a href="assets/frontend/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <img src="assets/frontend/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Card 3</h4>
-                            <p>Card</p>
-                            <a href="assets/frontend/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <img src="assets/frontend/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                            <h4>Web 3</h4>
-                            <p>Web</p>
-                            <a href="assets/frontend/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
+                    <?php endforeach; ?>
                 </div>
 
             </div>

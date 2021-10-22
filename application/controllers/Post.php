@@ -55,7 +55,7 @@ class Post extends CI_Controller
 		$x['page'] = $this->pagination->create_links();
 		$x['data'] = $this->post_model->get_post_perpage($offset, $limit);
 		//print_r($this->db->last_query()); 
-		$x['title'] = "Post | Poroz";
+		$x['title'] = "Post";
 		if (empty($this->uri->segment(3))) {
 			$next_page = 2;
 			$x['canonical'] = site_url('post');
@@ -78,15 +78,23 @@ class Post extends CI_Controller
 		$x['url_next'] = site_url('post/page/' . $next_page);
 		$x['populer_post'] = $this->post_model->get_popular_post();
 		$site_info = $this->db->get('tbl_site', 1)->row();
-		$v['logo'] =  $site_info->site_logo_header;
+		$x['logo'] =  $site_info->site_logo_header;
 		$x['icon'] = $site_info->site_favicon;
 		$x['site_image'] = $site_info->site_logo_big;
 		$site = $this->site_model->get_site_data()->row_array();
 		$x['site_name'] = $site['site_name'];
-		$x['site_twitter'] = $site['site_twitter'];
+		$x['site_title'] = $site['site_title'];
+		// $data['site_desc'] = $site['site_description'];
+		// $data['site_image'] = $site['site_logo_big'];
+		$x['site_ig'] = $site['site_instagram'];
+		$x['site_fb'] = $site['site_facebook'];
+		$x['site_twit'] = $site['site_twitter'];
+		$x['site_linked'] = $site['site_linkedin'];
+		$x['site_wa'] = $site['site_wa'];
+		$x['site_mail'] = $site['site_mail'];
 		$query = $this->db->query("SELECT GROUP_CONCAT(category_name) AS category_name FROM tbl_category")->row_array();
 		$x['meta_description'] = $query['category_name'];
-		$x['header'] = $this->load->view('layout/header4', $v, TRUE);
+		$x['header'] = $this->load->view('layout/header3', $x, TRUE);
 		$x['footer'] = $this->load->view('layout/footer', '', TRUE);
 		$this->load->view('post_view', $x);
 	}
@@ -123,14 +131,21 @@ class Post extends CI_Controller
 			$x['data'] = $this->post_model->get_post_perpage($offset, $limit);
 			$x['show_comments'] = $this->post_model->show_comments($kode);
 			$site_info = $this->db->get('tbl_site', 1)->row();
-			$v['logo'] =  $site_info->site_logo_header;
+			$x['logo'] =  $site_info->site_logo_header;
 			$x['icon'] = $site_info->site_favicon;
 			$site = $this->site_model->get_site_data()->row_array();
 			$x['site_name'] = $site['site_name'];
-			$x['site_twitter'] = $site['site_twitter'];
-			$x['site_facebook'] = $site['site_facebook'];
-			$x['header'] = $this->load->view('layout/header3', $v, TRUE);
-			$x['footer'] = $this->load->view('layout/footer2', '', TRUE);
+			$x['site_title'] = $site['site_title'];
+			// $data['site_desc'] = $site['site_description'];
+			// $data['site_image'] = $site['site_logo_big'];
+			$x['site_ig'] = $site['site_instagram'];
+			$x['site_fb'] = $site['site_facebook'];
+			$x['site_twit'] = $site['site_twitter'];
+			$x['site_linked'] = $site['site_linkedin'];
+			$x['site_wa'] = $site['site_wa'];
+			$x['site_mail'] = $site['site_mail'];
+			$x['header'] = $this->load->view('layout/header3', $x, TRUE);
+			$x['footer'] = $this->load->view('layout/footer', '', TRUE);
 			$x['all_tags'] = $this->post_model->get_all_tags();
 			$this->load->view('post_detail', $x);
 		} else {

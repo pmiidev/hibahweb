@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>PMII | Pergerakan Mahasiswa Islam Indonesia</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+    <title><?= $site_name; ?> | <?= $site_title; ?></title>
+    <meta content="<?= $site_desc; ?>" name="description">
+    <meta content="PMII, PR, PK, PC, PKC, PB, Pergerakan Mahasiswa Islam Indonesia" name="keywords">
 
     <!-- Favicons -->
     <link href="<?= base_url() ?>assets/frontend/img/favicon.png" rel="icon">

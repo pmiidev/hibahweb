@@ -11,6 +11,10 @@
                         <input type="submit" value="Subscribe">
                     </form>
                 </div>
+                <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Halo Sahabat!</strong> <?php echo $this->session->flashdata('message'); ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div> -->
             </div>
         </div>
     </div>
