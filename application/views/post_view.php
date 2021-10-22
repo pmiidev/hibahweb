@@ -62,9 +62,9 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Documents</h2>
-                    <h3>Dokumen <span>Rayon</span></h3>
-                    <p>Pergerakan Mahasiswa Islam Indonesia</p>
+                    <h2>All Posts</h2>
+                    <!-- <h3>Dokumen <span>Rayon</span></h3>
+                    <p>Pergerakan Mahasiswa Islam Indonesia</p> -->
                 </div>
 
                 <div class="row">
