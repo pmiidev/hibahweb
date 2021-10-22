@@ -92,7 +92,7 @@ class Tag extends CI_Controller
 			$site = $this->site_model->get_site_data()->row_array();
 			$x['site_name'] = $site['site_name'];
 			$x['site_twitter'] = $site['site_twitter'];
-			$x['header'] = $this->load->view('layout/header2', $v, TRUE);
+			$x['header'] = $this->load->view('layout/header3', $v, TRUE);
 			$x['footer'] = $this->load->view('layout/footer2', '', TRUE);
 			$this->load->view('post_tag', $x);
 		} else {

@@ -95,7 +95,7 @@ class Post extends CI_Controller
 		$query = $this->db->query("SELECT GROUP_CONCAT(category_name) AS category_name FROM tbl_category")->row_array();
 		$x['meta_description'] = $query['category_name'];
 		$x['header'] = $this->load->view('layout/header3', $x, TRUE);
-		$x['footer'] = $this->load->view('layout/footer', '', TRUE);
+		$x['footer'] = $this->load->view('layout/footer2', '', TRUE);
 		$this->load->view('post_view', $x);
 	}
 
@@ -145,7 +145,7 @@ class Post extends CI_Controller
 			$x['site_wa'] = $site['site_wa'];
 			$x['site_mail'] = $site['site_mail'];
 			$x['header'] = $this->load->view('layout/header3', $x, TRUE);
-			$x['footer'] = $this->load->view('layout/footer', '', TRUE);
+			$x['footer'] = $this->load->view('layout/footer2', '', TRUE);
 			$x['all_tags'] = $this->post_model->get_all_tags();
 			$this->load->view('post_detail', $x);
 		} else {

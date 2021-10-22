@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title><?= $site_name; ?> | <?= $site_title; ?></title>
+    <title><?= $title; ?> | <?= $site_title; ?></title>
     <meta content="<?= $site_desc; ?>" name="description">
     <meta content="PMII, PR, PK, PC, PKC, PB, Pergerakan Mahasiswa Islam Indonesia" name="keywords">
 
@@ -42,7 +42,7 @@
             <div class="container">
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Inner Page</h2>
+                    <h2>Recent Posts</h2>
                     <ol>
                         <li><a href="<?= base_url() ?>">Home</a></li>
                         <li><?= $title; ?></li>
@@ -52,68 +52,36 @@
             </div>
         </section><!-- End Breadcrumbs -->
 
-        <section id="services" class="services">
+        <section id="recent-blog-posts" class="recent-blog-posts">
+
             <div class="container" data-aos="fade-up">
 
-                <div class="section-title">
-                    <h2>Documents</h2>
-                    <h3>Dokumen <span>Rayon</span></h3>
-                    <p>Pergerakan Mahasiswa Islam Indonesia</p>
-                </div>
+                <header class="section-header">
+                    <h2>Result</h2>
+                    <p><?= $title; ?></p>
+                </header><br>
 
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                            <h4><a href="">Draft RTAR</a></h4>
-                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                    <?php foreach ($data->result() as $row) : ?>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="post-box">
+                                <div class="post-img"><img src="<?php echo base_url() . 'assets/backend/images/thumb/' . $row->post_image; ?>" class="img-fluid" alt=""></div>
+                                <span class="post-date"><?php echo date('d M Y', strtotime($row->post_date)); ?> | <a href="javascript:void(0)"></a>
+                                    <?php echo $row->post_views . ' views'; ?></span>
+                                <h3 class="post-title"><a href="<?= site_url('post/' . $row->post_slug); ?>"><?php echo $row->post_title; ?></a>
+                                </h3>
+                                <a href="<?php echo site_url('post/' . $row->post_slug); ?>" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a><br>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-file"></i></div>
-                            <h4><a href="">Draft RTK</a></h4>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-tachometer"></i></div>
-                            <h4><a href="">Hasil-hasil Muspimcab</a></h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-world"></i></div>
-                            <h4><a href="">Hasil-hasil Muspimda</a></h4>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-slideshow"></i></div>
-                            <h4><a href="">Hasil-hasil Muspimnas</a></h4>
-                            <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bx bx-arch"></i></div>
-                            <h4><a href="">Database Kader</a></h4>
-                            <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-                        </div>
-                    </div>
-
-                </div>
+                    <?php endforeach; ?>
+                </div><br><br>
+                <!--pagination-->
+                <?= $page; ?>
 
             </div>
+
         </section>
+        <!-- End Recent Blog Posts Section -->
 
     </main><!-- End #main -->
 

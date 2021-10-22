@@ -45,7 +45,7 @@ class Result extends CI_Controller
 		$site_info = $this->db->get('tbl_site', 1)->row();
 		$v['logo'] =  $site_info->site_logo_header;
 		$x['icon'] = $site_info->site_favicon;
-		$x['header'] = $this->load->view('layout/header2', $v, TRUE);
+		$x['header'] = $this->load->view('layout/header3', $v, TRUE);
 		$x['footer'] = $this->load->view('layout/footer2', '', TRUE);
 		$this->load->view('post_search', $x);
 	}

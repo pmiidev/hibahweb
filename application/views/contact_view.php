@@ -51,7 +51,7 @@
                     <h2>Inner Page</h2>
                     <ol>
                         <li><a href="<?= base_url() ?>">Home</a></li>
-                        <li>Inner Page</li>
+                        <li><?= $title; ?></li>
                     </ol>
                 </div>
 
