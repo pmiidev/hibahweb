@@ -81,11 +81,11 @@
                 <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
                     <?php foreach ($data->result() as $apost) : ?>
                         <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                            <img src="<?= base_url() . 'assets/backend/images/thumb/' . $apost->post_image; ?>" class="img-fluid" alt="">
+                            <img src="<?= base_url() . 'assets/backend/images/post/' . $apost->post_image; ?>" class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <h4><?php echo date('d M Y', strtotime($apost->post_date)); ?></h4>
                                 <p><?php echo $apost->post_title; ?></p>
-                                <a href="<?= base_url() . 'assets/backend/images/thumb/' . $apost->post_image; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="<?php echo $apost->post_title; ?>"><i class="bx bx-plus"></i></a>
+                                <a href="<?= base_url() . 'assets/backend/images/post/' . $apost->post_image; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="<?php echo $apost->post_title; ?>"><i class="bx bx-plus"></i></a>
                                 <a href="<?= site_url('post/' . $apost->post_slug); ?>" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
                             </div>
                         </div>

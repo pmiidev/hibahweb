@@ -195,7 +195,7 @@
                                 <div class="sidebar-item recent-posts">
                                     <div class="post-item clearfix">
                                         <a href="<?= site_url('post/' . $row->post_slug); ?>" title="">
-                                            <img src="<?= base_url() . 'assets/backend/images/thumb/' . $row->post_image; ?>" alt="">
+                                            <img src="<?= base_url() . 'assets/backend/images/post/' . $row->post_image; ?>" alt="">
                                             <h4><a href="<?= site_url('post/' . $row->post_slug); ?>"><?= $row->post_title; ?></a>
                                             </h4>
                                             <time datetime="2021-01-01"><?= date('d M Y', strtotime($row->post_date)); ?></time>

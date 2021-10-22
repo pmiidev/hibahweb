@@ -65,7 +65,7 @@
                     <?php foreach ($data->result() as $row) : ?>
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="post-box">
-                                <div class="post-img"><img src="<?php echo base_url() . 'assets/backend/images/thumb/' . $row->post_image; ?>" class="img-fluid" alt=""></div>
+                                <div class="post-img"><img src="<?php echo base_url() . 'assets/backend/images/post/' . $row->post_image; ?>" class="img-fluid" alt=""></div>
                                 <span class="post-date"><?php echo date('d M Y', strtotime($row->post_date)); ?> | <a href="javascript:void(0)"></a>
                                     <?php echo $row->post_views . ' views'; ?></span>
                                 <h3 class="post-title"><a href="<?= site_url('post/' . $row->post_slug); ?>"><?php echo $row->post_title; ?></a>

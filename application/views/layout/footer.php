@@ -56,7 +56,7 @@
 
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Our Social Networks</h4>
-                    <p>Sosial Media Pengurus Rayon Pergerakan Mahasiswa Islam Indonesia</p>
+                    <p>Sosial Media <?= $site_title; ?></p>
                     <div class="social-links mt-3">
                         <a href="<?= $site_ig; ?>" class="instagram"><i class="bx bxl-instagram"></i></a>
                         <a href="<?= $site_fb; ?>" class="facebook"><i class="bx bxl-facebook"></i></a>
