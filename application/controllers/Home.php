@@ -22,7 +22,7 @@ class Home extends CI_Controller
 		$data['site_name'] = $site['site_name'];
 		$data['site_title'] = $site['site_title'];
 		$data['site_desc'] = $site['site_description'];
-
+		$data['site_image'] = $site['site_logo_big'];
 		$data['site_ig'] = $site['site_instagram'];
 		$data['site_fb'] = $site['site_facebook'];
 		$data['site_twit'] = $site['site_twitter'];
@@ -30,7 +30,6 @@ class Home extends CI_Controller
 		$data['site_wa'] = $site['site_wa'];
 		$data['site_mail'] = $site['site_mail'];
 
-		$data['site_image'] = $site['site_logo_big'];
 		$data['post_header'] = $this->home_model->get_post_header();
 		$data['post_header_2'] = $this->home_model->get_post_header_2();
 		$data['post_header_3'] = $this->home_model->get_post_header_3();

@@ -20,10 +20,10 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto active" href="<?= base_url() ?>#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="<?= base_url() ?>#hero">Home</a></li>
                 <li><a class="nav-link scrollto" href="<?= base_url() ?>#about">About</a></li>
-                <li><a class="nav-link scrollto " href="<?= base_url() ?>gallery">Gallery</a></li>
-                <li><a class="nav-link scrollto" href="<?= base_url() ?>team">Team</a></li>
+                <li><a class="nav-link scrollto <?= ($title === "Gallery") ? 'active' : '' ?>" href="<?= base_url() ?>gallery">Gallery</a></li>
+                <li><a class="nav-link scrollto <?= ($title === "Team") ? 'active' : '' ?>" href="<?= base_url() ?>team">Team</a></li>
                 <li class="dropdown"><a href="#"><span>News</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="#">Berita</a></li>
@@ -32,8 +32,8 @@
                         <li><a href="#">Puisi</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link scrollto" href="<?= base_url() ?>document">Document</a></li>
-                <li><a class="nav-link scrollto" href="<?= base_url() ?>contact">Contact</a></li>
+                <li><a class="nav-link scrollto <?= ($title === "Document") ? 'active' : '' ?>" href="<?= base_url() ?>document">Document</a></li>
+                <li><a class="nav-link scrollto <?= ($title === "Contact") ? 'active' : '' ?>" href="<?= base_url() ?>contact">Contact</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

@@ -17,17 +17,23 @@ class Team extends CI_Controller
 	function index()
 	{
 		$site = $this->site_model->get_site_data()->row_array();
-		$data['title'] = $site['site_title'];
-		$data['desc'] = $site['site_description'];
+		$data['title'] = "Team";
 		$data['site_name'] = $site['site_name'];
-		$data['site_twitter'] = $site['site_twitter'];
+		$data['site_title'] = $site['site_title'];
+		$data['site_desc'] = $site['site_description'];
 		$data['site_image'] = $site['site_logo_big'];
+		$data['site_ig'] = $site['site_instagram'];
+		$data['site_fb'] = $site['site_facebook'];
+		$data['site_twit'] = $site['site_twitter'];
+		$data['site_linked'] = $site['site_linkedin'];
+		$data['site_wa'] = $site['site_wa'];
+		$data['site_mail'] = $site['site_mail'];
 
 		$data['team'] = $this->db->get('tbl_team');
 		$site_info = $this->db->get('tbl_site', 1)->row();
 		$data['logo'] =  $site_info->site_logo_header;
 		$data['icon'] = $site_info->site_favicon;
-		$data['header'] = $this->load->view('layout/header', $data, TRUE);
+		$data['header'] = $this->load->view('layout/header2', $data, TRUE);
 		$data['footer'] = $this->load->view('layout/footer', '', TRUE);
 		$this->load->view('team_view', $data);
 	}

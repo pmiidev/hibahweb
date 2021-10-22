@@ -363,7 +363,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Pinterest URL</label>
+                                        <label for="input1" class="col-sm-2 control-label">Alamat</label>
                                         <div class="col-sm-10">
                                             <input type="text" name="pinterest" class="form-control" value="<?php echo $site_pinterest; ?>" id="input1" placeholder="Linkedin URL">
                                         </div>
