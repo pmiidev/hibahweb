@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title><?= $site_name; ?> | <?= $site_title; ?></title>
+    <title><?= $title; ?> | <?= $site_title; ?></title>
     <meta content="<?= $site_desc; ?>" name="description">
     <meta content="PMII, PR, PK, PC, PKC, PB, Pergerakan Mahasiswa Islam Indonesia" name="keywords">
 

@@ -2132,3 +2132,51 @@ section {
   font-size: 14px;
 }
 
+/* pagination */
+ul.page-numbers {
+  display: block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+ul.page-numbers li {
+  display: inline-block;
+  height: 46px;
+  line-height: 46px;
+  text-align: center;
+  vertical-align: middle;
+  width: 46px;
+}
+
+ul.page-numbers li>a,
+ul.page-numbers li>span {
+  background-color: #d0d4fc;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 400;
+  height: 46px;
+  line-height: 46px;
+  margin: 0;
+  outline: 0 none;
+  position: relative;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: uppercase;
+  transition: color 0.3s ease-in-out 0s, background-color 0.3s ease-in-out 0s;
+  -webkit-transition: color 0.3s ease-in-out 0s, background-color 0.3s ease-in-out 0s;
+  -moz-transition: color 0.3s ease-in-out 0s, background-color 0.3s ease-in-out 0s;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 46px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+ul.page-numbers li>a:hover,
+ul.page-numbers li span.current {
+  background-color: #212121;
+  color: #fff;
+}

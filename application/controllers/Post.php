@@ -128,7 +128,7 @@ class Post extends CI_Controller
 			$category_id = $q['category_id'];
 			$this->post_model->count_views($kode);
 			$x['related_post']  = $this->post_model->get_related_post($category_id, $kode);
-			$x['data'] = $this->post_model->get_post_perpage($offset, $limit);
+			// $x['data'] = $this->post_model->get_post_perpage($offset, $limit);
 			$x['show_comments'] = $this->post_model->show_comments($kode);
 			$site_info = $this->db->get('tbl_site', 1)->row();
 			$x['logo'] =  $site_info->site_logo_header;
@@ -136,8 +136,6 @@ class Post extends CI_Controller
 			$site = $this->site_model->get_site_data()->row_array();
 			$x['site_name'] = $site['site_name'];
 			$x['site_title'] = $site['site_title'];
-			// $data['site_desc'] = $site['site_description'];
-			// $data['site_image'] = $site['site_logo_big'];
 			$x['site_ig'] = $site['site_instagram'];
 			$x['site_fb'] = $site['site_facebook'];
 			$x['site_twit'] = $site['site_twitter'];

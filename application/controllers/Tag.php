@@ -86,13 +86,19 @@ class Tag extends CI_Controller
 			$x['url_next'] = site_url('tag/' . $tag . '/' . $next_page);
 			$x['populer_post'] = $this->post_model->get_popular_post();
 			$site_info = $this->db->get('tbl_site', 1)->row();
-			$v['logo'] =  $site_info->site_logo_header;
+			$x['logo'] =  $site_info->site_logo_header;
 			$x['icon'] = $site_info->site_favicon;
 			$x['site_image'] = $site_info->site_logo_big;
 			$site = $this->site_model->get_site_data()->row_array();
 			$x['site_name'] = $site['site_name'];
-			$x['site_twitter'] = $site['site_twitter'];
-			$x['header'] = $this->load->view('layout/header3', $v, TRUE);
+			$x['site_title'] = $site['site_title'];
+			$x['site_ig'] = $site['site_instagram'];
+			$x['site_fb'] = $site['site_facebook'];
+			$x['site_twit'] = $site['site_twitter'];
+			$x['site_linked'] = $site['site_linkedin'];
+			$x['site_wa'] = $site['site_wa'];
+			$x['site_mail'] = $site['site_mail'];
+			$x['header'] = $this->load->view('layout/header3', $x, TRUE);
 			$x['footer'] = $this->load->view('layout/footer2', '', TRUE);
 			$this->load->view('post_tag', $x);
 		} else {

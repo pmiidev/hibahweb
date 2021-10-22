@@ -24,9 +24,9 @@
                 <li><a class="nav-link scrollto" href="<?= base_url() ?>#about">About</a></li>
                 <li><a class="nav-link scrollto <?= ($title === "Gallery") ? 'active' : '' ?>" href="<?= base_url() ?>gallery">Gallery</a></li>
                 <li><a class="nav-link scrollto <?= ($title === "Team") ? 'active' : '' ?>" href="<?= base_url() ?>team">Team</a></li>
-                <li class="dropdown"><a class="nav-link active" href="#"><span>News</span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a class="nav-link active" href="<?= base_url() ?>post"><span>News</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="#">Berita</a></li>
+                        <li><a href="<?= base_url() ?>category/news">Berita</a></li>
                         <li><a href="#">Opini</a></li>
                         <li><a href="#">Cerpen</a></li>
                         <li><a href="#">Puisi</a></li>
