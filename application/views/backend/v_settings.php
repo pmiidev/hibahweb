@@ -370,6 +370,20 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="input1" class="col-sm-2 control-label">Nomor WA</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="wa" class="form-control" value="<?php echo $site_wa; ?>" id="input1" placeholder="62+">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="input1" class="col-sm-2 control-label">Email Resmi</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="mail" class="form-control" value="<?php echo $site_mail; ?>" id="input1" placeholder="name@domain.">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
                                         <input type="hidden" name="site_id" value="<?php echo $site_id ?>" required>
                                         <div class="col-sm-offset-2 col-sm-10">
                                             <button type="submit" class="btn btn-success">UPDATE</button>

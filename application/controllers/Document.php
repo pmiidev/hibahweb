@@ -15,9 +15,9 @@ class Document extends CI_Controller
     function index()
     {
         $site = $this->site_model->get_site_data()->row_array();
-        $data['title'] = $site['site_title'];
-        $data['desc'] = $site['site_description'];
+        $data['site_desc'] = $site['site_description'];
         $data['site_name'] = $site['site_name'];
+        $data['site_title'] = $site['site_title'];
         $data['site_image'] = $site['site_logo_big'];
         $data['site_twitter'] = $site['site_twitter'];
 

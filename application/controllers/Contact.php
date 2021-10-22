@@ -49,4 +49,27 @@ class Contact extends CI_Controller
 			redirect('#contact');
 		}
 	}
+
+	function subscribe()
+	{
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		if ($this->form_validation->run() == FALSE) {
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger">Mohon masukkan input yang Valid!</div>');
+			$base_url = site_url();
+			redirect($base_url);
+		} else {
+			$email = $this->input->gallery('email', TRUE);
+			$url = $this->input->gallery('url', TRUE);
+			$checking_email = $this->home_model->checking_email($email);
+			if ($checking_email->num_rows() > 0) {
+				$this->session->set_flashdata('msg', '<div class="alert alert-info">Terima kasih telah berlangganan.</div>');
+				redirect($url);
+			} else {
+				$this->home_model->save_subcribe($email);
+				$this->session->set_flashdata('msg', '<div class="alert alert-info">Terima kasih telah berlangganan.</div>');
+				redirect($url);
+			}
+		}
+	}
 }
