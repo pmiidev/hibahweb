@@ -1,7 +1,7 @@
 # Deskripsi Ringkas
 Salam Pergerakan! Selamat datang di situs resmi github @pmiidev untuk repo project-project kita kedepan. Kali ini pmiidev membagikan salah satu source code website company profile secara free (hibah) untuk para pengurus rayon/komis/rayon/korcab se-Indonesia.
 
-Website ini dibangun dengan framework CodeIgiter 3 dilengkapi dengan fasilitas halaman front end dan back end. Front end adalah halaman website yang dikunjungi oleh pengunjung website, sedangkan back end untuk mengelola konten oleh Administrator maupun author.
+Website ini dibangun dengan framework CodeIgniter 3 dilengkapi dengan fasilitas halaman front end dan back end. Front end adalah halaman website yang dikunjungi oleh pengunjung website, sedangkan back end untuk mengelola konten oleh administrator maupun author.
 
 # Cara Install 
 - Unduh file source code di https://github.com/pmiidev/hibahweb dengan melakukan clone via git maupun download zip (manual)
@@ -16,11 +16,9 @@ Extract semua file yang sudah Anda unduh ke folder tersebut. Jika Anda akan meng
 # Akun Pengguna
 Halaman login: http://localhost:8080/hibahweb/login
 - administrator
-username: admin@gmail.com
-password: admin2021pmiidev
+username: admin@gmail.com | password: admin2021pmiidev
 - author
-username: author@gmail.com
-password: author2021pmiidev
+username: author@gmail.com | password: author2021pmiidev
 
 # Demo HibahWeb
 - Silahkan buka https://dev.pmii.id
