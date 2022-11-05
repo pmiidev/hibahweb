@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\VisitorModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -46,7 +47,21 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         // Preload any models, libraries, etc, here.
-
-        // E.g.: $this->session = \Config\Services::session();
+        // Session
+        $this->session = \Config\Services::session();
+        // Cek Visitor
+        $visitorModel = new VisitorModel();
+        $user_ip = $_SERVER['REMOTE_ADDR'];
+        $agent = $this->request->getUserAgent();
+        if ($agent->isBrowser()) {
+            $agent = $agent->getBrowser() . ' ' . $agent->getVersion();
+        } elseif ($agent->isRobot()) {
+            $agent = $agent->getRobot();
+        } elseif ($agent->isMobile()) {
+            $agent = $agent->getMobile();
+        } else {
+            $agent = 'Unidentified User Agent';
+        }
+        $visitorModel->count_visitor($user_ip, $agent);
     }
 }
