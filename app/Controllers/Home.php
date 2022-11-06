@@ -47,7 +47,7 @@ class Home extends BaseController
 
         $email = $this->request->getPost('email');
         $subscribeModel = new SubscribeModel();
-        if ($subscribeModel->where('subscribe_email', $email)->countAllResults() != 1) {
+        if ($subscribeModel->where('subscribe_email', $email)->countAllResults() < 1) {
             $subscribeModel->save([
                 'subscribe_email' => $email,
                 'subscribe_status' => 1,
