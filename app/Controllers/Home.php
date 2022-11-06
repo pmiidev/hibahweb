@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\AboutModel;
 use App\Models\HomeModel;
+use App\Models\PostModel;
 use App\Models\SiteModel;
 use App\Models\SubscribeModel;
 use App\Models\TestimonialModel;
@@ -16,15 +17,17 @@ class Home extends BaseController
         $this->siteModel = new SiteModel();
         $this->testimonialModel = new TestimonialModel();
         $this->aboutModel = new AboutModel();
+        $this->postModel = new PostModel();
     }
     public function index()
     {
         $data = [
             'site' => $this->siteModel->find(1),
             'home' => $this->homeModel->find(1),
-            'testimonial' => $this->testimonialModel->findAll(),
             'about' => $this->aboutModel->find(1),
-            'validation' => \Config\Services::validation()
+            'testimonials' => $this->testimonialModel->findAll(),
+            'validation' => \Config\Services::validation(),
+            'title' => 'Home'
         ];
         return view('home_view', $data);
     }
@@ -40,9 +43,7 @@ class Home extends BaseController
             ]
         ])) {
             session()->setFlashdata('peringatan', 'Inputan harus berformat email. silakan coba lagi.');
-            return redirect()->to('/#footer');
-            // Redirect memunculkan garis bawah merah dikarenakan dia membaca redirect di CI3
-            // Aslinya mah ga eror.
+            return redirect()->to('#footer');
         }
 
         $email = $this->request->getPost('email');
@@ -54,10 +55,21 @@ class Home extends BaseController
                 'subscribe_rating' => 0
             ]);
             session()->setFlashdata('pesan', 'Email berhasil didaftarkan. Terima Kasih.');
-            return redirect()->to('/#footer');
+            return redirect()->to('#footer');
         } else {
             session()->setFlashdata('pesan', 'Email telah terdaftar sebelumnya. Terima Kasih.');
-            return redirect()->to('/#footer');
+            return redirect()->to('#footer');
         }
+    }
+    function gallery()
+    {
+        $data = [
+            'site' => $this->siteModel->find(1),
+            'home' => $this->homeModel->find(1),
+            'about' => $this->aboutModel->find(1),
+            'posts' => $this->postModel->findAll(),
+            'title' => 'Gallery'
+        ];
+        return view('gallery_view', $data);
     }
 }

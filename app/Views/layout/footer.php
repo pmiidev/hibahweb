@@ -5,7 +5,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <h4>Dapatkan informasi terbaru dari kami</h4>
-                    <form action="" method="post">
+                    <form action="/subscribe" method="post">
                         <input type="email" name="email" placeholder="Insert your email" required>
                         <input type="submit" value="Subscribe">
                     </form>

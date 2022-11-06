@@ -123,15 +123,15 @@
 
             <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper-wrapper">
-                    <?php foreach ($testimonial as $test) : ?>
+                    <?php foreach ($testimonials as $testimonial) : ?>
                         <div class="swiper-slide">
                             <div class="testimonial-item">
-                                <img src="<?= 'assets/backend/images/testi/' . $test['testimonial_image']; ?>" class="testimonial-img" alt="">
-                                <h3><?= $test['testimonial_name']; ?></h3>
-                                <h4><?= $test['testimonial_org']; ?></h4>
+                                <img src="<?= 'assets/backend/images/testi/' . $testimonial['testimonial_image']; ?>" class="testimonial-img" alt="">
+                                <h3><?= $testimonial['testimonial_name']; ?></h3>
+                                <h4><?= $testimonial['testimonial_org']; ?></h4>
                                 <p>
                                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                    <?= $test['testimonial_content']; ?>
+                                    <?= $testimonial['testimonial_content']; ?>
                                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                 </p>
                             </div>
