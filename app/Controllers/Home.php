@@ -120,4 +120,52 @@ class Home extends BaseController
             return view('post_detail', $data);
         }
     }
+    function send_comment()
+    {
+        if (!$this->validate([
+            'post_id' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!',
+                    'numeric' => 'Inputan {field} harus angka!'
+                ]
+            ],
+            'name' => [
+                'rules' => 'required|alpha_space|min_length[3]',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!',
+                    'alpha_space' => 'Inputan {field} harus huruf!',
+                    'min_length[3]' => 'panjang karakter minimal 3 digit'
+                ]
+            ],
+            'email' => [
+                'rules' => 'required|valid_email|min_length[3]',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!',
+                    'valid_email' => 'Inputan {field} harus email!',
+                    'min_length[3]' => 'panjang karakter minimal 3 digit'
+                ]
+            ],
+            'message' => [
+                'rules' => 'required|alpha_numeric_punct|min_length[3]',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!',
+                    'alpha_numeric_punct' => 'Inputan {field} tidak boleh aneh-aneh!',
+                    'min_length[3]' => 'panjang karakter minimal 3 digit'
+                ]
+            ]
+        ])) {
+            session()->setFlashdata('msg', '<div class="alert alert-danger">Mohon masukkan input yang Valid!</div>');
+            return redirect()->back();
+        }
+        $this->commentModel->save([
+            'comment_name' => htmlspecialchars($this->request->getPost('name')),
+            'comment_email' => htmlspecialchars($this->request->getPost('email')),
+            'comment_message' => htmlspecialchars($this->request->getPost('message')),
+            'comment_post_id' => htmlspecialchars($this->request->getPost('post_id')),
+            'comment_image' => 'avatar (5).png'
+        ]);
+        session()->setFlashdata('msg', '<div class="alert alert-info">Terima kasih atas respon Anda, komentar Anda akan tampil setelah moderasi</div>');
+        return redirect()->back();
+    }
 }

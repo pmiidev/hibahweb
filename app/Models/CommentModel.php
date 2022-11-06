@@ -8,7 +8,7 @@ class CommentModel extends Model
 {
     protected $table            = 'tbl_comment';
     protected $primaryKey       = 'comment_id';
-    protected $allowedFields    = ['comment_name', 'comment_email', 'comment_message', 'status', 'comment_parent', 'comment_post_id', 'comment_image'];
+    protected $allowedFields    = ['comment_name', 'comment_email', 'comment_message', 'comment_status', 'comment_parent', 'comment_post_id', 'comment_image'];
 
     public function show_comments($post_id)
     {

@@ -42,6 +42,7 @@ $routes->group('', static function ($routes) {
     $routes->get('/team', 'Home::team');
     $routes->get('/post', 'Home::post');
     $routes->get('/post/(:segment)', 'Home::post/$1');
+    $routes->post('/post/send_comment', 'Home::send_comment');
 });
 
 /*

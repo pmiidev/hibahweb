@@ -83,10 +83,10 @@
                         <div class="reply-form">
                             <h4>Leave a Reply</h4>
                             <p>Your email address will not be published. Required fields are marked * </p>
+                            <?= session()->getFlashData('msg') ?? '' ?>
                             <form method="post" action="/post/send_comment" role="form">
                                 <div class="row">
                                     <input type="hidden" name="post_id" value="<?= $post['post_id']; ?>" required>
-                                    <input type="hidden" name="slug" value="<?= $post['post_slug']; ?>" required>
                                     <div class="col-md-6 form-group">
                                         <input name="name" type="text" maxlength="100" required class="form-control" placeholder="Your Name*">
                                     </div>
@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col form-group">
-                                        <textarea name="comment" class="form-control" placeholder="Your Comment*" maxlength="400" required></textarea>
+                                        <textarea name="message" class="form-control" placeholder="Your Comment*" maxlength="400" required></textarea>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Post Comment</button>
