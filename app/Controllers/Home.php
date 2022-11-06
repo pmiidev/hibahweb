@@ -7,6 +7,7 @@ use App\Models\HomeModel;
 use App\Models\PostModel;
 use App\Models\SiteModel;
 use App\Models\SubscribeModel;
+use App\Models\TeamModel;
 use App\Models\TestimonialModel;
 
 class Home extends BaseController
@@ -18,6 +19,7 @@ class Home extends BaseController
         $this->testimonialModel = new TestimonialModel();
         $this->aboutModel = new AboutModel();
         $this->postModel = new PostModel();
+        $this->teamModel = new TeamModel();
     }
     public function index()
     {
@@ -71,5 +73,16 @@ class Home extends BaseController
             'title' => 'Gallery'
         ];
         return view('gallery_view', $data);
+    }
+    function team()
+    {
+        $data = [
+            'site' => $this->siteModel->find(1),
+            'home' => $this->homeModel->find(1),
+            'about' => $this->aboutModel->find(1),
+            'teams' => $this->teamModel->findAll(),
+            'title' => 'Team'
+        ];
+        return view('team_view', $data);
     }
 }
