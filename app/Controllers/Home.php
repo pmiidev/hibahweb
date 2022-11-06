@@ -85,4 +85,15 @@ class Home extends BaseController
         ];
         return view('team_view', $data);
     }
+    function post($slug = null)
+    {
+        $data = [
+            'site' => $this->siteModel->find(1),
+            'home' => $this->homeModel->find(1),
+            'about' => $this->aboutModel->find(1),
+            'posts' => $this->postModel->findAll(),
+            'title' => 'Post'
+        ];
+        return view('post_view', $data);
+    }
 }
