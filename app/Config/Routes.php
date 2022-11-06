@@ -41,6 +41,7 @@ $routes->group('', static function ($routes) {
     $routes->get('/gallery', 'Home::gallery');
     $routes->get('/team', 'Home::team');
     $routes->get('/post', 'Home::post');
+    $routes->get('/post/(:segment)', 'Home::post/$1');
 });
 
 /*

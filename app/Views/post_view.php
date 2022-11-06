@@ -16,9 +16,7 @@
                         <div class="post-box">
                             <div class="post-img"><img src="/assets/backend/images/post/<?= $post['post_image']; ?>" class="img-fluid" alt="<?= $post['post_title']; ?>"></div>
                             <span class="post-date">
-                                <?= date('d M Y', strtotime($post['post_date'])); ?>
-                                &#183;
-                                <?= $post['post_views']; ?> views
+                                <?= date('d M Y', strtotime($post['post_date'])); ?> | <?= $post['post_views']; ?> views
                             </span>
                             <h3 class="post-title"><a href="/post/<?= $post['post_slug']; ?>"><?= $post['post_title']; ?></a>
                             </h3>

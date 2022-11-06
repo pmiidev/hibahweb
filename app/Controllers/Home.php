@@ -3,10 +3,12 @@
 namespace App\Controllers;
 
 use App\Models\AboutModel;
+use App\Models\CommentModel;
 use App\Models\HomeModel;
 use App\Models\PostModel;
 use App\Models\SiteModel;
 use App\Models\SubscribeModel;
+use App\Models\TagModel;
 use App\Models\TeamModel;
 use App\Models\TestimonialModel;
 
@@ -20,6 +22,8 @@ class Home extends BaseController
         $this->aboutModel = new AboutModel();
         $this->postModel = new PostModel();
         $this->teamModel = new TeamModel();
+        $this->tagModel = new TagModel();
+        $this->commentModel = new CommentModel();
     }
     public function index()
     {
@@ -87,13 +91,33 @@ class Home extends BaseController
     }
     function post($slug = null)
     {
-        $data = [
-            'site' => $this->siteModel->find(1),
-            'home' => $this->homeModel->find(1),
-            'about' => $this->aboutModel->find(1),
-            'posts' => $this->postModel->findAll(),
-            'title' => 'Post'
-        ];
-        return view('post_view', $data);
+        if ($slug == null) {
+            $data = [
+                'site' => $this->siteModel->find(1),
+                'home' => $this->homeModel->find(1),
+                'about' => $this->aboutModel->find(1),
+                'posts' => $this->postModel->findAll(),
+                'title' => 'Post'
+            ];
+            return view('post_view', $data);
+        } else {
+            $post = $this->postModel->get_post_by_slug($slug)->getRowArray();
+            $post_id = $post['post_id'];
+            $user_ip = $_SERVER['REMOTE_ADDR'];
+            $cek_ip = $this->postModel->query("SELECT * FROM tbl_post_views WHERE view_ip='$user_ip' AND view_post_id='$post_id' AND DATE(view_date)=CURDATE()")->getNumRows();
+            if ($cek_ip < 1) {
+                $this->postModel->count_views($user_ip, $post_id);
+            }
+            $data = [
+                'site' => $this->siteModel->find(1),
+                'home' => $this->homeModel->find(1),
+                'about' => $this->aboutModel->find(1),
+                'post' => $post,
+                'tags' => $this->tagModel->findAll(),
+                'comments' => $this->commentModel->show_comments($post_id)->getResultArray(),
+                'title' => 'Post'
+            ];
+            return view('post_detail', $data);
+        }
     }
 }
