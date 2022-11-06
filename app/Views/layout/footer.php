@@ -5,10 +5,16 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <h4>Dapatkan informasi terbaru dari kami</h4>
-                    <form action="/subscribe" method="post">
-                        <input type="email" name="email" placeholder="Insert your email">
+                    <form action="" method="post">
+                        <input type="email" name="email" placeholder="Insert your email" required>
                         <input type="submit" value="Subscribe">
                     </form>
+                    <?php if (session()->getFlashData('pesan') || session()->getFlashData('peringatan')) : ?>
+                        <div class="alert alert-<?= session()->getFlashData('pesan') ? "success" : "warning" ?> alert-dismissible fade show  mb-0" role="alert">
+                            <?= session()->getFlashData('pesan') ?? session()->getFlashdata('peringatan') ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
