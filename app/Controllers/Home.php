@@ -37,7 +37,32 @@ class Home extends BaseController
         ];
         return view('home_view', $data);
     }
-    function subscribe()
+
+    public function search()
+    {
+        $query = $this->request->getGet('search_query');
+        if (!$query) {
+            return redirect()->to('/post');
+        }
+        $result = $this->postModel->search_post($query);
+        if ($result->getNumRows() < 1) {
+            $posts = $result->getResultArray();
+            $keyword = "Keyword '$query' tidak ditemukan";
+        } else {
+            $posts = $result->getResultArray();
+            $keyword = "Keyword: $query ";
+        }
+        $data = [
+            'site' => $this->siteModel->find(1),
+            'home' => $this->homeModel->find(1),
+            'about' => $this->aboutModel->find(1),
+            'title' => 'Search',
+            'keyword' => $keyword,
+            'posts' => $posts
+        ];
+        return view('post_search', $data);
+    }
+    public function subscribe()
     {
         if (!$this->validate([
             'email' => [
@@ -67,7 +92,7 @@ class Home extends BaseController
             return redirect()->to('#footer');
         }
     }
-    function gallery()
+    public function gallery()
     {
         $data = [
             'site' => $this->siteModel->find(1),
@@ -78,7 +103,7 @@ class Home extends BaseController
         ];
         return view('gallery_view', $data);
     }
-    function team()
+    public function team()
     {
         $data = [
             'site' => $this->siteModel->find(1),
@@ -89,7 +114,7 @@ class Home extends BaseController
         ];
         return view('team_view', $data);
     }
-    function post($slug = null)
+    public function post($slug = null)
     {
         if ($slug == null) {
             $data = [
@@ -120,7 +145,7 @@ class Home extends BaseController
             return view('post_detail', $data);
         }
     }
-    function send_comment()
+    public function send_comment()
     {
         if (!$this->validate([
             'post_id' => [
@@ -163,7 +188,7 @@ class Home extends BaseController
             'comment_email' => htmlspecialchars($this->request->getPost('email')),
             'comment_message' => htmlspecialchars($this->request->getPost('message')),
             'comment_post_id' => htmlspecialchars($this->request->getPost('post_id')),
-            'comment_image' => 'avatar (5).png'
+            'comment_image' => 'user_blank.png'
         ]);
         session()->setFlashdata('msg', '<div class="alert alert-info">Terima kasih atas respon Anda, komentar Anda akan tampil setelah moderasi</div>');
         return redirect()->back();

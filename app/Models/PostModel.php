@@ -40,4 +40,12 @@ class PostModel extends Model
         // 	WHERE post_category_id='$category_id' AND NOT post_id='$post_id' ORDER BY post_views DESC LIMIT 4");
         // return $query;
     }
+    function search_post($query)
+    {
+        $result = $this->db->query("SELECT tbl_post.*,user_name,user_photo FROM tbl_post
+			LEFT JOIN tbl_user ON post_user_id=user_id
+			LEFT JOIN tbl_category ON post_category_id=category_id
+			WHERE post_title LIKE '%$query%' OR category_name LIKE '%$query%' OR post_tags LIKE '%$query%' LIMIT 12");
+        return $result;
+    }
 }

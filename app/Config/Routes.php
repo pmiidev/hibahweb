@@ -40,6 +40,7 @@ $routes->group('', static function ($routes) {
     $routes->post('/subscribe', 'Home::subscribe');
     $routes->get('/gallery', 'Home::gallery');
     $routes->get('/team', 'Home::team');
+    $routes->get('/search', 'Home::search');
     $routes->get('/post', 'Home::post');
     $routes->get('/post/(:segment)', 'Home::post/$1');
     $routes->post('/post/send_comment', 'Home::send_comment');
