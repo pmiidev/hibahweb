@@ -34,11 +34,11 @@ class PostModel extends Model
             return FALSE;
         }
     }
-    public function get_related_post($category_id, $post_id)
+    function get_related_post($category_id, $kode)
     {
-        // $query = $this->db->query("SELECT * FROM tbl_post LEFT JOIN tbl_user ON post_user_id=user_id 
-        // 	WHERE post_category_id='$category_id' AND NOT post_id='$post_id' ORDER BY post_views DESC LIMIT 4");
-        // return $query;
+        $query = $this->db->query("SELECT * FROM tbl_post LEFT JOIN tbl_user ON post_user_id=user_id 
+			WHERE post_category_id='$category_id' AND NOT post_id='$kode' ORDER BY post_views DESC LIMIT 4");
+        return $query;
     }
     function search_post($query)
     {

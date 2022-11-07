@@ -120,6 +120,24 @@
                         </div>
                         <!-- End sidebar search formn-->
 
+                        <!-- Related Post -->
+                        <h3 class="sidebar-title">Related Posts</h3>
+                        <?php foreach ($related_post as $row) : ?>
+                            <div class="sidebar-item recent-posts">
+                                <div class="post-item clearfix">
+                                    <a href="/post/<?= $row['post_slug']; ?>">
+                                        <img src="/assets/backend/images/post/<?= $row['post_image']; ?>" alt="">
+                                        <h4>
+                                            <a href="/post/<?= $row['post_slug']; ?>"><?= $row['post_title']; ?></a>
+                                        </h4>
+                                        <time datetime="2021-01-01"><?= date('d M Y', strtotime($row['post_date'])); ?></time>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                        <!-- End Related Post -->
+
+                        <!-- Tags -->
                         <h3 class="sidebar-title">Tags</h3>
                         <div class="sidebar-item tags">
                             <ul>
@@ -128,7 +146,8 @@
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
-                        </div><!-- End sidebar tags-->
+                        </div>
+                        <!-- End sidebar tags-->
 
                     </div><!-- End sidebar -->
 
