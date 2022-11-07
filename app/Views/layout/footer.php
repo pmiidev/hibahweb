@@ -40,16 +40,24 @@
                         <li><i class="bx bx-chevron-right"></i> <a href="/#about">About us</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="/gallery">Galery</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="/team">Team</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="/document">Document</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="/contact">Contact</a></li>
                     </ul>
                 </div>
+                <?php
+                // Mengambil data Category
+                use App\Models\CategoryModel;
 
+                $categoryModel = new CategoryModel();
+                $categories = $categoryModel->findAll();
+                ?>
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Our Information</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">News</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Opinion</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">History</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Propaganda</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="/post">All Post</a></li>
+                        <?php foreach ($categories as $category) : ?>
+                            <li><i class="bx bx-chevron-right"></i> <a href="/category/<?= $category['category_slug']; ?>"><?= $category['category_name']; ?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
 
