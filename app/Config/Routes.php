@@ -67,6 +67,16 @@ $routes->get('/document', 'DocumentController::index');
 // ContactController
 $routes->get('/contact', 'ContactController::index');
 
+// LoginController & Logout
+$routes->get('/login', 'LoginController::index');
+$routes->post('/login/validasi', 'LoginController::validasi');
+$routes->get('/logout', 'LoginController::logout');
+
+// Admin Routes
+$routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
+    $routes->get('', 'Admin\AdminController::index');
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
