@@ -43,6 +43,7 @@ $routes->group('', static function ($routes) {
     $routes->get('/search', 'Home::search');
     $routes->get('/post', 'Home::post');
     $routes->get('/post/(:segment)', 'Home::post/$1');
+    $routes->get('/tag/(:segment)', 'Home::tag/$1');
     $routes->post('/post/send_comment', 'Home::send_comment');
 });
 

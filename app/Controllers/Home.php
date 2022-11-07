@@ -195,4 +195,24 @@ class Home extends BaseController
         session()->setFlashdata('msg', '<div class="alert alert-info">Terima kasih atas respon Anda, komentar Anda akan tampil setelah moderasi</div>');
         return redirect()->back();
     }
+    public function tag($tag)
+    {
+        $posts = $this->tagModel->get_post_by_tags($tag);
+        if ($posts->getNumRows() < 1) {
+            $posts = $posts->getResultArray();
+            $keyword = "Tag $tag tidak ditemukan";
+        } else {
+            $posts = $posts->getResultArray();
+            $keyword = "Tag: $tag";
+        }
+        $data = [
+            'site' => $this->siteModel->find(1),
+            'home' => $this->homeModel->find(1),
+            'about' => $this->aboutModel->find(1),
+            'title' => 'Tags',
+            'keyword' => $keyword,
+            'posts' => $posts
+        ];
+        return view('post_tag', $data);
+    }
 }
