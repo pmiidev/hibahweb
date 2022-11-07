@@ -58,16 +58,22 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto <?= ($title == "Home") ? 'active' : '' ?>" href="/#hero">Home</a></li>
+                    <li><a class="nav-link scrollto <?= ($title == "Home") ? 'active' : '' ?>" href="/">Home</a></li>
                     <li><a class="nav-link scrollto" href="/#about">About</a></li>
                     <li><a class="nav-link scrollto <?= ($title == "Gallery") ? 'active' : '' ?>" href="/gallery">Gallery</a></li>
                     <li><a class="nav-link scrollto <?= ($title == "Team") ? 'active' : '' ?> " href="/team">Team</a></li>
+                    <?php
+                    // Mengambil data Category
+                    use App\Models\CategoryModel;
+
+                    $categoryModel = new CategoryModel();
+                    $categories = $categoryModel->findAll();
+                    ?>
                     <li class="dropdown"><a href="/post"><span>News</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="/category/news">Berita</a></li>
-                            <li><a href="/category/opinion">Opini</a></li>
-                            <li><a href="#">Cerpen</a></li>
-                            <li><a href="#">Puisi</a></li>
+                            <?php foreach ($categories as $category) : ?>
+                                <li><a href="/category/<?= $category['category_slug']; ?>"><?= $category['category_name']; ?></a></li>
+                            <?php endforeach; ?>
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="/document">Document</a></li>

@@ -35,7 +35,7 @@
                             <h4><?= date('d M Y', strtotime($post['post_date'])); ?></h4>
                             <p><?= $post['post_title']; ?></p>
                             <a href="/assets/backend/images/post/<?= $post['post_image']; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="<?= $post['post_title']; ?>"><i class="bx bx-plus"></i></a>
-                            <a href="post/<?= $post['post_slug']; ?>" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                            <a href="/post/<?= $post['post_slug']; ?>" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
                         </div>
                     </div>
                 <?php endforeach; ?>

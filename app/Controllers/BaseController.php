@@ -49,6 +49,7 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
         // Session
         $this->session = \Config\Services::session();
+
         // Cek Visitor
         $visitorModel = new VisitorModel();
         $user_ip = $_SERVER['REMOTE_ADDR'];

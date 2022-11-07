@@ -35,17 +35,28 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->group('', static function ($routes) {
-    $routes->get('/', 'Home::index');
-    $routes->post('/subscribe', 'Home::subscribe');
-    $routes->get('/gallery', 'Home::gallery');
-    $routes->get('/team', 'Home::team');
-    $routes->get('/search', 'Home::search');
-    $routes->get('/post', 'Home::post');
-    $routes->get('/post/(:segment)', 'Home::post/$1');
-    $routes->get('/tag/(:segment)', 'Home::tag/$1');
-    $routes->post('/post/send_comment', 'Home::send_comment');
+
+// HomeController
+$routes->get('/', 'HomeController::index');
+
+// SubscribeController
+$routes->get('/subscribe', static function () {
+    return redirect()->to('/#footer');
 });
+$routes->post('/subscribe', 'SubscribeController::index');
+
+// GalleryController
+$routes->get('/gallery', 'GalleryController::index');
+
+// TeamController
+$routes->get('/team', 'TeamController::index');
+
+// PostController
+$routes->get('/search', 'PostController::search');
+$routes->get('/post', 'PostController::index');
+$routes->get('/post/(:segment)', 'PostController::index/$1');
+$routes->get('/tag/(:segment)', 'PostController::tag/$1');
+$routes->post('/post/send_comment', 'PostController::send_comment');
 
 /*
  * --------------------------------------------------------------------
