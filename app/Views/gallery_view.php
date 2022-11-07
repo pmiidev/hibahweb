@@ -13,7 +13,7 @@
             <div class="section-title">
                 <h2><?= $title; ?></h2>
                 <h3><span><?= $about['about_name']; ?></span></h3>
-                <p>Gallery ini berisi foto-foto dari postingan-postingan kader PMII berupa berita, opini, materi, dll</p>
+                <p>Halaman ini berisi foto-foto dari postingan-postingan kader PMII berupa berita, opini, materi, dll</p>
             </div><br>
 
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">

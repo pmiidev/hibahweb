@@ -64,6 +64,9 @@ $routes->get('/category/(:segment)', 'CategoryController::index/$1');
 // DocumentController
 $routes->get('/document', 'DocumentController::index');
 
+// ContactController
+$routes->get('/contact', 'ContactController::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

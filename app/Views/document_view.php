@@ -11,10 +11,10 @@
         <div class="container" data-aos="fade-up">
 
             <div class="section-title">
-                <h2>Documents</h2>
-                <h3>Dokumen <span>Rayon</span></h3>
-                <p>Pergerakan Mahasiswa Islam Indonesia</p>
-            </div>
+                <h2><?= $title; ?></h2>
+                <h3><span><?= $about['about_name']; ?></span></h3>
+                <p>Halaman ini berisi dokumen-dokumen organisasi, materi, dan dokumen lain untuk menunjang keorganisasian</p>
+            </div><br>
 
             <div class="row">
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
