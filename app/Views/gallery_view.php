@@ -16,17 +16,6 @@
                 <p>Gallery ini berisi foto-foto dari postingan-postingan kader PMII berupa berita, opini, materi, dll</p>
             </div><br>
 
-            <!-- <div class="row" data-aos="fade-up" data-aos-delay="100">
-                    <div class="col-lg-12 d-flex justify-content-center">
-                        <ul id="portfolio-flters">
-                            <li data-filter="*" class="filter-active">All</li>
-                            <li data-filter=".filter-app">App</li>
-                            <li data-filter=".filter-card">Card</li>
-                            <li data-filter=".filter-web">Web</li>
-                        </ul>
-                    </div>
-                </div> -->
-
             <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
                 <?php foreach ($posts as $post) : ?>
                     <div class="col-lg-4 col-md-6 portfolio-item filter-web">

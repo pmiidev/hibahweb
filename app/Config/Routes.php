@@ -61,6 +61,9 @@ $routes->post('/post/send_comment', 'PostController::send_comment');
 // CategoryController
 $routes->get('/category/(:segment)', 'CategoryController::index/$1');
 
+// DocumentController
+$routes->get('/document', 'DocumentController::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
