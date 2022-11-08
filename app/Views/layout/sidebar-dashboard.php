@@ -107,10 +107,10 @@
             </div>
         </div>
         <ul class="menu accordion-menu">
-            <li class="active"><a href="/<?= session('role'); ?>" class="waves-effect waves-button"><span class="menu-icon icon-home"></span>
+            <li class="<?= ($active == 'dashboard') ? 'active' : '' ?>"><a href="/<?= session('role'); ?>" class="waves-effect waves-button"><span class="menu-icon icon-home"></span>
                     <p>Dashboard</p>
                 </a></li>
-            <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon icon-pin"></span>
+            <li class="droplink <?= ($active == 'post') ? 'active' : '' ?>"><a href="#" class="waves-effect waves-button"><span class="menu-icon icon-pin"></span>
                     <p>Post</p><span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">

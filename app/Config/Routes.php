@@ -40,41 +40,42 @@ $routes->set404Override();
 $routes->get('/', 'HomeController::index');
 
 // SubscribeController
-$routes->get('/subscribe', static function () {
+$routes->get('subscribe', static function () {
     return redirect()->to('/#footer');
 });
-$routes->post('/subscribe', 'SubscribeController::index');
+$routes->post('subscribe', 'SubscribeController::index');
 
 // GalleryController
-$routes->get('/gallery', 'GalleryController::index');
+$routes->get('gallery', 'GalleryController::index');
 
 // TeamController
-$routes->get('/team', 'TeamController::index');
+$routes->get('team', 'TeamController::index');
 
 // PostController
-$routes->get('/search', 'PostController::search');
-$routes->get('/post', 'PostController::index');
-$routes->get('/post/(:segment)', 'PostController::index/$1');
-$routes->get('/tag/(:segment)', 'PostController::tag/$1');
-$routes->post('/post/send_comment', 'PostController::send_comment');
+$routes->get('search', 'PostController::search');
+$routes->get('post', 'PostController::index');
+$routes->get('post/(:segment)', 'PostController::index/$1');
+$routes->get('tag/(:segment)', 'PostController::tag/$1');
+$routes->post('post/send_comment', 'PostController::send_comment');
 
 // CategoryController
-$routes->get('/category/(:segment)', 'CategoryController::index/$1');
+$routes->get('category/(:segment)', 'CategoryController::index/$1');
 
 // DocumentController
-$routes->get('/document', 'DocumentController::index');
+$routes->get('document', 'DocumentController::index');
 
 // ContactController
-$routes->get('/contact', 'ContactController::index');
+$routes->get('contact', 'ContactController::index');
 
 // LoginController & Logout
-$routes->get('/login', 'LoginController::index');
-$routes->post('/login/validasi', 'LoginController::validasi');
-$routes->get('/logout', 'LoginController::logout');
+$routes->get('login', 'LoginController::index');
+$routes->post('login/validasi', 'LoginController::validasi');
+$routes->get('logout', 'LoginController::logout');
 
 // Admin Routes
 $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
     $routes->get('', 'Admin\AdminController::index');
+    $routes->get('post', 'Admin\PostAdminController::index');
 });
 
 // User Routes

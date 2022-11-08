@@ -71,5 +71,12 @@ abstract class BaseController extends Controller
             $this->akunModel = new UserModel();
             $this->akun = $this->akunModel->where('user_email', session('email'))->first();
         }
+
+        // Nav Active Dashboard
+        if (url_is('admin')) {
+            $this->active = 'dashboard';
+        } elseif (url_is('admin/post*')) {
+            $this->active = 'post';
+        }
     }
 }
