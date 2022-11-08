@@ -44,8 +44,13 @@
         <?= $this->include('layout/sidebar-dashboard'); ?>
         <div class="page-inner">
             <?= $this->include('layout/title-dashboard'); ?>
-
+            <!-- Status -->
             <!-- Main Content -->
+            <?php if (session()->getFlashData('pesan') || session()->getFlashData('peringatan')) : ?>
+                <div class="alert alert-<?= session()->getFlashData('pesan') ? "success" : "warning" ?>" role="alert" style="padding: 1rem 3rem;">
+                    <?= session()->getFlashdata('pesan') ?? session()->getFlashdata('peringatan') ?>
+                </div>
+            <?php endif; ?>
             <div id="main-wrapper">
                 <div class="row">
                     <form action="/<?= session('role'); ?>/post/publish" method="post" enctype="multipart/form-data">
@@ -57,11 +62,11 @@
                                         <input type="text" name="title" class="form-control title" placeholder="Title" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="slug" class="form-control slug" placeholder="Permalink" style="background-color: #F8F8F8;outline-color: none;border:0;color:blue;" required>
+                                        <input type="text" name="slug" class="form-control slug" placeholder="contoh-slug-yang-benar-seperti-ini" style="background-color: #F8F8F8;outline-color: none;border:0;color:blue;" required>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Contents</label>
-                                        <textarea name="contents" id="summernote"></textarea>
+                                        <textarea name="contents" id="summernote" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +77,7 @@
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label>Image</label>
-                                        <input type="file" name="filefoto" class="dropify" data-height="190" required>
+                                        <input type="file" name="filefoto" class="dropify" data-height="190">
                                     </div>
                                     <div class="form-group">
                                         <label>Category</label>

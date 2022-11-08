@@ -33,6 +33,9 @@ class PostController extends BaseController
             ];
             return view('post_view', $data);
         }
+        if (!$this->postModel->get_post_by_slug($slug)->getRowArray()) {
+            return redirect()->to('post');
+        }
         $post = $this->postModel->get_post_by_slug($slug)->getRowArray();
         $post_id = $post['post_id'];
         $category_id = $post['category_id'];

@@ -115,7 +115,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li><a href="/<?= session('role'); ?>/post">Post List</a></li>
-                    <li><a href="/<?= session('role'); ?>/post/add_post">Add New</a></li>
+                    <li><a href="/<?= session('role'); ?>/post/add_new">Add New</a></li>
                     <li><a href="/<?= session('role'); ?>/category">Category</a></li>
                     <li><a href="/<?= session('role'); ?>/tag">Tag</a></li>
                 </ul>

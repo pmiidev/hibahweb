@@ -8,7 +8,7 @@ class PostModel extends Model
 {
     protected $table            = 'tbl_post';
     protected $primaryKey       = 'post_id';
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['post_title', 'post_description', 'post_contents', 'post_image', 'post_category_id', 'post_tags', 'post_slug', 'post_status', 'post_views', 'post_user_id'];
     protected $useTimestamps = true;
     protected $createdField  = 'post_date';
     protected $updatedField  = 'post_last_update';

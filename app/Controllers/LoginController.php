@@ -65,6 +65,7 @@ class LoginController extends BaseController
     public function setAdminSession($user)
     {
         $data = [
+            'id' => $user['user_id'],
             'nama' => $user['user_name'],
             'email' => $user['user_email'],
             'role' => 'admin'
