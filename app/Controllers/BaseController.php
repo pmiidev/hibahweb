@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\UserModel;
 use App\Models\VisitorModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
@@ -64,5 +65,11 @@ abstract class BaseController extends Controller
             $agent = 'Unidentified User Agent';
         }
         $visitorModel->count_visitor($user_ip, $agent);
+
+        // Akun login
+        if (session('role')) {
+            $this->akunModel = new UserModel();
+            $this->akun = $this->akunModel->where('user_email', session('email'))->first();
+        }
     }
 }

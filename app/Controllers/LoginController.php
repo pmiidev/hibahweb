@@ -67,7 +67,7 @@ class LoginController extends BaseController
         $data = [
             'nama' => $user['user_name'],
             'email' => $user['user_email'],
-            'role' => $user['user_level']
+            'role' => 'admin'
         ];
 
         session()->set($data);
@@ -79,7 +79,7 @@ class LoginController extends BaseController
             'id' => $user['user_id'],
             'nama' => $user['user_name'],
             'email' => $user['user_email'],
-            'role' => $user['user_role']
+            'role' => 'user'
         ];
 
         session()->set($data);

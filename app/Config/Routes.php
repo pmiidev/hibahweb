@@ -77,6 +77,11 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
     $routes->get('', 'Admin\AdminController::index');
 });
 
+// User Routes
+$routes->group('user', ['filter' => 'authuser'], static function ($routes) {
+    $routes->get('', 'User\UserController::index');
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
