@@ -25,7 +25,7 @@ class AuthUser implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (session('role') != 2) {
+        if (session('role') != 'user') {
             return redirect()->to('admin');
         }
     }

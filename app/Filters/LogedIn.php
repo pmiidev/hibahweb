@@ -25,9 +25,9 @@ class LogedIn implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (session('role') == 1) {
+        if (session('role') == 'admin') {
             return redirect()->to('admin');
-        } elseif (session('role') == 2) {
+        } elseif (session('role') == 'user') {
             return redirect()->to('user');
         }
     }
