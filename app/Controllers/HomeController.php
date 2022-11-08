@@ -24,7 +24,8 @@ class HomeController extends BaseController
             'about' => $this->aboutModel->find(1),
             'testimonials' => $this->testimonialModel->findAll(),
             'validation' => \Config\Services::validation(),
-            'title' => 'Home'
+            'title' => 'Home',
+            'active' => 'Home'
         ];
         return view('home_view', $data);
     }

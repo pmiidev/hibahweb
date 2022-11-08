@@ -21,7 +21,8 @@ class DocumentController extends BaseController
             'site' => $this->siteModel->find(1),
             'home' => $this->homeModel->find(1),
             'about' => $this->aboutModel->find(1),
-            'title' => 'Document'
+            'title' => 'Document',
+            'active' => 'Document'
         ];
         return view('document_view', $data);
     }

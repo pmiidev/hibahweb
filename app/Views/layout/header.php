@@ -58,10 +58,10 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto <?= ($title == "Home") ? 'active' : '' ?>" href="/">Home</a></li>
+                    <li><a class="nav-link scrollto <?= ($active == "Home") ? 'active' : '' ?>" href="/">Home</a></li>
                     <li><a class="nav-link scrollto" href="/#about">About</a></li>
-                    <li><a class="nav-link scrollto <?= ($title == "Gallery") ? 'active' : '' ?>" href="/gallery">Gallery</a></li>
-                    <li><a class="nav-link scrollto <?= ($title == "Team") ? 'active' : '' ?> " href="/team">Team</a></li>
+                    <li><a class="nav-link scrollto <?= ($active == "Gallery") ? 'active' : '' ?>" href="/gallery">Gallery</a></li>
+                    <li><a class="nav-link scrollto <?= ($active == "Team") ? 'active' : '' ?> " href="/team">Team</a></li>
                     <?php
                     // Mengambil data Category
                     use App\Models\CategoryModel;
@@ -69,15 +69,15 @@
                     $categoryModel = new CategoryModel();
                     $categories = $categoryModel->findAll();
                     ?>
-                    <li class="dropdown"><a href="/post"><span>News</span> <i class="bi bi-chevron-down"></i></a>
+                    <li class="dropdown"><a class="<?= ($active == "Post") ? 'active' : '' ?>" href="/post"><span>News</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <?php foreach ($categories as $category) : ?>
                                 <li><a href="/category/<?= $category['category_slug']; ?>"><?= $category['category_name']; ?></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </li>
-                    <li><a class="nav-link scrollto" href="/document">Document</a></li>
-                    <li><a class="nav-link scrollto" href="/contact">Contact</a></li>
+                    <li><a class="nav-link scrollto <?= ($active == "Document") ? 'active' : '' ?>" href="/document">Document</a></li>
+                    <li><a class="nav-link scrollto <?= ($active == "Contact") ? 'active' : '' ?>" href="/contact">Contact</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->

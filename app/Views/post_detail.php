@@ -50,10 +50,8 @@
 
                             <i class="bi bi-tags"></i>
                             <ul class="tags">
-                                <?php
-                                foreach ($tags as $tag) :
-                                ?>
-                                    <a href="/tag/<?= $tag['tag_name']; ?>"><?= $tag['tag_name']; ?></a> &vert;
+                                <?php foreach ($post_tags as $tag) : ?>
+                                    <a href="/tag/<?= $tag; ?>"><?= $tag; ?></a> &vert;
                                 <?php endforeach; ?>
                             </ul>
                         </div>

@@ -21,7 +21,8 @@ class ContactController extends BaseController
             'site' => $this->siteModel->find(1),
             'home' => $this->homeModel->find(1),
             'about' => $this->aboutModel->find(1),
-            'title' => 'Contact'
+            'title' => 'Contact',
+            'active' => 'Contact'
         ];
         return view('contact_view', $data);
     }

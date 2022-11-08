@@ -26,7 +26,8 @@ class TeamController extends BaseController
             'home' => $this->homeModel->find(1),
             'about' => $this->aboutModel->find(1),
             'teams' => $this->teamModel->findAll(),
-            'title' => 'Team'
+            'title' => 'Team',
+            'active' => 'Team'
         ];
         return view('team_view', $data);
     }

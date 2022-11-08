@@ -38,7 +38,8 @@ class CategoryController extends BaseController
             'about' => $this->aboutModel->find(1),
             'title' => 'Category',
             'keyword' => $keyword,
-            'posts' => $posts
+            'posts' => $posts,
+            'active' => 'Post'
         ];
         return view('post_category', $data);
     }
