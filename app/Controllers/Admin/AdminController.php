@@ -89,6 +89,7 @@ class AdminController extends BaseController
 
         $data = [
             'akun' => $this->akun,
+            'title' => 'Dashboard',
             'month' => json_encode($bulan),
             'value' => json_encode($value),
             'all_visitors' => $this->visitorModel->count_all_visitors(),

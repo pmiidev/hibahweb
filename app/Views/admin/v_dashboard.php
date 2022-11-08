@@ -1,231 +1,13 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-
-    <!-- Title -->
-    <title>Dashboard</title>
-
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta charset="UTF-8">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="Ircham Ali" />
-    <link rel="shortcut icon" href="/assets/frontend/img/apple-touch-icon.png">
-
-    <!-- Styles -->
-    <link href="/assets/backend/plugins/pace-master/themes/blue/pace-theme-flash.css" rel="stylesheet" />
-    <link href="/assets/backend/plugins/uniform/css/uniform.default.min.css" rel="stylesheet" />
-    <link href="/assets/backend/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/backend/plugins/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/backend/plugins/line-icons/simple-line-icons.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/backend/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/backend/plugins/waves/waves.min.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/backend/plugins/switchery/switchery.min.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/backend/plugins/3d-bold-navigation/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/backend/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/backend/plugins/weather-icons-master/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/backend/plugins/metrojs/MetroJs.min.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/backend/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
-
-    <!-- Theme Styles -->
-    <link href="/assets/backend/css/modern.min.css" rel="stylesheet" type="text/css" />
-    <link href="/assets/backend/css/themes/dark.css" class="theme-color" rel="stylesheet" type="text/css" />
-    <link href="/assets/backend/css/custom.css" rel="stylesheet" type="text/css" />
-
-    <script src="/assets/backend/plugins/3d-bold-navigation/js/modernizr.js"></script>
-    <script src="/assets/backend/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
-
-
-</head>
+<?= $this->include('layout/header-dashboard'); ?>
 
 <body class="page-header-fixed compact-menu pace-done page-sidebar-fixed">
     <div class="overlay"></div>
     <main class="page-content content-wrap">
-        <div class="navbar">
-            <div class="navbar-inner">
-                <div class="sidebar-pusher">
-                    <a href="javascript:void(0);" class="waves-effect waves-button waves-classic push-sidebar">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                </div>
-                <div class="logo-box">
-                    <a href="/<?= session('role'); ?>" class="logo-text"><span>PMII</span></a>
-                </div><!-- Logo Box -->
-                <div class="topmenu-outer">
-                    <div class="top-menu">
-                        <ul class="nav navbar-nav navbar-left">
-                            <li>
-                                <a href="javascript:void(0);" class="waves-effect waves-button waves-classic sidebar-toggle"><i class="fa fa-bars"></i></a>
-                            </li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge badge-success pull-right"><?= $total_inbox; ?></span></a>
-                                <ul class="dropdown-menu title-caret dropdown-lg" role="menu">
-
-                                    <li>
-                                        <p class="drop-title">Anda memiliki <?= $total_inbox; ?> pesan baru !</p>
-                                    </li>
-                                    <li class="dropdown-menu-list slimscroll messages">
-                                        <ul class="list-unstyled">
-                                            <?php foreach ($inboxs as $row) : ?>
-                                                <li>
-                                                    <a href="/<?= session('role') ?>/inbox">
-                                                        <div class="msg-img">
-                                                            <div class="online on"></div><img class="img-circle" src="/assets/backend/images/user_blank.png" alt="">
-                                                        </div>
-                                                        <p class="msg-name"><?= $row['inbox_name']; ?></p>
-                                                        <p class="msg-text"><?= word_limiter($row['inbox_message'], 5); ?></p>
-                                                        <p class="msg-time"><?= date('d-m-Y H:i:s', strtotime($row['inbox_created_at'])); ?></p>
-                                                    </a>
-                                                </li>
-                                            <?php endforeach; ?>
-                                        </ul>
-                                    </li>
-                                    <li class="drop-all"><a href="/<?= session('role'); ?>/inbox" class="text-center">All Messages</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown"><i class="fa fa-comment"></i><span class="badge badge-success pull-right"><?= $total_comment; ?></span></a>
-                                <ul class="dropdown-menu title-caret dropdown-lg" role="menu">
-                                    <li>
-                                        <p class="drop-title">Anda memiliki <?= $total_comment; ?> komentar baru !</p>
-                                    </li>
-                                    <li class="dropdown-menu-list slimscroll messages">
-                                        <ul class="list-unstyled">
-                                            <?php foreach ($comments as $row) : ?>
-                                                <li>
-                                                    <a href="/<?= session('role'); ?>/comment">
-                                                        <div class="msg-img">
-                                                            <div class="online on"></div><img class="img-circle" src="/assets/backend/images/user_blank.png" alt="">
-                                                        </div>
-                                                        <p class="msg-name"><?= $row['comment_name']; ?></p>
-                                                        <p class="msg-text"><?= word_limiter($row['comment_message'], 5); ?></p>
-                                                        <p class="msg-time"><?= date('d-m-Y H:i:s', strtotime($row['comment_date'])); ?></p>
-                                                    </a>
-                                                </li>
-                                            <?php endforeach; ?>
-                                        </ul>
-                                    </li>
-                                    <li class="drop-all"><a href="/<?= session('role'); ?>/comment" class="text-center">All Comments</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
-                                    <span class="user-name"><?= session('name'); ?><i class="fa fa-angle-down"></i></span>
-                                    <img class="img-circle avatar" src="/assets/backend/images/<?= $akun['user_photo']; ?>" width="40" height="40" alt="">
-                                </a>
-                                <ul class="dropdown-menu dropdown-list" role="menu">
-                                    <li role="presentation"><a href="<?= site_url('backend/change_pass'); ?>"><i class="fa fa-key"></i>Change Password</a></li>
-                                    <li role="presentation"><a href="<?= site_url('backend/comment/unpublish'); ?>"><i class="fa fa-comment"></i>Comments<span class="badge badge-success pull-right"><?= $total_comment; ?></span></a></li>
-                                    <li role="presentation"><a href="<?= site_url('backend/inbox'); ?>"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right"><?= $total_inbox; ?></span></a></li>
-                                    <li role="presentation" class="divider"></li>
-                                    <li role="presentation"><a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="<?= site_url('logout'); ?>" class="log-out waves-effect waves-button waves-classic">
-                                    <span><i class="fa fa-sign-out m-r-xs"></i>Log out</span>
-                                </a>
-                            </li>
-                        </ul><!-- Nav -->
-                    </div><!-- Top Menu -->
-                </div>
-            </div>
-        </div><!-- Navbar -->
-        <div class="page-sidebar sidebar">
-            <div class="page-sidebar-inner slimscroll">
-                <div class="sidebar-header">
-                    <div class="sidebar-profile">
-                        <a href="javascript:void(0);">
-                            <div class="sidebar-profile-image">
-                                <img src="/assets/backend/images/<?= $akun['user_photo']; ?>" class="img-circle img-responsive" alt="">
-                            </div>
-                            <div class="sidebar-profile-details">
-                                <span><?= session('nama'); ?><br>
-                                    <small>Administrator</small>
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <ul class="menu accordion-menu">
-                    <li class="active"><a href="/<?= session('role'); ?>" class="waves-effect waves-button"><span class="menu-icon icon-home"></span>
-                            <p>Dashboard</p>
-                        </a></li>
-                    <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon icon-pin"></span>
-                            <p>Post</p><span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="/<?= session('role'); ?>/post/add_post">Add New</a></li>
-                            <li><a href="/<?= session('role'); ?>/post">Post List</a></li>
-                            <li><a href="/<?= session('role'); ?>/category">Category</a></li>
-                            <li><a href="/<?= session('role'); ?>/tag">Tag</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/<?= session('role'); ?>/inbox" class="waves-effect waves-button"><span class="menu-icon icon-envelope"></span>
-                            <p>Inbox</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/<?= session('role'); ?>/comment" class="waves-effect waves-button"><span class="menu-icon icon-bubbles"></span>
-                            <p>Comments</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/<?= session('role'); ?>/subscriber" class="waves-effect waves-button"><span class="menu-icon icon-users"></span>
-                            <p>Subscribers</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/<?= session('role'); ?>/member" class="waves-effect waves-button"><span class="menu-icon icon-key"></span>
-                            <p>Member</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/<?= session('role'); ?>/testimonial" class="waves-effect waves-button"><span class="menu-icon icon-like"></span>
-                            <p>Testimonials</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/<?= session('role'); ?>/team" class="waves-effect waves-button"><span class="menu-icon icon-users"></span>
-                            <p>Teams</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/<?= session('role'); ?>/users" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
-                            <p>Users</p>
-                        </a>
-                    </li>
-                    <li class="droplink"><a href="/<?= session('role'); ?>/settings" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span>
-                            <p>Settings</p><span class="arrow"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li><a href="/<?= session('role'); ?>/settings">Basic</a></li>
-                            <li><a href="/<?= session('role'); ?>/home-setting">Home</a></li>
-                            <li><a href="/<?= session('role'); ?>/about-setting">About</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/logout" class="waves-effect waves-button"><span class="menu-icon icon-logout"></span>
-                            <p>Log Out</p>
-                        </a>
-                    </li>
-                </ul>
-            </div><!-- Page Sidebar Inner -->
-        </div><!-- Page Sidebar -->
+        <?= $this->include('layout/sidebar-dashboard'); ?>
         <div class="page-inner">
-            <div class="page-title">
-                <h3>Dashboard</h3>
-                <div class="page-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li><a href="/<?= session('role'); ?>">Home</a></li>
-                        <li class="active">Dashboard</li>
-                    </ol>
-                </div>
-            </div>
+            <?= $this->include('layout/title-dashboard'); ?>
+
+            <!-- Main Content -->
             <div id="main-wrapper">
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
@@ -382,39 +164,16 @@
                         </div>
                     </div>
                 </div>
-            </div><!-- Main Wrapper -->
-            <div class="page-footer">
-                <p class="no-s"><?= date('Y'); ?> &copy; Powered by Ircham Ali.</p>
             </div>
-        </div><!-- Page Inner -->
-    </main><!-- Page Content -->
+            <!-- End Main Content -->
+
+            <?= $this->include('layout/footer-dashboard'); ?>
+        </div>
+    </main>
     <div class="cd-overlay"></div>
 
-
     <!-- Javascripts -->
-    <script src="/assets/backend/plugins/jquery/jquery-2.1.4.min.js"></script>
-    <script src="/assets/backend/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="/assets/backend/plugins/pace-master/pace.min.js"></script>
-    <script src="/assets/backend/plugins/jquery-blockui/jquery.blockui.js"></script>
-    <script src="/assets/backend/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/assets/backend/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="/assets/backend/plugins/switchery/switchery.min.js"></script>
-    <script src="/assets/backend/plugins/uniform/jquery.uniform.min.js"></script>
-    <script src="/assets/backend/plugins/offcanvasmenueffects/js/classie.js"></script>
-    <script src="/assets/backend/plugins/offcanvasmenueffects/js/main.js"></script>
-    <script src="/assets/backend/plugins/waves/waves.min.js"></script>
-    <script src="/assets/backend/plugins/3d-bold-navigation/js/main.js"></script>
-    <script src="/assets/backend/plugins/waypoints/jquery.waypoints.min.js"></script>
-    <script src="/assets/backend/plugins/jquery-counterup/jquery.counterup.min.js"></script>
-    <script src="/assets/backend/plugins/toastr/toastr.min.js"></script>
-    <script src="/assets/backend/plugins/flot/jquery.flot.min.js"></script>
-    <script src="/assets/backend/plugins/flot/jquery.flot.time.min.js"></script>
-    <script src="/assets/backend/plugins/flot/jquery.flot.symbol.min.js"></script>
-    <script src="/assets/backend/plugins/flot/jquery.flot.resize.min.js"></script>
-    <script src="/assets/backend/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="/assets/backend/plugins/chartsjs/Chart.min.js"></script>
-    <script src="/assets/backend/js/modern.js"></script>
-
+    <?= $this->include('layout/js-dashboard'); ?>
     <script>
         $(document).ready(function() {
             // CounterUp Plugin
@@ -463,7 +222,6 @@
             });
         });
     </script>
-
 </body>
 
 </html>
