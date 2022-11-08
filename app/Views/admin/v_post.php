@@ -83,7 +83,23 @@
     </form>
 
     <!-- Javascripts -->
-    <?= $this->include('layout/js-dashboard'); ?>
+    <script src="/assets/backend/plugins/jquery/jquery-2.1.4.min.js"></script>
+    <script src="/assets/backend/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/assets/backend/plugins/pace-master/pace.min.js"></script>
+    <script src="/assets/backend/plugins/jquery-blockui/jquery.blockui.js"></script>
+    <script src="/assets/backend/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assets/backend/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/assets/backend/plugins/switchery/switchery.min.js"></script>
+    <script src="/assets/backend/plugins/uniform/jquery.uniform.min.js"></script>
+    <script src="/assets/backend/plugins/offcanvasmenueffects/js/classie.js"></script>
+    <script src="/assets/backend/plugins/offcanvasmenueffects/js/main.js"></script>
+    <script src="/assets/backend/plugins/waves/waves.min.js"></script>
+    <script src="/assets/backend/plugins/3d-bold-navigation/js/main.js"></script>
+    <script src="/assets/backend/plugins/jquery-mockjax-master/jquery.mockjax.js"></script>
+    <script src="/assets/backend/plugins/moment/moment.js"></script>
+    <script src="/assets/backend/plugins/datatables/js/jquery.datatables.min.js"></script>
+    <script src="/assets/backend/js/modern.min.js"></script>
+    <script src="/assets/backend/plugins/toastr/jquery.toast.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#data-table').dataTable();
