@@ -39,7 +39,7 @@
                                                     <td><?= $post['category_name']; ?></td>
                                                     <td><?= $post['post_views']; ?></td>
                                                     <td style="text-align: center;">
-                                                        <a href="<?= site_url('backend/post/get_edit/' . $post['post_id']); ?>" class="btn btn-xs"><span class="fa fa-pencil"></span></a>
+                                                        <a href="/post/get_edit/'<?php $post['post_id']; ?>" class="btn btn-xs"><span class="fa fa-pencil"></span></a>
                                                         <a href="javascript:void(0);" class="btn btn-xs btn-delete" data-id="<?= $post['post_id']; ?>"><span class="fa fa-trash"></span></a>
                                                     </td>
                                                 </tr>
@@ -59,7 +59,7 @@
         </div>
     </main>
     <!--DELETE RECORD MODAL-->
-    <form action="<?= site_url('backend/post/delete'); ?>" method="post">
+    <form action="/<?= session('role'); ?>/post/delete" method="post">
         <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

@@ -38,4 +38,10 @@ class PostAdminController extends BaseController
 
         return view('admin/v_post', $data);
     }
+    function delete()
+    {
+        $post_id = $this->request->getPost('id');
+        $this->postModel->delete($post_id);
+        return redirect()->to('/admin/post')->with('msg', 'success-delete');
+    }
 }

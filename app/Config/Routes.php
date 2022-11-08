@@ -75,7 +75,11 @@ $routes->get('logout', 'LoginController::logout');
 // Admin Routes
 $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
     $routes->get('', 'Admin\AdminController::index');
-    $routes->get('post', 'Admin\PostAdminController::index');
+    // Post Route
+    $routes->group('post', static function ($routes) {
+        $routes->get('', 'Admin\PostAdminController::index');
+        $routes->post('delete', 'Admin\PostAdminController::delete');
+    });
 });
 
 // User Routes
