@@ -38,7 +38,24 @@ class PostAdminController extends BaseController
 
         return view('admin/v_post', $data);
     }
-    function delete()
+    public function add_new()
+    {
+        $data = [
+            'akun' => $this->akun,
+            'title' => 'Add New Post',
+            'active' => $this->active,
+            'total_inbox' => $this->inboxModel->where('inbox_status', 0)->get()->getNumRows(),
+            'inboxs' => $this->inboxModel->where('inbox_status', 0)->findAll(5),
+            'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
+            'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
+            'helper_text' => helper('text'),
+
+            'categories' => $this->categoryModel->findAll(),
+            'tags' => $this->tagModel->findAll()
+        ];
+        return view('admin/v_add_post', $data);
+    }
+    public function delete()
     {
         $post_id = $this->request->getPost('id');
         $this->postModel->delete($post_id);

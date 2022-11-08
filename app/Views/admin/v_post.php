@@ -1,4 +1,39 @@
-<?= $this->include('layout/header-dashboard'); ?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Title -->
+    <title><?= $title; ?></title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta charset="UTF-8">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Ircham Ali" />
+    <link rel="shortcut icon" href="/assets/frontend/img/apple-touch-icon.png">
+
+    <!-- Styles -->
+    <link href="/assets/backend/plugins/pace-master/themes/blue/pace-theme-flash.css" rel="stylesheet" />
+    <link href="/assets/backend/plugins/uniform/css/uniform.default.min.css" rel="stylesheet" />
+    <link href="/assets/backend/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/backend/plugins/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/backend/plugins/line-icons/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/backend/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/backend/plugins/waves/waves.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/backend/plugins/switchery/switchery.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/backend/plugins/3d-bold-navigation/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/backend/plugins/slidepushmenus/css/component.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/backend/plugins/datatables/css/jquery.datatables.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/backend/plugins/datatables/css/jquery.datatables_themeroller.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/backend/plugins/toastr/jquery.toast.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme Styles -->
+    <link href="/assets/backend/css/modern.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/backend/css/themes/dark.css" class="theme-color" rel="stylesheet" type="text/css" />
+    <link href="/assets/backend/css/custom.css" rel="stylesheet" type="text/css" />
+
+    <script src="/assets/backend/plugins/3d-bold-navigation/js/modernizr.js"></script>
+    <script src="/assets/backend/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
+
+</head>
 
 <body class="page-header-fixed compact-menu pace-done page-sidebar-fixed">
     <div class="overlay"></div>
@@ -13,7 +48,7 @@
                     <div class="col-md-12">
                         <div class="panel panel-white">
                             <div class="panel-body">
-                                <a href="/post/add_new" class="btn btn-success m-b-sm">Add New Post</a>
+                                <a href="/<?= session('role'); ?>/post/add_new" class="btn btn-success m-b-sm">Add New Post</a>
                                 <div class="table-responsive">
                                     <table id="data-table" class="display table" style="width: 100%; ">
                                         <thead>
@@ -39,7 +74,7 @@
                                                     <td><?= $post['category_name']; ?></td>
                                                     <td><?= $post['post_views']; ?></td>
                                                     <td style="text-align: center;">
-                                                        <a href="/post/get_edit/'<?php $post['post_id']; ?>" class="btn btn-xs"><span class="fa fa-pencil"></span></a>
+                                                        <a href="/<?= session('role'); ?>/post/get_edit/'<?php $post['post_id']; ?>" class="btn btn-xs"><span class="fa fa-pencil"></span></a>
                                                         <a href="javascript:void(0);" class="btn btn-xs btn-delete" data-id="<?= $post['post_id']; ?>"><span class="fa fa-trash"></span></a>
                                                     </td>
                                                 </tr>
@@ -55,7 +90,9 @@
             </div>
             <!-- End Main Content -->
 
-            <?= $this->include('layout/footer-dashboard'); ?>
+            <div class="page-footer">
+                <p class="no-s"><?= date('Y'); ?> &copy; Powered by Ircham Ali.</p>
+            </div>
         </div>
     </main>
     <!--DELETE RECORD MODAL-->

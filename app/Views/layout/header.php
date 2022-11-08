@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title><?= $site['site_name']; ?> | <?= $site['site_title']; ?></title>
-    <meta content="<?= $site['site_description']; ?>" name="description">
+    <meta content="<?= $post['post_description'] ?? $site['site_description']; ?>" name="description">
     <meta content="PMII, PR, PK, PC, PKC, PB, Pergerakan Mahasiswa Islam Indonesia" name="keywords">
 
     <!-- Favicons -->
