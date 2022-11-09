@@ -20,6 +20,7 @@ class PostAdminController extends BaseController
         $this->postModel = new PostModel();
         $this->categoryModel = new CategoryModel();
         $this->tagModel = new TagModel();
+        $this->validation = \Config\Services::validation();
     }
     public function index()
     {
@@ -141,6 +142,28 @@ class PostAdminController extends BaseController
             'post_user_id' => session('id')
         ]);
         return redirect()->to('/admin/post')->with('msg', 'success');
+    }
+    public function edit($id)
+    {
+        $post = $this->postModel->find($id);
+        $post_tags = explode(',', $post['post_tags']);
+        $data = [
+            'akun' => $this->akun,
+            'title' => 'Edit Post',
+            'active' => $this->active,
+            'total_inbox' => $this->inboxModel->where('inbox_status', 0)->get()->getNumRows(),
+            'inboxs' => $this->inboxModel->where('inbox_status', 0)->findAll(5),
+            'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
+            'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
+            'helper_text' => helper('text'),
+
+            'categories' => $this->categoryModel->findAll(),
+            'post' => $post,
+            'tags' => $this->tagModel->findAll(),
+            'post_tags' => $post_tags,
+            'validation' => $this->validation
+        ];
+        return view('admin/v_edit_post', $data);
     }
     public function delete()
     {

@@ -81,6 +81,7 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
         $routes->post('delete', 'Admin\PostAdminController::delete');
         $routes->get('add_new', 'Admin\PostAdminController::add_new');
         $routes->post('publish', 'Admin\PostAdminController::publish');
+        $routes->get('(:num)/edit', 'Admin\PostAdminController::edit/$1');
     });
 });
 
