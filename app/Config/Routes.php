@@ -84,6 +84,20 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
         $routes->get('add_new', 'Admin\PostAdminController::add_new');
         $routes->get('(:num)/edit', 'Admin\PostAdminController::edit/$1');
     });
+    // Category Route
+    $routes->group('category', static function ($routes) {
+        $routes->get('', 'Admin\CategoryAdminController::index');
+        $routes->post('', 'Admin\CategoryAdminController::save');
+        $routes->put('', 'Admin\CategoryAdminController::edit');
+        $routes->delete('', 'Admin\CategoryAdminController::delete');
+    });
+    // Tag Route
+    $routes->group('tag', static function ($routes) {
+        $routes->get('', 'Admin\PostAdminController::index');
+    });
+    $routes->group('inbox', static function ($routes) {
+        $routes->get('', 'Admin\InboxAdminController::index');
+    });
 });
 
 // User Routes

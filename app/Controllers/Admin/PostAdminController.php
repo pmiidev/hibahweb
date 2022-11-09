@@ -8,15 +8,14 @@ use App\Models\CommentModel;
 use App\Models\InboxModel;
 use App\Models\PostModel;
 use App\Models\TagModel;
-use App\Models\VisitorModel;
 
 class PostAdminController extends BaseController
 {
     public function __construct()
     {
-        $this->visitorModel = new VisitorModel();
         $this->inboxModel = new InboxModel();
         $this->commentModel = new CommentModel();
+
         $this->postModel = new PostModel();
         $this->categoryModel = new CategoryModel();
         $this->tagModel = new TagModel();

@@ -11,9 +11,10 @@ class AdminController extends BaseController
 {
     public function __construct()
     {
-        $this->visitorModel = new VisitorModel();
         $this->inboxModel = new InboxModel();
         $this->commentModel = new CommentModel();
+
+        $this->visitorModel = new VisitorModel();
     }
     public function index()
     {

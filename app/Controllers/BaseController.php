@@ -75,7 +75,7 @@ abstract class BaseController extends Controller
         // Nav Active Dashboard
         if (url_is('admin')) {
             $this->active = 'dashboard';
-        } elseif (url_is('admin/post*')) {
+        } elseif (url_is('admin/post*') || url_is('admin/category') || url_is('admin/tag')) {
             $this->active = 'post';
         }
     }
