@@ -107,7 +107,8 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
     // Comment Route
     $routes->group('comment', static function ($routes) {
         $routes->get('', 'Admin\CommentAdminController::index');
-        $routes->get('(:num)', 'Admin\CommentAdminController::read/$1');
+        $routes->post('', 'Admin\CommentAdminController::reply');
+        $routes->put('', 'Admin\CommentAdminController::edit');
         $routes->delete('', 'Admin\CommentAdminController::delete');
     });
 });

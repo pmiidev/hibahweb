@@ -26,9 +26,55 @@ class CommentAdminController extends BaseController
             'helper_text' => helper('text'),
 
             'comments' => $this->commentModel->get_all_comment()->getResultArray(),
-            'total_all_comments' => $this->commentModel->countAllResults()
+            'total_all_comments' => $this->commentModel->countAllResults(),
+            'validation' => \Config\Services::validation()
         ];
 
         return view('admin/v_comment', $data);
+    }
+    public function reply()
+    {
+        if (!$this->validate([
+            'post_id' => ['rules' => 'required|numeric'],
+            'comment_id' => ['rules' => 'required|numeric'],
+            'comments' => ['rules' => 'required|min_length[3]']
+        ])) {
+            return redirect()->to('/admin/comment')->with('msg', 'not validated');
+        }
+        $post_id = htmlspecialchars($this->request->getPost('post_id'));
+        $comment_id = htmlspecialchars($this->request->getPost('comment_id'));
+        $comment = htmlspecialchars($this->request->getPost('comments'));
+        $user_name = $this->akun['user_name'];
+        $user_email = $this->akun['user_email'];
+        $user_photo = $this->akun['user_photo'];
+        $this->commentModel->save([
+            'comment_name' => $user_name,
+            'comment_email' => $user_email,
+            'comment_message' => $comment,
+            'comment_status' => 1,
+            'comment_parent' => $comment_id,
+            'comment_post_id' => $post_id,
+            'comment_image' => $user_photo
+        ]);
+        return redirect()->to('/admin/comment')->with('msg', 'success');
+    }
+    public function edit()
+    {
+        if (!$this->validate([
+            'comment_id2' => ['rules' => 'required|numeric'],
+            'comments2' => ['rules' => 'required|min_length[3]']
+        ])) {
+            return redirect()->to('/admin/comment')->with('msg', 'not validated');
+        }
+        $comment_id2 = htmlspecialchars($this->request->getPost('comment_id2'));
+        $comment = htmlspecialchars($this->request->getPost('comments2'));
+        $this->commentModel->update($comment_id2, ['comment_message' => $comment]);
+        return redirect()->to('/admin/comment')->with('msg', 'success-edit');
+    }
+    public function delete()
+    {
+        $comment_id = $this->request->getPost('comment_id3');
+        $this->commentModel->delete($comment_id);
+        return redirect()->to('/admin/comment')->with('msg', 'success-delete');
     }
 }

@@ -140,7 +140,7 @@
     <div class="cd-overlay"></div>
 
     <!-- MODAL REPLY -->
-    <form action="<?= site_url('backend/comment/reply'); ?>" method="post">
+    <form action="/<?= session('role'); ?>/comment" method="POST">
         <div class="modal fade" id="ReplyModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
@@ -166,7 +166,8 @@
 
 
     <!-- MODAL EDIT -->
-    <form action="<?= site_url('backend/comment/edit'); ?>" method="post">
+    <form action="/<?= session('role'); ?>/comment" method="POST">
+        <input type="hidden" name="_method" value="PUT">
         <div class="modal fade" id="EditModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
@@ -214,7 +215,8 @@
     </form>
 
     <!--DELETE RECORD MODAL-->
-    <form action="<?= site_url('backend/comment/delete'); ?>" method="post">
+    <form action="/<?= session('role'); ?>/comment" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
         <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -353,6 +355,18 @@
                 hideAfter: false,
                 position: 'bottom-right',
                 bgColor: '#00C9E6'
+            });
+        </script>
+    <?php elseif (session()->getFlashdata('msg') == 'not validated') : ?>
+        <script type="text/javascript">
+            $.toast({
+                heading: 'Warning',
+                text: "Kesalahan pada penginputan",
+                showHideTransition: 'slide',
+                icon: 'warning',
+                hideAfter: false,
+                position: 'bottom-right',
+                bgColor: '#fce903'
             });
         </script>
     <?php elseif (session()->getFlashdata('msg') == 'success-delete') : ?>
