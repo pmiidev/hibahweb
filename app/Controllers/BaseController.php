@@ -77,6 +77,8 @@ abstract class BaseController extends Controller
             $this->active = 'dashboard';
         } elseif (url_is('admin/post*') || url_is('admin/category') || url_is('admin/tag')) {
             $this->active = 'post';
+        } elseif (url_is('admin/inbox*')) {
+            $this->active = 'inbox';
         }
     }
 }

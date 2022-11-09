@@ -27,7 +27,7 @@
                                 <ul class="list-unstyled">
                                     <?php foreach ($inboxs as $row) : ?>
                                         <li>
-                                            <a href="/<?= session('role') ?>/inbox">
+                                            <a href="/<?= session('role') ?>/inbox/<?= $row['inbox_id']; ?>">
                                                 <div class="msg-img">
                                                     <div class="online on"></div><img class="img-circle" src="/assets/backend/images/user_blank.png" alt="">
                                                 </div>
@@ -73,15 +73,15 @@
                             <img class="img-circle avatar" src="/assets/backend/images/<?= $akun['user_photo']; ?>" width="40" height="40" alt="">
                         </a>
                         <ul class="dropdown-menu dropdown-list" role="menu">
-                            <li role="presentation"><a href="<?= site_url('backend/change_pass'); ?>"><i class="fa fa-key"></i>Change Password</a></li>
-                            <li role="presentation"><a href="<?= site_url('backend/comment/unpublish'); ?>"><i class="fa fa-comment"></i>Comments<span class="badge badge-success pull-right"><?= $total_comment; ?></span></a></li>
-                            <li role="presentation"><a href="<?= site_url('backend/inbox'); ?>"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right"><?= $total_inbox; ?></span></a></li>
+                            <li role="presentation"><a href="/backend/change_pass"><i class="fa fa-key"></i>Change Password</a></li>
+                            <li role="presentation"><a href="/backend/comment/unpublish"><i class="fa fa-comment"></i>Comments<span class="badge badge-success pull-right"><?= $total_comment; ?></span></a></li>
+                            <li role="presentation"><a href="/backend/inbox"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right"><?= $total_inbox; ?></span></a></li>
                             <li role="presentation" class="divider"></li>
-                            <li role="presentation"><a href="<?= site_url('logout'); ?>"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+                            <li role="presentation"><a href="/logout"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="<?= site_url('logout'); ?>" class="log-out waves-effect waves-button waves-classic">
+                        <a href="/logout" class="log-out waves-effect waves-button waves-classic">
                             <span><i class="fa fa-sign-out m-r-xs"></i>Log out</span>
                         </a>
                     </li>
@@ -120,42 +120,42 @@
                     <li><a href="/<?= session('role'); ?>/tag">Tag</a></li>
                 </ul>
             </li>
-            <li>
+            <li class="<?= ($active == 'inbox') ? 'active' : '' ?>">
                 <a href="/<?= session('role'); ?>/inbox" class="waves-effect waves-button"><span class="menu-icon icon-envelope"></span>
                     <p>Inbox</p>
                 </a>
             </li>
-            <li>
+            <li class="<?= ($active == 'comments') ? 'active' : '' ?>">
                 <a href="/<?= session('role'); ?>/comment" class="waves-effect waves-button"><span class="menu-icon icon-bubbles"></span>
                     <p>Comments</p>
                 </a>
             </li>
-            <li>
+            <li class="<?= ($active == 'subscribers') ? 'active' : '' ?>">
                 <a href="/<?= session('role'); ?>/subscriber" class="waves-effect waves-button"><span class="menu-icon icon-users"></span>
                     <p>Subscribers</p>
                 </a>
             </li>
-            <li>
+            <li class="<?= ($active == 'member') ? 'active' : '' ?>">
                 <a href="/<?= session('role'); ?>/member" class="waves-effect waves-button"><span class="menu-icon icon-key"></span>
                     <p>Member</p>
                 </a>
             </li>
-            <li>
+            <li class="<?= ($active == 'testimonials') ? 'active' : '' ?>">
                 <a href="/<?= session('role'); ?>/testimonial" class="waves-effect waves-button"><span class="menu-icon icon-like"></span>
                     <p>Testimonials</p>
                 </a>
             </li>
-            <li>
+            <li class="<?= ($active == 'teams') ? 'active' : '' ?>">
                 <a href="/<?= session('role'); ?>/team" class="waves-effect waves-button"><span class="menu-icon icon-users"></span>
                     <p>Teams</p>
                 </a>
             </li>
-            <li>
+            <li class="<?= ($active == 'users') ? 'active' : '' ?>">
                 <a href="/<?= session('role'); ?>/users" class="waves-effect waves-button"><span class="menu-icon icon-user"></span>
                     <p>Users</p>
                 </a>
             </li>
-            <li class="droplink"><a href="/<?= session('role'); ?>/settings" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span>
+            <li class="droplink <?= ($active == 'settings') ? 'active' : '' ?>"><a href="/<?= session('role'); ?>/settings" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span>
                     <p>Settings</p><span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">

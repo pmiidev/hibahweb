@@ -102,6 +102,8 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
     // Inbox
     $routes->group('inbox', static function ($routes) {
         $routes->get('', 'Admin\InboxAdminController::index');
+        $routes->get('(:num)', 'Admin\InboxAdminController::read/$1');
+        $routes->delete('', 'Admin\InboxAdminController::delete');
     });
 });
 
