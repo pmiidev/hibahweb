@@ -125,7 +125,7 @@
                     <p>Inbox</p>
                 </a>
             </li>
-            <li class="<?= ($active == 'comments') ? 'active' : '' ?>">
+            <li class="<?= ($active == 'comment') ? 'active' : '' ?>">
                 <a href="/<?= session('role'); ?>/comment" class="waves-effect waves-button"><span class="menu-icon icon-bubbles"></span>
                     <p>Comments</p>
                 </a>

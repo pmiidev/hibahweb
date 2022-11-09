@@ -20,4 +20,9 @@ class CommentModel extends Model
         $query = $this->db->query("SELECT * FROM tbl_comment WHERE comment_status='1' AND comment_parent='$comment_id'");
         return $query;
     }
+    public function get_all_comment()
+    {
+        $result = $this->db->query("SELECT comment_id,DATE_FORMAT(comment_date,'%d %M %Y %H:%i') AS comment_date,comment_name,comment_email,comment_status,comment_message,comment_image,post_id,post_title,post_slug FROM tbl_comment JOIN tbl_post ON comment_post_id=post_id WHERE comment_parent='0' ORDER BY comment_id DESC");
+        return $result;
+    }
 }

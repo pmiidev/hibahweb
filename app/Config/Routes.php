@@ -98,12 +98,17 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
         $routes->put('', 'Admin\TagAdminController::edit');
         $routes->delete('', 'Admin\TagAdminController::delete');
     });
-
-    // Inbox
+    // Inbox Route
     $routes->group('inbox', static function ($routes) {
         $routes->get('', 'Admin\InboxAdminController::index');
         $routes->get('(:num)', 'Admin\InboxAdminController::read/$1');
         $routes->delete('', 'Admin\InboxAdminController::delete');
+    });
+    // Comment Route
+    $routes->group('comment', static function ($routes) {
+        $routes->get('', 'Admin\CommentAdminController::index');
+        $routes->get('(:num)', 'Admin\CommentAdminController::read/$1');
+        $routes->delete('', 'Admin\CommentAdminController::delete');
     });
 });
 
