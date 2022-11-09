@@ -58,10 +58,10 @@
                                                 <div class="search-item">
                                                     <div class="pull-left m-r-md">
                                                         <a href="javascript:void(0);" class="btn-image" data-comment_id="<?= $row['comment_id']; ?>" data-name="<?= $row['comment_name']; ?>" data-email="<?= $row['comment_email']; ?>">
-                                                            <?php if (!empty($row->comment_image)) : ?>
-                                                                <img src="/assets/backend/images/<?php $row['comment_image']; ?>" class="img-circle" width="50" height="50" alt="<?= $row['comment_name'] ?>">
+                                                            <?php if (!empty($row['comment_image'])) : ?>
+                                                                <img src="/assets/backend/images/<?= $row['comment_image']; ?>" class="img-circle" width="50" height="50" alt="<?= $row['comment_name'] ?>">
                                                             <?php else : ?>
-                                                                <img src="/assets/backend/images/user_blank.png" class="img-circle" width="50" alt="<?= $row['comment_name'] ?>">
+                                                                <img src="/assets/backend/images/avatar (5).png" class="img-circle" width="50" alt="<?= $row['comment_name'] ?>">
                                                             <?php endif; ?>
                                                         </a>
                                                     </div>
@@ -87,10 +87,41 @@
                                                         echo "<span class='label label-danger'>Unpublish</span>";
                                                     } else {
                                                     } ?>
-                                                    <div style="margin-left: 6.5%;">
+                                                    <div>
                                                         <p><?= $row['comment_message']; ?></p>
                                                     </div>
                                                 </div>
+
+                                                <?php
+                                                $comment_id = $row['comment_id'];
+                                                $commentModel = new App\Models\CommentModel;
+                                                $result = $commentModel->get_replies_post($comment_id)->getResultArray();
+                                                foreach ($result as $row) :
+                                                ?>
+                                                    <div class="col-md-offset-1">
+                                                        <div class="search-item">
+                                                            <div class="pull-left m-r-md">
+                                                                <img src="/assets/backend/images/<?= $akun['user_photo']; ?>" class="img-circle" width="50" alt="<?= $row['comment_name'] ?>">
+                                                            </div>
+                                                            <div class="pull-right m-r-md">
+                                                                <div class="btn-group">
+                                                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        Action <span class="caret"></span>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                                        <li><a href="javascript:void(0);" class="btn-edit" data-comment_id="<?= $row['comment_id']; ?>" data-comment_msg="<?= $row['comment_message']; ?>"><span class="fa fa-edit"></span> Edit</a></li>
+                                                                        <li><a href="javascript:void(0);" class="btn-delete" data-comment_id="<?= $row['comment_id']; ?>"><span class="fa fa-trash"></span> Delete</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <h3 class="no-m"><a href="/post/<?php $row['post_slug']; ?>" target="_blank"><?= $row['post_title']; ?></a></h3>
+                                                            <a href="javascript:void(0);" class="search-link"><b><?= $row['comment_name'] ?></b>, <?= $row['comment_date']; ?></a>
+                                                            <div style="margin-left: 7%;">
+                                                                <p><?= $row['comment_message']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach; ?>
                                             <?php endforeach; ?>
                                         </div>
 

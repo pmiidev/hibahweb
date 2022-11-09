@@ -1894,7 +1894,8 @@ section {
 }
 
 .blog .blog-comments .comment.comment-reply {
-  padding-left: 40px;
+  margin-top: 0;
+  padding-left: 5em;
 }
 
 .blog .blog-comments .reply-form {

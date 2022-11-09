@@ -50,7 +50,8 @@
 
                             <i class="bi bi-tags"></i>
                             <ul class="tags">
-                                <?php foreach ($post_tags as $tag) : ?>
+                                <?php
+                                foreach ($post_tags as $tag) : ?>
                                     <a href="/tag/<?= $tag; ?>"><?= $tag; ?></a> &vert;
                                 <?php endforeach; ?>
                             </ul>
@@ -74,6 +75,26 @@
                                         </p>
                                     </div>
                                 </div>
+                                <?php
+                                $commentModel = new App\Models\CommentModel;
+                                $replies = $commentModel->where('comment_parent', $comment['comment_id'])->get()->getResultArray();
+                                ?>
+                                <?php foreach ($replies as $reply) : ?>
+                                    <div id="comment-reply-1" class="comment comment-reply">
+                                        <div class="d-flex">
+                                            <div class="comment-img"><img alt="" src="/assets/backend/images/<?= $reply['comment_image']; ?>">
+                                            </div>
+                                            <div>
+                                                <h5><a href="javascript:void(0)"><?= $reply['comment_name']; ?></a>
+                                                </h5>
+                                                <time datetime="2020-01-01"><?= date('d M Y H:i:s', strtotime($reply['comment_date'])); ?></time>
+                                                <p>
+                                                    <?= $reply['comment_message']; ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
                             <?php endforeach; ?>
                         </div>
                         <!-- End comment #2-->
