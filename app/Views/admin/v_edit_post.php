@@ -45,9 +45,24 @@
         <?= $this->include('layout/sidebar-dashboard'); ?>
         <div class="page-inner">
             <?= $this->include('layout/title-dashboard'); ?>
+            <!-- Session Message -->
+            <?php if (session()->getFlashData('pesan') || session()->getFlashData('peringatan')) : ?>
+                <div class="alert alert-<?= session()->getFlashData('pesan') ? "success" : "warning" ?>" role="alert" style="padding: 1rem 3rem;">
+                    <?= session()->getFlashdata('pesan') ?? session()->getFlashdata('peringatan') ?>
+                    <?= $validation->getError('title'); ?>
+                    <?= $validation->getError('slug'); ?>
+                    <?= $validation->getError('contents'); ?>
+                    <?= $validation->getError('filefoto'); ?>
+                    <?= $validation->getError('category'); ?>
+                    <?= $validation->getError('tag'); ?>
+                    <?= $validation->getError('description'); ?>
+                    <?= 'hey' ?>
+                </div>
+            <?php endif; ?>
             <div id="main-wrapper">
                 <div class="row">
-                    <form action="/<?= session('role'); ?>/post/edit" method="post" enctype="multipart/form-data">
+                    <form action="/<?= session('role'); ?>/post" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="_method" value="PUT">
                         <div class="col-md-8">
                             <div class="panel panel-white">
 
@@ -93,7 +108,7 @@
                                         <?php foreach ($tags as $row) : ?>
                                             <div class="form-group">
                                                 <label>
-                                                    <input type="checkbox" name="tags[]" value="<?= $row['tag_name']; ?>" <?php if (in_array($row['tag_name'], $post_tags)) echo 'checked="checked"'; ?>> <?= $row['tag_name']; ?>
+                                                    <input type="checkbox" name="tag[]" value="<?= $row['tag_name']; ?>" <?php if (in_array($row['tag_name'], $post_tags)) echo 'checked="checked"'; ?>> <?= $row['tag_name']; ?>
                                                 </label>
                                             </div>
                                         <?php endforeach; ?>

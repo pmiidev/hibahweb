@@ -78,9 +78,10 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
     // Post Route
     $routes->group('post', static function ($routes) {
         $routes->get('', 'Admin\PostAdminController::index');
-        $routes->post('delete', 'Admin\PostAdminController::delete');
+        $routes->post('', 'Admin\PostAdminController::publish');
+        $routes->delete('', 'Admin\PostAdminController::delete');
+        $routes->put('', 'Admin\PostAdminController::update');
         $routes->get('add_new', 'Admin\PostAdminController::add_new');
-        $routes->post('publish', 'Admin\PostAdminController::publish');
         $routes->get('(:num)/edit', 'Admin\PostAdminController::edit/$1');
     });
 });

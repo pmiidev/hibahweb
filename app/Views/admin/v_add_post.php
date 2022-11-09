@@ -53,7 +53,7 @@
             <?php endif; ?>
             <div id="main-wrapper">
                 <div class="row">
-                    <form action="/<?= session('role'); ?>/post/publish" method="post" enctype="multipart/form-data">
+                    <form action="/<?= session('role'); ?>/post" method="POST" enctype="multipart/form-data">
                         <div class="col-md-8">
                             <div class="panel panel-white">
                                 <div class="panel-body">

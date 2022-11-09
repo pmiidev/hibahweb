@@ -96,7 +96,8 @@
         </div>
     </main>
     <!--DELETE RECORD MODAL-->
-    <form action="/<?= session('role'); ?>/post/delete" method="post">
+    <form action="/<?= session('role'); ?>/post" method="post">
+        <input type="hidden" name="_method" value="DELETE" />
         <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

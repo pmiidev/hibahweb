@@ -165,6 +165,97 @@ class PostAdminController extends BaseController
         ];
         return view('admin/v_edit_post', $data);
     }
+    public function update()
+    {
+        $post_id = $this->request->getPost('post_id');
+        // Validasi
+        if (!$this->validate([
+            'title' => [
+                'rules' => 'required|alpha_numeric_space',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!',
+                    'alpha_numeric_space' => 'inputan tidak boleh mengandung karakter aneh'
+                ]
+            ],
+            'slug' => [
+                'rules' => 'required|alpha_dash',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!',
+                    'alpha_dash' => 'inputan harus berupa alphaber dan strip'
+                ]
+            ],
+            'contents' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!'
+                ]
+            ],
+            'filefoto' => [
+                'rules' => 'max_size[filefoto,2048]|is_image[filefoto]|mime_in[filefoto,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran gambar tidak boleh lebih dari 2MB',
+                    'is_image' => 'Yang anda pilih bukan gambar',
+                    'mime_in' => 'Yang anda pilih bukan gambar'
+                ]
+            ],
+            'category' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!',
+                    'numeric' => 'inputan harus angka'
+                ]
+            ],
+            'tag' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!'
+                ]
+            ]
+        ])) {
+            return redirect()->to("/admin/post/$post_id/edit")->withInput()->with('peringatan', 'Data gagal disimpan dikarenakan ada penginputan yang tidak sesuai. silakan coba lagi!');
+        }
+        // Inisiasi
+        $title = strip_tags(htmlspecialchars($this->request->getPost('title'), ENT_QUOTES));
+        $contents = $this->request->getPost('contents');
+        $category = strip_tags(htmlspecialchars($this->request->getPost('category'), ENT_QUOTES));
+        $slug = strip_tags(htmlspecialchars($this->request->getPost('slug'), ENT_QUOTES));
+        $description = strip_tags(htmlspecialchars($this->request->getPost('description'), ENT_QUOTES));
+
+        if ($this->postModel->where('post_slug', $slug)->get()->getNumRows() > 1) {
+            $uniqe_num = rand(1, 999);
+            $slug = $slug . '-' . $uniqe_num;
+        }
+
+        $tags[] = $this->request->getPost('tag');
+        foreach ($tags as $tag) {
+            $tags = implode(",", $tag);
+        }
+        // Cek Foto
+        $postAwal = $this->postModel->find($post_id);
+        $fotoAwal = $postAwal['post_image'];
+        $fileFoto = $this->request->getFile('filefoto');
+        if ($fileFoto->getName() == '') {
+            $namaFotoUpload = $fotoAwal;
+        } else {
+            $namaFotoUpload = $fileFoto->getRandomName();
+            $fileFoto->move('assets/backend/images/post/', $namaFotoUpload);
+        }
+        // Simpan ke database
+        $this->postModel->save([
+            'post_id' => $post_id,
+            'post_title' => $title,
+            'post_description' => $description,
+            'post_contents' => $contents,
+            'post_image' => $namaFotoUpload,
+            'post_category_id' => $category,
+            'post_tags' => $tags,
+            'post_slug' => $slug,
+            'post_status' => 1,
+            'post_views' => 0,
+            'post_user_id' => session('id')
+        ]);
+        return redirect()->to('/admin/post')->with('msg', 'success');
+    }
     public function delete()
     {
         $post_id = $this->request->getPost('id');
