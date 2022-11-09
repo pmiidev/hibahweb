@@ -3,24 +3,24 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\CategoryModel;
+use App\Models\TagModel;
 use App\Models\CommentModel;
 use App\Models\InboxModel;
 
-class CategoryAdminController extends BaseController
+class TagAdminController extends BaseController
 {
     public function __construct()
     {
         $this->inboxModel = new InboxModel();
         $this->commentModel = new CommentModel();
 
-        $this->categoryModel = new CategoryModel();
+        $this->tagModel = new TagModel();
     }
     public function index()
     {
         $data = [
             'akun' => $this->akun,
-            'title' => 'All Category',
+            'title' => 'All Tag',
             'active' => $this->active,
             'total_inbox' => $this->inboxModel->where('inbox_status', 0)->get()->getNumRows(),
             'inboxs' => $this->inboxModel->where('inbox_status', 0)->findAll(5),
@@ -28,43 +28,43 @@ class CategoryAdminController extends BaseController
             'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
             'helper_text' => helper('text'),
 
-            'categories' => $this->categoryModel->findAll()
+            'tags' => $this->tagModel->findAll()
         ];
 
-        return view('admin/v_category', $data);
+        return view('admin/v_tag', $data);
     }
     public function save()
     {
-        $category = strip_tags(htmlspecialchars($this->request->getPost('category'), ENT_QUOTES));
-        $string   = preg_replace('/[^a-zA-Z0-9 \&%|{.}=,?!*()"-_+$@;<>\']/', '', $category);
+        $tag = strip_tags(htmlspecialchars($this->request->getPost('tag'), ENT_QUOTES));
+        $string   = preg_replace('/[^a-zA-Z0-9 \&%|{.}=,?!*()"-_+$@;<>\']/', '', $tag);
         $trim     = trim($string);
         $slug     = strtolower(str_replace(" ", "-", $trim));
-        $this->categoryModel->save([
-            'category_name' => $category,
-            'category_slug' => $slug
+        $this->tagModel->save([
+            'tag_name' => $tag,
+            'tag_slug' => $slug
         ]);
 
-        return redirect()->to('admin/category')->with('msg', 'success');
+        return redirect()->to('admin/tag')->with('msg', 'success');
     }
     public function edit()
     {
         $id          = $this->request->getPost('kode');
-        $category = strip_tags(htmlspecialchars($this->request->getPost('category2'), ENT_QUOTES));
-        $string   = preg_replace('/[^a-zA-Z0-9 \&%|{.}=,?!*()"-_+$@;<>\']/', '', $category);
+        $tag = strip_tags(htmlspecialchars($this->request->getPost('tag2'), ENT_QUOTES));
+        $string   = preg_replace('/[^a-zA-Z0-9 \&%|{.}=,?!*()"-_+$@;<>\']/', '', $tag);
         $trim     = trim($string);
         $slug     = strtolower(str_replace(" ", "-", $trim));
-        $this->categoryModel->save([
-            'category_id' => $id,
-            'category_name' => $category,
-            'category_slug' => $slug
+        $this->tagModel->save([
+            'tag_id' => $id,
+            'tag_name' => $tag,
+            'tag_slug' => $slug
         ]);
-        return redirect()->to('admin/category')->with('msg', 'info');
+        return redirect()->to('admin/tag')->with('msg', 'info');
     }
     public function delete()
     {
         $id = $this->request->getPost('id');
-        $this->categoryModel->delete($id);
+        $this->tagModel->delete($id);
 
-        return redirect()->to('admin/category')->with('msg', 'success-delete');
+        return redirect()->to('admin/tag')->with('msg', 'success-delete');
     }
 }

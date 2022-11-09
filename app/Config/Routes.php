@@ -93,8 +93,13 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
     });
     // Tag Route
     $routes->group('tag', static function ($routes) {
-        $routes->get('', 'Admin\PostAdminController::index');
+        $routes->get('', 'Admin\TagAdminController::index');
+        $routes->post('', 'Admin\TagAdminController::save');
+        $routes->put('', 'Admin\TagAdminController::edit');
+        $routes->delete('', 'Admin\TagAdminController::delete');
     });
+
+    // Inbox
     $routes->group('inbox', static function ($routes) {
         $routes->get('', 'Admin\InboxAdminController::index');
     });
