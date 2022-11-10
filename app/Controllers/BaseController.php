@@ -81,6 +81,8 @@ abstract class BaseController extends Controller
             $this->active = 'inbox';
         } elseif (url_is('admin/comment*')) {
             $this->active = 'comment';
+        } elseif (url_is('admin/subscriber*')) {
+            $this->active = 'subscriber';
         }
     }
 }

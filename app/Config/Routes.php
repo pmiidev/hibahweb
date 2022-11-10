@@ -113,6 +113,13 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
         $routes->delete('', 'Admin\CommentAdminController::delete');
         $routes->get('unpublish', 'Admin\CommentAdminController::unpublish');
     });
+    // Subscriber Route
+    $routes->group('subscriber', static function ($routes) {
+        $routes->get('', 'Admin\SubscriberAdminController::index');
+        $routes->delete('', 'Admin\SubscriberAdminController::delete');
+        $routes->get('increase/(:num)', 'Admin\SubscriberAdminController::increase/$1');
+        $routes->get('decrease/(:num)', 'Admin\SubscriberAdminController::decrease/$1');
+    });
 });
 
 // User Routes

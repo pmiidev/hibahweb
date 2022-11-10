@@ -130,7 +130,7 @@
                     <p>Comments</p>
                 </a>
             </li>
-            <li class="<?= ($active == 'subscribers') ? 'active' : '' ?>">
+            <li class="<?= ($active == 'subscriber') ? 'active' : '' ?>">
                 <a href="/<?= session('role'); ?>/subscriber" class="waves-effect waves-button"><span class="menu-icon icon-users"></span>
                     <p>Subscribers</p>
                 </a>
