@@ -67,7 +67,7 @@
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="body-table">
                                             <?php
                                             $no = 0;
                                             foreach ($members as $row) :
@@ -271,7 +271,7 @@
                 }
             });
 
-            $('.delete').on('click', function() {
+            $('#body-table').on('click', '.delete', function() {
                 var userid = $(this).data('userid');
                 $('#ModalDelete').modal('show');
                 $('[name="kode"]').val(userid);

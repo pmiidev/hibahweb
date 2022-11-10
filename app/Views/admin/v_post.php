@@ -61,7 +61,7 @@
                                                 <th style="text-align: center;width: 120px;">Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="body-table">
                                             <?php
                                             $no = 0;
                                             foreach ($posts as $post) :
@@ -143,7 +143,7 @@
             $('#data-table').dataTable();
 
             //Delete Record
-            $('.btn-delete').on('click', function() {
+            $('#body-table').on('click', 'btn-delete', function() {
                 var id = $(this).data('id');
                 $('[name="id"]').val(id);
                 $('#DeleteModal').modal('show');
