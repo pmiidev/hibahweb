@@ -68,8 +68,10 @@ $routes->get('document', 'DocumentController::index');
 $routes->get('contact', 'ContactController::index');
 
 // LoginController & Logout
-$routes->get('login', 'LoginController::index');
-$routes->post('login/validasi', 'LoginController::validasi');
+$routes->group('', ['filter' => 'logedin'], static function ($routes) {
+    $routes->get('login', 'LoginController::index');
+    $routes->post('login/validasi', 'LoginController::validasi');
+});
 $routes->get('logout', 'LoginController::logout');
 
 // Admin Routes
