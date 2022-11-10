@@ -58,6 +58,12 @@ class CommentAdminController extends BaseController
         ]);
         return redirect()->to('/admin/comment')->with('msg', 'success');
     }
+    public function publish()
+    {
+        $comment_id = htmlspecialchars($this->request->getPost('comment_id4'));
+        $this->commentModel->update($comment_id, ['comment_status' => 1]);
+        return redirect()->to('/admin/comment')->with('msg', 'success-publish');
+    }
     public function edit()
     {
         if (!$this->validate([

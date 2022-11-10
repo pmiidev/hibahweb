@@ -81,7 +81,7 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <h3 class="no-m"><a href="/blog/<?php $row['post_slug']; ?>" target="_blank"><?= $row['post_title']; ?></a></h3>
+                                                    <h3 class="no-m"><a href="/post/<?= $row['post_slug']; ?>" target="_blank"><?= $row['post_title']; ?></a></h3>
                                                     <a href="javascript:void(0);" class="search-link"><b><?= $row['comment_name'] ?></b>, <?= $row['comment_date']; ?></a>
                                                     <?php if ($row['comment_status'] == '0') {
                                                         echo "<span class='label label-danger'>Unpublish</span>";
@@ -101,7 +101,7 @@
                                                     <div class="col-md-offset-1">
                                                         <div class="search-item">
                                                             <div class="pull-left m-r-md">
-                                                                <img src="/assets/backend/images/<?= $akun['user_photo']; ?>" class="img-circle" width="50" alt="<?= $row['comment_name'] ?>">
+                                                                <img src="/assets/backend/images/<?= $row['comment_image']; ?>" class="img-circle" width="50" alt="<?= $row['comment_name'] ?>">
                                                             </div>
                                                             <div class="pull-right m-r-md">
                                                                 <div class="btn-group">
@@ -114,7 +114,7 @@
                                                                     </ul>
                                                                 </div>
                                                             </div>
-                                                            <h3 class="no-m"><a href="/post/<?php $row['post_slug']; ?>" target="_blank"><?= $row['post_title']; ?></a></h3>
+                                                            <h3 class="no-m"><a href="/post/<?= $row['post_slug']; ?>" target="_blank"><?= $row['post_title']; ?></a></h3>
                                                             <a href="javascript:void(0);" class="search-link"><b><?= $row['comment_name'] ?></b>, <?= $row['comment_date']; ?></a>
                                                             <div style="margin-left: 7%;">
                                                                 <p><?= $row['comment_message']; ?></p>
@@ -191,7 +191,7 @@
     </form>
 
     <!--PUBLISH MODAL-->
-    <form action="<?= site_url('backend/comment/publish'); ?>" method="post">
+    <form action="/<?= session('role'); ?>/comment/publish" method="POST">
         <div class="modal fade" id="PublishModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -239,7 +239,7 @@
         </div>
     </form>
 
-    <!--DELETE RECORD MODAL-->
+    <!--Change Image MODAL-->
     <form action="<?= site_url('backend/comment/change'); ?>" method="post" enctype="multipart/form-data">
         <div class="modal fade" id="ImageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
