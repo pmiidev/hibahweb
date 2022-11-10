@@ -83,4 +83,23 @@ class CommentAdminController extends BaseController
         $this->commentModel->delete($comment_id);
         return redirect()->to('/admin/comment')->with('msg', 'success-delete');
     }
+    function unpublish()
+    {
+        $data = [
+            'akun' => $this->akun,
+            'title' => 'All Unpublish Comments',
+            'active' => $this->active,
+            'total_inbox' => $this->inboxModel->where('inbox_status', 0)->get()->getNumRows(),
+            'inboxs' => $this->inboxModel->where('inbox_status', 0)->findAll(5),
+            'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
+            'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
+            'helper_text' => helper('text'),
+
+            'unpublish' => $this->commentModel->get_all_comment_unpublish()->getResultArray(),
+            'total_all_comments' => $this->commentModel->countAllResults(),
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('admin/v_comment_unpublish', $data);
+    }
 }

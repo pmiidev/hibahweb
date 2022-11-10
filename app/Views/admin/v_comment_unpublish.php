@@ -49,12 +49,12 @@
                             <div class="panel-body">
                                 <div role="tabpanel">
                                     <ul class="nav nav-tabs" role="tablist">
-                                        <li role="presentation" class="active"><a href="#all" aria-controls="all" role="tab" data-toggle="tab" aria-expanded="false">All<span class="badge badge-success pull-right m-l-xs"><?= $total_all_comments; ?></span></a></li>
-                                        <li role="presentation"><a href="/<?= session('role'); ?>/comment/unpublish">Unpublish<span class="badge badge-danger pull-right m-l-xs"><?= $total_comment; ?></span></a></li>
+                                        <li role="presentation"><a href="/<?= session('role'); ?>/comment">All<span class="badge badge-success pull-right m-l-xs"><?= $total_all_comments; ?></span></a></li>
+                                        <li role="presentation" class="active"><a href="#unpublish" aria-controls="all" role="tab" data-toggle="tab" aria-expanded="false">Unpublish<span class="badge badge-danger pull-right m-l-xs"><?= $total_comment; ?></span></a></li>
                                     </ul>
                                     <div class="tab-content">
                                         <div role="tabpanel" class="tab-pane fade active in p-v-lg" id="all">
-                                            <?php foreach ($comments as $row) : ?>
+                                            <?php foreach ($unpublish as $row) : ?>
                                                 <div class="search-item">
                                                     <div class="pull-left m-r-md">
                                                         <a href="javascript:void(0);" class="btn-image" data-comment_id="<?= $row['comment_id']; ?>" data-name="<?= $row['comment_name']; ?>" data-email="<?= $row['comment_email']; ?>">
