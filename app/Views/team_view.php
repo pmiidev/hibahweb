@@ -31,7 +31,7 @@
                             </div>
                             <div class="member-info">
                                 <h4><?php echo $team['team_name']; ?></h4>
-                                <span><?php echo $team['team_org']; ?></span>
+                                <span><?php echo $team['team_jabatan']; ?></span>
                             </div>
                         </div>
                     </div>

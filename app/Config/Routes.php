@@ -136,6 +136,13 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
         $routes->put('', 'Admin\TestimonialAdminController::update');
         $routes->delete('', 'Admin\TestimonialAdminController::delete');
     });
+    // Team Route
+    $routes->group('team', static function ($routes) {
+        $routes->get('', 'Admin\TeamAdminController::index');
+        $routes->post('', 'Admin\TeamAdminController::insert');
+        $routes->put('', 'Admin\TeamAdminController::update');
+        $routes->delete('', 'Admin\TeamAdminController::delete');
+    });
 });
 
 // User Routes
