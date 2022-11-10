@@ -122,6 +122,15 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
         $routes->get('increase/(:num)', 'Admin\SubscriberAdminController::increase/$1');
         $routes->get('decrease/(:num)', 'Admin\SubscriberAdminController::decrease/$1');
     });
+    // Member Route
+    $routes->group('member', static function ($routes) {
+        $routes->get('', 'Admin\MemberAdminController::index');
+        $routes->post('', 'Admin\MemberAdminController::insert');
+        $routes->put('', 'Admin\MemberAdminController::update');
+        $routes->delete('', 'Admin\MemberAdminController::delete');
+        $routes->get('increase/(:num)', 'Admin\MemberAdminController::increase/$1');
+        $routes->get('decrease/(:num)', 'Admin\MemberAdminController::decrease/$1');
+    });
 });
 
 // User Routes
