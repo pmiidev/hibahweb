@@ -140,7 +140,7 @@
                     <p>Member</p>
                 </a>
             </li>
-            <li class="<?= ($active == 'testimonials') ? 'active' : '' ?>">
+            <li class="<?= ($active == 'testimonial') ? 'active' : '' ?>">
                 <a href="/<?= session('role'); ?>/testimonial" class="waves-effect waves-button"><span class="menu-icon icon-like"></span>
                     <p>Testimonials</p>
                 </a>

@@ -37,7 +37,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 
 // HomeController
-$routes->get('/', 'HomeController::index');
+$routes->get('/', 'HomeController::index', ['filter' => 'logedin']);
 
 // SubscribeController
 $routes->get('subscribe', static function () {
@@ -128,8 +128,13 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
         $routes->post('', 'Admin\MemberAdminController::insert');
         $routes->put('', 'Admin\MemberAdminController::update');
         $routes->delete('', 'Admin\MemberAdminController::delete');
-        $routes->get('increase/(:num)', 'Admin\MemberAdminController::increase/$1');
-        $routes->get('decrease/(:num)', 'Admin\MemberAdminController::decrease/$1');
+    });
+    // Testimonial Route
+    $routes->group('testimonial', static function ($routes) {
+        $routes->get('', 'Admin\TestimonialAdminController::index');
+        $routes->post('', 'Admin\TestimonialAdminController::insert');
+        $routes->put('', 'Admin\TestimonialAdminController::update');
+        $routes->delete('', 'Admin\TestimonialAdminController::delete');
     });
 });
 

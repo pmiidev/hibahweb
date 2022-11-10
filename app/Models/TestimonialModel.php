@@ -8,11 +8,7 @@ class TestimonialModel extends Model
 {
     protected $table            = 'tbl_testimonial';
     protected $primaryKey       = 'testimonial_id';
-    protected $allowedFields    = ['testimonial_name', 'testimonial_org', 'testimonial_content', 'testimonial_image'];
-
-    // Dates
-    protected $useTimestamps = true;
-    protected $createdField  = 'testimonial_created_at';
+    protected $allowedFields    = ['testimonial_name', 'testimonial_angkatan', 'testimonial_content', 'testimonial_image'];
 
     function get_testimonial()
     {

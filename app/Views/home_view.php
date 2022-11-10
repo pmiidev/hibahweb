@@ -128,7 +128,7 @@
                             <div class="testimonial-item">
                                 <img src="<?= 'assets/backend/images/testi/' . $testimonial['testimonial_image']; ?>" class="testimonial-img" alt="">
                                 <h3><?= $testimonial['testimonial_name']; ?></h3>
-                                <h4><?= $testimonial['testimonial_org']; ?></h4>
+                                <h4><?= $testimonial['testimonial_angkatan']; ?></h4>
                                 <p>
                                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                                     <?= $testimonial['testimonial_content']; ?>
