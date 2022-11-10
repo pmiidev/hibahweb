@@ -203,7 +203,6 @@ class TeamAdminController extends BaseController
     }
     public function delete()
     {
-        dd($this->request->getPost());
         $team_id = $this->request->getPost('kode');
         $this->teamModel->delete($team_id);
         return redirect()->to('/admin/team')->with('msg', 'success-delete');
