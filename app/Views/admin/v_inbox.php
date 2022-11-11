@@ -63,7 +63,7 @@
                                         <tbody id="body-table">
                                             <?php
                                             $no = 0;
-                                            foreach ($inboxs as $inbox) :
+                                            foreach ($inbox_all as $inbox) :
                                                 $no++;
                                             ?>
                                                 <tr>

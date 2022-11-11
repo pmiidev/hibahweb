@@ -23,10 +23,10 @@ class InboxAdminController extends BaseController
             'total_inbox' => $this->inboxModel->where('inbox_status', 0)->get()->getNumRows(),
             'inboxs' => $this->inboxModel->where('inbox_status', 0)->findAll(),
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
-            'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
+            'comments' => $this->commentModel->where('comment_status', 0)->findAll(),
             'helper_text' => helper('text'),
 
-            'inboxs' => $this->inboxModel->orderBy('inbox_status', 'ASC')->findAll(),
+            'inbox_all' => $this->inboxModel->orderBy('inbox_status', 'ASC')->findAll(),
             'total_inboxs' => $this->inboxModel->get()->getNumRows()
         ];
 
@@ -48,7 +48,7 @@ class InboxAdminController extends BaseController
             'total_inbox' => $this->inboxModel->where('inbox_status', 0)->get()->getNumRows(),
             'inboxs' => $this->inboxModel->where('inbox_status', 0)->findAll(),
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
-            'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
+            'comments' => $this->commentModel->where('comment_status', 0)->findAll(),
             'helper_text' => helper('text'),
 
             'inbox' => $this->inboxModel->find($id)
