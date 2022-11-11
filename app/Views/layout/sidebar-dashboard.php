@@ -145,7 +145,7 @@
                     <p>Testimonials</p>
                 </a>
             </li>
-            <li class="<?= ($active == 'teams') ? 'active' : '' ?>">
+            <li class="<?= ($active == 'team') ? 'active' : '' ?>">
                 <a href="/<?= session('role'); ?>/team" class="waves-effect waves-button"><span class="menu-icon icon-users"></span>
                     <p>Teams</p>
                 </a>
