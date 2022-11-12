@@ -160,9 +160,11 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
 
         // Setting Home
         $routes->get('home', 'Admin\SettingAdminController::home');
+        $routes->put('home', 'Admin\SettingAdminController::home_update');
 
         // Setting About
-        $routes->get('abou', 'Admin\SettingAdminController::about');
+        $routes->get('about', 'Admin\SettingAdminController::about');
+        $routes->put('about', 'Admin\SettingAdminController::about_update');
     });
 });
 

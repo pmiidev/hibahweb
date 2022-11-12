@@ -2,12 +2,12 @@
 <?= $this->section('content'); ?>
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center">
+<section id="hero" class="d-flex align-items-center" style="background: url('/assets/frontend/img/<?= $home['home_bg_heading']; ?>') top left;">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
         <h1><?= $home['home_caption_1']; ?> <span><?= $about['about_name']; ?></span></h1>
         <h2><?= $home['home_caption_2']; ?></h2>
         <div class="d-flex">
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+            <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
             <a href="https://www.youtube.com/watch?v=EvOiPmEtAPQ" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
         </div>
     </div>
@@ -18,7 +18,6 @@
     <!-- ======= Featured Services Section ======= -->
     <section id="featured-services" class="featured-services">
         <div class="container" data-aos="fade-up">
-
             <div class="row">
                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
@@ -118,7 +117,7 @@
     <!-- End About Section -->
 
     <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
+    <section id="testimonials" class="testimonials" style="background: url('/assets/frontend/img/<?= $home['home_bg_testimonial']; ?>') no-repeat;">
         <div class="container" data-aos="zoom-in">
 
             <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">

@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\CommentModel;
+use App\Models\HomeModel;
 use App\Models\InboxModel;
 use App\Models\SiteModel;
 
@@ -15,6 +16,7 @@ class SettingAdminController extends BaseController
         $this->commentModel = new CommentModel();
 
         $this->siteModel = new SiteModel();
+        $this->homeModel = new HomeModel();
     }
     public function web()
     {
@@ -195,5 +197,116 @@ class SettingAdminController extends BaseController
             'site_mail' => $mail,
         ]);
         return redirect()->to('/admin/setting/web')->with('msg', 'success');
+    }
+    public function home()
+    {
+        $data = [
+            'akun' => $this->akun,
+            'title' => 'Website Setting',
+            'active' => $this->active,
+            'total_inbox' => $this->inboxModel->where('inbox_status', 0)->get()->getNumRows(),
+            'inboxs' => $this->inboxModel->where('inbox_status', 0)->findAll(),
+            'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
+            'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
+            'helper_text' => helper('text'),
+
+            'homes' => $this->homeModel->first(),
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('admin/v_setting-home', $data);
+    }
+    public function home_update()
+    {
+        // Validasi
+        if (!$this->validate([
+            'home_id' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!',
+                    'numeric' => 'inputan harus angka'
+                ]
+            ],
+            'caption1' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!',
+                    'alpha_space' => 'inputan tidak boleh mengandung karakter aneh'
+                ]
+            ],
+            'caption2' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!'
+                ]
+            ],
+            'img_heading' => [
+                'rules' => 'max_size[img_heading,2048]|is_image[img_heading]|mime_in[img_heading,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran gambar tidak boleh lebih dari 2MB',
+                    'is_image' => 'Yang anda pilih bukan gambar',
+                    'mime_in' => 'Yang anda pilih bukan gambar'
+                ]
+            ],
+            'img_testimonial' => [
+                'rules' => 'max_size[img_testimonial,2048]|is_image[img_testimonial]|mime_in[img_testimonial,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran gambar tidak boleh lebih dari 2MB',
+                    'is_image' => 'Yang anda pilih bukan gambar',
+                    'mime_in' => 'Yang anda pilih bukan gambar'
+                ]
+            ],
+            'img_testimonial2' => [
+                'rules' => 'max_size[img_testimonial2,2048]|is_image[img_testimonial2]|mime_in[img_testimonial2,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran gambar tidak boleh lebih dari 2MB',
+                    'is_image' => 'Yang anda pilih bukan gambar',
+                    'mime_in' => 'Yang anda pilih bukan gambar'
+                ]
+            ]
+        ])) {
+            dd(\Config\Services::validation());
+            return redirect()->to("/admin/setting/home")->with('msg', 'error');
+        }
+        // Inisiasi
+        $home_id = strip_tags(htmlspecialchars($this->request->getPost('home_id'), ENT_QUOTES));
+        $caption1 = strip_tags(htmlspecialchars($this->request->getPost('caption1'), ENT_QUOTES));
+        $caption2 = strip_tags(htmlspecialchars($this->request->getPost('caption2'), ENT_QUOTES));
+
+        // Cek Foto
+        $data = $this->homeModel->find($home_id);
+        $imgHeadingAwal = $data['home_bg_heading'];
+        $imgTestimonialAwal = $data['home_bg_testimonial'];
+        $imgTestimonial2Awal = $data['home_bg_testimonial2'];
+        $fileImgHeading = $this->request->getFile('img_heading');
+        $fileImgTestimonial = $this->request->getFile('img_testimonial');
+        $fileImgTestimonial2 = $this->request->getFile('img_testimonial2');
+        if ($fileImgHeading->getName() == '') {
+            $namaImgHeading = $imgHeadingAwal;
+        } else {
+            $namaImgHeading = $fileImgHeading->getRandomName();
+            $fileImgHeading->move('assets/frontend/img/', $namaImgHeading);
+        }
+        if ($fileImgTestimonial->getName() == '') {
+            $namaImgTestimonial = $imgTestimonialAwal;
+        } else {
+            $namaImgTestimonial = $fileImgTestimonial->getRandomName();
+            $fileImgTestimonial->move('assets/frontend/img/', $namaImgTestimonial);
+        }
+        if ($fileImgTestimonial2->getName() == '') {
+            $namaImgTestimonial2 = $imgTestimonial2Awal;
+        } else {
+            $namaImgTestimonial2 = $fileImgTestimonial2->getRandomName();
+            $fileImgTestimonial2->move('assets/frontend/img/', $namaImgTestimonial2);
+        }
+        // Simpan ke database
+        $this->homeModel->update($home_id, [
+            'home_caption_1' => $caption1,
+            'home_caption_2' => $caption2,
+            'home_bg_heading' => $namaImgHeading,
+            'home_bg_testimonial' => $namaImgTestimonial,
+            'home_bg_testimonial2' => $namaImgTestimonial2
+        ]);
+        return redirect()->to('/admin/setting/home')->with('msg', 'success');
     }
 }
