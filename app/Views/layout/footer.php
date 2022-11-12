@@ -28,8 +28,8 @@
                     <h3><span><?= $site['site_title']; ?></span></h3>
                     <p>
                         <?= $about['about_alamat']; ?><br>
-                        <strong>Phone:</strong> <?= $site['site_wa']; ?><br>
-                        <strong>Email:</strong> <?= $site['site_mail']; ?><br>
+                        <strong>Phone:</strong> <a href="tel:+<?= $site['site_wa']; ?>"><?= $site['site_wa']; ?></a><br>
+                        <strong>Email:</strong> <a href="mailto:<?= $site['site_mail']; ?>"><?= $site['site_mail']; ?></a><br>
                     </p>
                 </div>
 

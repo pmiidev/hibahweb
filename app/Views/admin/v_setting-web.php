@@ -123,14 +123,14 @@
                                     <div class="form-group">
                                         <label for="input1" class="col-sm-2 control-label">Instagram URL</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="instagram" class="form-control" value="<?= $sites['site_instagram']; ?>" id="input1" placeholder="Linkedin URL">
+                                            <input type="text" name="instagram" class="form-control" value="<?= $sites['site_instagram']; ?>" id="input1" placeholder="Instagram URL">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Alamat</label>
+                                        <label for="input1" class="col-sm-2 control-label">Pinterest</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="pinterest" class="form-control" value="<?= $sites['site_pinterest']; ?>" id="input1" placeholder="Linkedin URL">
+                                            <input type="text" name="pinterest" class="form-control" value="<?= $sites['site_pinterest']; ?>" id="input1" placeholder="Pinterest URL">
                                         </div>
                                     </div>
 
@@ -144,7 +144,7 @@
                                     <div class="form-group">
                                         <label for="input1" class="col-sm-2 control-label">Email Resmi</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="mail" class="form-control" value="<?= $sites['site_mail']; ?>" id="input1" placeholder="name@domain.">
+                                            <input type="text" name="mail" class="form-control" value="<?= $sites['site_mail']; ?>" id="input1" placeholder="name@domain.xxx">
                                         </div>
                                     </div>
 
