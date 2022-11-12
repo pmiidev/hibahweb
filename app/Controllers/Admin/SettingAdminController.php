@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use App\Models\AboutModel;
 use App\Models\CommentModel;
 use App\Models\HomeModel;
 use App\Models\InboxModel;
@@ -17,6 +18,7 @@ class SettingAdminController extends BaseController
 
         $this->siteModel = new SiteModel();
         $this->homeModel = new HomeModel();
+        $this->aboutModel = new AboutModel();
     }
     public function web()
     {
@@ -265,7 +267,6 @@ class SettingAdminController extends BaseController
                 ]
             ]
         ])) {
-            dd(\Config\Services::validation());
             return redirect()->to("/admin/setting/home")->with('msg', 'error');
         }
         // Inisiasi
@@ -308,5 +309,89 @@ class SettingAdminController extends BaseController
             'home_bg_testimonial2' => $namaImgTestimonial2
         ]);
         return redirect()->to('/admin/setting/home')->with('msg', 'success');
+    }
+    public function about()
+    {
+        $data = [
+            'akun' => $this->akun,
+            'title' => 'Website Setting',
+            'active' => $this->active,
+            'total_inbox' => $this->inboxModel->where('inbox_status', 0)->get()->getNumRows(),
+            'inboxs' => $this->inboxModel->where('inbox_status', 0)->findAll(),
+            'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
+            'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
+            'helper_text' => helper('text'),
+
+            'abouts' => $this->aboutModel->first(),
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('admin/v_setting-about', $data);
+    }
+    public function about_update()
+    {
+        // Validasi
+        if (!$this->validate([
+            'about_id' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!',
+                    'numeric' => 'inputan harus angka'
+                ]
+            ],
+            'name' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!',
+                    'alpha_space' => 'inputan tidak boleh mengandung karakter aneh'
+                ]
+            ],
+            'alamat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!'
+                ]
+            ],
+            'description' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!'
+                ]
+            ],
+            'img_about' => [
+                'rules' => 'max_size[img_about,2048]|is_image[img_about]|mime_in[img_about,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran gambar tidak boleh lebih dari 2MB',
+                    'is_image' => 'Yang anda pilih bukan gambar',
+                    'mime_in' => 'Yang anda pilih bukan gambar'
+                ]
+            ]
+        ])) {
+            return redirect()->to("/admin/setting/about")->with('msg', 'error');
+        }
+        // Inisiasi
+        $about_id = strip_tags(htmlspecialchars($this->request->getPost('about_id'), ENT_QUOTES));
+        $name = strip_tags(htmlspecialchars($this->request->getPost('name'), ENT_QUOTES));
+        $alamat = strip_tags(htmlspecialchars($this->request->getPost('alamat'), ENT_QUOTES));
+        $description = strip_tags(htmlspecialchars($this->request->getPost('description'), ENT_QUOTES));
+
+        // Cek Foto
+        $data = $this->aboutModel->find($about_id);
+        $imgAboutAwal = $data['about_image'];
+        $fileImgAbout = $this->request->getFile('img_about');
+        if ($fileImgAbout->getName() == '') {
+            $namaImgAbout = $imgAboutAwal;
+        } else {
+            $namaImgAbout = $fileImgAbout->getRandomName();
+            $fileImgAbout->move('assets/frontend/img/', $namaImgAbout);
+        }
+        // Simpan ke database
+        $this->aboutModel->update($about_id, [
+            'about_name' => $name,
+            'about_image' => $namaImgAbout,
+            'about_description' => $description,
+            'about_alamat' => $alamat
+        ]);
+        return redirect()->to('/admin/setting/about')->with('msg', 'success');
     }
 }
