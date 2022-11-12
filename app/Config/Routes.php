@@ -152,6 +152,18 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
         $routes->get('deactivate/(:num)', 'Admin\UsersAdminController::deactivate/$1');
         $routes->get('activate/(:num)', 'Admin\UsersAdminController::activate/$1');
     });
+    // Setting Route
+    $routes->group('setting', static function ($routes) {
+        // Setting Web
+        $routes->get('web', 'Admin\SettingAdminController::web');
+        $routes->put('web', 'Admin\SettingAdminController::web_update');
+
+        // Setting Home
+        $routes->get('home', 'Admin\SettingAdminController::home');
+
+        // Setting About
+        $routes->get('abou', 'Admin\SettingAdminController::about');
+    });
 });
 
 // User Routes

@@ -155,13 +155,13 @@
                     <p>Users</p>
                 </a>
             </li>
-            <li class="droplink <?= ($active == 'settings') ? 'active' : '' ?>"><a href="/<?= session('role'); ?>/settings" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span>
+            <li class="droplink <?= ($active == 'setting') ? 'active' : '' ?>"><a href="/<?= session('role'); ?>/settings" class="waves-effect waves-button"><span class="menu-icon icon-settings"></span>
                     <p>Settings</p><span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li><a href="/<?= session('role'); ?>/settings">Basic</a></li>
-                    <li><a href="/<?= session('role'); ?>/home-setting">Home</a></li>
-                    <li><a href="/<?= session('role'); ?>/about-setting">About</a></li>
+                    <li><a href="/<?= session('role'); ?>/setting/web">Website</a></li>
+                    <li><a href="/<?= session('role'); ?>/setting/home">Home</a></li>
+                    <li><a href="/<?= session('role'); ?>/setting/about">About</a></li>
                 </ul>
             </li>
             <li>
