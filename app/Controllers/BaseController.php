@@ -69,7 +69,7 @@ abstract class BaseController extends Controller
         // Akun login
         if (session('role')) {
             $this->akunModel = new UserModel();
-            $this->akun = $this->akunModel->where('user_email', session('email'))->first();
+            $this->akun = $this->akunModel->where('user_id', session('id'))->first();
         }
 
         // Nav Active Dashboard

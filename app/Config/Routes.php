@@ -154,6 +154,10 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
     });
     // Setting Route
     $routes->group('setting', static function ($routes) {
+        // Setting My Profile
+        $routes->get('profile', 'Admin\SettingAdminController::profile');
+        $routes->post('profile', 'Admin\SettingAdminController::profile_update');
+        $routes->put('profile', 'Admin\SettingAdminController::profile_password');
         // Setting Web
         $routes->get('web', 'Admin\SettingAdminController::web');
         $routes->put('web', 'Admin\SettingAdminController::web_update');

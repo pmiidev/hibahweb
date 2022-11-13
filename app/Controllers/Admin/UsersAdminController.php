@@ -205,7 +205,7 @@ class UsersAdminController extends BaseController
             $namaFotoUpload = $fotoAwal;
         } else {
             $namaFotoUpload = $fileFoto->getRandomName();
-            $fileFoto->move('assets/backend/images/user/', $namaFotoUpload);
+            $fileFoto->move('assets/backend/images/users/', $namaFotoUpload);
         }
         $this->userModel->update($user_id, [
             'user_name' => $nama,

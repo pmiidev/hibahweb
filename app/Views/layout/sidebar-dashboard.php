@@ -70,12 +70,12 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
                             <span class="user-name"><?= session('name'); ?><i class="fa fa-angle-down"></i></span>
-                            <img class="img-circle avatar" src="/assets/backend/images/<?= $akun['user_photo']; ?>" width="40" height="40" alt="">
+                            <img class="img-circle avatar" src="/assets/backend/images/users/<?= $akun['user_photo']; ?>" width="40" height="40" alt="">
                         </a>
                         <ul class="dropdown-menu dropdown-list" role="menu">
-                            <li role="presentation"><a href="/backend/change_pass"><i class="fa fa-key"></i>Change Password</a></li>
-                            <li role="presentation"><a href="/backend/comment/unpublish"><i class="fa fa-comment"></i>Comments<span class="badge badge-success pull-right"><?= $total_comment; ?></span></a></li>
-                            <li role="presentation"><a href="/backend/inbox"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right"><?= $total_inbox; ?></span></a></li>
+                            <li role="presentation"><a href="/<?= session('role'); ?>/setting/profile"><i class="fa fa-user"></i>My Profile</a></li>
+                            <li role="presentation"><a href="/<?= session('role'); ?>/comment/unpublish"><i class="fa fa-comment"></i>Comments<span class="badge badge-success pull-right"><?= $total_comment; ?></span></a></li>
+                            <li role="presentation"><a href="/<?= session('role'); ?>/inbox"><i class="fa fa-envelope"></i>Inbox<span class="badge badge-success pull-right"><?= $total_inbox; ?></span></a></li>
                             <li role="presentation" class="divider"></li>
                             <li role="presentation"><a href="/logout"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
                         </ul>
@@ -96,7 +96,7 @@
             <div class="sidebar-profile">
                 <a href="javascript:void(0);">
                     <div class="sidebar-profile-image">
-                        <img src="/assets/backend/images/<?= $akun['user_photo']; ?>" class="img-circle img-responsive" alt="">
+                        <img src="/assets/backend/images/users/<?= $akun['user_photo']; ?>" class="img-circle img-responsive" alt="">
                     </div>
                     <div class="sidebar-profile-details">
                         <span><?= session('nama'); ?><br>
@@ -159,6 +159,7 @@
                     <p>Settings</p><span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
+                    <li><a href="/<?= session('role'); ?>/setting/profile">My Profile</a></li>
                     <li><a href="/<?= session('role'); ?>/setting/web">Website</a></li>
                     <li><a href="/<?= session('role'); ?>/setting/home">Home</a></li>
                     <li><a href="/<?= session('role'); ?>/setting/about">About</a></li>
