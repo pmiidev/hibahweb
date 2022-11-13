@@ -26,7 +26,7 @@ class AuthAdmin implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if (session('role') != 'admin') {
-            return redirect()->to('user');
+            return redirect()->to('author');
         }
     }
 

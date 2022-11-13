@@ -48,7 +48,7 @@ class LoginController extends BaseController
                         return redirect()->to('/admin');
                     } else if ($user['user_level'] == '2') {
                         $this->setUserSession($user);
-                        return redirect()->to('/user');
+                        return redirect()->to('/author');
                     } else {
                         return redirect()->to('/');
                     }

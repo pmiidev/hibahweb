@@ -27,9 +27,9 @@ class Filters extends BaseConfig
             \App\Filters\Auth::class,
             \App\Filters\AuthAdmin::class
         ],
-        'authuser'     => [
+        'authauthor'     => [
             \App\Filters\Auth::class,
-            \App\Filters\AuthUser::class
+            \App\Filters\AuthAuthor::class
         ],
         'logedin'       => \App\Filters\LogedIn::class
     ];

@@ -27,8 +27,8 @@ class LogedIn implements FilterInterface
     {
         if (session('role') == 'admin') {
             return redirect()->to('admin');
-        } elseif (session('role') == 'user') {
-            return redirect()->to('user');
+        } elseif (session('role') == 'author') {
+            return redirect()->to('author');
         }
     }
 

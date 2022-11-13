@@ -72,27 +72,53 @@ abstract class BaseController extends Controller
             $this->akun = $this->akunModel->where('user_id', session('id'))->first();
         }
 
-        // Nav Active Dashboard
-        if (url_is('admin')) {
-            $this->active = 'dashboard';
-        } elseif (url_is('admin/post*') || url_is('admin/category') || url_is('admin/tag')) {
-            $this->active = 'post';
-        } elseif (url_is('admin/inbox*')) {
-            $this->active = 'inbox';
-        } elseif (url_is('admin/comment*')) {
-            $this->active = 'comment';
-        } elseif (url_is('admin/subscriber*')) {
-            $this->active = 'subscriber';
-        } elseif (url_is('admin/member*')) {
-            $this->active = 'member';
-        } elseif (url_is('admin/testimonial*')) {
-            $this->active = 'testimonial';
-        } elseif (url_is('admin/team*')) {
-            $this->active = 'team';
-        } elseif (url_is('admin/users*')) {
-            $this->active = 'users';
-        } elseif (url_is('admin/setting*')) {
-            $this->active = 'setting';
+        // Nav Active Admin
+        if (session('role') == 'admin') {
+            if (url_is('admin')) {
+                $this->active = 'dashboard';
+            } elseif (url_is('admin/post*') || url_is('admin/category') || url_is('admin/tag')) {
+                $this->active = 'post';
+            } elseif (url_is('admin/inbox*')) {
+                $this->active = 'inbox';
+            } elseif (url_is('admin/comment*')) {
+                $this->active = 'comment';
+            } elseif (url_is('admin/subscriber*')) {
+                $this->active = 'subscriber';
+            } elseif (url_is('admin/member*')) {
+                $this->active = 'member';
+            } elseif (url_is('admin/testimonial*')) {
+                $this->active = 'testimonial';
+            } elseif (url_is('admin/team*')) {
+                $this->active = 'team';
+            } elseif (url_is('admin/users*')) {
+                $this->active = 'users';
+            } elseif (url_is('admin/setting*')) {
+                $this->active = 'setting';
+            }
+        }
+        // Nav Active Author
+        if (session('role') == 'author') {
+            if (url_is('author')) {
+                $this->active = 'dashboard';
+            } elseif (url_is('author/post*') || url_is('author/category') || url_is('author/tag')) {
+                $this->active = 'post';
+            } elseif (url_is('author/inbox*')) {
+                $this->active = 'inbox';
+            } elseif (url_is('author/comment*')) {
+                $this->active = 'comment';
+            } elseif (url_is('author/subscriber*')) {
+                $this->active = 'subscriber';
+            } elseif (url_is('author/member*')) {
+                $this->active = 'member';
+            } elseif (url_is('author/testimonial*')) {
+                $this->active = 'testimonial';
+            } elseif (url_is('author/team*')) {
+                $this->active = 'team';
+            } elseif (url_is('author/users*')) {
+                $this->active = 'users';
+            } elseif (url_is('author/setting*')) {
+                $this->active = 'setting';
+            }
         }
     }
 }
