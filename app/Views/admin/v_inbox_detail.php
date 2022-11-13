@@ -42,6 +42,7 @@
     <main class="page-content content-wrap">
         <?= $this->include('layout/sidebar-dashboard'); ?>
         <div class="page-inner">
+            <?= $this->include('layout/title-dashboard'); ?>
             <div id="main-wrapper">
                 <div class="row m-t-md">
                     <div class="col-md-12">

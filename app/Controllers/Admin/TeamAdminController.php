@@ -27,6 +27,7 @@ class TeamAdminController extends BaseController
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
             'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
             'helper_text' => helper('text'),
+            'breadcrumbs' => $this->request->getUri()->getSegments(),
 
             'teams' => $this->teamModel->findAll()
         ];

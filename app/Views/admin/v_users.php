@@ -93,9 +93,9 @@
                                                         ?>
                                                     </td>
                                                     <?php if ($row['user_status'] == '1') : ?>
-                                                        <td style="vertical-align: middle;"><a href="/<?= session('role'); ?>/users/deactivate/<?= $row['user_id']; ?>" class="btn"><span class="fa fa-check-square-o" title="Unlock"></span></a></td>
+                                                        <td style="vertical-align: middle;"><a href="/<?= session('role'); ?>/users/deactivate/<?= $row['user_id']; ?>" class="btn"><span class="fa fa-check-square-o" title="Active"></span></a></td>
                                                     <?php else : ?>
-                                                        <td style="vertical-align: middle;"><a href="/<?= session('role'); ?>/users/activate/<?= $row['user_id']; ?>" class="btn"><span class="fa fa-square-o" title="Locked"></span></a></td>
+                                                        <td style="vertical-align: middle;"><a href="/<?= session('role'); ?>/users/activate/<?= $row['user_id']; ?>" class="btn"><span class="fa fa-square-o" title="Deactive"></span></a></td>
                                                     <?php endif; ?>
                                                     <td style="vertical-align: middle;">
                                                         <div class="btn-group">

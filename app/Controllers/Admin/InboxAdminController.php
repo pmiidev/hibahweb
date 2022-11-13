@@ -25,6 +25,7 @@ class InboxAdminController extends BaseController
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
             'comments' => $this->commentModel->where('comment_status', 0)->findAll(),
             'helper_text' => helper('text'),
+            'breadcrumbs' => $this->request->getUri()->getSegments(),
 
             'inbox_all' => $this->inboxModel->orderBy('inbox_status', 'ASC')->findAll(),
             'total_inboxs' => $this->inboxModel->get()->getNumRows()
@@ -50,6 +51,7 @@ class InboxAdminController extends BaseController
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
             'comments' => $this->commentModel->where('comment_status', 0)->findAll(),
             'helper_text' => helper('text'),
+            'breadcrumbs' => $this->request->getUri()->getSegments(),
 
             'inbox' => $this->inboxModel->find($id)
         ];

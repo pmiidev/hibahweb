@@ -32,6 +32,7 @@ class PostAdminController extends BaseController
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
             'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
             'helper_text' => helper('text'),
+            'breadcrumbs' => $this->request->getUri()->getSegments(),
 
             'posts' => $this->postModel->get_all_post()->getResultArray()
         ];
@@ -49,6 +50,7 @@ class PostAdminController extends BaseController
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
             'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
             'helper_text' => helper('text'),
+            'breadcrumbs' => $this->request->getUri()->getSegments(),
 
             'categories' => $this->categoryModel->findAll(),
             'tags' => $this->tagModel->findAll()
@@ -155,6 +157,7 @@ class PostAdminController extends BaseController
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
             'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
             'helper_text' => helper('text'),
+            'breadcrumbs' => $this->request->getUri()->getSegments(),
 
             'categories' => $this->categoryModel->findAll(),
             'post' => $post,

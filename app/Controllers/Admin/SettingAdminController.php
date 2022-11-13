@@ -32,6 +32,7 @@ class SettingAdminController extends BaseController
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
             'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
             'helper_text' => helper('text'),
+            'breadcrumbs' => $this->request->getUri()->getSegments(),
 
             'sites' => $this->siteModel->first(),
             'validation' => \Config\Services::validation()
@@ -211,6 +212,7 @@ class SettingAdminController extends BaseController
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
             'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
             'helper_text' => helper('text'),
+            'breadcrumbs' => $this->request->getUri()->getSegments(),
 
             'homes' => $this->homeModel->first(),
             'validation' => \Config\Services::validation()
@@ -321,6 +323,7 @@ class SettingAdminController extends BaseController
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
             'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
             'helper_text' => helper('text'),
+            'breadcrumbs' => $this->request->getUri()->getSegments(),
 
             'abouts' => $this->aboutModel->first(),
             'validation' => \Config\Services::validation()

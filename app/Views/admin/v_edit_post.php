@@ -49,14 +49,6 @@
             <?php if (session()->getFlashData('pesan') || session()->getFlashData('peringatan')) : ?>
                 <div class="alert alert-<?= session()->getFlashData('pesan') ? "success" : "warning" ?>" role="alert" style="padding: 1rem 3rem;">
                     <?= session()->getFlashdata('pesan') ?? session()->getFlashdata('peringatan') ?>
-                    <?= $validation->getError('title'); ?>
-                    <?= $validation->getError('slug'); ?>
-                    <?= $validation->getError('contents'); ?>
-                    <?= $validation->getError('filefoto'); ?>
-                    <?= $validation->getError('category'); ?>
-                    <?= $validation->getError('tag'); ?>
-                    <?= $validation->getError('description'); ?>
-                    <?= 'hey' ?>
                 </div>
             <?php endif; ?>
             <div id="main-wrapper">
