@@ -31,7 +31,7 @@ class SettingAdminController extends BaseController
             'total_inbox' => $this->inboxModel->where('inbox_status', 0)->get()->getNumRows(),
             'inboxs' => $this->inboxModel->where('inbox_status', 0)->findAll(),
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
-            'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
+            'comments' => $this->commentModel->where('comment_status', 0)->findAll(),
             'helper_text' => helper('text'),
             'breadcrumbs' => $this->request->getUri()->getSegments(),
 
@@ -210,7 +210,7 @@ class SettingAdminController extends BaseController
             'total_inbox' => $this->inboxModel->where('inbox_status', 0)->get()->getNumRows(),
             'inboxs' => $this->inboxModel->where('inbox_status', 0)->findAll(),
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
-            'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
+            'comments' => $this->commentModel->where('comment_status', 0)->findAll(),
             'helper_text' => helper('text'),
             'breadcrumbs' => $this->request->getUri()->getSegments(),
 
@@ -320,7 +320,7 @@ class SettingAdminController extends BaseController
             'total_inbox' => $this->inboxModel->where('inbox_status', 0)->get()->getNumRows(),
             'inboxs' => $this->inboxModel->where('inbox_status', 0)->findAll(),
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
-            'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
+            'comments' => $this->commentModel->where('comment_status', 0)->findAll(),
             'helper_text' => helper('text'),
             'breadcrumbs' => $this->request->getUri()->getSegments(),
 
@@ -404,7 +404,7 @@ class SettingAdminController extends BaseController
             'total_inbox' => $this->inboxModel->where('inbox_status', 0)->get()->getNumRows(),
             'inboxs' => $this->inboxModel->where('inbox_status', 0)->findAll(),
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
-            'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
+            'comments' => $this->commentModel->where('comment_status', 0)->findAll(),
             'helper_text' => helper('text'),
             'breadcrumbs' => $this->request->getUri()->getSegments(),
         ];

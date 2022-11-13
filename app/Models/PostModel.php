@@ -48,9 +48,14 @@ class PostModel extends Model
 			WHERE post_title LIKE '%$query%' OR category_name LIKE '%$query%' OR post_tags LIKE '%$query%' LIMIT 12");
         return $result;
     }
-    public function get_all_post()
+    public function get_all_post($user_id = null)
     {
-        $result = $this->db->query("SELECT post_id,post_title,post_slug,post_image,DATE_FORMAT(post_date,'%d %M %Y') AS post_date,category_name,post_tags,post_status,post_views FROM tbl_post JOIN tbl_category ON post_category_id=category_id");
-        return $result;
+        if ($user_id == null) {
+            $result = $this->db->query("SELECT post_id,post_title,post_slug,post_user_id,post_image,DATE_FORMAT(post_date,'%d %M %Y') AS post_date,category_name,post_tags,post_status,post_views FROM tbl_post JOIN tbl_category ON post_category_id=category_id");
+            return $result;
+        } else {
+            $result = $this->db->query("SELECT post_id,post_title,post_slug,post_user_id,post_image,DATE_FORMAT(post_date,'%d %M %Y') AS post_date,category_name,post_tags,post_status,post_views FROM tbl_post JOIN tbl_category ON post_category_id=category_id where post_user_id=$user_id");
+            return $result;
+        }
     }
 }

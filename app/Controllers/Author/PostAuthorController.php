@@ -1,19 +1,17 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\Author;
 
 use App\Controllers\BaseController;
 use App\Models\CategoryModel;
 use App\Models\CommentModel;
-use App\Models\InboxModel;
 use App\Models\PostModel;
 use App\Models\TagModel;
 
-class PostAdminController extends BaseController
+class PostAuthorController extends BaseController
 {
     public function __construct()
     {
-        $this->inboxModel = new InboxModel();
         $this->commentModel = new CommentModel();
 
         $this->postModel = new PostModel();
@@ -26,17 +24,15 @@ class PostAdminController extends BaseController
             'akun' => $this->akun,
             'title' => 'All Post',
             'active' => $this->active,
-            'total_inbox' => $this->inboxModel->where('inbox_status', 0)->get()->getNumRows(),
-            'inboxs' => $this->inboxModel->where('inbox_status', 0)->findAll(),
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
-            'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
+            'comments' => $this->commentModel->where('comment_status', 0)->findAll(),
             'helper_text' => helper('text'),
             'breadcrumbs' => $this->request->getUri()->getSegments(),
 
-            'posts' => $this->postModel->get_all_post()->getResultArray()
+            'posts' => $this->postModel->get_all_post(session('id'))->getResultArray()
         ];
 
-        return view('admin/v_post', $data);
+        return view('author/v_post', $data);
     }
     public function add_new()
     {
@@ -44,17 +40,15 @@ class PostAdminController extends BaseController
             'akun' => $this->akun,
             'title' => 'Add New Post',
             'active' => $this->active,
-            'total_inbox' => $this->inboxModel->where('inbox_status', 0)->get()->getNumRows(),
-            'inboxs' => $this->inboxModel->where('inbox_status', 0)->findAll(5),
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
-            'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
+            'comments' => $this->commentModel->where('comment_status', 0)->findAll(),
             'helper_text' => helper('text'),
             'breadcrumbs' => $this->request->getUri()->getSegments(),
 
             'categories' => $this->categoryModel->findAll(),
             'tags' => $this->tagModel->findAll()
         ];
-        return view('admin/v_add_post', $data);
+        return view('author/v_add_post', $data);
     }
     public function publish()
     {
@@ -101,7 +95,7 @@ class PostAdminController extends BaseController
                 ]
             ]
         ])) {
-            return redirect()->to('/admin/post/add_new')->withInput()->with('peringatan', 'Data gagal disimpan dikarenakan ada penginputan yang tidak sesuai. silakan coba lagi!');
+            return redirect()->to('/author/post/add_new')->withInput()->with('peringatan', 'Data gagal disimpan dikarenakan ada penginputan yang tidak sesuai. silakan coba lagi!');
         }
         // Cek foto
         if ($this->request->getFile('filefoto')->isValid()) {
@@ -141,7 +135,7 @@ class PostAdminController extends BaseController
             'post_views' => 0,
             'post_user_id' => session('id')
         ]);
-        return redirect()->to('/admin/post')->with('msg', 'success');
+        return redirect()->to('/author/post')->with('msg', 'success');
     }
     public function edit($id)
     {
@@ -151,8 +145,6 @@ class PostAdminController extends BaseController
             'akun' => $this->akun,
             'title' => 'Edit Post',
             'active' => $this->active,
-            'total_inbox' => $this->inboxModel->where('inbox_status', 0)->get()->getNumRows(),
-            'inboxs' => $this->inboxModel->where('inbox_status', 0)->findAll(),
             'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
             'comments' => $this->commentModel->where('comment_status', 0)->findAll(),
             'helper_text' => helper('text'),
@@ -163,7 +155,7 @@ class PostAdminController extends BaseController
             'tags' => $this->tagModel->findAll(),
             'post_tags' => $post_tags
         ];
-        return view('admin/v_edit_post', $data);
+        return view('author/v_edit_post', $data);
     }
     public function update()
     {
@@ -212,7 +204,7 @@ class PostAdminController extends BaseController
                 ]
             ]
         ])) {
-            return redirect()->to("/admin/post/$post_id/edit")->withInput()->with('peringatan', 'Data gagal disimpan dikarenakan ada penginputan yang tidak sesuai. silakan coba lagi!');
+            return redirect()->to("/author/post/$post_id/edit")->withInput()->with('peringatan', 'Data gagal disimpan dikarenakan ada penginputan yang tidak sesuai. silakan coba lagi!');
         }
         // Inisiasi
         $title = strip_tags(htmlspecialchars($this->request->getPost('title'), ENT_QUOTES));
@@ -254,12 +246,12 @@ class PostAdminController extends BaseController
             'post_views' => 0,
             'post_user_id' => session('id')
         ]);
-        return redirect()->to('/admin/post')->with('msg', 'success');
+        return redirect()->to('/author/post')->with('msg', 'success');
     }
     public function delete()
     {
         $post_id = $this->request->getPost('id');
         $this->postModel->delete($post_id);
-        return redirect()->to('/admin/post')->with('msg', 'success-delete');
+        return redirect()->to('/author/post')->with('msg', 'success-delete');
     }
 }

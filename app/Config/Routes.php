@@ -177,9 +177,18 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
     });
 });
 
-// User Routes
+// Author Routes
 $routes->group('author', ['filter' => 'authauthor'], static function ($routes) {
     $routes->get('', 'Author\AuthorController::index');
+    // Post Route
+    $routes->group('post', static function ($routes) {
+        $routes->get('', 'Author\PostAuthorController::index');
+        $routes->post('', 'Author\PostAuthorController::publish');
+        $routes->delete('', 'Author\PostAuthorController::delete');
+        $routes->put('', 'Author\PostAuthorController::update');
+        $routes->get('add_new', 'Author\PostAuthorController::add_new');
+        $routes->get('(:num)/edit', 'Author\PostAuthorController::edit/$1');
+    });
 });
 
 /*
