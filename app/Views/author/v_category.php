@@ -48,29 +48,31 @@
                     <div class="col-md-12">
                         <div class="panel panel-white">
                             <div class="panel-body">
-                                <button type="button" class="btn btn-success m-b-sm" data-toggle="modal" data-target="#myModal">Add New Tag</button>
+                                <button type="button" class="btn btn-success m-b-sm" data-toggle="modal" data-target="#myModal">Add New Category</button>
 
                                 <div class="table-responsive">
                                     <table id="data-table" class="display table" style="width: 100%; ">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Tag</th>
+                                                <th>Category</th>
+                                                <th>Slug</th>
                                                 <th style="text-align: center;">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody id="body-table">
                                             <?php
                                             $no = 0;
-                                            foreach ($tags as $row) :
+                                            foreach ($categories as $row) :
                                                 $no++;
                                             ?>
                                                 <tr>
                                                     <td><?= $no; ?></td>
-                                                    <td><?= $row['tag_name']; ?></td>
+                                                    <td><?= $row['category_name']; ?></td>
+                                                    <td><?= $row['category_slug']; ?></td>
                                                     <td style="text-align: center;">
-                                                        <a href="javascript:void(0);" class="btn btn-xs btn-edit" data-id="<?= $row['tag_id']; ?>" data-tag="<?= $row['tag_name']; ?>"><span class="fa fa-pencil"></span></a>
-                                                        <a href="javascript:void(0);" class="btn btn-xs btn-delete" data-id="<?= $row['tag_id']; ?>"><span class="fa fa-trash"></span></a>
+                                                        <a href="javascript:void(0);" class="btn btn-xs btn-edit" data-id="<?= $row['category_id']; ?>" data-category="<?= $row['category_name']; ?>"><span class="fa fa-pencil"></span></a>
+                                                        <a href="javascript:void(0);" class="btn btn-xs btn-delete" data-id="<?= $row['category_id']; ?>"><span class="fa fa-trash"></span></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -90,17 +92,17 @@
     </main><!-- Page Content -->
 
     <!--ADD RECORD MODAL-->
-    <form action="/<?= session('role'); ?>/tag" method="POST">
+    <form action="/<?= session('role'); ?>/category" method="POST">
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">New tag</h4>
+                        <h4 class="modal-title" id="myModalLabel">New Category</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" name="tag" class="form-control" placeholder="tag Name" required>
+                            <input type="text" name="category" class="form-control" placeholder="Category Name" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -113,18 +115,18 @@
     </form>
 
     <!--EDIT RECORD MODAL-->
-    <form action="/<?= session('role'); ?>/tag" method="POST">
+    <form action="/<?= session('role'); ?>/category" method="POST">
         <input type="hidden" name="_method" value="PUT">
         <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Edit tag</h4>
+                        <h4 class="modal-title" id="myModalLabel">Edit Category</h4>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" name="tag2" class="form-control" placeholder="tag Name" required>
+                            <input type="text" name="category2" class="form-control" placeholder="Category Name" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -138,14 +140,14 @@
     </form>
 
     <!--DELETE RECORD MODAL-->
-    <form action="/<?= session('role'); ?>/tag" method="POST">
+    <form action="/<?= session('role'); ?>/category" method="POST">
         <input type="hidden" name="_method" value="DELETE">
         <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Delete tag</h4>
+                        <h4 class="modal-title" id="myModalLabel">Delete Category</h4>
                     </div>
                     <div class="modal-body">
                         <div class="alert alert-info">
@@ -185,11 +187,11 @@
             $('#data-table').dataTable();
 
             //Edit Record
-            $('#body-table').on('click', '.btn-edit', function() {
+            $('.btn-edit').on('click', function() {
                 var id = $(this).data('id');
-                var name = $(this).data('tag');
+                var name = $(this).data('category');
                 $('[name="kode"]').val(id);
-                $('[name="tag2"]').val(name);
+                $('[name="category2"]').val(name);
                 $('#EditModal').modal('show');
             });
 
@@ -208,7 +210,7 @@
         <script type="text/javascript">
             $.toast({
                 heading: 'Success',
-                text: "tag Saved!",
+                text: "Category Saved!",
                 showHideTransition: 'slide',
                 icon: 'success',
                 hideAfter: false,
@@ -220,7 +222,7 @@
         <script type="text/javascript">
             $.toast({
                 heading: 'Info',
-                text: "tag Updated!",
+                text: "Category Updated!",
                 showHideTransition: 'slide',
                 icon: 'info',
                 hideAfter: false,
@@ -232,7 +234,7 @@
         <script type="text/javascript">
             $.toast({
                 heading: 'Success',
-                text: "tag Deleted!.",
+                text: "Category Deleted!.",
                 showHideTransition: 'slide',
                 icon: 'success',
                 hideAfter: false,

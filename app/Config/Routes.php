@@ -189,6 +189,20 @@ $routes->group('author', ['filter' => 'authauthor'], static function ($routes) {
         $routes->get('add_new', 'Author\PostAuthorController::add_new');
         $routes->get('(:num)/edit', 'Author\PostAuthorController::edit/$1');
     });
+    // Category Route
+    $routes->group('category', static function ($routes) {
+        $routes->get('', 'Author\CategoryAuthorController::index');
+        $routes->post('', 'Author\CategoryAuthorController::save');
+        $routes->put('', 'Author\CategoryAuthorController::edit');
+        $routes->delete('', 'Author\CategoryAuthorController::delete');
+    });
+    // Tag Route
+    $routes->group('tag', static function ($routes) {
+        $routes->get('', 'Author\TagAuthorController::index');
+        $routes->post('', 'Author\TagAuthorController::save');
+        $routes->put('', 'Author\TagAuthorController::edit');
+        $routes->delete('', 'Author\TagAuthorController::delete');
+    });
 });
 
 /*
