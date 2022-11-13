@@ -74,6 +74,7 @@
                                                     <td><?= $post['category_name']; ?></td>
                                                     <td><?= $post['post_views']; ?></td>
                                                     <td style="text-align: center;">
+                                                        <a href="/post/<?= $post['post_slug']; ?>" class="btn btn-xs" target="_blank"><span class="fa fa-eye"></span></a>
                                                         <a href="/<?= session('role'); ?>/post/<?= $post['post_id']; ?>/edit" class="btn btn-xs"><span class="fa fa-pencil"></span></a>
                                                         <a href="javascript:void(0);" class="btn btn-xs btn-delete" data-id="<?= $post['post_id']; ?>"><span class="fa fa-trash"></span></a>
                                                     </td>
