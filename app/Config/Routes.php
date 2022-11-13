@@ -203,6 +203,15 @@ $routes->group('author', ['filter' => 'authauthor'], static function ($routes) {
         $routes->put('', 'Author\TagAuthorController::edit');
         $routes->delete('', 'Author\TagAuthorController::delete');
     });
+    // Comment Route
+    $routes->group('comment', static function ($routes) {
+        $routes->get('', 'Author\CommentAuthorController::index');
+        $routes->post('', 'Author\CommentAuthorController::reply');
+        $routes->post('publish', 'Author\CommentAuthorController::publish');
+        $routes->put('', 'Author\CommentAuthorController::edit');
+        $routes->delete('', 'Author\CommentAuthorController::delete');
+        $routes->get('unpublish', 'Author\CommentAuthorController::unpublish');
+    });
 });
 
 /*

@@ -24,8 +24,8 @@ class PostAuthorController extends BaseController
             'akun' => $this->akun,
             'title' => 'All Post',
             'active' => $this->active,
-            'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
-            'comments' => $this->commentModel->where('comment_status', 0)->findAll(),
+            'total_comment' => $this->commentModel->getCommentsAuthor(session('id'))->where('comment_status', 0)->get()->getNumRows(),
+            'comments' => $this->commentModel->getCommentsAuthor(session('id'))->where('comment_status', 0)->get()->getResultArray(),
             'helper_text' => helper('text'),
             'breadcrumbs' => $this->request->getUri()->getSegments(),
 
@@ -40,8 +40,8 @@ class PostAuthorController extends BaseController
             'akun' => $this->akun,
             'title' => 'Add New Post',
             'active' => $this->active,
-            'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
-            'comments' => $this->commentModel->where('comment_status', 0)->findAll(),
+            'total_comment' => $this->commentModel->getCommentsAuthor(session('id'))->where('comment_status', 0)->get()->getNumRows(),
+            'comments' => $this->commentModel->getCommentsAuthor(session('id'))->where('comment_status', 0)->get()->getResultArray(),
             'helper_text' => helper('text'),
             'breadcrumbs' => $this->request->getUri()->getSegments(),
 
@@ -145,8 +145,8 @@ class PostAuthorController extends BaseController
             'akun' => $this->akun,
             'title' => 'Edit Post',
             'active' => $this->active,
-            'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
-            'comments' => $this->commentModel->where('comment_status', 0)->findAll(),
+            'total_comment' => $this->commentModel->getCommentsAuthor(session('id'))->where('comment_status', 0)->get()->getNumRows(),
+            'comments' => $this->commentModel->getCommentsAuthor(session('id'))->where('comment_status', 0)->get()->getResultArray(),
             'helper_text' => helper('text'),
             'breadcrumbs' => $this->request->getUri()->getSegments(),
 

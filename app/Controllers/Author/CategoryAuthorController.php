@@ -21,8 +21,8 @@ class CategoryAuthorController extends BaseController
             'akun' => $this->akun,
             'title' => 'All Category',
             'active' => $this->active,
-            'total_comment' => $this->commentModel->where('comment_status', 0)->get()->getNumRows(),
-            'comments' => $this->commentModel->where('comment_status', 0)->findAll(),
+            'total_comment' => $this->commentModel->getCommentsAuthor(session('id'))->where('comment_status', 0)->get()->getNumRows(),
+            'comments' => $this->commentModel->getCommentsAuthor(session('id'))->where('comment_status', 0)->get()->getResultArray(),
             'helper_text' => helper('text'),
             'breadcrumbs' => $this->request->getUri()->getSegments(),
 

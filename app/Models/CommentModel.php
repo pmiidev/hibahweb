@@ -35,4 +35,9 @@ class CommentModel extends Model
         $result = $this->db->query("SELECT comment_id,DATE_FORMAT(comment_date,'%d %M %Y %H:%i') AS comment_date,comment_name,comment_email,comment_message,comment_image,post_id,post_title,post_slug FROM tbl_comment JOIN tbl_post ON comment_post_id=post_id WHERE comment_parent='$comment_id' ORDER BY comment_id ASC");
         return $result;
     }
+    public function getCommentsAuthor($user_id)
+    {
+        return $this->db->table('tbl_comment')
+            ->join('tbl_post', 'comment_post_id=post_id')->where('post_user_id', $user_id);
+    }
 }
