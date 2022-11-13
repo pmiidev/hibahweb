@@ -82,7 +82,7 @@
                                 <?php foreach ($replies as $reply) : ?>
                                     <div id="comment-reply-1" class="comment comment-reply">
                                         <div class="d-flex">
-                                            <div class="comment-img"><img alt="" src="/assets/backend/images/<?= $reply['comment_image']; ?>">
+                                            <div class="comment-img"><img alt="" src="/assets/backend/images/users/<?= $reply['comment_image']; ?>">
                                             </div>
                                             <div>
                                                 <h5><a href="javascript:void(0)"><?= $reply['comment_name']; ?></a>
