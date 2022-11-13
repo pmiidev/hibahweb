@@ -52,17 +52,15 @@ class UsersAdminController extends BaseController
         // Validasi password
         if (!$this->validate([
             'password' => [
-                'rules' => 'required|min_length[6]|matches[password2]',
+                'rules' => 'required|matches[password2]',
                 'errors' => [
-                    'required' => 'Kolom {field} harus diisi!',
-                    'min_length[6]' => 'Panjang inputan minimal 6 karakter'
+                    'required' => 'Kolom {field} harus diisi!'
                 ]
             ],
             'password2' => [
-                'rules' => 'required|min_length[6]|matches[password]',
+                'rules' => 'required|matches[password]',
                 'errors' => [
                     'required' => 'Kolom {field} harus diisi!',
-                    'min_length[6]' => 'Panjang inputan minimal 6 karakter',
                     'matches' => 'password konfirmasi tidak sama'
                 ]
             ],
@@ -140,26 +138,6 @@ class UsersAdminController extends BaseController
         ])) {
             return redirect()->to('/admin/users')->with('msg', 'error-email');
         };
-        // Validasi password
-        if (!$this->validate([
-            'password' => [
-                'rules' => 'required|min_length[6]|matches[password2]',
-                'errors' => [
-                    'required' => 'Kolom {field} harus diisi!',
-                    'min_length[6]' => 'Panjang inputan minimal 6 karakter'
-                ]
-            ],
-            'password2' => [
-                'rules' => 'required|min_length[6]|matches[password]',
-                'errors' => [
-                    'required' => 'Kolom {field} harus diisi!',
-                    'min_length[6]' => 'Panjang inputan minimal 6 karakter',
-                    'matches' => 'password konfirmasi tidak sama'
-                ]
-            ],
-        ])) {
-            return redirect()->to('/admin/users')->with('msg', 'error');
-        };
         // Validasi foto
         if (!$this->validate([
             'filefoto' => [
@@ -195,7 +173,6 @@ class UsersAdminController extends BaseController
         $user_id = htmlspecialchars($this->request->getPost('user_id'), ENT_QUOTES);
         $nama = htmlspecialchars($this->request->getPost('nama'), ENT_QUOTES);
         $email = htmlspecialchars($this->request->getPost('email'), ENT_QUOTES);
-        $pass = htmlspecialchars($this->request->getPost('password'), ENT_QUOTES);
         $level = htmlspecialchars($this->request->getPost('level'), ENT_QUOTES);
         // Cek Foto
         $user = $this->userModel->find($user_id);
@@ -207,12 +184,23 @@ class UsersAdminController extends BaseController
             $namaFotoUpload = $fileFoto->getRandomName();
             $fileFoto->move('assets/backend/images/users/', $namaFotoUpload);
         }
-        $this->userModel->update($user_id, [
-            'user_name' => $nama,
-            'user_email' => $email,
-            'user_level' => $level,
-            'user_photo' => $namaFotoUpload
-        ]);
+
+        if ($this->request->getPost('password')) {
+            $this->userModel->update($user_id, [
+                'user_name' => $nama,
+                'user_email' => $email,
+                'user_password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                'user_level' => $level,
+                'user_photo' => $namaFotoUpload
+            ]);
+        } else {
+            $this->userModel->update($user_id, [
+                'user_name' => $nama,
+                'user_email' => $email,
+                'user_level' => $level,
+                'user_photo' => $namaFotoUpload
+            ]);
+        }
         return redirect()->to('/admin/users')->with('msg', 'info');
     }
     public function delete()

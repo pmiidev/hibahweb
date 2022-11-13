@@ -210,9 +210,6 @@
                                         <input type="password" name="password" class="form-control" placeholder="Password">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="password2" class="form-control" placeholder="Confirm Password">
-                                    </div>
-                                    <div class="form-group">
                                         <select class="form-control" name="level" required>
                                             <?php if ($row['user_level'] == '1') : ?>
                                                 <option value="1" selected>Administrator</option>
