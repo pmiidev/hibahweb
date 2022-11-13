@@ -21,7 +21,7 @@
                     <div class="info-box mb-4">
                         <i class="bx bx-map"></i>
                         <h3>Alamat</h3>
-                        <p><?= $about['about_alamat']; ?></p>
+                        <a href="https://goo.gl/maps/yNZWhx9ySUwc5gVg9" target="_blank"><?= $about['about_alamat']; ?></a>
                     </div>
                 </div>
 
@@ -29,7 +29,7 @@
                     <div class="info-box  mb-4">
                         <i class="bx bx-envelope"></i>
                         <h3>Email</h3>
-                        <p><?= $site['site_mail']; ?></p>
+                        <a href="mailto:<?= $site['site_mail']; ?>"><?= $site['site_mail']; ?></a>
                     </div>
                 </div>
 
@@ -37,7 +37,7 @@
                     <div class="info-box  mb-4">
                         <i class="bx bx-phone-call"></i>
                         <h3>WhatsApp</h3>
-                        <p><?= $site['site_wa']; ?></p>
+                        <a href="tel:+<?= $site['site_wa']; ?>"><?= $site['site_wa']; ?></a>
                     </div>
                 </div>
 
