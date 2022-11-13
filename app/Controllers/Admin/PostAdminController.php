@@ -19,7 +19,6 @@ class PostAdminController extends BaseController
         $this->postModel = new PostModel();
         $this->categoryModel = new CategoryModel();
         $this->tagModel = new TagModel();
-        $this->validation = \Config\Services::validation();
     }
     public function index()
     {
@@ -162,8 +161,7 @@ class PostAdminController extends BaseController
             'categories' => $this->categoryModel->findAll(),
             'post' => $post,
             'tags' => $this->tagModel->findAll(),
-            'post_tags' => $post_tags,
-            'validation' => $this->validation
+            'post_tags' => $post_tags
         ];
         return view('admin/v_edit_post', $data);
     }

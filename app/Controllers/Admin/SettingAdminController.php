@@ -35,8 +35,7 @@ class SettingAdminController extends BaseController
             'helper_text' => helper('text'),
             'breadcrumbs' => $this->request->getUri()->getSegments(),
 
-            'sites' => $this->siteModel->first(),
-            'validation' => \Config\Services::validation()
+            'sites' => $this->siteModel->first()
         ];
 
         return view('admin/v_setting-web', $data);
@@ -215,8 +214,7 @@ class SettingAdminController extends BaseController
             'helper_text' => helper('text'),
             'breadcrumbs' => $this->request->getUri()->getSegments(),
 
-            'homes' => $this->homeModel->first(),
-            'validation' => \Config\Services::validation()
+            'homes' => $this->homeModel->first()
         ];
 
         return view('admin/v_setting-home', $data);
@@ -326,8 +324,7 @@ class SettingAdminController extends BaseController
             'helper_text' => helper('text'),
             'breadcrumbs' => $this->request->getUri()->getSegments(),
 
-            'abouts' => $this->aboutModel->first(),
-            'validation' => \Config\Services::validation()
+            'abouts' => $this->aboutModel->first()
         ];
 
         return view('admin/v_setting-about', $data);
@@ -410,8 +407,6 @@ class SettingAdminController extends BaseController
             'comments' => $this->commentModel->where('comment_status', 0)->findAll(6),
             'helper_text' => helper('text'),
             'breadcrumbs' => $this->request->getUri()->getSegments(),
-
-            'validation' => \Config\Services::validation()
         ];
 
         return view('admin/v_setting-profile', $data);

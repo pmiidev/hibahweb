@@ -178,8 +178,8 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
 });
 
 // User Routes
-$routes->group('user', ['filter' => 'authuser'], static function ($routes) {
-    $routes->get('', 'User\UserController::index');
+$routes->group('author', ['filter' => 'authuser'], static function ($routes) {
+    $routes->get('', 'Author\AuthorController::index');
 });
 
 /*

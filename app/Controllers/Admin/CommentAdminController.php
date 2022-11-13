@@ -27,8 +27,7 @@ class CommentAdminController extends BaseController
             'breadcrumbs' => $this->request->getUri()->getSegments(),
 
             'comments' => $this->commentModel->get_all_comment()->getResultArray(),
-            'total_all_comments' => $this->commentModel->countAllResults(),
-            'validation' => \Config\Services::validation()
+            'total_all_comments' => $this->commentModel->countAllResults()
         ];
 
         return view('admin/v_comment', $data);
@@ -98,8 +97,7 @@ class CommentAdminController extends BaseController
             'breadcrumbs' => $this->request->getUri()->getSegments(),
 
             'unpublish' => $this->commentModel->get_all_comment_unpublish()->getResultArray(),
-            'total_all_comments' => $this->commentModel->countAllResults(),
-            'validation' => \Config\Services::validation()
+            'total_all_comments' => $this->commentModel->countAllResults()
         ];
 
         return view('admin/v_comment_unpublish', $data);

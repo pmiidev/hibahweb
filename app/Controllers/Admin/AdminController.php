@@ -85,8 +85,6 @@ class AdminController extends BaseController
         } else {
             $other_visitor = 0;
         }
-        // $inbox = ;
-        // dd($inbox);
 
         $data = [
             'akun' => $this->akun,
