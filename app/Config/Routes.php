@@ -121,6 +121,8 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
         $routes->delete('', 'Admin\SubscriberAdminController::delete');
         $routes->get('increase/(:num)', 'Admin\SubscriberAdminController::increase/$1');
         $routes->get('decrease/(:num)', 'Admin\SubscriberAdminController::decrease/$1');
+        $routes->get('activate/(:num)', 'Admin\SubscriberAdminController::activate/$1');
+        $routes->get('deactivate/(:num)', 'Admin\SubscriberAdminController::deactivate/$1');
     });
     // Member Route
     $routes->group('member', static function ($routes) {
@@ -154,6 +156,9 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
     });
     // Setting Route
     $routes->group('setting', static function ($routes) {
+        $routes->get('', static function () {
+            return redirect()->to('admin/setting/profile');
+        });
         // Setting My Profile
         $routes->get('profile', 'Admin\SettingAdminController::profile');
         $routes->post('profile', 'Admin\SettingAdminController::profile_update');

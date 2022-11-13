@@ -49,6 +49,16 @@ class SubscriberAdminController extends BaseController
         $this->subscribeModel->update($id, ['subscribe_rating' => $result]);
         return redirect()->to('admin/subscriber')->with('msg', 'success-decrease');
     }
+    public function activate(Int $id)
+    {
+        $this->subscribeModel->update($id, ['subscribe_status' => 1]);
+        return redirect()->to('admin/subscriber')->with('msg', 'success-activate');
+    }
+    public function deactivate(Int $id)
+    {
+        $this->subscribeModel->update($id, ['subscribe_status' => 0]);
+        return redirect()->to('admin/subscriber')->with('msg', 'success-deactivate');
+    }
     public function delete()
     {
         $this->subscribeModel->delete($this->request->getPost('id'));

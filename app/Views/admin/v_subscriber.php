@@ -70,10 +70,10 @@
                                                     <td><?= $no; ?></td>
                                                     <td><?= $row['subscribe_email']; ?></td>
                                                     <td><?= date('d/m/Y H:i:s', strtotime($row['subscribe_created_at'])); ?></td>
-                                                    <?php if ($row['subscribe_status'] == '0') : ?>
-                                                        <td><span class="label label-info">New</span></td>
+                                                    <?php if ($row['subscribe_status'] == 0) : ?>
+                                                        <td title="activate"><a href="/<?= session('role'); ?>/subscriber/activate/<?= $row['subscribe_id']; ?>"><span class="fa fa-toggle-off"></span></a></td>
                                                     <?php else : ?>
-                                                        <td><span class="label label-success">Active</span></td>
+                                                        <td title="deactivate"><a href="/<?= session('role'); ?>/subscriber/deactivate/<?= $row['subscribe_id']; ?>"><span class="fa fa-toggle-on"></span></a></td>
                                                     <?php endif; ?>
                                                     <td style="text-align: center;"><a href="/<?= session('role'); ?>/subscriber/decrease/<?= $row['subscribe_id']; ?>" class="btn btn-sm btn-default" title="Turunkan Rating"><span class="fa fa-minus"></span></a> <?= $row['subscribe_rating']; ?> <a href="/<?= session('role'); ?>/subscriber/increase/<?= $row['subscribe_id']; ?>" class="btn btn-sm btn-default" title="Naikan Rating"><span class="fa fa-plus"></span></a></td>
                                                     <td style="text-align: center;">
@@ -231,6 +231,30 @@
             $.toast({
                 heading: 'Success',
                 text: "Rating Decreased!.",
+                showHideTransition: 'slide',
+                icon: 'success',
+                hideAfter: false,
+                position: 'bottom-right',
+                bgColor: '#7EC857'
+            });
+        </script>
+    <?php elseif (session()->getFlashdata('msg') == 'success-activate') : ?>
+        <script type="text/javascript">
+            $.toast({
+                heading: 'Success',
+                text: "Status Active!.",
+                showHideTransition: 'slide',
+                icon: 'success',
+                hideAfter: false,
+                position: 'bottom-right',
+                bgColor: '#7EC857'
+            });
+        </script>
+    <?php elseif (session()->getFlashdata('msg') == 'success-deactivate') : ?>
+        <script type="text/javascript">
+            $.toast({
+                heading: 'Success',
+                text: "Status Deactive!.",
                 showHideTransition: 'slide',
                 icon: 'success',
                 hideAfter: false,

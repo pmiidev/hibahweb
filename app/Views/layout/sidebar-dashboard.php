@@ -69,7 +69,7 @@
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
-                            <span class="user-name"><?= session('name'); ?><i class="fa fa-angle-down"></i></span>
+                            <span class="user-name"><?= session('nama'); ?><i class="fa fa-angle-down"></i></span>
                             <img class="img-circle avatar" src="/assets/backend/images/users/<?= $akun['user_photo']; ?>" width="40" height="40" alt="">
                         </a>
                         <ul class="dropdown-menu dropdown-list" role="menu">
