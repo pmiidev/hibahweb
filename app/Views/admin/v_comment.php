@@ -101,7 +101,7 @@
                                                     <div class="col-md-offset-1">
                                                         <div class="search-item">
                                                             <div class="pull-left m-r-md">
-                                                                <img src="/assets/backend/images/<?= $row['comment_image']; ?>" class="img-circle" width="50" alt="<?= $row['comment_name'] ?>">
+                                                                <img src="/assets/backend/images/users/<?= $row['comment_image']; ?>" class="img-circle" width="50" alt="<?= $row['comment_name'] ?>">
                                                             </div>
                                                             <div class="pull-right m-r-md">
                                                                 <div class="btn-group">
@@ -233,38 +233,6 @@
                         <input type="hidden" name="comment_id3" required>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-success">Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-
-    <!--Change Image MODAL-->
-    <form action="<?= site_url('backend/comment/change'); ?>" method="post" enctype="multipart/form-data">
-        <div class="modal fade" id="ImageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Change Image</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <input type="text" name="name" class="form-control" placeholder="Name" readonly>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Email" readonly>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="file" name="file" class="form-control-file" required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="hidden" name="comment_id5" required>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success">Change</button>
                     </div>
                 </div>
             </div>

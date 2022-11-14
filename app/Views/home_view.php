@@ -8,7 +8,7 @@
         <h2><?= $home['home_caption_2']; ?></h2>
         <div class="d-flex">
             <a href="#featured-services" class="btn-get-started scrollto">Get Started</a>
-            <a href="https://www.youtube.com/watch?v=EvOiPmEtAPQ" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+            <a href="<?= $home['home_video']; ?>" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
         </div>
     </div>
 </section><!-- End Hero -->
@@ -22,7 +22,7 @@
                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                         <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                        <h4 class="title"><a href="">Adaptif</a></h4>
+                        <h4 class="title">Adaptif</h4>
                         <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                         <div class="icon"><i class="bx bx-file"></i></div>
-                        <h4 class="title"><a href="">Komunikatif</a></h4>
+                        <h4 class="title">Komunikatif</h4>
                         <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
                         <div class="icon"><i class="bx bx-tachometer"></i></div>
-                        <h4 class="title"><a href="">Inovatif</a></h4>
+                        <h4 class="title">Inovatif</h4>
                         <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
                     <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
                         <div class="icon"><i class="bx bx-world"></i></div>
-                        <h4 class="title"><a href="">Kolaboratif</a></h4>
+                        <h4 class="title">Kolaboratif</h4>
                         <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
                     </div>
                 </div>

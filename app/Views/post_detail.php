@@ -27,11 +27,11 @@
 
                         <div class="entry-meta">
                             <ul>
-                                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#"><?= $post['user_name']; ?></a></li>
-                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01"><?= date('d M Y', strtotime($post['post_date'])); ?></time></a>
+                                <li class="d-flex align-items-center"><a href="/author/<?= $post['post_user_id']; ?>" class="text-primary"><i class="bi bi-person"></i> <?= $post['user_name']; ?></a></li>
+                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <time datetime="2020-01-01"><?= date('d M Y', strtotime($post['post_date'])); ?></time>
                                 </li>
-                                <li class="d-flex align-items-center"><i class="bi bi-eye"></i><a href="#"><?= $post['post_views']; ?> views</a></li>
-                                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#"><?= $post['comment_total']; ?> comment</a></li>
+                                <li class="d-flex align-items-center"><i class="bi bi-eye"></i><?= $post['post_views']; ?> views</li>
+                                <li class="d-flex align-items-center"><a href="#footerblog" class="text-primary"><i class="bi bi-chat-dots"></i> <?= $post['comment_total']; ?> comment</a></li>
                             </ul>
                         </div>
 
@@ -39,7 +39,7 @@
                             <?= $post['post_contents']; ?>
                         </div>
 
-                        <div class="entry-footer">
+                        <div class="entry-footer" id="footerblog">
                             <i class="bi bi-folder"></i>
                             <ul class="cats">
                                 <li><a href="/category/<?= $post['category_slug']; ?>">
@@ -60,7 +60,7 @@
                     </article><!-- End blog entry -->
 
                     <!-- Commentar -->
-                    <div class="blog-comments">
+                    <div class="blog-comments" id="comment">
                         <h4 class="comments-count"><?= $post['comment_total']; ?> Comments</h4>
                         <div id="comment-2" class="comment">
                             <?php foreach ($comments as $comment) : ?>

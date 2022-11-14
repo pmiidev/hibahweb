@@ -55,6 +55,7 @@ $routes->get('team', 'TeamController::index');
 $routes->get('search', 'PostController::search');
 $routes->get('post', 'PostController::index');
 $routes->get('post/(:segment)', 'PostController::index/$1');
+$routes->get('author/(:num)', 'PostController::author/$1');
 $routes->get('tag/(:segment)', 'PostController::tag/$1');
 $routes->post('post/send_comment', 'PostController::send_comment');
 

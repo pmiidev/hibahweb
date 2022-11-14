@@ -154,4 +154,25 @@ class PostController extends BaseController
         ];
         return view('post_tag', $data);
     }
+    public function author($user_id)
+    {
+        $posts = $this->postModel->where('post_user_id', $user_id)->get();
+        if ($posts->getNumRows() < 1) {
+            $posts = $posts->getResultArray();
+            $keyword = "Postingan Author tidak ditemukan";
+        } else {
+            $posts = $posts->getResultArray();
+            $keyword = "Author: $user_id";
+        }
+        $data = [
+            'site' => $this->siteModel->find(1),
+            'home' => $this->homeModel->find(1),
+            'about' => $this->aboutModel->find(1),
+            'title' => "Author $user_id",
+            'keyword' => $keyword,
+            'posts' => $posts,
+            'active' => 'Post'
+        ];
+        return view('post_author', $data);
+    }
 }

@@ -639,7 +639,7 @@ section {
   line-height: 28px;
   margin-bottom: 0;
 }
-.featured-services .icon-box:hover .title a, .featured-services .icon-box:hover .description {
+#featured-services .icon-box:hover{
   color: #fff;
 }
 .featured-services .icon-box:hover .icon i {
