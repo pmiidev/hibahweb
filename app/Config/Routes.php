@@ -66,6 +66,7 @@ $routes->get('document', 'DocumentController::index');
 
 // ContactController
 $routes->get('contact', 'ContactController::index');
+$routes->post('contact', 'ContactController::inbox');
 
 // LoginController & Logout
 $routes->group('', ['filter' => 'logedin'], static function ($routes) {
