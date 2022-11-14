@@ -15,11 +15,11 @@ Repo ini tidak akan saya lanjutkan dikarenakan saya akan mulai terjun ke framewo
 
 1. [Teknologi](#teknologi)
 2. [Fitur](#fitur)
-3. [Demo Aplikasi](#demo-aplikasi)
+3. [Demo Aplikasi](#demo)
 4. [Instalasi](#instalasi)
+   - [Cara Install](#instalasi)
    - [Spesifikasi yang Dibutuhkan](#spesifikasi)
-   - [Cara Install](#cara-install)
-   - [Login Dashboard](#cara-install)
+   - [Login Dashboard](#login-dashboard)
 5. [Lisensi](#license)
 
 <hr>
@@ -122,6 +122,10 @@ Fitur pada Aplikasi ini meliputi:
 
 <hr>
 
+## Demo
+
+[Belum tersedia](https://github.com/sejutaimpian/upgrading-to-ci4)
+
 ## Instalasi
 
 1. Clone repository ini melalui terminal git (pastikan sudah menginstall git)
@@ -150,10 +154,6 @@ Fitur pada Aplikasi ini meliputi:
 | Admin                | admin@gmail.com  | admin2021pmiidev  |
 | Author               | author@gmail.com | author2021pmiidev |
 | Author (belum aktif) | eris@gmail.com   | eris              |
-
-## Demo
-
-[Belum tersedia](https://github.com/sejutaimpian/upgrading-to-ci4)
 
 ## Lisensi
 
