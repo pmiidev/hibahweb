@@ -212,6 +212,16 @@ $routes->group('author', ['filter' => 'authauthor'], static function ($routes) {
         $routes->delete('', 'Author\CommentAuthorController::delete');
         $routes->get('unpublish', 'Author\CommentAuthorController::unpublish');
     });
+    // Setting Route
+    $routes->group('setting', static function ($routes) {
+        $routes->get('', static function () {
+            return redirect()->to('author/setting/profile');
+        });
+        // Setting My Profile
+        $routes->get('profile', 'Author\SettingAuthorController::profile');
+        $routes->post('profile', 'Author\SettingAuthorController::profile_update');
+        $routes->put('profile', 'Author\SettingAuthorController::profile_password');
+    });
 });
 
 /*
