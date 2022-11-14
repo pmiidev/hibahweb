@@ -1,58 +1,160 @@
-# Deskripsi Ringkas
-Salam Pergerakan! Selamat datang di situs resmi github @pmiidev untuk repo project-project kita kedepan. Kali ini pmiidev membagikan salah satu source code website company profile secara free (hibah) untuk para pengurus rayon/komis/rayon/korcab se-Indonesia.
+# Hibahweb => Upgraded to CI4
 
-Website ini dibangun dengan framework CodeIgniter 3 dilengkapi dengan fasilitas halaman front end dan back end. Front end adalah halaman website yang dikunjungi oleh pengunjung website, sedangkan back end untuk mengelola konten oleh administrator maupun author.
+## Tentang repo ini
 
-# Cara Install 
-- Unduh file source code di https://github.com/pmiidev/hibahweb dengan melakukan clone via git maupun download zip (manual)
-- Buat folder hibahweb di folder htdocs/www di root folder Anda
-Extract semua file yang sudah Anda unduh ke folder tersebut. Jika Anda akan menggunakannya untuk online, Anda tinggal upload file unduhan di atas ke folder public_html Anda.
-- Buat database dengan nama hibahweb
-- Import file hibahweb.sql dengan menggunakan phpmyadmin Anda ke dalam database hibahweb yang telah Anda buat
-- Lakukan konfigurasi jika terjadi perubahan nama repo: application/config/config.php
-- Lakukan konfigurasi jika terjadi perubahan nama maupun akun pada database: application/config/database.php  
-- Buka browser Anda dan ketikkan alamat URL nya, misalnya: http://localhost:8080/hibahweb
+Aplikasi ini merupakan sistem informasi untuk di lingkungan organisasi PMII baik di tingkat rayon, komisariat, cabang, bahkan koordinator cabang. Saya hanya mengupgrade framework ci3 ke ci4 dan beberapa hal kecil yang saya rasa salah dan kurang tepat.
 
-# Akun Pengguna
-Halaman login: http://localhost:8080/hibahweb/login
-- administrator
-username: admin@gmail.com | password: admin2021pmiidev
-- author
-username: author@gmail.com | password: author2021pmiidev
+## Status Repo
 
-# Demo HibahWeb
-- Silahkan buka https://dev.pmii.id
+`Stabil dan tidak akan ada perkembangan selanjutnya`.<br>
+Repo ini tidak akan saya lanjutkan dikarenakan saya akan mulai terjun ke framework Laravel dan meninggalkan CI. Oleh karena itu, saya mengharapkan kontribusi dari kalian untuk menutupi kekurangan dan memperbarui fitur-fitur termutakhir di kemudian hari.
 
-# Fitur Front End
-- Homepage dengan konsep landingpage
-- Halaman profil (about)
-- Halaman galeri kegiatan (gallery)
-- Halaman pengurus (team)
-- Halaman unduhan/download (document)
-- Halaman kontak (contact)
-- Halaman post berita (view)
-- Halaman post berita detail (details)
-- Halaman post category
-- Halaman post tag
-- halaman post result
+<hr>
 
-# Fitur Back End
-- Halaman login 
-- Halaman dashboard
-- Halaman grafik visitor
-- Halaman browser statistic
-- Halaman untuk mengelola post
-- Halaman untuk mengelola inbox
-- Halaman untuk mengelola commnet
-- Halaman untuk mengelola subscriber
-- Halaman untuk mengelola member
-- Halaman untuk mengelola testimonial
-- Halaman untuk mengelola teams
-- Halaman untuk mengelola users
-- Halaman untuk mengelola setting
+## Daftar Isi
 
-# Informasi Lainnya
-Silahkan buka sosial media PMII Developer dan follow untuk mengetahui informasi terupdate!
-- Instagram : https://www.instagram.com/pmiidev/ 
-- Twitter   : https://www.twitter.com/pmiidev/ 
-- Facebook  : https://www.facebook.com/pmiidev/
+1. [Teknologi](#teknologi)
+2. [Fitur](#fitur)
+3. [Demo Aplikasi](#demo-aplikasi)
+4. [Instalasi](#instalasi)
+   - [Spesifikasi yang Dibutuhkan](#spesifikasi)
+   - [Cara Install](#cara-install)
+   - [Login Dashboard](#cara-install)
+5. [Lisensi](#license)
+
+<hr>
+
+## Teknologi
+
+Teknologi yang digunakan untuk membangun aplikasi ini diantaranya:
+
+1. [Codeigniter 4](https://codeigniter.com/)
+2. [Bootstrap 5.1.1 => Halaman depan](https://getbootstrap.com/)
+3. [Bootstrap 3.3.5 => Halaman dashboard](https://getbootstrap.com/)
+4. [Bootstrap icon](https://icons.getbootstrap.com/)
+5. [Fontawsome 4.3.0](https://fontawesome.com/)
+6. [jQuery 2.1.4](https://jquery.com/)
+7. [jQueryUI 1.11.4](http://jqueryui.com)
+8. [jQuery blockUI 2.70.0](http://malsup.com/jquery/block/)
+9. [jQuery-slimScroll 1.3.0](http://rocha.la/jQuery-slimScroll)
+10. [jQuery Mockjax 2.0.1](https://github.com/jakerella/jquery-mockjax)
+11. [Datatables 1.10.7](https://datatables.net/)
+12. [MariaDB / MySql](https://mariadb.org/)
+13. [Summernote](https://summernote.org/)
+14. [AOS](http://michalsnik.github.io/aos/)
+15. [Boxicond](https://boxicons.com/)
+16. [Glightbox](https://biati-digital.github.io/glightbox/)
+17. [Swiper 7.0.6](https://swiperjs.com)
+18. [Isotope PACKAGED v3.0.6](https://isotope.metafizzy.co)
+19. [PHP Email Form Validation - v3.1](https://bootstrapmade.com/php-email-form/)
+20. [purecounter.js 1.1.4](https://github.com/srexi/purecounterjs)
+21. [Waypoints 4.0.1](https://github.com/imakewebthings/waypoints)
+22. [pace 1.0.2](https://github.com/CodeByZach/pace/)
+23. [Uniform 2.1.2](http://pixelmatrixdesign.com)
+24. [Line-icons](https://lineicons.com/)
+25. [OffCanvasMenuEffects](https://tympanus.net/Development/OffCanvasMenuEffects/)
+26. [Waves 0.6.5](http://fian.my.id/Waves)
+27. [Switchery](https://abpetkov.github.io/switchery/)
+28. [3d-bold-navigation](https://codyhouse.co/gem/3d-bold-navigation)
+29. [3d-bold-navigation](https://codyhouse.co/gem/3d-bold-navigation)
+30. [dropify 0.2.1](https://github.com/JeremyFagis/dropify)
+31. [moment.js 2.10.3](https://momentjs.com)
+32. [toastr](https://github.com/CodeSeven/toastr)
+33. [weather-icons 1.3](http://erikflowers.github.io/weather-icons/)
+34. [metrojs](http://drewgreenwell.com/projects/metrojs)
+35. [chartjs 1.0.2](http://chartjs.org/)
+36. And more...
+
+<hr>
+
+## Fitur
+
+Fitur pada Aplikasi ini meliputi:
+
+1. Halaman Depan
+
+   - Home
+   - Gallery
+   - Team
+   - All Post
+   - Post by Category
+   - Post by Author
+   - Post by Tag
+   - Post by Search
+   - Document
+   - Contact
+   - Login
+
+2. Halaman Dashboard Admin
+
+   - Dashboard
+   - Post
+     - All post
+     - Add new
+     - Category
+     - Tag
+   - Inbox
+   - Comment
+   - Subscriber
+   - Member
+   - Testimonial
+   - Team
+   - Users
+   - Settings
+     - My Profile
+     - Website
+     - Home
+     - About
+   - Logout
+
+3. Halaman Dashboard Author
+
+   - Dashboard
+   - Post
+     - All post
+     - Add new
+     - Category
+     - Tag
+   - Comment
+   - Settings
+     - My Profile
+   - Logout
+
+<hr>
+
+## Instalasi
+
+1. Clone repository ini melalui terminal git (pastikan sudah menginstall git)
+
+```sh
+  git clone https://github.com/sejutaimpian/upgrading-to-ci4.git
+```
+
+2. run mysql (pada xampp biasanya)
+3. Buat database dengan nama 'hibahweb' lalu Import `hibahweb.sql` yang ada pada folder db (pilih yang angka tertinggi karena versi yang terbaru, lalu rename menjadi hibahweb.sql)
+4. Rename file env menjadi .env<br>
+   Sesuaikan pengaturan pada .env jika dibutuhkan.
+5. ketik perintah 'composer install' pada terminal (harus sudah menginstall composer).
+6. Jalankan perintah `php spark serve` pada terminal untuk menjalankan aplikasi. pastikan lokasinya run tepat berada pada aplikasi dan pastikan juga untuk memiliki koneksi internet.
+
+### Spesifikasi
+
+- PHP ^8.1
+- Codeigniter 4.x
+- Database MySQL atau MariaDB 5.x
+
+### Login Dashboard
+
+|                      | Username         | Password          |
+| -------------------- | ---------------- | ----------------- |
+| Admin                | admin@gmail.com  | admin2021pmiidev  |
+| Author               | author@gmail.com | author2021pmiidev |
+| Author (belum aktif) | eris@gmail.com   | eris              |
+
+## Demo
+
+[Belum tersedia](https://github.com/sejutaimpian/upgrading-to-ci4)
+
+## Lisensi
+
+Project Sistem Informasi ini merupakan software yang free dan open source di bawah [lisensi MIT](LICENSE).

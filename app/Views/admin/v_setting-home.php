@@ -63,6 +63,12 @@
                                             <input type="text" name="caption2" class="form-control" id="input1" value="<?= $homes['home_caption_2']; ?>" placeholder="Site Title">
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="home_video" class="col-sm-2 control-label">Link Video</label>
+                                        <div class="col-sm-10">
+                                            <input type="url" name="home_video" class="form-control" id="home_video" value="<?= $homes['home_video']; ?>" placeholder="Link video">
+                                        </div>
+                                    </div>
 
                                     <div class="form-group">
                                         <label for="input1" class="col-sm-2 control-label">Image Heading</label>

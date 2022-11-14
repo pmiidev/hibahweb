@@ -243,6 +243,12 @@ class SettingAdminController extends BaseController
                     'required' => 'Kolom {field} harus diisi!'
                 ]
             ],
+            'home_video' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!'
+                ]
+            ],
             'img_heading' => [
                 'rules' => 'max_size[img_heading,2048]|is_image[img_heading]|mime_in[img_heading,image/jpg,image/jpeg,image/png]',
                 'errors' => [
@@ -274,6 +280,7 @@ class SettingAdminController extends BaseController
         $home_id = strip_tags(htmlspecialchars($this->request->getPost('home_id'), ENT_QUOTES));
         $caption1 = strip_tags(htmlspecialchars($this->request->getPost('caption1'), ENT_QUOTES));
         $caption2 = strip_tags(htmlspecialchars($this->request->getPost('caption2'), ENT_QUOTES));
+        $home_video = strip_tags(htmlspecialchars($this->request->getPost('home_video'), ENT_QUOTES));
 
         // Cek Foto
         $data = $this->homeModel->find($home_id);
@@ -305,6 +312,7 @@ class SettingAdminController extends BaseController
         $this->homeModel->update($home_id, [
             'home_caption_1' => $caption1,
             'home_caption_2' => $caption2,
+            'home_video' => $home_video,
             'home_bg_heading' => $namaImgHeading,
             'home_bg_testimonial' => $namaImgTestimonial,
             'home_bg_testimonial2' => $namaImgTestimonial2
