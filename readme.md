@@ -124,7 +124,7 @@ Fitur pada Aplikasi ini meliputi:
 
 ## Demo
 
-[Belum tersedia](https://github.com/sejutaimpian/upgrading-to-ci4)
+[http://upgradedhibahweb.000webhostapp.com/](http://upgradedhibahweb.000webhostapp.com/)
 
 ## Instalasi
 
@@ -143,7 +143,7 @@ Fitur pada Aplikasi ini meliputi:
 
 ### Spesifikasi
 
-- PHP ^8.1
+- PHP ^7.4
 - Codeigniter 4.x
 - Database MySQL atau MariaDB 5.x
 
