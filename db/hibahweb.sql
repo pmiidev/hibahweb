@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2022 at 11:28 AM
+-- Generation Time: Dec 15, 2022 at 11:56 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hibahweb2`
+-- Database: `hibahweb`
 --
 
 -- --------------------------------------------------------
@@ -391,6 +391,14 @@ CREATE TABLE `tbl_team` (
   `team_created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_team`
+--
+
+INSERT INTO `tbl_team` (`team_id`, `team_name`, `team_jabatan`, `team_image`, `team_twitter`, `team_facebook`, `team_instagram`, `team_linked`, `team_created_at`) VALUES
+(1, 'Muhammad', 'Ketua ', '1671101691_f31faef320b4d9289f0e.jpg', 'https://twitter.com', 'https://facebook.com', 'https://instagram.com', 'https://linkedin.com', '2022-12-15 10:49:06'),
+(2, 'Aisyah', 'Sekretaris', '1671101673_51deb8fd14c1e0e2f08c.jpg', 'https://twitter.com', 'https://facebook.com', 'https://instagram.com', 'https://linkedin.com', '2022-12-15 10:54:33');
+
 -- --------------------------------------------------------
 
 --
@@ -405,6 +413,14 @@ CREATE TABLE `tbl_testimonial` (
   `testimonial_image` varchar(50) DEFAULT NULL,
   `testimonial_created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_testimonial`
+--
+
+INSERT INTO `tbl_testimonial` (`testimonial_id`, `testimonial_name`, `testimonial_angkatan`, `testimonial_content`, `testimonial_image`, `testimonial_created_at`) VALUES
+(1, 'Muhammad', '2021-2022', 'Hello World!', '1671101002_45bb6d140f4f1a7304e6.png', '2022-12-15 10:43:22'),
+(2, 'Aisyah', '2022-2023', 'Salam Pergerakan!', '1671101467_eb2be0a5d9c16adfd49d.png', '2022-12-15 10:51:07');
 
 -- --------------------------------------------------------
 
@@ -736,13 +752,13 @@ ALTER TABLE `tbl_tags`
 -- AUTO_INCREMENT for table `tbl_team`
 --
 ALTER TABLE `tbl_team`
-  MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_testimonial`
 --
 ALTER TABLE `tbl_testimonial`
-  MODIFY `testimonial_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `testimonial_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
