@@ -1,13 +1,9 @@
-# Hibahweb => Upgraded to CI4
+# Hibahweb [CI4]
 
-## Tentang repo ini
+# Deskripsi Ringkas
+Salam Pergerakan! Selamat datang di situs resmi github [@pmiidev](https://github.com/pmiidev) untuk repo project-project kita kedepan. Kali ini pmiidev membagikan salah satu source code website company profile secara free (hibah) untuk para pengurus rayon/komis/rayon/korcab se-Indonesia.
 
-Aplikasi ini merupakan sistem informasi untuk di lingkungan organisasi PMII baik di tingkat rayon, komisariat, cabang, bahkan koordinator cabang. Saya hanya mengupgrade framework ci3 ke ci4 dan beberapa hal kecil yang saya rasa salah dan kurang tepat.
-
-## Status Repo
-
-`Stabil dan tidak akan ada perkembangan selanjutnya`.<br>
-Repo ini tidak akan saya lanjutkan dikarenakan saya akan mulai terjun ke framework Laravel dan meninggalkan CI. Oleh karena itu, saya mengharapkan kontribusi dari kalian untuk menutupi kekurangan dan memperbarui fitur-fitur termutakhir di kemudian hari.
+Website ini dibangun dengan framework CodeIgniter [2022, CI 4] dilengkapi dengan fasilitas halaman front end dan back end. Front end adalah halaman website yang dikunjungi oleh pengunjung website, sedangkan back end untuk mengelola konten oleh administrator maupun author.
 
 <hr>
 
@@ -122,16 +118,13 @@ Fitur pada Aplikasi ini meliputi:
 
 <hr>
 
-## Demo
-
-[http://upgradedhibahweb.000webhostapp.com/](http://upgradedhibahweb.000webhostapp.com/)
 
 ## Instalasi
 
 1. Clone repository ini melalui terminal git (pastikan sudah menginstall git)
 
 ```sh
-  git clone https://github.com/sejutaimpian/upgrading-to-ci4.git
+  git clone https://github.com/pmiidev/hibahweb.git
 ```
 
 2. run mysql (pada xampp biasanya)
@@ -153,8 +146,12 @@ Fitur pada Aplikasi ini meliputi:
 | -------------------- | ---------------- | ----------------- |
 | Admin                | admin@gmail.com  | admin2021pmiidev  |
 | Author               | author@gmail.com | author2021pmiidev |
-| Author (belum aktif) | eris@gmail.com   | eris              |
+
+## Acknowledgement and Demo
+
+Special thanks to [Sahabat Eris](https://github.com/sejutaimpian) for upgrading this repo using CodeIgniter 4 👋🏻     
+[http://upgradedhibahweb.000webhostapp.com/](http://upgradedhibahweb.000webhostapp.com/)
 
 ## Lisensi
 
-Project Sistem Informasi ini merupakan software yang free dan open source di bawah [lisensi MIT](LICENSE).
+Project ini merupakan software yang free dan open source di bawah [lisensi MIT](LICENSE).

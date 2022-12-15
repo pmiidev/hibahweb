@@ -1,5 +1,3 @@
-Pastikan untuk memilih db dengan angka tertinggi karena itulah db versi terbaru. Lalu ketika ingin mengimpor kedalam mysql, ganti namanya menjadi hibahweb.
-==============================
 Jangan lupa follow ya sahabat!
 
 Instagram
