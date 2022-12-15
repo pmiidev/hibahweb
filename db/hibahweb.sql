@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Nov 2022 pada 10.30
--- Versi server: 10.4.24-MariaDB
--- Versi PHP: 8.1.6
+-- Generation Time: Dec 15, 2022 at 10:52 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hibahweb`
+-- Database: `hibahweb2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_about`
+-- Table structure for table `tbl_about`
 --
 
 CREATE TABLE `tbl_about` (
@@ -36,16 +36,16 @@ CREATE TABLE `tbl_about` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_about`
+-- Dumping data for table `tbl_about`
 --
 
 INSERT INTO `tbl_about` (`about_id`, `about_name`, `about_image`, `about_description`, `about_alamat`) VALUES
-(1, 'PK PMII STMIK Tasikmalaya', 'about1.jpg', 'PK PMII STMIK Tasikmalaya adalah Ormawa Ekstrak Kampus STMIK Tasikmalaya yang bergerak di bidang pergerakan dan Digital Skill', 'Jl. R.E. Martadinata No.272A, Panyingkiran, Kec. Indihiang, Kab. Tasikmalaya, Jawa Barat 46151');
+(1, 'PMII ', 'about1.jpg', 'Pergerakan Mahasiswa Islam Indonesia', 'Jl. Taman Amir Hamzah, Pegangsaan, Menteng, Jakarta Pusat 10320');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_category`
+-- Table structure for table `tbl_category`
 --
 
 CREATE TABLE `tbl_category` (
@@ -55,7 +55,7 @@ CREATE TABLE `tbl_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_category`
+-- Dumping data for table `tbl_category`
 --
 
 INSERT INTO `tbl_category` (`category_id`, `category_name`, `category_slug`) VALUES
@@ -67,7 +67,7 @@ INSERT INTO `tbl_category` (`category_id`, `category_name`, `category_slug`) VAL
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_comment`
+-- Table structure for table `tbl_comment`
 --
 
 CREATE TABLE `tbl_comment` (
@@ -82,25 +82,10 @@ CREATE TABLE `tbl_comment` (
   `comment_image` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `tbl_comment`
---
-
-INSERT INTO `tbl_comment` (`comment_id`, `comment_date`, `comment_name`, `comment_email`, `comment_message`, `comment_status`, `comment_parent`, `comment_post_id`, `comment_image`) VALUES
-(1, '2022-11-07 00:43:20', 'Eris Sulistina', 'derissulistina@gmail.com', 'Mantap. Salam Pergerakan.', 1, 0, 3, 'avatar (5).png'),
-(2, '2022-11-07 00:48:39', 'Uzumkai Shio', 'shio@gmail.com', 'Seharusnya capaian awal dari media penerbitan adalah menghasilkan buku pedoman berorganisasi khususnuya di PMII dan lebih khusus lagi transformasi organisasi digital sekarang', 1, 0, 1, 'user_blank.png'),
-(5, '2022-11-09 14:20:36', 'Admin Dev', 'admin@gmail.com', 'Sepakat sahabat', 1, 2, 1, '225fc323cfd8ddae21b10991a6468916.png'),
-(8, '2022-11-10 00:53:35', 'Admin Dev', 'admin@gmail.com', 'Tetaplah berada di jalan pergerakan sahabat', 1, 1, 3, '225fc323cfd8ddae21b10991a6468916.png'),
-(9, '2022-11-10 01:05:42', 'Hilmi', 'hilmi@alawy.com', 'Contoh Komen', 1, 0, 2, 'user_blank.png'),
-(10, '2022-11-10 01:06:30', 'Bocah', 'hilmi@alawy.com', 'mhehehhehe', 1, 0, 2, 'user_blank.png'),
-(12, '2022-11-10 01:18:24', 'Admin Dev', 'admin@gmail.com', 'Kenapa ketawa bang?', 1, 9, 2, '225fc323cfd8ddae21b10991a6468916.png'),
-(14, '2022-11-13 12:10:42', 'Gin', 'gin@blackorganization.jp', 'I will find you!', 1, 0, 15, 'user_blank.png'),
-(16, '2022-11-13 12:28:45', 'Sera Masumi', 'sera@blackorganization.jp', 'Oke', 1, 14, 15, '1668176085_a747648ef76f242827e0.png');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_home`
+-- Table structure for table `tbl_home`
 --
 
 CREATE TABLE `tbl_home` (
@@ -114,7 +99,7 @@ CREATE TABLE `tbl_home` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_home`
+-- Dumping data for table `tbl_home`
 --
 
 INSERT INTO `tbl_home` (`home_id`, `home_caption_1`, `home_caption_2`, `home_video`, `home_bg_heading`, `home_bg_testimonial`, `home_bg_testimonial2`) VALUES
@@ -123,7 +108,7 @@ INSERT INTO `tbl_home` (`home_id`, `home_caption_1`, `home_caption_2`, `home_vid
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_inbox`
+-- Table structure for table `tbl_inbox`
 --
 
 CREATE TABLE `tbl_inbox` (
@@ -136,21 +121,10 @@ CREATE TABLE `tbl_inbox` (
   `inbox_status` varchar(2) DEFAULT '0' COMMENT '0=Unread, 1=Read'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `tbl_inbox`
---
-
-INSERT INTO `tbl_inbox` (`inbox_id`, `inbox_name`, `inbox_email`, `inbox_subject`, `inbox_message`, `inbox_created_at`, `inbox_status`) VALUES
-(2, 'Jia Nur Fatwa', 'jia@gmail.com', 'Arah Pergerakan', 'Setelah menimbang, melihat, dan mengingat, maka dengan ini', '2022-11-08 01:37:09', '1'),
-(3, 'Muhaemin', 'muhaemin@gmail.com', 'Pengembangan Organisasi', 'Pengembangan Organisasi di zaman sekarang haruslah dimulai dari digitalisasi organisasi', '2022-11-08 01:50:31', '0'),
-(4, 'Akmal', 'akmal@pmii.id', 'Aksi Tanpa Bukti', 'Pergerakan yang nyata adalah pergerakan yang nyata', '2022-11-08 01:50:31', '1'),
-(5, 'Sudirma', 'sudir@man.id', 'Jurnalistik Senjata Mahasiswa', 'Jurnalistik dalam perkembangan sejarahnya sudah melalui berbagai', '2022-11-08 01:52:41', '1'),
-(7, 'Eris Sulistina', 'eris@gmail.com', 'Kemajuan Website', 'kdslafnek', '2022-11-14 02:15:41', '1');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_member`
+-- Table structure for table `tbl_member`
 --
 
 CREATE TABLE `tbl_member` (
@@ -162,22 +136,10 @@ CREATE TABLE `tbl_member` (
   `member_created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `tbl_member`
---
-
-INSERT INTO `tbl_member` (`member_id`, `member_name`, `member_link`, `member_desc`, `member_image`, `member_created_at`) VALUES
-(1, 'Hilmi', 'https://instagram.com/hilmi', 'Hirup cageur ulah rujit', '1668069398_cc0a9c5c4cd10dd12fc4.png', '2022-11-10 07:37:18'),
-(2, 'Salsa', 'https://instagram.com', 'Salam Perjuangan', 'user_blank.png', '2022-11-10 07:38:01'),
-(3, 'Aldi', 'https://instagram.com', 'Hayu melawan ketidakadilan', 'user_blank.png', '2022-11-10 07:38:31'),
-(4, 'Lala', 'https://instagram.com', 'Perempuan yang melawan', 'user_blank.png', '2022-11-10 07:39:03'),
-(5, 'Dimas', 'https://instagram.com', 'Laki-laki juga harus peka ketidakadilan gender', 'user_blank.png', '2022-11-10 07:39:40'),
-(8, 'Sri', 'https://www.facebook.com/', 'Yang penting tidak merugikan orang lain', '1668068737_7b42112c634dd134c943.png', '2022-11-10 08:25:37');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_navbar`
+-- Table structure for table `tbl_navbar`
 --
 
 CREATE TABLE `tbl_navbar` (
@@ -187,24 +149,10 @@ CREATE TABLE `tbl_navbar` (
   `navbar_parent_id` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `tbl_navbar`
---
-
-INSERT INTO `tbl_navbar` (`navbar_id`, `navbar_name`, `navbar_slug`, `navbar_parent_id`) VALUES
-(1, 'Home', NULL, 0),
-(2, 'Profil', 'about', 0),
-(13, 'Edukasi', 'edu', 0),
-(17, 'Contact', 'contact', 0),
-(18, 'HTML Dasar', 'category/html-dasar', 13),
-(19, 'CSS Dasar', 'category/css-dasar', 13),
-(20, 'JavaScript Dasar', 'category/javascript-dasar', 13),
-(21, 'PHP Dasar', 'category/php-dasar', 13);
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_post`
+-- Table structure for table `tbl_post`
 --
 
 CREATE TABLE `tbl_post` (
@@ -224,7 +172,7 @@ CREATE TABLE `tbl_post` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_post`
+-- Dumping data for table `tbl_post`
 --
 
 INSERT INTO `tbl_post` (`post_id`, `post_title`, `post_description`, `post_contents`, `post_image`, `post_date`, `post_last_update`, `post_category_id`, `post_tags`, `post_slug`, `post_status`, `post_views`, `post_user_id`) VALUES
@@ -232,13 +180,13 @@ INSERT INTO `tbl_post` (`post_id`, `post_title`, `post_description`, `post_conte
 (2, 'E-Koran Media Komunis Wadah Menulis untuk Aktivis', 'Media menulis yang saat ini dapat mendukung hal tersebut pun sudah tidak terhitung, baik yang cetak maupun non cetak, segala bentuk platform sudah berkeliaran bebas serta dapat dinikmati oleh masyarakat tanpa batas. ', '<p style=\"text-align: justify; \">Telah resmi di buka&nbsp; E- Koran Media Komunis, salah satu media informasi yang dimilki oleh organisasi Pergerakan Mahasiswa Islam Indonesia (PMII) Komisariat Universitas Islam Malang (Unisma) hari ini tanggal 16 Maret 2021. Selain membaca, keterampilan berbahasa yang penting dimiliki adalah menulis, menyampaikan apa yang menjadi sudut pandang pribadi, baik yang besifat objektif atau subjektif sekalipun. Peka membaca sekitar kemudian menkontruksinya menjadi sebuah tulisan yang bisa dibaca masyarakat luas, menyumbangkan pengetahuan baru yang bersifat positif, bisa menjadi nilai plus untuk kita sebagai manusia yang meyakini perihal khoirunnas anfa’uhum linnas</p><p style=\"text-align: justify; \">Media menulis yang saat ini dapat mendukung hal tersebut pun sudah tidak terhitung, baik yang cetak maupun non cetak, segala bentuk platform sudah berkeliaran bebas serta dapat dinikmati oleh masyarakat tanpa batas. Tinggal ditanyakan kembali kepada diri sendiri apakah kita mau memilih diam ditempat atau bergerak menjadi bagian dari orang-orang yang tulisannya sudah dinikmati banyak kalangan. Maka dari itu, pengurus devisi Lembaga Pers Komisariat (LPK) Pergerakan Mahasiswa Islam Indonesia (PMII) Komisariat Universitas Islam malang (Unisma) memilih satu media berupa “E-Koran Media Komunis” yang bisa menjadi wadah menulis dan menunjang minat bakat kader PMII sebagai aktivis organisasi yang sejadinya setiap kader pasti memilki potensi dalam bidang tersebut. Dalam hal ini, E-Koran Media Komunis juga menyediakan berbagai kategori seperti opini, karya ilmiah dan lain sebagainya, websitenya juga bisa diakses dengan mudah.</p><p style=\"text-align: justify; \">Adanya website ini selain menjadi media menulis, juga diharapkan menjadi warna baru dari Pergerakan Mahsiwa Islam Indonesia (PMII) yang terus dijaga, dirawat dengan baik sehingga tidak ada istilah mati suri. Media yang dapat dijadikani alat bagi sahabat sahabati pergerakan untuk lebih berani melantangkan opini terutama di kondisi saat ini yang mengharuskan kita untuk berpikir lebih kreatif nan lebih aktif, lebih sabar menerima situasi yang tidak tahu sampai kapan pandemi, dan lebih kuat untuk melawan kerasnya dunia digitalisasi yang semakin hebat.</p><p style=\"text-align: justify; \">Dalam hal ini, ketua komisariat PMII Unisma sahabat Maksum menyampaikan apa yang dilihat dengan adanya E-koran Media Komunis “Media ini hadir salah satunya untuk menunaikan point terakhir dari pilar demokrasi, tidak muluk-muluk, dengan harapan sederhana ruang dealektika modern ini selain sebagai pangkalan data, sarana informasi, brand organisasi, juga untuk menjadi wadah utuh menampung gagasan-gagasan keren, ide-ide kreatif dari setiap kader PMII khususnya di lingkup Unisma”. Ketua Kopri PMII Komisariat Unisma Sahabati Firda juga menambahkan “Besar harapan saya, dengan adanya E-Koran Media Komunis mampu menggugah selera literasi bagi para kader PMII Unisma untuk menuangkan cita rasa tulisan-tulisan terbaiknya di website E-Koran PMII Unisma, karena entah diakui atau tidak, hari ini kita hidup di dunia yang penuh dengan informasi atau bisa dikatakan tengah&nbsp; mengalami banjir informasi (Flood of information) namun miskin makna, maka adanya media ini guna menghadirkan informasi kritis-solutif”.</p><p style=\"text-align: justify; \">Selain itu, koordinator devisi Media Pers Komisariat (LPK) juga menyampaikan harapannya “Dengan adanya E-Koran Media Komunis ini, saya berharap kepada kader PMII di bawah naungan komisariat Unisma untuk berani menyampaikan gagasan yang ada dalam pikiran masing-masing kader PMII, baik berupa karya ilmiah, opini ataupun berita tentang isu-isu saat ini. Saya harap kader-kader PMII tidak merasa canggung atau sungkan dalam berkarya segila mungkin.” jelas sahabat Yasak</p><p style=\"text-align: justify; \">Harapan-harapan baik yang sejatinya dapat direlisasikan secara sempurna dengan kerja sama semua elemen PMII Komisariat Unisma baik kader dari semua Rayon, pengurus bahkan sahabat sahabati yang sudah demisioner. Berkontribusi untuk menuangkan idenya melalui tulisan, memberi izin untuk dipublikasikan hingga dapat dikonsumsi banyak orang, karena website ini layaknya sebuah tanaman yang perlu diberi makan agar tetap memberi manfaat pada sekitar, tidak mati apalagi dilupakan. Kita sebagai manusia, yang dianggap sebagai aktivis pergerakan oleh masyarakat umum, selayaknya terus barusaha agar tidak tuli ketika mendengarkan sebuah aspirasi, tidak buta untuk membaca berita, tidak bisu untuk menyampaikan kebenaran baru dan tidak lumpuh untuk berpikir secara utuh.</p><p style=\"text-align: justify; \"><br></p><p style=\"text-align: justify; \">Sumber: <a href=\"https://pmiiunisma.id/e-koran-media-komunis-wadah-menulis-untuk-aktivis/\" target=\"_blank\">pmiiunisma.id</a></p><p style=\"text-align: justify; \"><br></p>', '77a9b4d95d54ff320de62abd90a669e7.jpg', '2021-10-22 17:44:23', NULL, 2, 'pmii,pmiidev,pmiimendunia,kemahasiswaan,kebangsaan,pemuda', 'e-koran-media-komunis-wadah-menulis-untuk-aktivis', 1, 7, 5),
 (3, 'Perlunya Edukasi Media, PMII IAIN Pontianak Adakan Ngaji Media', 'Kader PCI PMII Jerman mengatakan bahwa penyelenggaraan Ngaji Media ini merupakan bentuk upaya meningkatkan kecerdasan dalam bermedia sosial. ', '<p style=\"text-align: justify; \">Pergerakan Mahasiswa Islam Indonesia (PMII) Komisariat IAIN Pontianak telah mengadakan Ngaji Media Chapter 1. Kegiatan ini berlangsung secara daring menggunakan platform Zoom Meeting Pada Sabtu dengan Tema \"Kader PMII Perlu Popularitas atau Kepakaran\" (07/08/2021).&nbsp;</p><p style=\"text-align: justify; \">Kajian ini diikuti oleh Keluarga Besar PMII Komisariat IAIN Pontianak dan Kader PMII se-Indonesia berjumlah 50 Orang. Pemateri dalam kegiatan ini Narendra Ning Ampeldenta atau akrab disapa Rake selaku Direktur Kominfo Perhimpunan Pelajar Indonesia (PPI) dan Kader PCI PMII Jerman.&nbsp;</p><p style=\"text-align: justify; \">Sahabat Novianto membuka kajian tersebut dengan mengutip apa yang disampaikan oleh Ketua Umum PB PMII, Gus Abe mengatakan bahwa kader PMII harus menjadi Key Opinion Leader yang dimana ketika ada suatu topik tidak harus melulu menjadi pengikut dari Opini yang dibuat oleh seseorang, ujarnya.</p><p style=\"text-align: justify; \">Kemudian sudah seharusnya kita sebagai kader PMII harus menjadi orang yang terdepan dalam membuat suatu opini yang tentunya sebagai Mahasiswa akademisi harus betul betul mengontrol dan ikut mengawal permasalahan bangsa ini. Maka dari itu tema yang diangkat pada kesempatan tersebut sangat relevan untuk dibahas.</p><p style=\"text-align: justify; \">Selanjutnya, sahabat Rake selaku pemateri Ngaji Media memaparkan “dalam popularitas atau kepakaran adalah satu kesatuan yang tidak terpisahkan dalam menciptakan opini. dalam hal edukasi ke warga netizen perlu memiliki kepakaran dan dalam penyampaian perlu kepopularitasan agar hal ini tercipta suatu kolaborasi yang positif \"tuturnya.</p><p style=\"text-align: justify; \">Kader PCI PMII Jerman mengatakan bahwa penyelenggaraan Ngaji Media ini merupakan bentuk upaya meningkatkan kecerdasan dalam bermedia sosial. Kegiatan ini peserta tidak hanya mendengar materi yang disampaikan akan tetapi peserta juga ikut bertanya dan berdiskusi terkait tema tersebut. Peserta sangat bersemangat dan antusias mengikuti kajian ini dan peserta berharap agar kajian ini dapat berlangsung secara berkelanjutan sampai peserta bisa memahami ilmu yang telah didapatkan.</p><p style=\"text-align: justify; \"><br></p><p style=\"text-align: justify; \">Sumber: <a href=\"https://www.pmiiiainpontianak.or.id/2021/08/perlunya-edukasi-media-pmii-iain.html\" target=\"_blank\">pmiiiainpontianak.or.id</a></p><p style=\"text-align: justify; \"><br></p>', '91f36c86d503fca2efb0fa46db377b21.jpg', '2021-10-22 17:46:21', NULL, 2, 'pmii,pmiidev,keindonesiaan,keislaman,kemahasiswaan,kebangsaan', 'perlunya-edukasi-media--pmii-iain-pontianak-adakan-ngaji-media', 1, 4, 4),
 (13, 'Taman Bermain Para Warga Pergerakkan', 'Meta Description', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet unde id asperiores laudantium deserunt cum omnis voluptates perferendis cumque. Quisquam nobis incidunt veritatis molestias explicabo ipsum, laborum quaerat? Illo.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet unde id asperiores laudantium deserunt cum omnis voluptates perferendis cumque. Quisquam nobis incidunt veritatis molestias explicabo ipsum, laborum quaerat? Illo.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet unde id asperiores laudantium deserunt cum omnis voluptates perferendis cumque. Quisquam nobis incidunt veritatis molestias explicabo ipsum, laborum quaerat? Illo.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet unde id asperiores laudantium deserunt cum omnis voluptates perferendis cumque. Quisquam nobis incidunt veritatis molestias explicabo ipsum, laborum quaerat? Illo.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet unde id asperiores laudantium deserunt cum omnis voluptates perferendis cumque. Quisquam nobis incidunt veritatis molestias explicabo ipsum, laborum quaerat? Illo.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet unde id asperiores laudantium deserunt cum omnis voluptates perferendis cumque. Quisquam nobis incidunt veritatis molestias explicabo ipsum, laborum quaerat? Illo.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur amet unde id asperiores laudantium deserunt cum omnis voluptates perferendis cumque. Quisquam nobis incidunt veritatis molestias explicabo ipsum, laborum quaerat? Illo.<br></p>', 'default-post.png', '2022-11-08 02:22:09', '2022-11-08 09:22:09', 4, 'pmii,pmiidev,pmiimedia', 'taman-bermain-para-warga-pergerakkan', 1, 4, 10),
-(15, 'coba post method post update kedua', 'updated kedua', '<p><br></p>', '1667959918_2d33e80f304ad8e0c7ee.png', '2022-11-08 12:09:32', '2022-11-12 17:54:44', 1, 'pmiidev,pmiimedia', 'coba-post-method-post-885', 1, 2, 10),
+(15, 'coba post method post update kedua', 'updated kedua', '<p><br></p>', '1667959918_2d33e80f304ad8e0c7ee.png', '2022-11-08 12:09:32', '2022-11-12 17:54:44', 1, 'pmiidev,pmiimedia', 'coba-post-method-post-885', 1, 3, 10),
 (16, 'Coba dari author sera masumi', '', '<p>lorem ipsum sit dolor amet kiulna mausik nuretra</p>', '1668339848_1d3cc253471e07acced5.png', '2022-11-12 22:41:04', '2022-11-13 05:44:08', 1, 'pmii,pmiidev,pmiimedia,kemahasiswaan,pemuda', 'coba-dari-author-sera-masumi', 1, 0, 10);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_post_views`
+-- Table structure for table `tbl_post_views`
 --
 
 CREATE TABLE `tbl_post_views` (
@@ -249,7 +197,7 @@ CREATE TABLE `tbl_post_views` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_post_views`
+-- Dumping data for table `tbl_post_views`
 --
 
 INSERT INTO `tbl_post_views` (`view_id`, `view_date`, `view_ip`, `view_post_id`) VALUES
@@ -350,12 +298,13 @@ INSERT INTO `tbl_post_views` (`view_id`, `view_date`, `view_ip`, `view_post_id`)
 (170, '2022-11-13 11:41:12', '::1', 16),
 (171, '2022-11-14 01:05:40', '::1', 13),
 (172, '2022-11-14 07:25:34', '::1', 2),
-(173, '2022-11-14 07:39:43', '::1', 15);
+(173, '2022-11-14 07:39:43', '::1', 15),
+(174, '2022-12-15 08:54:26', '::1', 15);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_site`
+-- Table structure for table `tbl_site`
 --
 
 CREATE TABLE `tbl_site` (
@@ -377,16 +326,16 @@ CREATE TABLE `tbl_site` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_site`
+-- Dumping data for table `tbl_site`
 --
 
 INSERT INTO `tbl_site` (`site_id`, `site_name`, `site_title`, `site_description`, `site_favicon`, `site_logo_header`, `site_logo_footer`, `site_logo_big`, `site_facebook`, `site_twitter`, `site_instagram`, `site_pinterest`, `site_linkedin`, `site_wa`, `site_mail`) VALUES
-(1, 'PMII', 'PK PMII STMIK Tasikmalaya', 'Website Resmi Pengurus Komisariat Pergerakan Mahasiswa Islam Indonesia STMIK Tasikmalaya', 'favicon1.png', 'apple-touch-icon2.png', 'favicon.png', 'logobig.jpg', 'https://www.facebook.com/dosenirham', 'https://twitter.com/bro_irham', 'https://www.instagram.com/bro_irham', 'https://id.pinterest.com/login/', 'https://www.linkedin.com/in/irchamali', '6285000111333', 'pmii.stmiktasik@gmail.com');
+(1, 'PMII', 'PMII', 'Website Resmi Pergerakan Mahasiswa Islam Indonesia', 'favicon1.png', 'apple-touch-icon2.png', 'favicon.png', 'logobig.jpg', 'https://www.facebook.com/dosenirham', 'https://twitter.com/bro_irham', 'https://www.instagram.com/bro_irham', 'https://id.pinterest.com/login/', 'https://www.linkedin.com/in/irchamali', '6285000111333', 'pmii.stmiktasik@gmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_subscribe`
+-- Table structure for table `tbl_subscribe`
 --
 
 CREATE TABLE `tbl_subscribe` (
@@ -397,18 +346,10 @@ CREATE TABLE `tbl_subscribe` (
   `subscribe_rating` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `tbl_subscribe`
---
-
-INSERT INTO `tbl_subscribe` (`subscribe_id`, `subscribe_email`, `subscribe_created_at`, `subscribe_status`, `subscribe_rating`) VALUES
-(1, 'coba@gmail.com', '2022-11-07 06:29:24', 1, 1),
-(2, 'derissulistina@gmail.com', '2022-11-07 06:33:03', 1, 3);
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_tags`
+-- Table structure for table `tbl_tags`
 --
 
 CREATE TABLE `tbl_tags` (
@@ -417,7 +358,7 @@ CREATE TABLE `tbl_tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_tags`
+-- Dumping data for table `tbl_tags`
 --
 
 INSERT INTO `tbl_tags` (`tag_id`, `tag_name`) VALUES
@@ -435,7 +376,7 @@ INSERT INTO `tbl_tags` (`tag_id`, `tag_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_team`
+-- Table structure for table `tbl_team`
 --
 
 CREATE TABLE `tbl_team` (
@@ -450,36 +391,10 @@ CREATE TABLE `tbl_team` (
   `team_created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `tbl_team`
---
-
-INSERT INTO `tbl_team` (`team_id`, `team_name`, `team_jabatan`, `team_image`, `team_twitter`, `team_facebook`, `team_instagram`, `team_linked`, `team_created_at`) VALUES
-(1, 'Ade Salamun', 'Ketua Umum', '1668081664_8ec53583032db9b2496b.png', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 09:37:35'),
-(2, 'Marwan Mujahidin', 'Wakil Ketua I', 'cec32fd5691d82c9f316ef590515cf98.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 09:38:56'),
-(3, 'Hilman Latief', 'Wakil Ketua II', '4197cf7cc36b9de385718a756bbde482.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 09:39:57'),
-(4, 'M. Abdurrouf', 'Wakil Ketua III', '1e2877cbba655720abee419958e61e1a.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 09:40:51'),
-(5, 'Angga Nugraha', 'Sekretaris ', 'f6be4b85f6bb24ad5bf6c244ea2f22d6.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 09:51:25'),
-(6, 'Tjaturadi Walujo', 'Wakil Sekretaris I', 'a5a90ee96778be37f4e2af3704001df6.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 09:52:29'),
-(7, 'Amin sudarsono', 'Wakil Sekretaris II', '763676a64e4d5d512e551f2bbffefae0.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 10:03:00'),
-(8, 'Edi Muktiono', 'Wakil Sekretaris III', '90e475fa3300aae710054f796249a873.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 10:03:53'),
-(9, 'Muhammad Furqon', 'Bendahara', '57b09176ff076a9280acc3d6c68978f3.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 10:04:27'),
-(10, 'Syahrudin C Asho', 'Departemen I', '50e24eaea0e4569ece68d2bc190455f7.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 10:05:31'),
-(11, 'Yudi Wahyudi', 'Departemen I', 'f78202759ef82b0a9a62885b915991a5.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 10:05:59'),
-(12, 'Aep Saefulloh', 'Departemen I', '9945179812b9b940c887e31a0fb09cfe.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 10:06:34'),
-(13, 'Supendi ', 'Departemen II', '3986d3e196901e10955eb8db8031d019.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 10:07:00'),
-(14, 'Ade Syarifudin Allam', ' Departemen II', '3467c14106766c69ab61559a4a07acee.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 10:07:40'),
-(15, 'Hidayat ', 'Departemen II', '5b6d762b3887fe00b4726a524ac01780.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 10:08:05'),
-(16, 'Sukron Maskur ', 'Departemen II', 'fefa461adad475e5bdeface1147897a5.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 10:08:29'),
-(17, 'Muhammad Hafiz ', 'Departemen III', '0fb030b848f7204e88b7777f83918f2b.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 10:08:53'),
-(18, 'Slamet Tuhari ', 'Departemen III', '6cd6956a1dc11383292a8a100c939ad5.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 10:09:17'),
-(19, 'Barman Wahidatan ', 'Departemen III', '772dc5e16858f7056aff382e57abffba.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2021-08-10 10:09:39'),
-(21, 'Yudi Wahyudi', 'Departemen I', 'user_blank.jpg', 'https://twitter.com/', 'https://facebook.com/', 'https://instagram.com/', 'https://linkedin.com/', '2022-11-10 11:53:04');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_testimonial`
+-- Table structure for table `tbl_testimonial`
 --
 
 CREATE TABLE `tbl_testimonial` (
@@ -491,21 +406,10 @@ CREATE TABLE `tbl_testimonial` (
   `testimonial_created_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `tbl_testimonial`
---
-
-INSERT INTO `tbl_testimonial` (`testimonial_id`, `testimonial_name`, `testimonial_angkatan`, `testimonial_content`, `testimonial_image`, `testimonial_created_at`) VALUES
-(1, 'Angga Nugraha', '2008-2010', 'PMII telah memadukan potensi jaringan antar pengelola organisasi untuk menjadi kekuatan yang menyatukan strategi pemberdayaan melalui kaderisasi.', '3ff07ca20e7acd5ca7bff893ac043c68.png', '2021-07-30 09:48:07'),
-(2, 'Tan Sukma', '2009-2011', 'Gerakan kami untuk mendorong berbagai  usaha pengembangan ekonomi produktif yang berkelanjutan. Melakukan upaya pengembangan SDM dalam bidang pengelolaan UMKM.', 'e497eda35658c5984707fa25eb945b8e.png', '2021-07-30 09:57:52'),
-(3, 'Edi Muktiono', '2010-2012', 'PMII membangun jaringan dan kerjasama guna membangun hubungan aspiratif dengan pemerintah. Dengan kerjasama yang baik dengan pengelola gerakan nasional dan internasional.', '0cbf1a5492b39e3a92288117f8487eb5.png', '2021-07-30 10:02:22'),
-(4, 'Dewi Sri', '2011-2013', 'Ikhtiar kami untuk mewujudkan organisasi pengelola rayon yang transparan, amanah dan profesional untuk meningkatkan taraf kehidupan masyarakat yang sejahtera.', '0082e8fdb74eb6c977c3aa25bd45418f.png', '2021-07-30 10:03:50'),
-(5, 'Roger', '2009-2012', 'One piece is real. ', '1668077761_39dcf10090738adf58a3.png', '2022-11-10 10:48:43');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_user`
+-- Table structure for table `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -519,18 +423,17 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_user`
+-- Dumping data for table `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`user_id`, `user_name`, `user_email`, `user_password`, `user_level`, `user_status`, `user_photo`) VALUES
 (4, 'Author Dev', 'author@gmail.com', '$2y$10$t6RvwyS7bK4fywnM0JzGkuwJNfT/3/2qyXElYpm7tEiLPMmOi2DjO', '2', '1', '4894343ac02c28e5f292e7fa60ba447b.png'),
-(5, 'Admin Dev', 'admin@gmail.com', '$2y$10$/8/4kk9kNyra9AHiu8TIeuUDC89/W/wAYtNIjxiGTTT../GXpQoXK', '1', '1', '225fc323cfd8ddae21b10991a6468916.png'),
-(12, 'Eris Sulistina', 'eris@gmail.com', '$2y$10$D2ZIiKIVwAcMIGD1L.L/O.95BR5eJwAY9ZzZ7J61V0/TGJ03JqnXe', '2', '0', '1668321965_8449ac75160ae0230a92.png');
+(5, 'Admin Dev', 'admin@gmail.com', '$2y$10$/8/4kk9kNyra9AHiu8TIeuUDC89/W/wAYtNIjxiGTTT../GXpQoXK', '1', '1', '225fc323cfd8ddae21b10991a6468916.png');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_visitors`
+-- Table structure for table `tbl_visitors`
 --
 
 CREATE TABLE `tbl_visitors` (
@@ -541,7 +444,7 @@ CREATE TABLE `tbl_visitors` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_visitors`
+-- Dumping data for table `tbl_visitors`
 --
 
 INSERT INTO `tbl_visitors` (`visit_id`, `visit_date`, `visit_ip`, `visit_platform`) VALUES
@@ -650,207 +553,208 @@ INSERT INTO `tbl_visitors` (`visit_id`, `visit_date`, `visit_ip`, `visit_platfor
 (541429, '2022-11-11 06:47:42', '::1', 'Chrome 107.0.0.0'),
 (541430, '2022-11-12 06:05:44', '::1', 'Chrome 107.0.0.0'),
 (541431, '2022-11-12 22:54:02', '::1', 'Chrome 107.0.0.0'),
-(541432, '2022-11-14 00:48:24', '::1', 'Chrome 107.0.0.0');
+(541432, '2022-11-14 00:48:24', '::1', 'Chrome 107.0.0.0'),
+(541433, '2022-12-15 08:53:08', '::1', 'Chrome 108.0.0.0');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `tbl_about`
+-- Indexes for table `tbl_about`
 --
 ALTER TABLE `tbl_about`
   ADD PRIMARY KEY (`about_id`);
 
 --
--- Indeks untuk tabel `tbl_category`
+-- Indexes for table `tbl_category`
 --
 ALTER TABLE `tbl_category`
   ADD PRIMARY KEY (`category_id`);
 
 --
--- Indeks untuk tabel `tbl_comment`
+-- Indexes for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
   ADD PRIMARY KEY (`comment_id`);
 
 --
--- Indeks untuk tabel `tbl_home`
+-- Indexes for table `tbl_home`
 --
 ALTER TABLE `tbl_home`
   ADD PRIMARY KEY (`home_id`);
 
 --
--- Indeks untuk tabel `tbl_inbox`
+-- Indexes for table `tbl_inbox`
 --
 ALTER TABLE `tbl_inbox`
   ADD PRIMARY KEY (`inbox_id`);
 
 --
--- Indeks untuk tabel `tbl_member`
+-- Indexes for table `tbl_member`
 --
 ALTER TABLE `tbl_member`
   ADD PRIMARY KEY (`member_id`);
 
 --
--- Indeks untuk tabel `tbl_navbar`
+-- Indexes for table `tbl_navbar`
 --
 ALTER TABLE `tbl_navbar`
   ADD PRIMARY KEY (`navbar_id`);
 
 --
--- Indeks untuk tabel `tbl_post`
+-- Indexes for table `tbl_post`
 --
 ALTER TABLE `tbl_post`
   ADD PRIMARY KEY (`post_id`);
 
 --
--- Indeks untuk tabel `tbl_post_views`
+-- Indexes for table `tbl_post_views`
 --
 ALTER TABLE `tbl_post_views`
   ADD PRIMARY KEY (`view_id`);
 
 --
--- Indeks untuk tabel `tbl_site`
+-- Indexes for table `tbl_site`
 --
 ALTER TABLE `tbl_site`
   ADD PRIMARY KEY (`site_id`);
 
 --
--- Indeks untuk tabel `tbl_subscribe`
+-- Indexes for table `tbl_subscribe`
 --
 ALTER TABLE `tbl_subscribe`
   ADD PRIMARY KEY (`subscribe_id`);
 
 --
--- Indeks untuk tabel `tbl_tags`
+-- Indexes for table `tbl_tags`
 --
 ALTER TABLE `tbl_tags`
   ADD PRIMARY KEY (`tag_id`);
 
 --
--- Indeks untuk tabel `tbl_team`
+-- Indexes for table `tbl_team`
 --
 ALTER TABLE `tbl_team`
   ADD PRIMARY KEY (`team_id`);
 
 --
--- Indeks untuk tabel `tbl_testimonial`
+-- Indexes for table `tbl_testimonial`
 --
 ALTER TABLE `tbl_testimonial`
   ADD PRIMARY KEY (`testimonial_id`);
 
 --
--- Indeks untuk tabel `tbl_user`
+-- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- Indeks untuk tabel `tbl_visitors`
+-- Indexes for table `tbl_visitors`
 --
 ALTER TABLE `tbl_visitors`
   ADD PRIMARY KEY (`visit_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_about`
+-- AUTO_INCREMENT for table `tbl_about`
 --
 ALTER TABLE `tbl_about`
   MODIFY `about_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_category`
+-- AUTO_INCREMENT for table `tbl_category`
 --
 ALTER TABLE `tbl_category`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_comment`
+-- AUTO_INCREMENT for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_home`
+-- AUTO_INCREMENT for table `tbl_home`
 --
 ALTER TABLE `tbl_home`
   MODIFY `home_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_inbox`
+-- AUTO_INCREMENT for table `tbl_inbox`
 --
 ALTER TABLE `tbl_inbox`
-  MODIFY `inbox_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `inbox_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_member`
+-- AUTO_INCREMENT for table `tbl_member`
 --
 ALTER TABLE `tbl_member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_navbar`
+-- AUTO_INCREMENT for table `tbl_navbar`
 --
 ALTER TABLE `tbl_navbar`
-  MODIFY `navbar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `navbar_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_post`
+-- AUTO_INCREMENT for table `tbl_post`
 --
 ALTER TABLE `tbl_post`
   MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_post_views`
+-- AUTO_INCREMENT for table `tbl_post_views`
 --
 ALTER TABLE `tbl_post_views`
-  MODIFY `view_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
+  MODIFY `view_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_site`
+-- AUTO_INCREMENT for table `tbl_site`
 --
 ALTER TABLE `tbl_site`
   MODIFY `site_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_subscribe`
+-- AUTO_INCREMENT for table `tbl_subscribe`
 --
 ALTER TABLE `tbl_subscribe`
-  MODIFY `subscribe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `subscribe_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_tags`
+-- AUTO_INCREMENT for table `tbl_tags`
 --
 ALTER TABLE `tbl_tags`
   MODIFY `tag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_team`
+-- AUTO_INCREMENT for table `tbl_team`
 --
 ALTER TABLE `tbl_team`
-  MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_testimonial`
+-- AUTO_INCREMENT for table `tbl_testimonial`
 --
 ALTER TABLE `tbl_testimonial`
-  MODIFY `testimonial_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `testimonial_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_user`
+-- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_visitors`
+-- AUTO_INCREMENT for table `tbl_visitors`
 --
 ALTER TABLE `tbl_visitors`
-  MODIFY `visit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=541433;
+  MODIFY `visit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=541434;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
