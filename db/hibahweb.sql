@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2022 at 10:52 AM
+-- Generation Time: Dec 15, 2022 at 11:28 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -330,7 +330,7 @@ CREATE TABLE `tbl_site` (
 --
 
 INSERT INTO `tbl_site` (`site_id`, `site_name`, `site_title`, `site_description`, `site_favicon`, `site_logo_header`, `site_logo_footer`, `site_logo_big`, `site_facebook`, `site_twitter`, `site_instagram`, `site_pinterest`, `site_linkedin`, `site_wa`, `site_mail`) VALUES
-(1, 'PMII', 'PMII', 'Website Resmi Pergerakan Mahasiswa Islam Indonesia', 'favicon1.png', 'apple-touch-icon2.png', 'favicon.png', 'logobig.jpg', 'https://www.facebook.com/dosenirham', 'https://twitter.com/bro_irham', 'https://www.instagram.com/bro_irham', 'https://id.pinterest.com/login/', 'https://www.linkedin.com/in/irchamali', '6285000111333', 'pmii.stmiktasik@gmail.com');
+(1, 'PMII', 'PMII', 'Website Resmi Pergerakan Mahasiswa Islam Indonesia', 'favicon1.png', 'apple-touch-icon2.png', 'favicon.png', 'logobig.jpg', 'https://www.facebook.com/pmiidev', 'https://twitter.com/pmiidev', 'https://www.instagram.com/pmiidev', 'https://id.pinterest.com/login/', 'https://www.linkedin.com/in/irchamali', '6285000111222', 'pmiidev9@gmail.com');
 
 -- --------------------------------------------------------
 

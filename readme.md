@@ -1,6 +1,6 @@
 # Hibahweb [CI4]
 
-# Deskripsi Ringkas
+## Deskripsi Ringkas
 Salam Pergerakan! Selamat datang di situs resmi github [@pmiidev](https://github.com/pmiidev) untuk repo project-project kita kedepan. Kali ini pmiidev membagikan salah satu source code website company profile secara free (hibah) untuk para pengurus rayon/komis/rayon/korcab se-Indonesia.
 
 Website ini dibangun dengan framework CodeIgniter [2022, CI 4] dilengkapi dengan fasilitas halaman front end dan back end. Front end adalah halaman website yang dikunjungi oleh pengunjung website, sedangkan back end untuk mengelola konten oleh administrator maupun author.
@@ -11,12 +11,11 @@ Website ini dibangun dengan framework CodeIgniter [2022, CI 4] dilengkapi dengan
 
 1. [Teknologi](#teknologi)
 2. [Fitur](#fitur)
-3. [Demo Aplikasi](#demo)
-4. [Instalasi](#instalasi)
+3. [Instalasi](#instalasi)
    - [Cara Install](#instalasi)
    - [Spesifikasi yang Dibutuhkan](#spesifikasi)
    - [Login Dashboard](#login-dashboard)
-5. [Lisensi](#license)
+4. [Lisensi](#lisensi)
 
 <hr>
 
@@ -137,7 +136,7 @@ Fitur pada Aplikasi ini meliputi:
 ### Spesifikasi
 
 - PHP ^7.4
-- Codeigniter 4.x
+- CodeIgniter 4.x
 - Database MySQL atau MariaDB 5.x
 
 ### Login Dashboard
@@ -147,11 +146,13 @@ Fitur pada Aplikasi ini meliputi:
 | Admin                | admin@gmail.com  | admin2021pmiidev  |
 | Author               | author@gmail.com | author2021pmiidev |
 
-## Acknowledgement and Demo
-
-Special thanks to [Sahabat Eris](https://github.com/sejutaimpian) for upgrading this repo using CodeIgniter 4 👋🏻     
-[http://upgradedhibahweb.000webhostapp.com/](http://upgradedhibahweb.000webhostapp.com/)
+<hr>
 
 ## Lisensi
 
 Project ini merupakan software yang free dan open source di bawah [lisensi MIT](LICENSE).
+
+## Acknowledgment 
+
+- Special thanks to [Sahabat Eris](https://github.com/sejutaimpian) for upgrading this repo using CodeIgniter 4 👋🏻     
+- Demo [https://upgradedhibahweb.000webhostapp.com/](http://upgradedhibahweb.000webhostapp.com/)
