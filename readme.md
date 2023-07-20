@@ -51,14 +51,13 @@ Teknologi yang digunakan untuk membangun aplikasi ini diantaranya:
 26. [Waves 0.6.5](http://fian.my.id/Waves)
 27. [Switchery](https://abpetkov.github.io/switchery/)
 28. [3d-bold-navigation](https://codyhouse.co/gem/3d-bold-navigation)
-29. [3d-bold-navigation](https://codyhouse.co/gem/3d-bold-navigation)
-30. [dropify 0.2.1](https://github.com/JeremyFagis/dropify)
-31. [moment.js 2.10.3](https://momentjs.com)
-32. [toastr](https://github.com/CodeSeven/toastr)
-33. [weather-icons 1.3](http://erikflowers.github.io/weather-icons/)
-34. [metrojs](http://drewgreenwell.com/projects/metrojs)
-35. [chartjs 1.0.2](http://chartjs.org/)
-36. And more...
+29. [dropify 0.2.1](https://github.com/JeremyFagis/dropify)
+30. [moment.js 2.10.3](https://momentjs.com)
+31. [toastr](https://github.com/CodeSeven/toastr)
+32. [weather-icons 1.3](http://erikflowers.github.io/weather-icons/)
+33. [metrojs](http://drewgreenwell.com/projects/metrojs)
+34. [chartjs 1.0.2](http://chartjs.org/)
+35. And more...
 
 <hr>
 

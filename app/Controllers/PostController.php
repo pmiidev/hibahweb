@@ -28,7 +28,9 @@ class PostController extends BaseController
                 'site' => $this->siteModel->find(1),
                 'home' => $this->homeModel->find(1),
                 'about' => $this->aboutModel->find(1),
-                'posts' => $this->postModel->findAll(),
+                // 'posts' => $this->postModel->findAll(),
+                'posts' => $this->postModel->paginate(6),
+                'pager' => $this->postModel->pager,
                 'title' => 'Post',
                 'active' => 'Post'
             ];
