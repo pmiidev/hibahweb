@@ -25,7 +25,8 @@
                     </div>
                 <?php endforeach; ?>
             </div>
-            <?= $pager->links() ?>
+            <?= $pager->links('posts', 'post_pagination') ?>
+            
         </div>
 
     </section>
