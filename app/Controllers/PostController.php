@@ -29,7 +29,7 @@ class PostController extends BaseController
                 'home' => $this->homeModel->find(1),
                 'about' => $this->aboutModel->find(1),
                 // 'posts' => $this->postModel->findAll(),
-                'posts' => $this->postModel->paginate(6),
+                'posts' => $this->postModel->paginate(6, 'posts'),
                 'pager' => $this->postModel->pager,
                 'title' => 'Post',
                 'active' => 'Post'
