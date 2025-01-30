@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3c40488e46e62e10e8fe4634f817962e",
+    "content-hash": "ca298c93aad3dc2f3ecc230a3f829c89",
     "packages": [
         {
             "name": "codeigniter4/framework",
-            "version": "v4.3.0",
+            "version": "v4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/framework.git",
-                "reference": "f83c211996d1bbe5e76ce9af5e71f900bfba1c32"
+                "reference": "b1e5c64ce50757397ff77dd277e3273567df5b4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/f83c211996d1bbe5e76ce9af5e71f900bfba1c32",
-                "reference": "f83c211996d1bbe5e76ce9af5e71f900bfba1c32",
+                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/b1e5c64ce50757397ff77dd277e3273567df5b4b",
+                "reference": "b1e5c64ce50757397ff77dd277e3273567df5b4b",
                 "shasum": ""
             },
             "require": {
@@ -78,7 +78,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "source": "https://github.com/codeigniter4/CodeIgniter4"
             },
-            "time": "2023-01-10T05:35:30+00:00"
+            "time": "2023-01-14T11:32:47+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
