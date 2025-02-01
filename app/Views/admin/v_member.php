@@ -186,7 +186,7 @@
                                         <input type="text" name="nama" value="<?= $row['member_name']; ?>" class="form-control" placeholder="Name" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="link" value="<?= $row['member_link']; ?>" class="form-control" placeholder="Link" required>
+                                        <input type="url" name="link" value="<?= $row['member_link']; ?>" class="form-control" placeholder="Link" required>
                                     </div>
                                     <div class="form-group">
                                         <textarea name="desc" class="form-control" rows="6" placeholder="Deskripsi" required><?= $row['member_desc']; ?></textarea>

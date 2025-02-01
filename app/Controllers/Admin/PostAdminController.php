@@ -58,7 +58,15 @@ class PostAdminController extends BaseController
     }
     public function publish()
     {
-        if (!$this->validate([
+        $data = [
+            'title' => htmlspecialchars(strip_tags($this->request->getPost('title')), ENT_QUOTES),
+            'slug' => htmlspecialchars(strip_tags($this->request->getPost('slug')), ENT_QUOTES),
+            'contents' => $this->request->getPost('contents'),
+            'filefoto' => $this->request->getFile('filefoto'),
+            'category' => htmlspecialchars(strip_tags($this->request->getPost('category')), ENT_QUOTES),
+            'tag' => $this->request->getPost('tag')
+        ];
+        $rules = [
             'title' => [
                 'rules' => 'required|alpha_numeric_space',
                 'errors' => [
@@ -100,7 +108,8 @@ class PostAdminController extends BaseController
                     'required' => 'Kolom {field} harus diisi!'
                 ]
             ]
-        ])) {
+        ];
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to('/admin/post/add_new')->withInput()->with('peringatan', 'Data gagal disimpan dikarenakan ada penginputan yang tidak sesuai. silakan coba lagi!');
         }
         // Cek foto
@@ -112,18 +121,20 @@ class PostAdminController extends BaseController
         } else {
             $namaFotoUpload = 'default-post.png';
         }
-        $title = strip_tags(htmlspecialchars($this->request->getPost('title'), ENT_QUOTES));
-        $contents = $this->request->getPost('contents');
-        $category = strip_tags(htmlspecialchars($this->request->getPost('category'), ENT_QUOTES));
-        $slug = strip_tags(htmlspecialchars($this->request->getPost('slug'), ENT_QUOTES));
-        $description = strip_tags(htmlspecialchars($this->request->getPost('description'), ENT_QUOTES));
+
+        $validData = $this->validator->getValidated();
+        $title = $validData['title'];
+        $contents = $validData['contents'];
+        $category = $validData['category'];
+        $slug = $validData['slug'];
+        $description = htmlspecialchars(strip_tags($this->request->getPost('description')), ENT_QUOTES);
 
         if ($this->postModel->where('post_slug', $slug)->get()->getNumRows() > 0) {
             $uniqe_num = rand(1, 999);
             $slug = $slug . '-' . $uniqe_num;
         }
 
-        $tags[] = $this->request->getPost('tag');
+        $tags[] = $validData['tag'];
         foreach ($tags as $tag) {
             $tags = implode(",", $tag);
         }
@@ -167,9 +178,25 @@ class PostAdminController extends BaseController
     }
     public function update()
     {
-        $post_id = $this->request->getPost('post_id');
-        // Validasi
-        if (!$this->validate([
+        $data = [
+            'post_id' => $this->request->getPost('post_id'),
+            'title' => htmlspecialchars(strip_tags($this->request->getPost('title'), ENT_QUOTES)),
+            'slug' => htmlspecialchars(strip_tags($this->request->getPost('slug'), ENT_QUOTES)),
+            'contents' => $this->request->getPost('contents'),
+            'filefoto' => $this->request->getFile('filefoto'),
+            'category' => htmlspecialchars(strip_tags($this->request->getPost('category'), ENT_QUOTES)),
+            'tag' => $this->request->getPost('tag'),
+            'description' => htmlspecialchars(strip_tags($this->request->getPost('description'), ENT_QUOTES))
+        ];
+        $rules = [
+            'post_id' => [
+                'rules' => 'required|is_natural_no_zero|numeric',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!',
+                    'is_natural_no_zero' => 'inputan harus angka dan tidak boleh nol atau negatif',
+                    'numeric' => 'inputan harus angka'
+                ]
+            ],
             'title' => [
                 'rules' => 'required|alpha_numeric_space',
                 'errors' => [
@@ -210,16 +237,24 @@ class PostAdminController extends BaseController
                 'errors' => [
                     'required' => 'Kolom {field} harus diisi!'
                 ]
-            ]
-        ])) {
+            ],
+            'description' => [
+                'rules' => 'permit_empty'
+            ],
+        ];
+        $post_id = $this->request->getPost('post_id');
+        // Validasi
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to("/admin/post/$post_id/edit")->withInput()->with('peringatan', 'Data gagal disimpan dikarenakan ada penginputan yang tidak sesuai. silakan coba lagi!');
         }
         // Inisiasi
-        $title = strip_tags(htmlspecialchars($this->request->getPost('title'), ENT_QUOTES));
-        $contents = $this->request->getPost('contents');
-        $category = strip_tags(htmlspecialchars($this->request->getPost('category'), ENT_QUOTES));
-        $slug = strip_tags(htmlspecialchars($this->request->getPost('slug'), ENT_QUOTES));
-        $description = strip_tags(htmlspecialchars($this->request->getPost('description'), ENT_QUOTES));
+        $validData = $this->validator->getValidated();
+        $post_id = $validData['post_id'];
+        $title = $validData['title'];
+        $contents = $validData['contents'];
+        $category = $validData['category'];
+        $slug = $validData['slug'];
+        $description = $validData['description'];
 
         if ($this->postModel->where('post_slug', $slug)->get()->getNumRows() > 1) {
             $uniqe_num = rand(1, 999);

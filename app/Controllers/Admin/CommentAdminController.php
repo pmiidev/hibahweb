@@ -34,16 +34,24 @@ class CommentAdminController extends BaseController
     }
     public function reply()
     {
-        if (!$this->validate([
-            'post_id' => ['rules' => 'required|numeric'],
-            'comment_id' => ['rules' => 'required|numeric'],
+        $data = [
+            'post_id' => htmlspecialchars($this->request->getPost('post_id')),
+            'comment_id' => htmlspecialchars($this->request->getPost('comment_id')),
+            'comments' => htmlspecialchars($this->request->getPost('comments'))
+        ];
+        $rules = [
+            'post_id' => ['rules' => 'required|is_natural_no_zero|numeric'],
+            'comment_id' => ['rules' => 'required|is_natural_no_zero|numeric'],
             'comments' => ['rules' => 'required|min_length[3]']
-        ])) {
+        ];
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to('/admin/comment')->with('msg', 'not validated');
         }
-        $post_id = htmlspecialchars($this->request->getPost('post_id'));
-        $comment_id = htmlspecialchars($this->request->getPost('comment_id'));
-        $comment = htmlspecialchars($this->request->getPost('comments'));
+
+        $validData = $this->validator->getValidated();
+        $post_id = $validData['post_id'];
+        $comment_id = $validData['comment_id'];
+        $comment = $validData['comments'];
         $user_name = $this->akun['user_name'];
         $user_email = $this->akun['user_email'];
         $user_photo = $this->akun['user_photo'];
@@ -66,14 +74,20 @@ class CommentAdminController extends BaseController
     }
     public function edit()
     {
-        if (!$this->validate([
-            'comment_id2' => ['rules' => 'required|numeric'],
+        $data = [
+            'comment_id2' => htmlspecialchars($this->request->getPost('comment_id2')),
+            'comments2' => htmlspecialchars($this->request->getPost('comments2'))
+        ];
+        $rules = [
+            'comment_id2' => ['rules' => 'required|is_natural_no_zero|numeric'],
             'comments2' => ['rules' => 'required|min_length[3]']
-        ])) {
+        ];
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to('/admin/comment')->with('msg', 'not validated');
         }
-        $comment_id2 = htmlspecialchars($this->request->getPost('comment_id2'));
-        $comment = htmlspecialchars($this->request->getPost('comments2'));
+        $validData = $this->validator->getValidated();
+        $comment_id2 = $validData['comment_id2'];
+        $comment = $validData['comments2'];
         $this->commentModel->update($comment_id2, ['comment_message' => $comment]);
         return redirect()->to('/admin/comment')->with('msg', 'success-edit');
     }

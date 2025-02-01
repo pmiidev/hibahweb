@@ -37,7 +37,13 @@ class MemberAdminController extends BaseController
     }
     public function insert()
     {
-        if (!$this->validate([
+        $data = [
+            'nama' => $this->request->getPost('nama'),
+            'link' => $this->request->getPost('link'),
+            'desc' => $this->request->getPost('desc'),
+            'filefoto' => $this->request->getFile('filefoto')
+        ];
+        $rules = [
             'nama' => [
                 'rules' => 'required|alpha_space',
                 'errors' => [
@@ -66,21 +72,24 @@ class MemberAdminController extends BaseController
                     'mime_in' => 'Yang anda pilih bukan gambar'
                 ]
             ]
-        ])) {
+        ];
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to('/admin/member')->with('msg', 'error');
         }
+        $validData = $this->validator->getValidated();
+        $nama = $validData['nama'];
+        $link = $validData['link'];
+        $desc = $validData['desc'];
+        $filefoto = $validData['filefoto'];
         // Cek foto
-        if ($this->request->getFile('filefoto')->isValid()) {
+        if ($filefoto->isValid()) {
             // Ambil File foto
-            $fotoUpload = $this->request->getFile('filefoto');
-            $namaFotoUpload = $fotoUpload->getRandomName();
-            $fotoUpload->move('assets/backend/images/member/', $namaFotoUpload);
+            $namaFotoUpload = $filefoto->getRandomName();
+            $filefoto->move('assets/backend/images/member/', $namaFotoUpload);
         } else {
             $namaFotoUpload = 'user_blank.png';
         }
-        $nama = strip_tags(htmlspecialchars($this->request->getPost('nama'), ENT_QUOTES));
-        $link = strip_tags(htmlspecialchars($this->request->getPost('link'), ENT_QUOTES));
-        $desc = strip_tags(htmlspecialchars($this->request->getPost('desc'), ENT_QUOTES));
+
         // Simpan ke database
         $this->memberModel->save([
             'member_name' => $nama,
@@ -92,7 +101,22 @@ class MemberAdminController extends BaseController
     }
     public function update()
     {
-        if (!$this->validate([
+        $data = [
+            'member_id' => $this->request->getPost('member_id'),
+            'nama' => $this->request->getPost('nama'),
+            'link' => $this->request->getPost('link'),
+            'desc' => $this->request->getPost('desc'),
+            'filefoto' => $this->request->getFile('filefoto')
+        ];
+        $rules = [
+            'member_id' => [
+                'rules' => 'required|is_natural_no_zero|numeric',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!',
+                    'is_natural_no_zero' => 'inputan harus angka dan tidak boleh nol atau negatif',
+                    'numeric' => 'inputan harus angka'
+                ]
+            ],
             'nama' => [
                 'rules' => 'required|alpha_space',
                 'errors' => [
@@ -121,13 +145,17 @@ class MemberAdminController extends BaseController
                     'mime_in' => 'Yang anda pilih bukan gambar'
                 ]
             ]
-        ])) {
+        ];
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to('/admin/member')->with('msg', 'error');
         }
-        $member_id = strip_tags(htmlspecialchars($this->request->getPost('member_id'), ENT_QUOTES));
-        $nama = strip_tags(htmlspecialchars($this->request->getPost('nama'), ENT_QUOTES));
-        $link = strip_tags(htmlspecialchars($this->request->getPost('link'), ENT_QUOTES));
-        $desc = strip_tags(htmlspecialchars($this->request->getPost('desc'), ENT_QUOTES));
+
+        $validData = $this->validator->getValidated();
+        $member_id = $validData['member_id'];
+        $nama = $validData['nama'];
+        $link = $validData['link'];
+        $desc = $validData['desc'];
+
         // Cek Foto
         $member = $this->memberModel->find($member_id);
         $fotoAwal = $member['member_image'];

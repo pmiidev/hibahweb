@@ -89,11 +89,18 @@ class PostController extends BaseController
     }
     public function send_comment()
     {
-        if (!$this->validate([
+        $data = [
+            'post_id' => htmlspecialchars($this->request->getPost('post_id')),
+            'name' => htmlspecialchars($this->request->getPost('name')),
+            'email' => htmlspecialchars($this->request->getPost('email')),
+            'message' => htmlspecialchars($this->request->getPost('message')),
+        ];
+        $rules = [
             'post_id' => [
-                'rules' => 'required|numeric',
+                'rules' => 'required|is_natural_no_zero|numeric',
                 'errors' => [
                     'required' => 'Kolom {field} harus diisi!',
+                    'is_natural_no_zero' => 'Inputan {field} harus angka dan tidak boleh nol atau negatif',
                     'numeric' => 'Inputan {field} harus angka!'
                 ]
             ],
@@ -121,15 +128,23 @@ class PostController extends BaseController
                     'min_length[3]' => 'panjang karakter minimal 3 digit'
                 ]
             ]
-        ])) {
+        ];
+        if (!$this->validateData($data, $rules)) {
             session()->setFlashdata('msg', '<div class="alert alert-danger">Mohon masukkan input yang Valid!</div>');
             return redirect()->back();
         }
+
+        $validData = $this->validator->getValidated();
+        $post_id = $validData['post_id'];
+        $name = $validData['name'];
+        $email = $validData['email'];
+        $message = $validData['message'];
+
         $this->commentModel->save([
-            'comment_name' => htmlspecialchars($this->request->getPost('name')),
-            'comment_email' => htmlspecialchars($this->request->getPost('email')),
-            'comment_message' => htmlspecialchars($this->request->getPost('message')),
-            'comment_post_id' => htmlspecialchars($this->request->getPost('post_id')),
+            'comment_name' => $name,
+            'comment_email' => $email,
+            'comment_message' => $message,
+            'comment_post_id' => $post_id,
             'comment_image' => 'user_blank.png'
         ]);
         session()->setFlashdata('msg', '<div class="alert alert-info">Terima kasih atas respon Anda, komentar Anda akan tampil setelah moderasi</div>');

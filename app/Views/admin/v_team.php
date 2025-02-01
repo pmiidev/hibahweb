@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <!-- Title -->
     <title><?= $title; ?></title>
@@ -41,9 +42,9 @@
 <body class="page-header-fixed  compact-menu  pace-done page-sidebar-fixed">
     <div class="overlay"></div>
     <main class="page-content content-wrap">
-    <?= $this->include('layout/sidebar-dashboard'); ?>
+        <?= $this->include('layout/sidebar-dashboard'); ?>
         <div class="page-inner">
-        <?= $this->include('layout/title-dashboard'); ?>
+            <?= $this->include('layout/title-dashboard'); ?>
             <div id="main-wrapper">
                 <div class="row">
                     <div class="col-md-12">
@@ -52,60 +53,60 @@
                                 <button type="button" class="btn btn-success m-b-sm" data-toggle="modal" data-target="#myModal">Add New</button>
                                 <div class="table-responsive">
                                     <table id="mytable" class="display table" style="width: 100%; ">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Photo</th>
-                                            <th>Name</th>
-                                            <th>Jabatan</th>
-                                            <th>twitter</th>
-                                            <th>facebook</th>
-                                            <th>instagram</th>
-                                            <th>linkedin</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="body-table">
-                                        <?php
-                                        $no = 0;
-                                        foreach ($teams as $row) :
-                                            $no++;
-                                        ?>
+                                        <thead>
                                             <tr>
-                                                <td style="vertical-align: middle;"><?= $no; ?></td>
-                                                <td style="vertical-align: middle;">
-                                                    <?php if (empty($row['team_image'])) : ?>
-                                                        <img class="img-circle" width="50" src="/assets/backend/images/team/user_blank.jpg">
-                                                    <?php else : ?>
-                                                        <img class="img-circle" width="50" src="/assets/backend/images/team/<?= $row['team_image']; ?>">
-                                                    <?php endif; ?>
-                                                </td>
-                                                <td style="vertical-align: middle;"><?= $row['team_name']; ?>
-                                                </td>
-                                                <td style="vertical-align: middle;"><?= $row['team_jabatan']; ?>
-                                                </td>
-                                                <td style="vertical-align: middle;"><?= $row['team_twitter']; ?>
-                                                </td>
-                                                <td style="vertical-align: middle;"><?= $row['team_facebook']; ?>
-                                                </td>
-                                                <td style="vertical-align: middle;"><?= $row['team_instagram']; ?>
-                                                </td>
-                                                <td style="vertical-align: middle;"><?= $row['team_linked']; ?>
-                                                </td>
-                                                <td style="vertical-align: middle;">
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                            Action <span class="caret"></span>
-                                                        </button>
-                                                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#ModalEdit<?= $row['team_id']; ?>"><span class="icon-pencil"></span> Edit</a></li>
-                                                            <li><a href="javascript:void(0);" class="delete" data-userid="<?= $row['team_id']; ?>"><span class="icon-trash"></span> Delete</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
+                                                <th>No</th>
+                                                <th>Photo</th>
+                                                <th>Name</th>
+                                                <th>Jabatan</th>
+                                                <th>twitter</th>
+                                                <th>facebook</th>
+                                                <th>instagram</th>
+                                                <th>linkedin</th>
+                                                <th>Action</th>
                                             </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
+                                        </thead>
+                                        <tbody id="body-table">
+                                            <?php
+                                            $no = 0;
+                                            foreach ($teams as $row) :
+                                                $no++;
+                                            ?>
+                                                <tr>
+                                                    <td style="vertical-align: middle;"><?= $no; ?></td>
+                                                    <td style="vertical-align: middle;">
+                                                        <?php if (empty($row['team_image'])) : ?>
+                                                            <img class="img-circle" width="50" src="/assets/backend/images/team/user_blank.jpg">
+                                                        <?php else : ?>
+                                                            <img class="img-circle" width="50" src="/assets/backend/images/team/<?= $row['team_image']; ?>">
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td style="vertical-align: middle;"><?= $row['team_name']; ?>
+                                                    </td>
+                                                    <td style="vertical-align: middle;"><?= $row['team_jabatan']; ?>
+                                                    </td>
+                                                    <td style="vertical-align: middle;"><?= $row['team_twitter']; ?>
+                                                    </td>
+                                                    <td style="vertical-align: middle;"><?= $row['team_facebook']; ?>
+                                                    </td>
+                                                    <td style="vertical-align: middle;"><?= $row['team_instagram']; ?>
+                                                    </td>
+                                                    <td style="vertical-align: middle;"><?= $row['team_linked']; ?>
+                                                    </td>
+                                                    <td style="vertical-align: middle;">
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                                Action <span class="caret"></span>
+                                                            </button>
+                                                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                                                <li><a href="javascript:void(0);" data-toggle="modal" data-target="#ModalEdit<?= $row['team_id']; ?>"><span class="icon-pencil"></span> Edit</a></li>
+                                                                <li><a href="javascript:void(0);" class="delete" data-userid="<?= $row['team_id']; ?>"><span class="icon-trash"></span> Delete</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -146,16 +147,16 @@
                                     <input type="text" name="jabatan" class="form-control" placeholder="Jabatan" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="twitter" class="form-control" placeholder="https://twitter.com/" required>
+                                    <input type="url" name="twitter" class="form-control" placeholder="https://twitter.com/" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="facebook" class="form-control" placeholder="https://facebook.com/" required>
+                                    <input type="url" name="facebook" class="form-control" placeholder="https://facebook.com/" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="instagram" class="form-control" placeholder="https://instagram.com/" required>
+                                    <input type="url" name="instagram" class="form-control" placeholder="https://instagram.com/" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="linked" class="form-control" placeholder="https://linkedin.com/" required>
+                                    <input type="url" name="linked" class="form-control" placeholder="https://linkedin.com/" required>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +176,7 @@
     ?>
         <!-- Modal Edit -->
         <form id="add-row-form" action="/<?= session('role'); ?>/team" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="_method" value="PUT">
             <div class="modal fade" id="ModalEdit<?= $row['team_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -199,16 +200,16 @@
                                         <input type="text" name="jabatan" value="<?= $row['team_jabatan']; ?>" class="form-control" placeholder="Jabatan" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="twitter" value="<?= $row['team_twitter']; ?>" class="form-control" placeholder="https://twitter.com/" required>
+                                        <input type="url" name="twitter" value="<?= $row['team_twitter']; ?>" class="form-control" placeholder="https://twitter.com/" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="facebook" value="<?= $row['team_facebook']; ?>" class="form-control" placeholder="https://facebook.com/" required>
+                                        <input type="url" name="facebook" value="<?= $row['team_facebook']; ?>" class="form-control" placeholder="https://facebook.com/" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="instagram" value="<?= $row['team_instagram']; ?>" class="form-control" placeholder="https://instagram.com/" required>
+                                        <input type="url" name="instagram" value="<?= $row['team_instagram']; ?>" class="form-control" placeholder="https://instagram.com/" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="linked" value="<?= $row['team_linked']; ?>" class="form-control" placeholder="https://linkedin.com/" required>
+                                        <input type="url" name="linked" value="<?= $row['team_linked']; ?>" class="form-control" placeholder="https://linkedin.com/" required>
                                     </div>
 
                                 </div>
@@ -228,7 +229,7 @@
 
     <!-- Modal hapus-->
     <form id="add-row-form" action="/<?= session('role'); ?>/team" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_method" value="DELETE">
         <div class="modal fade" id="ModalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -290,7 +291,7 @@
                 }
             });
 
-            $('#body-table').on('click','.delete', function() {
+            $('#body-table').on('click', '.delete', function() {
                 var userid = $(this).data('userid');
                 $('#ModalDelete').modal('show');
                 $('[name="kode"]').val(userid);

@@ -33,8 +33,12 @@ class SettingAuthorController extends BaseController
     }
     public function profile_password()
     {
-        // Validasi
-        if (!$this->validate([
+        $data = [
+            'new_password' => $this->request->getPost('new_password'),
+            'conf_password' => $this->request->getPost('conf_password'),
+            'old_password' => $this->request->getPost('old_password')
+        ];
+        $rules = [
             'new_password' => [
                 'rules' => 'required|matches[conf_password]',
                 'errors' => [
@@ -48,25 +52,41 @@ class SettingAuthorController extends BaseController
                     'required' => 'Kolom {field} harus diisi!',
                     'matches' => 'Konfirmasi password tidak sesuai'
                 ]
+            ],
+            'old_password' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!'
+                ]
             ]
-        ])) {
+        ];
+        // Validasi
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to("/author/setting/profile")->with('msg', 'error-notmatch');
         }
-        $old_password = strip_tags(htmlspecialchars($this->request->getPost('old_password'), ENT_QUOTES));
-        $conf_password = strip_tags(htmlspecialchars($this->request->getPost('conf_password'), ENT_QUOTES));
+        $validData = $this->validator->getValidated();
+        $old_password = $validData['old_password'];
+        $new_password = $validData['new_password'];
+
+        // $old_password = strip_tags(htmlspecialchars($this->request->getPost('old_password'), ENT_QUOTES));
+        // $conf_password = strip_tags(htmlspecialchars($this->request->getPost('conf_password'), ENT_QUOTES));
         if (!password_verify($old_password, $this->akun['user_password'])) {
             return redirect()->to("/author/setting/profile")->with('msg', 'error-notfound');
         }
         // Save ke database
         $this->userModel->update($this->akun['user_id'], [
-            'user_password' => password_hash($conf_password, PASSWORD_DEFAULT)
+            'user_password' => password_hash($new_password, PASSWORD_DEFAULT)
         ]);
         return redirect()->to("/author/setting/profile")->with('msg', 'success');
     }
     public function profile_update()
     {
-        // Validasi
-        if (!$this->validate([
+        $data = [
+            'user_name' => $this->request->getPost('user_name'),
+            'user_email' => $this->request->getPost('user_email'),
+            'user_photo' => $this->request->getFile('user_photo')
+        ];
+        $rules = [
             'user_name' => [
                 'rules' => 'required|alpha_space',
                 'errors' => [
@@ -89,24 +109,28 @@ class SettingAuthorController extends BaseController
                     'mime_in' => 'Yang anda pilih bukan gambar'
                 ]
             ]
-        ])) {
+        ];
+        // Validasi
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to("/author/setting/profile")->with('msg', 'error');
         }
-        $user_name = strip_tags(htmlspecialchars($this->request->getPost('user_name'), ENT_QUOTES));
-        $user_email = strip_tags(htmlspecialchars($this->request->getPost('user_email'), ENT_QUOTES));
-        $user_password = strip_tags(htmlspecialchars($this->request->getPost('user_password'), ENT_QUOTES));
+        $validData = $this->validator->getValidated();
+        $user_name = $validData['user_name'];
+        $user_email = $validData['user_email'];
+        $user_photo = $validData['user_photo'];
+
+        $user_password = $this->request->getPost('user_password');
         if (!password_verify($user_password, $this->akun['user_password'])) {
             return redirect()->to("/author/setting/profile")->with('msg', 'error-notfound');
         }
         // Cek Foto
-        $data = $this->akun;
-        $userPhotoAwal = $data['user_photo'];
-        $fileUserPhoto = $this->request->getFile('user_photo');
-        if ($fileUserPhoto->getName() == '') {
+        $user = $this->akun;
+        $userPhotoAwal = $user['user_photo'];
+        if ($user_photo->getName() == '') {
             $namaUserPhoto = $userPhotoAwal;
         } else {
-            $namaUserPhoto = $fileUserPhoto->getRandomName();
-            $fileUserPhoto->move('assets/backend/images/users', $namaUserPhoto);
+            $namaUserPhoto = $user_photo->getRandomName();
+            $user_photo->move('assets/backend/images/users', $namaUserPhoto);
         }
         // Simpan ke database
         $this->userModel->update($this->akun['user_id'], [

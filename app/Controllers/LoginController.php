@@ -13,11 +13,11 @@ class LoginController extends BaseController
     }
     public function validasi()
     {
-        // Ngambil inputan
-        $email = htmlspecialchars($this->request->getPost('email'));
-        $password = htmlspecialchars($this->request->getPost('password'));
-
-        if (!$this->validate([
+        $data = [
+            'email' => htmlspecialchars($this->request->getPost('email')),
+            'password' => htmlspecialchars($this->request->getPost('password'))
+        ];
+        $rules = [
             'email' => [
                 'rules' => 'required|valid_email',
                 'errors' => [
@@ -31,9 +31,16 @@ class LoginController extends BaseController
                     'required' => 'Kolom {field} harus diisi!'
                 ]
             ]
-        ])) {
+        ];
+
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to('/login')->with('pesan', 'email atau password salah');
         }
+
+        $validData = $this->validator->getValidated();
+        $email = $validData['email'];
+        $password = $validData['password'];
+
         $userModel = new UserModel();
         $user = $userModel->where('user_email', $email)->first();
         // Jika user terdaftar
