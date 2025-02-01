@@ -4,6 +4,7 @@ namespace Config;
 
 use CodeIgniter\Config\ForeignCharacters as BaseForeignCharacters;
 
-class ForeignCharacters extends BaseForeignCharacters
-{
-}
+/**
+ * @immutable
+ */
+class ForeignCharacters extends BaseForeignCharacters {}
