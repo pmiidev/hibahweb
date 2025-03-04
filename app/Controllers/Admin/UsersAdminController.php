@@ -36,87 +36,55 @@ class UsersAdminController extends BaseController
     }
     public function insert()
     {
+        $data = [
+            'email' => $this->request->getPost('email'),
+            'password' => $this->request->getPost('password'),
+            'password2' => $this->request->getPost('password2'),
+            'nama' => htmlspecialchars(strip_tags($this->request->getPost('nama')), ENT_QUOTES),
+            'level' => htmlspecialchars(strip_tags($this->request->getPost('level')), ENT_QUOTES),
+            'filefoto' => $this->request->getFile('filefoto')
+        ];
+        $rules = [
+            'email' => 'required|valid_email|is_unique[tbl_user.user_email]',
+            'password' => 'required|matches[password2]',
+            'password2' => 'required|matches[password]',
+            'nama' => 'required|alpha_space',
+            'level' => 'required|numeric',
+            'filefoto' => 'max_size[filefoto,2048]|is_image[filefoto]|mime_in[filefoto,image/jpg,image/jpeg,image/png]'
+        ];
         // Validasi Email
-        if (!$this->validate([
-            'email' => [
-                'rules' => 'required|valid_email|is_unique[tbl_user.user_email]',
-                'errors' => [
-                    'required' => 'Kolom {field} harus diisi!',
-                    'valid_email' => 'inputan harus berformat email',
-                    'is_unique' => 'Email sudah terdaftar sebelumnya'
-                ]
-            ]
-        ])) {
-            return redirect()->to('/admin/users')->with('msg', 'error-email');
+        if (!$this->validateData($data, $rules)) {
+            $msg = '';
+            if ($this->validator->hasError('email')) {
+                $msg = 'error-email';
+            } elseif ($this->validator->hasError('password')) {
+                $msg = 'error';
+            } elseif ($this->validator->hasError('filefoto')) {
+                $msg = 'error-img';
+            } else {
+                $msg = 'error';
+            }
+            return redirect()->to('/admin/users')->with('msg', $msg);
         };
-        // Validasi password
-        if (!$this->validate([
-            'password' => [
-                'rules' => 'required|matches[password2]',
-                'errors' => [
-                    'required' => 'Kolom {field} harus diisi!'
-                ]
-            ],
-            'password2' => [
-                'rules' => 'required|matches[password]',
-                'errors' => [
-                    'required' => 'Kolom {field} harus diisi!',
-                    'matches' => 'password konfirmasi tidak sama'
-                ]
-            ],
-        ])) {
-            return redirect()->to('/admin/users')->with('msg', 'error');
-        };
-        // Validasi foto
-        if (!$this->validate([
-            'filefoto' => [
-                'rules' => 'max_size[filefoto,2048]|is_image[filefoto]|mime_in[filefoto,image/jpg,image/jpeg,image/png]',
-                'errors' => [
-                    'max_size' => 'Ukuran gambar tidak boleh lebih dari 2MB',
-                    'is_image' => 'Yang anda pilih bukan gambar',
-                    'mime_in' => 'Yang anda pilih bukan gambar'
-                ]
-            ]
-        ])) {
-            return redirect()->to('/admin/users')->with('msg', 'error-img');
-        };
-        // Validasi inputan lainnya
-        if (!$this->validate([
-            'nama' => [
-                'rules' => 'required|alpha_space',
-                'errors' => [
-                    'required' => 'Kolom {field} harus diisi!',
-                    'alpha_space' => 'inputan tidak boleh mengandung karakter aneh'
-                ]
-            ],
-            'level' => [
-                'rules' => 'required|numeric',
-                'errors' => [
-                    'required' => 'Kolom {field} harus diisi!',
-                    'numeric' => 'Inputan harus berformat angka'
-                ]
-            ]
-        ])) {
-            return redirect()->to('/admin/users')->with('msg', 'error');
-        }
+        $validData = $this->validator->getValidated();
+        $email = $validData['email'];
+        $password = $validData['password'];
+        $nama = $validData['nama'];
+        $level = $validData['level'];
+        $filefoto = $validData['filefoto'];
         // Cek foto
-        if ($this->request->getFile('filefoto')->isValid()) {
+        if ($filefoto->isValid()) {
             // Ambil File foto
-            $fotoUpload = $this->request->getFile('filefoto');
-            $namaFotoUpload = $fotoUpload->getRandomName();
-            $fotoUpload->move('assets/backend/images/users/', $namaFotoUpload);
+            $namaFotoUpload = $filefoto->getRandomName();
+            $filefoto->move('assets/backend/images/users/', $namaFotoUpload);
         } else {
             $namaFotoUpload = 'user_blank.png';
         }
-        $nama = htmlspecialchars($this->request->getPost('nama'), ENT_QUOTES);
-        $email = htmlspecialchars($this->request->getPost('email'), ENT_QUOTES);
-        $pass = htmlspecialchars($this->request->getPost('password'), ENT_QUOTES);
-        $level = htmlspecialchars($this->request->getPost('level'), ENT_QUOTES);
 
         $this->userModel->save([
             'user_name' => $nama,
             'user_email' => $email,
-            'user_password' => password_hash($pass, PASSWORD_DEFAULT),
+            'user_password' => password_hash($password, PASSWORD_DEFAULT),
             'user_level' => $level,
             'user_status' => 1,
             'user_photo' => $namaFotoUpload
@@ -125,59 +93,47 @@ class UsersAdminController extends BaseController
     }
     public function update()
     {
+        $user_id = htmlspecialchars(strip_tags($this->request->getPost('user_id')), ENT_QUOTES);
+        $data = [
+            'user_id' => $user_id,
+            'email' => $this->request->getPost('email'),
+            'password' => $this->request->getPost('password'),
+            'nama' => htmlspecialchars(strip_tags($this->request->getPost('nama')), ENT_QUOTES),
+            'level' => htmlspecialchars(strip_tags($this->request->getPost('level')), ENT_QUOTES),
+            'filefoto' => $this->request->getFile('filefoto')
+        ];
+        $rules = [
+            'user_id' => 'required|is_natural_no_zero|numeric',
+            'email' => "required|valid_email|is_unique[tbl_user.user_email,user_id,{$user_id}]",
+            'password' => 'permit_empty',
+            'nama' => 'required|alpha_space',
+            'level' => 'required|numeric',
+            'filefoto' => 'max_size[filefoto,2048]|is_image[filefoto]|mime_in[filefoto,image/jpg,image/jpeg,image/png]'
+        ];
         // Validasi Email
-        if (!$this->validate([
-            'email' => [
-                'rules' => 'required|valid_email|is_not_unique[tbl_user.user_email]',
-                'errors' => [
-                    'required' => 'Kolom {field} harus diisi!',
-                    'valid_email' => 'inputan harus berformat email',
-                    'is_not_unique' => 'Email tidak ditemukan'
-                ]
-            ]
-        ])) {
-            return redirect()->to('/admin/users')->with('msg', 'error-email');
+        if (!$this->validateData($data, $rules)) {
+            $msg = '';
+            if ($this->validator->hasError('email')) {
+                $msg = 'error-email';
+            } elseif ($this->validator->hasError('password')) {
+                $msg = 'error';
+            } elseif ($this->validator->hasError('filefoto')) {
+                $msg = 'error-img';
+            } else {
+                $msg = 'error';
+            }
+            return redirect()->to('/admin/users')->with('msg', $msg);
         };
-        // Validasi foto
-        if (!$this->validate([
-            'filefoto' => [
-                'rules' => 'max_size[filefoto,2048]|is_image[filefoto]|mime_in[filefoto,image/jpg,image/jpeg,image/png]',
-                'errors' => [
-                    'max_size' => 'Ukuran gambar tidak boleh lebih dari 2MB',
-                    'is_image' => 'Yang anda pilih bukan gambar',
-                    'mime_in' => 'Yang anda pilih bukan gambar'
-                ]
-            ]
-        ])) {
-            return redirect()->to('/admin/users')->with('msg', 'error-img');
-        };
-        // Validasi inputan lainnya
-        if (!$this->validate([
-            'nama' => [
-                'rules' => 'required|alpha_space',
-                'errors' => [
-                    'required' => 'Kolom {field} harus diisi!',
-                    'alpha_space' => 'inputan tidak boleh mengandung karakter aneh'
-                ]
-            ],
-            'level' => [
-                'rules' => 'required|numeric',
-                'errors' => [
-                    'required' => 'Kolom {field} harus diisi!',
-                    'numeric' => 'Inputan harus berformat angka'
-                ]
-            ]
-        ])) {
-            return redirect()->to('/admin/users')->with('msg', 'error');
-        }
-        $user_id = htmlspecialchars($this->request->getPost('user_id'), ENT_QUOTES);
-        $nama = htmlspecialchars($this->request->getPost('nama'), ENT_QUOTES);
-        $email = htmlspecialchars($this->request->getPost('email'), ENT_QUOTES);
-        $level = htmlspecialchars($this->request->getPost('level'), ENT_QUOTES);
+        $validData = $this->validator->getValidated();
+        $user_id = $validData['user_id'];
+        $email = $validData['email'];
+        $password = $validData['password'];
+        $nama = $validData['nama'];
+        $level = $validData['level'];
+        $fileFoto = $validData['filefoto'];
         // Cek Foto
         $user = $this->userModel->find($user_id);
         $fotoAwal = $user['user_photo'];
-        $fileFoto = $this->request->getFile('filefoto');
         if ($fileFoto->getName() == '') {
             $namaFotoUpload = $fotoAwal;
         } else {
@@ -185,11 +141,11 @@ class UsersAdminController extends BaseController
             $fileFoto->move('assets/backend/images/users/', $namaFotoUpload);
         }
 
-        if ($this->request->getPost('password')) {
+        if ($password) {
             $this->userModel->update($user_id, [
                 'user_name' => $nama,
                 'user_email' => $email,
-                'user_password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                'user_password' => password_hash($password, PASSWORD_DEFAULT),
                 'user_level' => $level,
                 'user_photo' => $namaFotoUpload
             ]);

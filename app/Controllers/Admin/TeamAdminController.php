@@ -36,7 +36,16 @@ class TeamAdminController extends BaseController
     }
     public function insert()
     {
-        if (!$this->validate([
+        $data = [
+            'nama' => htmlspecialchars($this->request->getPost('nama'), ENT_QUOTES),
+            'jabatan' => htmlspecialchars($this->request->getPost('jabatan'), ENT_QUOTES),
+            'twitter' => htmlspecialchars($this->request->getPost('twitter'), ENT_QUOTES),
+            'facebook' => htmlspecialchars($this->request->getPost('facebook'), ENT_QUOTES),
+            'instagram' => htmlspecialchars($this->request->getPost('instagram'), ENT_QUOTES),
+            'linked' => htmlspecialchars($this->request->getPost('linked'), ENT_QUOTES),
+            'filefoto' => $this->request->getFile('filefoto')
+        ];
+        $rules = [
             'nama' => [
                 'rules' => 'required|alpha_space',
                 'errors' => [
@@ -87,24 +96,27 @@ class TeamAdminController extends BaseController
                     'mime_in' => 'Yang anda pilih bukan gambar'
                 ]
             ]
-        ])) {
+        ];
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to('/admin/team')->with('msg', 'error');
         }
+        $validData = $this->validator->getValidated();
+        $nama = $validData['nama'];
+        $jabatan = $validData['jabatan'];
+        $twitter = $validData['twitter'];
+        $facebook = $validData['facebook'];
+        $instagram = $validData['instagram'];
+        $linked = $validData['linked'];
+        $filefoto = $validData['filefoto'];
         // Cek foto
-        if ($this->request->getFile('filefoto')->isValid()) {
+        if ($filefoto->isValid()) {
             // Ambil File foto
-            $fotoUpload = $this->request->getFile('filefoto');
+            $fotoUpload = $filefoto;
             $namaFotoUpload = $fotoUpload->getRandomName();
             $fotoUpload->move('assets/backend/images/team/', $namaFotoUpload);
         } else {
             $namaFotoUpload = 'user_blank.jpg';
         }
-        $nama = strip_tags(htmlspecialchars($this->request->getPost('nama'), ENT_QUOTES));
-        $jabatan = strip_tags(htmlspecialchars($this->request->getPost('jabatan'), ENT_QUOTES));
-        $twitter = strip_tags(htmlspecialchars($this->request->getPost('twitter'), ENT_QUOTES));
-        $facebook = strip_tags(htmlspecialchars($this->request->getPost('facebook'), ENT_QUOTES));
-        $instagram = strip_tags(htmlspecialchars($this->request->getPost('instagram'), ENT_QUOTES));
-        $linked = strip_tags(htmlspecialchars($this->request->getPost('linked'), ENT_QUOTES));
         // Simpan ke database
         $this->teamModel->save([
             'team_name' => $nama,
@@ -119,7 +131,25 @@ class TeamAdminController extends BaseController
     }
     public function update()
     {
-        if (!$this->validate([
+        $data = [
+            'team_id' => htmlspecialchars(strip_tags($this->request->getPost('team_id'), ENT_QUOTES)),
+            'nama' => htmlspecialchars(strip_tags($this->request->getPost('nama'), ENT_QUOTES)),
+            'jabatan' => htmlspecialchars(strip_tags($this->request->getPost('jabatan'), ENT_QUOTES)),
+            'twitter' => htmlspecialchars(strip_tags($this->request->getPost('twitter'), ENT_QUOTES)),
+            'facebook' => htmlspecialchars(strip_tags($this->request->getPost('facebook'), ENT_QUOTES)),
+            'instagram' => htmlspecialchars(strip_tags($this->request->getPost('instagram'), ENT_QUOTES)),
+            'linked' => htmlspecialchars(strip_tags($this->request->getPost('linked'), ENT_QUOTES)),
+            'filefoto' => $this->request->getFile('filefoto')
+        ];
+        $rules = [
+            'team_id' => [
+                'rules' => 'required|is_natural_no_zero|numeric',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!',
+                    'is_natural_no_zero' => 'inputan harus angka dan tidak boleh nol atau negatif',
+                    'numeric' => 'inputan harus angka'
+                ]
+            ],
             'nama' => [
                 'rules' => 'required|alpha_space',
                 'errors' => [
@@ -170,20 +200,22 @@ class TeamAdminController extends BaseController
                     'mime_in' => 'Yang anda pilih bukan gambar'
                 ]
             ]
-        ])) {
+        ];
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to('/admin/team')->with('msg', 'error');
         }
-        $team_id = strip_tags(htmlspecialchars($this->request->getPost('team_id'), ENT_QUOTES));
-        $nama = strip_tags(htmlspecialchars($this->request->getPost('nama'), ENT_QUOTES));
-        $jabatan = strip_tags(htmlspecialchars($this->request->getPost('jabatan'), ENT_QUOTES));
-        $twitter = strip_tags(htmlspecialchars($this->request->getPost('twitter'), ENT_QUOTES));
-        $facebook = strip_tags(htmlspecialchars($this->request->getPost('facebook'), ENT_QUOTES));
-        $instagram = strip_tags(htmlspecialchars($this->request->getPost('instagram'), ENT_QUOTES));
-        $linked = strip_tags(htmlspecialchars($this->request->getPost('linked'), ENT_QUOTES));
+        $validData = $this->validator->getValidated();
+        $team_id = $validData['team_id'];
+        $nama = $validData['nama'];
+        $jabatan = $validData['jabatan'];
+        $twitter = $validData['twitter'];
+        $facebook = $validData['facebook'];
+        $instagram = $validData['instagram'];
+        $linked = $validData['linked'];
+        $fileFoto = $validData['filefoto'];
         // Cek Foto
         $team = $this->teamModel->find($team_id);
         $fotoAwal = $team['team_image'];
-        $fileFoto = $this->request->getFile('filefoto');
         if ($fileFoto->getName() == '') {
             $namaFotoUpload = $fotoAwal;
         } else {

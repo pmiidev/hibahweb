@@ -9,7 +9,10 @@ class SubscribeController extends BaseController
 {
     public function index()
     {
-        if (!$this->validate([
+        $data = [
+            'email' => htmlspecialchars($this->request->getPost('email')),
+        ];
+        $rules = [
             'email' => [
                 'rules' => 'required|valid_email',
                 'errors' => [
@@ -17,11 +20,13 @@ class SubscribeController extends BaseController
                     'valid_email' => 'Inputan {field} harus email!'
                 ]
             ]
-        ])) {
+        ];
+        if (!$this->validateData($data, $rules)) {
             session()->setFlashdata('peringatan', 'Inputan harus berformat email. silakan coba lagi.');
             return redirect()->to('#footer');
         }
-        $email = htmlspecialchars($this->request->getPost('email'));
+        $validData = $this->validator->getValidated();
+        $email = $validData['email'];
         $subscribeModel = new SubscribeModel();
         if ($subscribeModel->where('subscribe_email', $email)->countAllResults() < 1) {
             $subscribeModel->save([

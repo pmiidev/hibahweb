@@ -42,8 +42,23 @@ class SettingAdminController extends BaseController
     }
     public function web_update()
     {
-        // Validasi
-        if (!$this->validate([
+        $data = [
+            'site_id' => htmlspecialchars(strip_tags($this->request->getPost('site_id'), ENT_QUOTES)),
+            'name' => htmlspecialchars(strip_tags($this->request->getPost('name'), ENT_QUOTES)),
+            'title' => htmlspecialchars(strip_tags($this->request->getPost('title'), ENT_QUOTES)),
+            'description' => htmlspecialchars(strip_tags($this->request->getPost('description'), ENT_QUOTES)),
+            'facebook' => htmlspecialchars(strip_tags($this->request->getPost('facebook'), ENT_QUOTES)),
+            'twitter' => htmlspecialchars(strip_tags($this->request->getPost('twitter'), ENT_QUOTES)),
+            'linkedin' => htmlspecialchars(strip_tags($this->request->getPost('linkedin'), ENT_QUOTES)),
+            'instagram' => htmlspecialchars(strip_tags($this->request->getPost('instagram'), ENT_QUOTES)),
+            'pinterest' => htmlspecialchars(strip_tags($this->request->getPost('pinterest'), ENT_QUOTES)),
+            'wa' => htmlspecialchars(strip_tags($this->request->getPost('wa'), ENT_QUOTES)),
+            'mail' => htmlspecialchars(strip_tags($this->request->getPost('mail'), ENT_QUOTES)),
+            'logo_icon' => $this->request->getFile('logo_icon'),
+            'logo_header' => $this->request->getFile('logo_header'),
+            'logo_big' => $this->request->getFile('logo_big')
+        ];
+        $rules = [
             'site_id' => [
                 'rules' => 'required|numeric',
                 'errors' => [
@@ -133,7 +148,8 @@ class SettingAdminController extends BaseController
                     'is_image' => 'Yang anda pilih bukan gambar',
                     'mime_in' => 'Yang anda pilih bukan gambar'
                 ]
-            ], 'logo_big' => [
+            ],
+            'logo_big' => [
                 'rules' => 'max_size[logo_icon,2048]|is_image[logo_icon]|mime_in[logo_icon,image/jpg,image/jpeg,image/png]',
                 'errors' => [
                     'max_size' => 'Ukuran gambar tidak boleh lebih dari 2MB',
@@ -141,30 +157,34 @@ class SettingAdminController extends BaseController
                     'mime_in' => 'Yang anda pilih bukan gambar'
                 ]
             ]
-        ])) {
+        ];
+        // Validasi
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to("/admin/setting/web")->with('msg', 'error');
         }
         // Inisiasi
-        $site_id = strip_tags(htmlspecialchars($this->request->getPost('site_id'), ENT_QUOTES));
-        $name = strip_tags(htmlspecialchars($this->request->getPost('name'), ENT_QUOTES));
-        $title = strip_tags(htmlspecialchars($this->request->getPost('title'), ENT_QUOTES));
-        $description = strip_tags(htmlspecialchars($this->request->getPost('description'), ENT_QUOTES));
-        $facebook = strip_tags(htmlspecialchars($this->request->getPost('facebook'), ENT_QUOTES));
-        $instagram = strip_tags(htmlspecialchars($this->request->getPost('instagram'), ENT_QUOTES));
-        $twitter = strip_tags(htmlspecialchars($this->request->getPost('twitter'), ENT_QUOTES));
-        $linkedin = strip_tags(htmlspecialchars($this->request->getPost('linkedin'), ENT_QUOTES));
-        $pinterest = $this->request->getPost('pinterest');
-        $wa = strip_tags(htmlspecialchars($this->request->getPost('wa'), ENT_QUOTES));
-        $mail = strip_tags(htmlspecialchars($this->request->getPost('mail'), ENT_QUOTES));
+        $validData = $this->validator->getValidated();
+        $site_id = $validData['site_id'];
+        $name = $validData['name'];
+        $title = $validData['title'];
+        $description = $validData['description'];
+        $facebook = $validData['facebook'];
+        $twitter = $validData['twitter'];
+        $linkedin = $validData['linkedin'];
+        $instagram = $validData['instagram'];
+        $pinterest = $validData['pinterest'];
+        $wa = $validData['wa'];
+        $mail = $validData['mail'];
+
+        $fileLogoIcon = $validData['logo_icon'];
+        $fileLogoHeader = $validData['logo_header'];
+        $fileLogoBig = $validData['logo_big'];
 
         // Cek Foto
         $data = $this->siteModel->find($site_id);
         $logoIconAwal = $data['site_favicon'];
         $logoHeaderAwal = $data['site_logo_header'];
         $logoBigAwal = $data['site_logo_big'];
-        $fileLogoIcon = $this->request->getFile('logo_icon');
-        $fileLogoHeader = $this->request->getFile('logo_header');
-        $fileLogoBig = $this->request->getFile('logo_big');
         if ($fileLogoIcon->getName() == '') {
             $namaLogoIcon = $logoIconAwal;
         } else {
@@ -221,12 +241,21 @@ class SettingAdminController extends BaseController
     }
     public function home_update()
     {
-        // Validasi
-        if (!$this->validate([
+        $data = [
+            'home_id' => htmlspecialchars(strip_tags($this->request->getPost('home_id'), ENT_QUOTES)),
+            'caption1' => htmlspecialchars(strip_tags($this->request->getPost('caption1'), ENT_QUOTES)),
+            'caption2' => htmlspecialchars(strip_tags($this->request->getPost('caption2'), ENT_QUOTES)),
+            'home_video' => htmlspecialchars(strip_tags($this->request->getPost('home_video'), ENT_QUOTES)),
+            'img_heading' => $this->request->getFile('img_heading'),
+            'img_testimonial' => $this->request->getFile('img_testimonial'),
+            'img_testimonial2' => $this->request->getFile('img_testimonial2')
+        ];
+        $rules = [
             'home_id' => [
-                'rules' => 'required|numeric',
+                'rules' => 'required|is_natural_no_zero|numeric',
                 'errors' => [
                     'required' => 'Kolom {field} harus diisi!',
+                    'is_natural_no_zero' => 'inputan harus angka dan tidak boleh nol atau negatif',
                     'numeric' => 'inputan harus angka'
                 ]
             ],
@@ -244,9 +273,10 @@ class SettingAdminController extends BaseController
                 ]
             ],
             'home_video' => [
-                'rules' => 'required',
+                'rules' => 'required|valid_url_strict',
                 'errors' => [
-                    'required' => 'Kolom {field} harus diisi!'
+                    'required' => 'Kolom {field} harus diisi!',
+                    'valid_url_strict' => 'inputan harus berupa link'
                 ]
             ],
             'img_heading' => [
@@ -273,23 +303,27 @@ class SettingAdminController extends BaseController
                     'mime_in' => 'Yang anda pilih bukan gambar'
                 ]
             ]
-        ])) {
+        ];
+        // Validasi
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to("/admin/setting/home")->with('msg', 'error');
         }
         // Inisiasi
-        $home_id = strip_tags(htmlspecialchars($this->request->getPost('home_id'), ENT_QUOTES));
-        $caption1 = strip_tags(htmlspecialchars($this->request->getPost('caption1'), ENT_QUOTES));
-        $caption2 = strip_tags(htmlspecialchars($this->request->getPost('caption2'), ENT_QUOTES));
-        $home_video = strip_tags(htmlspecialchars($this->request->getPost('home_video'), ENT_QUOTES));
+        $validData = $this->validator->getValidated();
+        $home_id = $validData['home_id'];
+        $caption1 = $validData['caption1'];
+        $caption2 = $validData['caption2'];
+        $home_video = $validData['home_video'];
+
+        $fileImgHeading = $validData['img_heading'];
+        $fileImgTestimonial = $validData['img_testimonial'];
+        $fileImgTestimonial2 = $validData['img_testimonial2'];
 
         // Cek Foto
         $data = $this->homeModel->find($home_id);
         $imgHeadingAwal = $data['home_bg_heading'];
         $imgTestimonialAwal = $data['home_bg_testimonial'];
         $imgTestimonial2Awal = $data['home_bg_testimonial2'];
-        $fileImgHeading = $this->request->getFile('img_heading');
-        $fileImgTestimonial = $this->request->getFile('img_testimonial');
-        $fileImgTestimonial2 = $this->request->getFile('img_testimonial2');
         if ($fileImgHeading->getName() == '') {
             $namaImgHeading = $imgHeadingAwal;
         } else {
@@ -339,12 +373,19 @@ class SettingAdminController extends BaseController
     }
     public function about_update()
     {
-        // Validasi
-        if (!$this->validate([
+        $data = [
+            'about_id' => htmlspecialchars(strip_tags($this->request->getPost('about_id'), ENT_QUOTES)),
+            'name' => htmlspecialchars(strip_tags($this->request->getPost('name'), ENT_QUOTES)),
+            'alamat' => htmlspecialchars(strip_tags($this->request->getPost('alamat'), ENT_QUOTES)),
+            'description' => htmlspecialchars(strip_tags($this->request->getPost('description'), ENT_QUOTES)),
+            'img_about' => $this->request->getFile('img_about')
+        ];
+        $rules = [
             'about_id' => [
-                'rules' => 'required|numeric',
+                'rules' => 'required|is_natural_no_zero|numeric',
                 'errors' => [
                     'required' => 'Kolom {field} harus diisi!',
+                    'is_natural_no_zero' => 'inputan harus angka dan tidak boleh nol atau negatif',
                     'numeric' => 'inputan harus angka'
                 ]
             ],
@@ -375,19 +416,22 @@ class SettingAdminController extends BaseController
                     'mime_in' => 'Yang anda pilih bukan gambar'
                 ]
             ]
-        ])) {
+        ];
+        // Validasi
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to("/admin/setting/about")->with('msg', 'error');
         }
         // Inisiasi
-        $about_id = strip_tags(htmlspecialchars($this->request->getPost('about_id'), ENT_QUOTES));
-        $name = strip_tags(htmlspecialchars($this->request->getPost('name'), ENT_QUOTES));
-        $alamat = strip_tags(htmlspecialchars($this->request->getPost('alamat'), ENT_QUOTES));
-        $description = strip_tags(htmlspecialchars($this->request->getPost('description'), ENT_QUOTES));
+        $validData = $this->validator->getValidated();
+        $about_id = $validData['about_id'];
+        $name = $validData['name'];
+        $alamat = $validData['alamat'];
+        $description = $validData['description'];
 
+        $fileImgAbout = $validData['img_about'];
         // Cek Foto
         $data = $this->aboutModel->find($about_id);
         $imgAboutAwal = $data['about_image'];
-        $fileImgAbout = $this->request->getFile('img_about');
         if ($fileImgAbout->getName() == '') {
             $namaImgAbout = $imgAboutAwal;
         } else {
@@ -421,8 +465,12 @@ class SettingAdminController extends BaseController
     }
     public function profile_password()
     {
-        // Validasi
-        if (!$this->validate([
+        $data = [
+            'new_password' => $this->request->getPost('new_password'),
+            'conf_password' => $this->request->getPost('conf_password'),
+            'old_password' => $this->request->getPost('old_password')
+        ];
+        $rules = [
             'new_password' => [
                 'rules' => 'required|matches[conf_password]',
                 'errors' => [
@@ -436,25 +484,41 @@ class SettingAdminController extends BaseController
                     'required' => 'Kolom {field} harus diisi!',
                     'matches' => 'Konfirmasi password tidak sesuai'
                 ]
+            ],
+            'old_password' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!'
+                ]
             ]
-        ])) {
+        ];
+        // Validasi
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to("/admin/setting/profile")->with('msg', 'error-notmatch');
         }
-        $old_password = strip_tags(htmlspecialchars($this->request->getPost('old_password'), ENT_QUOTES));
-        $conf_password = strip_tags(htmlspecialchars($this->request->getPost('conf_password'), ENT_QUOTES));
+        $validData = $this->validator->getValidated();
+        $old_password = $validData['old_password'];
+        $new_password = $validData['new_password'];
+
+        // $old_password = strip_tags(htmlspecialchars($this->request->getPost('old_password'), ENT_QUOTES));
+        // $conf_password = strip_tags(htmlspecialchars($this->request->getPost('conf_password'), ENT_QUOTES));
         if (!password_verify($old_password, $this->akun['user_password'])) {
             return redirect()->to("/admin/setting/profile")->with('msg', 'error-notfound');
         }
         // Save ke database
         $this->userModel->update($this->akun['user_id'], [
-            'user_password' => password_hash($conf_password, PASSWORD_DEFAULT)
+            'user_password' => password_hash($new_password, PASSWORD_DEFAULT)
         ]);
         return redirect()->to("/admin/setting/profile")->with('msg', 'success');
     }
     public function profile_update()
     {
-        // Validasi
-        if (!$this->validate([
+        $data = [
+            'user_name' => $this->request->getPost('user_name'),
+            'user_email' => $this->request->getPost('user_email'),
+            'user_photo' => $this->request->getFile('user_photo')
+        ];
+        $rules = [
             'user_name' => [
                 'rules' => 'required|alpha_space',
                 'errors' => [
@@ -477,24 +541,28 @@ class SettingAdminController extends BaseController
                     'mime_in' => 'Yang anda pilih bukan gambar'
                 ]
             ]
-        ])) {
+        ];
+        // Validasi
+        if (!$this->validateData($data, $rules)) {
             return redirect()->to("/admin/setting/profile")->with('msg', 'error');
         }
-        $user_name = strip_tags(htmlspecialchars($this->request->getPost('user_name'), ENT_QUOTES));
-        $user_email = strip_tags(htmlspecialchars($this->request->getPost('user_email'), ENT_QUOTES));
-        $user_password = strip_tags(htmlspecialchars($this->request->getPost('user_password'), ENT_QUOTES));
+        $validData = $this->validator->getValidated();
+        $user_name = $validData['user_name'];
+        $user_email = $validData['user_email'];
+        $user_photo = $validData['user_photo'];
+
+        $user_password = $this->request->getPost('user_password');
         if (!password_verify($user_password, $this->akun['user_password'])) {
             return redirect()->to("/admin/setting/profile")->with('msg', 'error-notfound');
         }
         // Cek Foto
-        $data = $this->akun;
-        $userPhotoAwal = $data['user_photo'];
-        $fileUserPhoto = $this->request->getFile('user_photo');
-        if ($fileUserPhoto->getName() == '') {
+        $user = $this->akun;
+        $userPhotoAwal = $user['user_photo'];
+        if ($user_photo->getName() == '') {
             $namaUserPhoto = $userPhotoAwal;
         } else {
-            $namaUserPhoto = $fileUserPhoto->getRandomName();
-            $fileUserPhoto->move('assets/backend/images/users', $namaUserPhoto);
+            $namaUserPhoto = $user_photo->getRandomName();
+            $user_photo->move('assets/backend/images/users', $namaUserPhoto);
         }
         // Simpan ke database
         $this->userModel->update($this->akun['user_id'], [

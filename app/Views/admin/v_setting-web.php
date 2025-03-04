@@ -53,22 +53,22 @@
                                 <div class="panel-body">
 
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Site Name</label>
+                                        <label for="site-name" class="col-sm-2 control-label">Site Name</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="name" class="form-control" id="input1" value="<?= $sites['site_name']; ?>" placeholder="Site Name">
+                                            <input type="text" name="name" class="form-control" id="site-name" value="<?= $sites['site_name']; ?>" placeholder="Site Name">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Site Title</label>
+                                        <label for="site-title" class="col-sm-2 control-label">Site Title</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="title" class="form-control" id="input1" value="<?= $sites['site_title']; ?>" placeholder="Site Title">
+                                            <input type="text" name="title" class="form-control" id="site-title" value="<?= $sites['site_title']; ?>" placeholder="Site Title">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Site Description</label>
+                                        <label for="description" class="col-sm-2 control-label">Site Description</label>
                                         <div class="col-sm-10">
-                                            <textarea name="description" class="form-control" rows="6" id="summernote"><?= $sites['site_description']; ?></textarea>
+                                            <textarea name="description" class="form-control" rows="6" id="description"><?= $sites['site_description']; ?></textarea>
                                         </div>
                                     </div>
 
@@ -100,51 +100,51 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Facebook URL</label>
+                                        <label for="facebook" class="col-sm-2 control-label">Facebook URL</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="facebook" class="form-control" value="<?= $sites['site_facebook']; ?>" id="input1" placeholder="Facebook URL">
+                                            <input type="url" name="facebook" class="form-control" value="<?= $sites['site_facebook']; ?>" id="facebook" placeholder="Facebook URL">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Twitter URL</label>
+                                        <label for="twitter" class="col-sm-2 control-label">Twitter URL</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="twitter" class="form-control" value="<?= $sites['site_twitter']; ?>" id="input1" placeholder="Twitter URL">
+                                            <input type="url" name="twitter" class="form-control" value="<?= $sites['site_twitter']; ?>" id="twitter" placeholder="Twitter URL">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Linkedin URL</label>
+                                        <label for="linkedin" class="col-sm-2 control-label">Linkedin URL</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="linkedin" class="form-control" value="<?= $sites['site_linkedin'] ?>" id="input1" placeholder="Linkedin URL">
+                                            <input type="url" name="linkedin" class="form-control" value="<?= $sites['site_linkedin'] ?>" id="linkedin" placeholder="Linkedin URL">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Instagram URL</label>
+                                        <label for="instagram" class="col-sm-2 control-label">Instagram URL</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="instagram" class="form-control" value="<?= $sites['site_instagram']; ?>" id="input1" placeholder="Instagram URL">
+                                            <input type="url" name="instagram" class="form-control" value="<?= $sites['site_instagram']; ?>" id="instagram" placeholder="Instagram URL">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Pinterest</label>
+                                        <label for="pinterest" class="col-sm-2 control-label">Pinterest</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="pinterest" class="form-control" value="<?= $sites['site_pinterest']; ?>" id="input1" placeholder="Pinterest URL">
+                                            <input type="url" name="pinterest" class="form-control" value="<?= $sites['site_pinterest']; ?>" id="pinterest" placeholder="Pinterest URL">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Nomor WA</label>
+                                        <label for="wa" class="col-sm-2 control-label">Nomor WA</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="wa" class="form-control" value="<?= $sites['site_wa']; ?>" id="input1" placeholder="62+">
+                                            <input type="number" name="wa" class="form-control" value="<?= $sites['site_wa']; ?>" id="wa" placeholder="62+">
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="input1" class="col-sm-2 control-label">Email Resmi</label>
+                                        <label for="mail" class="col-sm-2 control-label">Email Resmi</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="mail" class="form-control" value="<?= $sites['site_mail']; ?>" id="input1" placeholder="name@domain.xxx">
+                                            <input type="email" name="mail" class="form-control" value="<?= $sites['site_mail']; ?>" id="mail" placeholder="name@domain.xxx">
                                         </div>
                                     </div>
 

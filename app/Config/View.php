@@ -5,6 +5,10 @@ namespace Config;
 use CodeIgniter\Config\View as BaseView;
 use CodeIgniter\View\ViewDecoratorInterface;
 
+/**
+ * @phpstan-type ParserCallable (callable(mixed): mixed)
+ * @phpstan-type ParserCallableString (callable(mixed): mixed)&string
+ */
 class View extends BaseView
 {
     /**
