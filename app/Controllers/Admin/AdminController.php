@@ -4,16 +4,19 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\VisitorModel;
+use App\Models\UserModel; 
 
 class AdminController extends BaseController
 {
     protected $visitorModel;
+    protected $userModel;
     protected $akun;
     protected $active;
 
     public function __construct()
     {
         $this->visitorModel = new VisitorModel();
+        $this->userModel = new UserModel();
         $this->akun = session()->get('akun'); // Sesuaikan jika akun diambil dari session
         $this->active = 'dashboard'; // Sesuaikan nilai default
     }
@@ -41,6 +44,9 @@ class AdminController extends BaseController
             $visitor_this_month = 1;
         }
 
+        // Ambil jumlah user
+        $all_users = $this->userModel->count_all_users();
+
         // Hitung jumlah pengunjung berdasarkan platform
         $chrome_visitor  = ($this->visitorModel->count_chrome_visitors() / $visitor_this_month) * 100;
         $firefox_visitor = ($this->visitorModel->count_firefox_visitors() / $visitor_this_month) * 100;
@@ -66,6 +72,7 @@ class AdminController extends BaseController
             'all_post_views' => $this->visitorModel->count_all_post_views(),
             'all_posts' => $this->visitorModel->count_all_posts(),
             'top_five_articles' => $this->visitorModel->top_five_articles(),
+            'all_users' => $all_users, // Tambahkan data jumlah user
 
             'chrome_visitor'  => $chrome_visitor,
             'firefox_visitor' => $firefox_visitor,

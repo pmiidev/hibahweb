@@ -771,7 +771,7 @@
                   </span>
                   <div class="info-box-content">
                     <span class="info-box-text">Users</span>
-                    <span class="info-box-number">00</span>
+                    <span class="info-box-number"><?= number_format($all_users); ?></span>
                   </div>
                   <!-- /.info-box-content -->
                 </div>
