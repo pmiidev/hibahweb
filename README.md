@@ -1,22 +1,41 @@
-# CodeIgniter 4 Application Starter
+# Hibahweb [CI4]
 
-## What is CodeIgniter?
+## Deskripsi Ringkas
+Salam Pergerakan! Selamat datang di situs resmi github [@pmiidev](https://github.com/pmiidev) untuk repo project-project kita kedepan. Kali ini pmiidev membagikan salah satu source code website company profile secara free (hibah) untuk para pengurus rayon/komis/rayon/korcab se-Indonesia.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Website ini dibangun dengan framework CodeIgniter 4 dilengkapi dengan fasilitas halaman front-end dan back-end. Front-end adalah halaman website yang dikunjungi oleh pengunjung website, sedangkan back-end untuk mengelola konten oleh administrator maupun author.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+<hr>
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Project upgrade
+Saat ini sedang on progress upgrade seluruh module sesuai CI v4.6.0. Jika Anda tertarik kontribusi bisa ajukan pull request!
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+- Login (done)
+- Admin Dashboard (done)
+- Admin Page Layouts (done)
+
+> [Settings]
+> - Basic
+> - Home
+> - About
+> - Slider
+
+> [!Posts]
+> - All Posts
+> - Add Post
+> - Categories
+> - Tags
+
+> [!Pages]
+> - Users
+> - Members
+> - Teams
+> - Testimonials
 
 ## Installation & updates
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
+First `git clone https://github.com/pmiidev/hibahweb.git` on your directory
+then `composer update` whenever
 there is a new release of the framework.
 
 When updating, check the release notes to see if there are any changes you might need to apply
