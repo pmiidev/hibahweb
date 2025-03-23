@@ -7,8 +7,8 @@ use CodeIgniter\Config\BaseConfig;
 class Email extends BaseConfig
 {
     public string $fromEmail  = '';
-    public string $fromName  = '';
-    public string $recipients  = '';
+    public string $fromName   = '';
+    public string $recipients = '';
 
     /**
      * The "user agent"
@@ -26,19 +26,19 @@ class Email extends BaseConfig
     public string $mailPath = '/usr/sbin/sendmail';
 
     /**
-     * SMTP Server Address
+     * SMTP Server Hostname
      */
-    public string $SMTPHost  = '';
+    public string $SMTPHost = '';
 
     /**
      * SMTP Username
      */
-    public string $SMTPUser  = '';
+    public string $SMTPUser = '';
 
     /**
      * SMTP Password
      */
-    public string $SMTPPass  = '';
+    public string $SMTPPass = '';
 
     /**
      * SMTP Port

@@ -9,4 +9,10 @@ class UserModel extends Model
     protected $table            = 'tbl_user';
     protected $primaryKey       = 'user_id';
     protected $allowedFields    = ['user_name', 'user_email', 'user_password', 'user_level', 'user_status', 'user_photo'];
+
+    public function count_all_users()
+    {
+        return $this->countAll();
+    }
+
 }

@@ -5,45 +5,14 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-// HomeController
-$routes->get('/', 'HomeController::index', ['filter' => 'logedin']);
-
-// SubscribeController
-$routes->get('subscribe', static function () {
-    return redirect()->to('/#footer');
-});
-$routes->post('subscribe', 'SubscribeController::index');
-
-// GalleryController
-$routes->get('gallery', 'GalleryController::index');
-
-// TeamController
-$routes->get('team', 'TeamController::index');
-
-// PostController
-$routes->get('search', 'PostController::search');
-$routes->get('post', 'PostController::index');
-$routes->get('post/(:segment)', 'PostController::index/$1');
-$routes->get('author/(:num)', 'PostController::author/$1');
-$routes->get('tag/(:segment)', 'PostController::tag/$1');
-$routes->post('post/send_comment', 'PostController::send_comment');
-
-// CategoryController
-$routes->get('category/(:segment)', 'CategoryController::index/$1');
-
-// DocumentController
-$routes->get('document', 'DocumentController::index');
-
-// ContactController
-$routes->get('contact', 'ContactController::index');
-$routes->post('contact', 'ContactController::inbox');
+$routes->get('/', 'Home::index');
 
 // LoginController & Logout
 $routes->group('', ['filter' => 'logedin'], static function ($routes) {
-    $routes->get('login', 'LoginController::index');
-    $routes->post('login/validasi', 'LoginController::validasi');
+    $routes->get('login', 'Login::index');
+    $routes->post('login/validasi', 'Login::validasi');
 });
-$routes->get('logout', 'LoginController::logout');
+$routes->get('logout', 'Login::logout');
 
 // Admin Routes
 $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
@@ -145,52 +114,5 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
         // Setting About
         $routes->get('about', 'Admin\SettingAdminController::about');
         $routes->put('about', 'Admin\SettingAdminController::about_update');
-    });
-});
-
-// Author Routes
-$routes->group('author', ['filter' => 'authauthor'], static function ($routes) {
-    $routes->get('', 'Author\AuthorController::index');
-    // Post Route
-    $routes->group('post', static function ($routes) {
-        $routes->get('', 'Author\PostAuthorController::index');
-        $routes->post('', 'Author\PostAuthorController::publish');
-        $routes->delete('', 'Author\PostAuthorController::delete');
-        $routes->put('', 'Author\PostAuthorController::update');
-        $routes->get('add_new', 'Author\PostAuthorController::add_new');
-        $routes->get('(:num)/edit', 'Author\PostAuthorController::edit/$1');
-    });
-    // Category Route
-    $routes->group('category', static function ($routes) {
-        $routes->get('', 'Author\CategoryAuthorController::index');
-        $routes->post('', 'Author\CategoryAuthorController::save');
-        $routes->put('', 'Author\CategoryAuthorController::edit');
-        $routes->delete('', 'Author\CategoryAuthorController::delete');
-    });
-    // Tag Route
-    $routes->group('tag', static function ($routes) {
-        $routes->get('', 'Author\TagAuthorController::index');
-        $routes->post('', 'Author\TagAuthorController::save');
-        $routes->put('', 'Author\TagAuthorController::edit');
-        $routes->delete('', 'Author\TagAuthorController::delete');
-    });
-    // Comment Route
-    $routes->group('comment', static function ($routes) {
-        $routes->get('', 'Author\CommentAuthorController::index');
-        $routes->post('', 'Author\CommentAuthorController::reply');
-        $routes->post('publish', 'Author\CommentAuthorController::publish');
-        $routes->put('', 'Author\CommentAuthorController::edit');
-        $routes->delete('', 'Author\CommentAuthorController::delete');
-        $routes->get('unpublish', 'Author\CommentAuthorController::unpublish');
-    });
-    // Setting Route
-    $routes->group('setting', static function ($routes) {
-        $routes->get('', static function () {
-            return redirect()->to('author/setting/profile');
-        });
-        // Setting My Profile
-        $routes->get('profile', 'Author\SettingAuthorController::profile');
-        $routes->post('profile', 'Author\SettingAuthorController::profile_update');
-        $routes->put('profile', 'Author\SettingAuthorController::profile_password');
     });
 });

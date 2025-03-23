@@ -10,105 +10,154 @@ class VisitorModel extends Model
     protected $primaryKey       = 'visit_id';
     protected $allowedFields    = ['visit_date', 'visit_ip', 'visit_platform'];
 
+    /**
+     * Fungsi untuk mencatat kunjungan pengguna berdasarkan IP dan platform
+     */
     public function count_visitor($user_ip, $agent)
     {
-        $cek_ip = $this->db->query("SELECT * FROM tbl_visitors WHERE visit_ip='$user_ip' AND DATE(visit_date)=CURDATE()")->getNumRows();
+        $cek_ip = $this->where('visit_ip', $user_ip)
+                       ->where('DATE(visit_date)', date('Y-m-d'))
+                       ->countAllResults();
+
         if ($cek_ip < 1) {
-            $hsl = $this->db->query("INSERT INTO tbl_visitors (visit_ip,visit_platform) VALUES('$user_ip','$agent')");
-            return $hsl;
+            return $this->insert([
+                'visit_ip'      => $user_ip,
+                'visit_date'    => date('Y-m-d H:i:s'),
+                'visit_platform'=> $agent
+            ]);
         }
-    }
-    function visitor_statistics()
-    {
-        $query = $this->db->query("SELECT DATE_FORMAT(visit_date,'%d') AS tgl,COUNT(visit_ip) AS jumlah FROM tbl_visitors WHERE MONTH(visit_date)=MONTH(CURDATE()) GROUP BY DATE(visit_date)");
-
-        if ($query->getNumRows() > 0) {
-            foreach ($query->getResult() as $data) {
-                $result[] = $data;
-            }
-            return $result;
-        }
+        return false;
     }
 
-    function count_all_visitors()
+    /**
+     * Statistik Pengunjung Bulan Ini
+     */
+    // public function visitor_statistics()
+    // {
+    //     return $this->select("DATE_FORMAT(visit_date,'%d') AS tgl, COUNT(visit_ip) AS jumlah")
+    //                 ->where('MONTH(visit_date)', date('m'))
+    //                 ->groupBy('tgl')
+    //                 ->orderBy('tgl', 'ASC')
+    //                 ->findAll();
+    // }
+    public function visitor_statistics()
     {
-        $query = $this->db->table('tbl_visitors')->countAll();
-        return $query;
+        return $this->select("DATE(visit_date) AS tgl, COUNT(visit_ip) AS jumlah")
+                    ->where('MONTH(visit_date)', date('m'))
+                    ->where('YEAR(visit_date)', date('Y')) // Pastikan hanya mengambil data tahun ini
+                    ->groupBy('tgl')
+                    ->orderBy('tgl', 'ASC')
+                    ->findAll();
     }
 
-    function count_all_post_views()
+    /**
+     * Hitung Total Pengunjung
+     */
+    public function count_all_visitors()
     {
-        $query = $this->db->table('tbl_post_views')->countAll();
-        return $query;
+        return $this->countAll();
     }
 
-    function count_all_posts()
+    /**
+     * Hitung Total View di Semua Post
+     */
+    public function count_all_post_views()
     {
-        $query = $this->db->table('tbl_post')->countAll();
-        return $query;
+        return $this->db->table('tbl_post_views')->countAll();
     }
 
-    function count_all_comments()
+    /**
+     * Hitung Total Postingan
+     */
+    public function count_all_posts()
     {
-        $query = $this->db->table('tbl_comment')->countAll();
-        return $query;
+        return $this->db->table('tbl_post')->countAll();
     }
 
-    function top_five_articles()
+    /**
+     * Hitung Total Komentar
+     */
+    public function count_all_comments()
     {
-        $query = $this->db->query("SELECT * FROM tbl_post ORDER BY post_views DESC LIMIT 5");
-        return $query;
+        return $this->db->table('tbl_comment')->countAll();
     }
 
-    function count_visitor_this_month()
+    /**
+     * Ambil 5 Artikel Terpopuler berdasarkan View
+     */
+    public function top_five_articles()
     {
-        $query = $this->db->query("SELECT COUNT(*) tot_visitor FROM tbl_visitors WHERE MONTH(visit_date)=MONTH(CURDATE())");
-        return $query;
+        return $this->db->table('tbl_post')
+                        ->orderBy('post_views', 'DESC')
+                        ->limit(5)
+                        ->get()
+                        ->getResultArray();
     }
 
-    function count_chrome_visitors()
+    /**
+     * Hitung Pengunjung Bulan Ini
+     */
+    public function count_visitor_this_month()
     {
-        $query = $this->db->query("SELECT COUNT(*) chrome_visitor FROM tbl_visitors WHERE visit_platform='Chrome' AND MONTH(visit_date)=MONTH(CURDATE())");
-        return $query;
+        return $this->where('MONTH(visit_date)', date('m'))->countAllResults();
     }
 
-    function count_firefox_visitors()
+    /**
+     * Hitung Pengunjung Berdasarkan Browser
+     */
+    private function count_browser_visitors($browser)
     {
-        $query = $this->db->query("SELECT COUNT(*) firefox_visitor FROM tbl_visitors WHERE (visit_platform='Firefox' OR visit_platform='Mozilla') AND MONTH(visit_date)=MONTH(CURDATE())");
-        return $query;
+        return $this->where('visit_platform', $browser)
+                    ->where('MONTH(visit_date)', date('m'))
+                    ->countAllResults();
     }
 
-    function count_explorer_visitors()
+    public function count_chrome_visitors()
     {
-        $query = $this->db->query("SELECT COUNT(*) explorer_visitor FROM tbl_visitors WHERE visit_platform='Internet Explorer' AND MONTH(visit_date)=MONTH(CURDATE())");
-        return $query;
+        return $this->count_browser_visitors('Chrome');
     }
 
-    function count_safari_visitors()
+    public function count_firefox_visitors()
     {
-        $query = $this->db->query("SELECT COUNT(*) safari_visitor FROM tbl_visitors WHERE visit_platform='Safari' AND MONTH(visit_date)=MONTH(CURDATE())");
-        return $query;
+        return $this->whereIn('visit_platform', ['Firefox', 'Mozilla'])
+                    ->where('MONTH(visit_date)', date('m'))
+                    ->countAllResults();
     }
 
-    function count_opera_visitors()
+    public function count_explorer_visitors()
     {
-        $query = $this->db->query("SELECT COUNT(*) opera_visitor FROM tbl_visitors WHERE visit_platform='Opera' AND MONTH(visit_date)=MONTH(CURDATE())");
-        return $query;
+        return $this->count_browser_visitors('Internet Explorer');
     }
 
-    function count_robot_visitors()
+    public function count_safari_visitors()
     {
-        $query = $this->db->query("SELECT COUNT(*) robot_visitor FROM tbl_visitors WHERE (visit_platform='YandexBot' OR visit_platform='Googlebot' OR visit_platform='Yahoo') AND MONTH(visit_date)=MONTH(CURDATE())");
-        return $query;
+        return $this->count_browser_visitors('Safari');
     }
 
-    function count_other_visitors()
+    public function count_opera_visitors()
     {
-        $query = $this->db->query("SELECT COUNT(*) other_visitor FROM tbl_visitors WHERE 
-			(NOT visit_platform='YandexBot' AND NOT visit_platform='Googlebot' AND NOT visit_platform='Yahoo' 
-			AND NOT visit_platform='Chrome' AND NOT visit_platform='Firefox' AND NOT visit_platform='Mozilla'
-			AND NOT visit_platform='Internet Explorer' AND NOT visit_platform='Safari' AND NOT visit_platform='Opera') 
-			AND MONTH(visit_date)=MONTH(CURDATE())");
-        return $query;
+        return $this->count_browser_visitors('Opera');
+    }
+
+    /**
+     * Hitung Pengunjung yang merupakan Robot (Bot)
+     */
+    public function count_robot_visitors()
+    {
+        return $this->whereIn('visit_platform', ['YandexBot', 'Googlebot', 'Yahoo'])
+                    ->where('MONTH(visit_date)', date('m'))
+                    ->countAllResults();
+    }
+
+    /**
+     * Hitung Pengunjung dari Browser Lainnya
+     */
+    public function count_other_visitors()
+    {
+        $excluded_platforms = ['YandexBot', 'Googlebot', 'Yahoo', 'Chrome', 'Firefox', 'Mozilla', 'Internet Explorer', 'Safari', 'Opera'];
+
+        return $this->whereNotIn('visit_platform', $excluded_platforms)
+                    ->where('MONTH(visit_date)', date('m'))
+                    ->countAllResults();
     }
 }
