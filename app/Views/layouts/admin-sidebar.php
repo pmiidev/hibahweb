@@ -12,7 +12,7 @@
             />
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
-            <span class="brand-text fw-light">Admin</span>
+            <span class="brand-text fw-light"><?= session('role'); ?></span>
             <!--end::Brand Text-->
           </a>
           <!--end::Brand Link-->
@@ -164,7 +164,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/logout" class="nav-link">
                       <i class="nav-icon bi bi-circle text-danger"></i>
                       <p>Logout</p>
                     </a>
