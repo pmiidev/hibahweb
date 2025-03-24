@@ -29,7 +29,7 @@
               data-accordion="false"
             >
               <li class="nav-item">
-                <a href="/admin" class="nav-link">
+                <a href="/<?= session('role'); ?>" class="nav-link">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>Dashboard</p>
                 </a>

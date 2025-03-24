@@ -58,7 +58,7 @@
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img
-                  src="<?= base_url(''); ?>assets/lte4/img/user2-160x160.jpg"
+                  src="<?= base_url(''); ?>assets/lte4/img/users/<?= session('photo'); ?>"
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
@@ -68,12 +68,12 @@
                 <!--begin::User Image-->
                 <li class="user-header text-bg-secondary shadow">
                   <img
-                    src="<?= base_url(''); ?>assets/lte4/img/user2-160x160.jpg"
+                    src="<?= base_url(''); ?>assets/lte4/img/users/<?= session('photo'); ?>"
                     class="rounded-circle shadow"
                     alt="User Image"
                   />
                   <p>
-                    Your Name
+                    <b><?= session('nama'); ?></b>
                     <small><?= session('role'); ?></small>
                   </p>
                 </li>

@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\UserModel;
+use App\Models\VisitorModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -53,6 +55,67 @@ abstract class BaseController extends Controller
 
         // Preload any models, libraries, etc, here.
 
-        // E.g.: $this->session = service('session');
+        // Session
+        $this->session = \Config\Services::session();
+
+        // Cek Visitor
+        $visitorModel = new VisitorModel();
+        $user_ip = $_SERVER['REMOTE_ADDR'];
+        $agent = $this->request->getUserAgent();
+        if ($agent->isBrowser()) {
+            $agent = $agent->getBrowser() . ' ' . $agent->getVersion();
+        } elseif ($agent->isRobot()) {
+            $agent = $agent->getRobot();
+        } elseif ($agent->isMobile()) {
+            $agent = $agent->getMobile();
+        } else {
+            $agent = 'Unidentified User Agent';
+        }
+        $visitorModel->count_visitor($user_ip, $agent);
+
+        // Akun login
+        if (session('role')) {
+            $this->akunModel = new UserModel();
+            $this->akun = $this->akunModel->where('user_id', session('id'))->first();
+        }
+
+        // Nav Active Admin
+        if (session('role') == 'admin') {
+            if (url_is('admin')) {
+                $this->active = 'dashboard';
+            } elseif (url_is('admin/post*') || url_is('admin/category') || url_is('admin/tag')) {
+                $this->active = 'post';
+            } elseif (url_is('admin/comment*')) {
+                $this->active = 'comment';
+            } elseif (url_is('admin/member*')) {
+                $this->active = 'member';
+            } elseif (url_is('admin/testimonial*')) {
+                $this->active = 'testimonial';
+            } elseif (url_is('admin/team*')) {
+                $this->active = 'team';
+            } elseif (url_is('admin/users*')) {
+                $this->active = 'users';
+            } elseif (url_is('admin/setting*')) {
+                $this->active = 'setting';
+            }
+        }
+        // Nav Active Author
+        if (session('role') == 'author') {
+            if (url_is('author')) {
+                $this->active = 'dashboard';
+            } elseif (url_is('author/post*') || url_is('author/category') || url_is('author/tag')) {
+                $this->active = 'post';
+            } elseif (url_is('author/member*')) {
+                $this->active = 'member';
+            } elseif (url_is('author/testimonial*')) {
+                $this->active = 'testimonial';
+            } elseif (url_is('author/team*')) {
+                $this->active = 'team';
+            } elseif (url_is('author/users*')) {
+                $this->active = 'users';
+            } elseif (url_is('author/setting*')) {
+                $this->active = 'setting';
+            }
+        }
     }
 }
