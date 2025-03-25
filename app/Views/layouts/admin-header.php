@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="title" content="Dashboard v2" />
     <meta name="author" content="Ircham Ali" />
+    <link rel="shortcut icon" href="/assets/lte4/img/AdminLTELogo.png">
     <!--end::Primary Meta Tags-->
     <!--Fonts-->
     <!--begin::Fonts-->
@@ -81,7 +82,7 @@
                 <!--end::Menu Body-->
                 <!--begin::Menu Footer-->
                 <li class="user-footer">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="/<?= session('role'); ?>/setting/profile" class="btn btn-default btn-flat">Profile</a>
                   <a href="/logout" class="btn btn-default btn-flat float-end">Sign out</a>
                 </li>
                 <!--end::Menu Footer-->
