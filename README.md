@@ -1,36 +1,47 @@
-# Hibahweb [CI4]
+# Hibahweb 
 
-## Deskripsi Ringkas
+## Project description
 Salam Pergerakan! Selamat datang di situs resmi github [@pmiidev](https://github.com/pmiidev) untuk repo project-project kita kedepan. Kali ini pmiidev membagikan salah satu source code website company profile secara free (hibah) untuk para pengurus rayon/komis/rayon/korcab se-Indonesia.
 
-Website ini dibangun dengan framework CodeIgniter 4 dilengkapi dengan fasilitas halaman front-end dan back-end. Front-end adalah halaman website yang dikunjungi oleh pengunjung website, sedangkan back-end untuk mengelola konten oleh administrator maupun author.
+Website ini dibangun dengan framework CodeIgniter 4 dilengkapi dengan fasilitas halaman depan dan belakanag. Frontend atau halaman depan adalah halaman website yang dikunjungi oleh pengunjung website, sedangkan halaman belakang untuk mengelola konten oleh administrator maupun author. 
+
+>[!NOTE] 
+Saat ini kami menggunakan CodeIgniter versi 4.6.0 dan sedang on progress upgrade seluruh module sesuai standar PHP 8.x. 
 
 <hr>
 
 ## Project upgrade
-Saat ini sedang on progress upgrade seluruh module sesuai CI v4.6.0. Jika Anda tertarik kontribusi bisa ajukan pull request!
+Jika Anda tertarik untuk berkontribusi bisa ajukan pull request!
 
-- Login (done)
-- Admin Dashboard (done)
-- Admin Page Layouts (done)
+### BACK
+> AUTH
+>>- [x] [done] Login page 
+>>- [x] [done] Dashboard for Admin and Author 
+>>- [x] [done] Page Layouts : Template, Header, Footer, and Sidebar
+>>- [x] [done] User Setting for Admin and Author
 
-> [Settings]
-> - Basic
-> - Home
-> - About
-> - Slider
+> SETTINGS
+>>- [ ] Basic
+>>- [ ] Home
+>>- [ ] About
+>>- [ ] Slider
 
-> [!Posts]
-> - All Posts
-> - Add Post
-> - Categories
-> - Tags
+> POSTS
+>>- [ ] All Posts
+>>- [ ] Add Post
+>>- [ ] Categories
+>>- [ ] Tags
 
-> [!Pages]
-> - Users
-> - Members
-> - Teams
-> - Testimonials
+> ADDITIONAL
+>>- [ ] Users
+>>- [ ] Members
+>>- [ ] Teams
+>>- [ ] Testimonials
+
+### FRONT
+> HOME (ci4 default)
+
+<hr>
 
 ## Installation & updates
 
