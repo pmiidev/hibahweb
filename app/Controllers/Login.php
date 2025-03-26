@@ -69,30 +69,33 @@ class Login extends BaseController
             return redirect()->to('/login')->with('pesan', 'email atau password salah');
         }
     }
+
     public function setAdminSession($user)
     {
         $data = [
             'id' => $user['user_id'],
             'nama' => $user['user_name'],
             'email' => $user['user_email'],
+            'photo' => $user['user_photo'],
             'role' => 'admin'
         ];
-
-        session()->set($data);
+        session()->set($data);  
         return true;
     }
+
     public function setUserSession($user)
     {
         $data = [
             'id' => $user['user_id'],
             'nama' => $user['user_name'],
             'email' => $user['user_email'],
+            'photo' => $user['user_photo'],
             'role' => 'author'
         ];
-
         session()->set($data);
         return true;
     }
+    
     public function logout()
     {
         session()->destroy();

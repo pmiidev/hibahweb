@@ -3,7 +3,7 @@
         <!--begin::Sidebar Brand-->
         <div class="sidebar-brand">
           <!--begin::Brand Link-->
-          <a href="./index.html" class="brand-link">
+          <a href="/<?= session('role'); ?>" class="brand-link">
             <!--begin::Brand Image-->
             <img
               src="<?= base_url(''); ?>assets/lte4/img/AdminLTELogo.png"
@@ -22,18 +22,18 @@
         <div class="sidebar-wrapper">
           <nav class="mt-2">
             <!--begin::Sidebar Menu-->
-            <ul
-              class="nav sidebar-menu flex-column"
+            <ul class="nav sidebar-menu flex-column"
               data-lte-toggle="treeview"
               role="menu"
-              data-accordion="false"
-            >
+              data-accordion="false">
               <li class="nav-item">
-                <a href="/admin" class="nav-link">
+                <a href="/<?= session('role'); ?>" class="nav-link">
                   <i class="nav-icon bi bi-speedometer"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
+
+              <?php if (session('role') == 'admin') : ?>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-box-seam-fill"></i>
@@ -67,43 +67,6 @@
                       <p>Sliders</p>
                     </a>
                   </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon bi bi-clipboard-fill"></i>
-                  <p>
-                    Posts
-                    <span class="nav-badge badge text-bg-secondary me-3">4</span>
-                    <i class="nav-arrow bi bi-chevron-right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon bi bi-circle text-warning"></i>
-                      <p>All Posts</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon bi bi-circle text-warning"></i>
-                      <p>Add Post</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon bi bi-circle text-warning"></i>
-                      <p>Categories</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon bi bi-circle text-warning"></i>
-                      <p>Tags</p>
-                    </a>
-                  </li>
-                  
                 </ul>
               </li>
               <li class="nav-item">
@@ -147,6 +110,45 @@
                   </li>
                 </ul>
               </li>
+              <?php endif; ?>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon bi bi-clipboard-fill"></i>
+                  <p>
+                    Posts
+                    <span class="nav-badge badge text-bg-secondary me-3">4</span>
+                    <i class="nav-arrow bi bi-chevron-right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon bi bi-circle text-warning"></i>
+                      <p>All Posts</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon bi bi-circle text-warning"></i>
+                      <p>Add Post</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon bi bi-circle text-warning"></i>
+                      <p>Categories</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon bi bi-circle text-warning"></i>
+                      <p>Tags</p>
+                    </a>
+                  </li>
+                  
+                </ul>
+              </li>
              
               <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -158,7 +160,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/<?= session('role'); ?>/setting/profile" class="nav-link">
                       <i class="nav-icon bi bi-circle text-success"></i>
                       <p>My Profile</p>
                     </a>

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\Author;
 
 use App\Controllers\BaseController;
 use App\Models\VisitorModel;
 use App\Models\UserModel; 
 
-class AdminController extends BaseController
+class AuthorController extends BaseController
 {
     protected $visitorModel;
     protected $userModel;
@@ -17,7 +17,6 @@ class AdminController extends BaseController
     {
         $this->visitorModel = new VisitorModel();
         $this->userModel = new UserModel();
-        // $this->akun = session()->get('akun'); 
         $this->active = 'dashboard'; 
     }
 
@@ -58,10 +57,10 @@ class AdminController extends BaseController
             'helper_text' => helper('text'),
             'breadcrumbs' => $this->request->getUri()->getSegments(),
 
-            // 'month' => json_encode($bulan),
-            // 'value' => json_encode($value),
-            'month' => json_encode($bulan, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
-            'value' => json_encode($value, JSON_NUMERIC_CHECK),
+            'month' => json_encode($bulan),
+            'value' => json_encode($value),
+            // 'month' => json_encode($bulan, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+            // 'value' => json_encode($value, JSON_NUMERIC_CHECK),
             
             'all_visitors' => $this->visitorModel->count_all_visitors(),
             'all_post_views' => $this->visitorModel->count_all_post_views(),
@@ -78,6 +77,6 @@ class AdminController extends BaseController
             'other_visitor'   => $other_visitor
         ];
 
-        return view('admin/v_dashboard', $data);
+        return view('author/v_dashboard', $data);
     }
 }

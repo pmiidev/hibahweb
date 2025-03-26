@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="title" content="Dashboard v2" />
     <meta name="author" content="Ircham Ali" />
+    <link rel="shortcut icon" href="/assets/lte4/img/AdminLTELogo.png">
     <!--end::Primary Meta Tags-->
     <!--Fonts-->
     <!--begin::Fonts-->
@@ -58,7 +59,7 @@
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img
-                  src="<?= base_url(''); ?>assets/lte4/img/user2-160x160.jpg"
+                  src="<?= base_url(''); ?>assets/lte4/img/users/<?= $akun['user_photo']; ?>"
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
@@ -68,12 +69,12 @@
                 <!--begin::User Image-->
                 <li class="user-header text-bg-secondary shadow">
                   <img
-                    src="<?= base_url(''); ?>assets/lte4/img/user2-160x160.jpg"
+                    src="<?= base_url(''); ?>assets/lte4/img/users/<?= $akun['user_photo']; ?>"
                     class="rounded-circle shadow"
                     alt="User Image"
                   />
                   <p>
-                    Your Name
+                    <b><?= $akun['user_name']; ?></b>
                     <small><?= session('role'); ?></small>
                   </p>
                 </li>
@@ -81,7 +82,7 @@
                 <!--end::Menu Body-->
                 <!--begin::Menu Footer-->
                 <li class="user-footer">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="/<?= session('role'); ?>/setting/profile" class="btn btn-default btn-flat">Profile</a>
                   <a href="/logout" class="btn btn-default btn-flat float-end">Sign out</a>
                 </li>
                 <!--end::Menu Footer-->
