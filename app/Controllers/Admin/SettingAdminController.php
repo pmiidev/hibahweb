@@ -540,22 +540,20 @@ class SettingAdminController extends BaseController
         ];
 
         if (!$this->validate($rules)) {
-            return redirect()->to("/admin/setting/profile")->with('msg', 'error');
+            return redirect()->to('/admin/setting/profile')->with('msg', 'error');
         }
 
-        // Cek apakah ada file yang diunggah
-        if ($user_photo && $user_photo->isValid() && !$user_photo->hasMoved()) {
+        if ($user_photo && $user_photo->isValid() && $user_photo->getName() !== '') {
             $namaUserPhoto = $user_photo->getRandomName();
             $user_photo->move('assets/lte4/img/users', $namaUserPhoto);
         } else {
-            $namaUserPhoto = $this->akun['user_photo']; // Gunakan foto lama jika tidak ada upload baru
+            $namaUserPhoto = $this->akun['user_photo'];
         }
 
-        // Simpan ke database
         $this->userModel->update($this->akun['user_id'], [
             'user_name' => $user_name,
             'user_email' => $user_email,
-            'user_photo' => $namaUserPhoto
+            'user_photo' => $namaUserPhoto,
         ]);
 
         return redirect()->to('/admin/setting/profile')->with('msg', 'success-update');
@@ -567,28 +565,24 @@ class SettingAdminController extends BaseController
         $new_password = $this->request->getPost('new_password');
         $conf_password = $this->request->getPost('conf_password');
 
-        // Cek apakah password lama sesuai
         if (!password_verify($old_password, $this->akun['user_password'])) {
-            return redirect()->to("/admin/setting/profile")->with('msg', 'error-notfound');
+            return redirect()->to('/admin/setting/profile')->with('msg', 'error-notfound');
         }
 
-        // Validasi input
         $rules = [
-            'new_password' => 'required|min_length[6]|matches[conf_password]',
-            'conf_password' => 'required|min_length[6]|matches[new_password]',
+            'new_password' => 'required|matches[conf_password]',
+            'conf_password' => 'required|matches[new_password]',
+            'old_password' => 'required',
         ];
 
         if (!$this->validate($rules)) {
-            return redirect()->to("/admin/setting/profile")->with('msg', 'error-notmatch');
+            return redirect()->to('/admin/setting/profile')->with('msg', 'error-notmatch');
         }
 
-        // Update password ke database
         $this->userModel->update($this->akun['user_id'], [
-            'user_password' => password_hash($new_password, PASSWORD_DEFAULT)
+            'user_password' => password_hash($new_password, PASSWORD_DEFAULT),
         ]);
 
-        return redirect()->to("/admin/setting/profile")->with('msg', 'success');
+        return redirect()->to('/admin/setting/profile')->with('msg', 'success');
     }
-
-
 }

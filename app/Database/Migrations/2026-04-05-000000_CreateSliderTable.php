@@ -45,11 +45,11 @@ class CreateSliderTable extends Migration
             ],
         ]);
         $this->forge->addKey('slider_id', true);
-        $this->forge->createTable('tbl_slider');
+        $this->forge->createTable('tbl_sliders');
     }
 
     public function down()
     {
-        $this->forge->dropTable('tbl_slider');
+        $this->forge->dropTable('tbl_sliders');
     }
 }
