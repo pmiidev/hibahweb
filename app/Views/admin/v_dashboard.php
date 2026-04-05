@@ -279,7 +279,7 @@
                   <!-- /.card-body -->
                   <div class="card-footer clearfix">
                     
-                    <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-end">
+                    <a href="/<?= session('role'); ?>/post" class="btn btn-sm btn-secondary float-end">
                       View All Posts
                     </a>
                   </div>
