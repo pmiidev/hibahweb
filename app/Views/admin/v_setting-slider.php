@@ -102,7 +102,7 @@
                                 <td><?= esc($slider['slider_order']); ?></td>
                                 <td>
                                   <?php if (!empty($slider['slider_image'])) : ?>
-                                    <img src="/assets/frontend/img/<?= esc($slider['slider_image']); ?>" alt="Slider Image" class="img-thumbnail" width="80">
+                                    <img src="/assets/lte4/img/setting/slider/<?= esc($slider['slider_image']); ?>" alt="Slider Image" class="img-thumbnail" width="80">
                                   <?php endif; ?>
                                 </td>
                                 <td class="text-end">

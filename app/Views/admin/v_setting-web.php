@@ -71,21 +71,21 @@
                           <label class="form-label">Favicon</label>
                           <input type="file" name="logo_icon" class="form-control">
                           <?php if (!empty($sites['site_favicon'])) : ?>
-                            <img src="/assets/frontend/images/<?= esc($sites['site_favicon']); ?>" class="img-thumbnail mt-2" width="64" alt="Favicon">
+                            <img src="/assets/lte4/img/setting/web/<?= esc($sites['site_favicon']); ?>" class="img-thumbnail mt-2" width="64" alt="Favicon">
                           <?php endif; ?>
                         </div>
                         <div class="col-md-4">
                           <label class="form-label">Logo Header</label>
                           <input type="file" name="logo_header" class="form-control">
                           <?php if (!empty($sites['site_logo_header'])) : ?>
-                            <img src="/assets/frontend/images/<?= esc($sites['site_logo_header']); ?>" class="img-thumbnail mt-2" width="140" alt="Logo Header">
+                            <img src="/assets/lte4/img/setting/web/<?= esc($sites['site_logo_header']); ?>" class="img-thumbnail mt-2" width="140" alt="Logo Header">
                           <?php endif; ?>
                         </div>
                         <div class="col-md-4">
                           <label class="form-label">Logo Big</label>
                           <input type="file" name="logo_big" class="form-control">
                           <?php if (!empty($sites['site_logo_big'])) : ?>
-                            <img src="/assets/frontend/images/<?= esc($sites['site_logo_big']); ?>" class="img-thumbnail mt-2" width="140" alt="Logo Big">
+                            <img src="/assets/lte4/img/setting/web/<?= esc($sites['site_logo_big']); ?>" class="img-thumbnail mt-2" width="140" alt="Logo Big">
                           <?php endif; ?>
                         </div>
                         <div class="col-md-4">

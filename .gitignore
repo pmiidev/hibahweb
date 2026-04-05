@@ -124,3 +124,6 @@ nb-configuration.xml
 
 /results/
 /phpunit*.xml
+
+# Ignore local setting uploads generated during development
+public/assets/lte4/img/setting/

@@ -39,6 +39,38 @@ class SettingAdminController extends BaseController
         ];
     }
 
+    private function uploadDirectory(string $module): string
+    {
+        $path = FCPATH . 'assets/lte4/img/' . trim($module, '/') . '/';
+
+        if (! is_dir($path)) {
+            mkdir($path, 0755, true);
+        }
+
+        return $path;
+    }
+
+    private function replaceUploadedFile($uploadedFile, ?string $currentName, string $module): ?string
+    {
+        if (! $uploadedFile instanceof \CodeIgniter\HTTP\Files\UploadedFile) {
+            return $currentName;
+        }
+
+        if (! $uploadedFile->isValid() || $uploadedFile->getName() === '') {
+            return $currentName;
+        }
+
+        $path = $this->uploadDirectory($module);
+        $newName = $uploadedFile->getRandomName();
+        $uploadedFile->move($path, $newName);
+
+        if ($currentName && is_file($path . $currentName)) {
+            @unlink($path . $currentName);
+        }
+
+        return $newName;
+    }
+
     public function web()
     {
         $data = $this->getBaseData('Website Setting');
@@ -142,11 +174,11 @@ class SettingAdminController extends BaseController
                 ]
             ],
             'logo_icon' => [
-                'rules' => 'max_size[logo_icon,2048]|is_image[logo_icon]|mime_in[logo_icon,image/jpg,image/jpeg,image/png]',
+                'rules' => 'max_size[logo_icon,2048]|ext_in[logo_icon,ico,icon,png,jpg,jpeg]|mime_in[logo_icon,image/x-icon,image/vnd.microsoft.icon,image/png,image/jpg,image/jpeg]',
                 'errors' => [
-                    'max_size' => 'Ukuran gambar tidak boleh lebih dari 2MB',
-                    'is_image' => 'Yang anda pilih bukan gambar',
-                    'mime_in' => 'Yang anda pilih bukan gambar'
+                    'max_size' => 'Ukuran file tidak boleh lebih dari 2MB',
+                    'ext_in' => 'Favicon harus berekstensi ico atau png',
+                    'mime_in' => 'Favicon harus berupa file ico atau png yang valid'
                 ]
             ],
             'logo_header' => [
@@ -193,23 +225,9 @@ class SettingAdminController extends BaseController
         $logoHeaderAwal = $site['site_logo_header'] ?? null;
         $logoBigAwal = $site['site_logo_big'] ?? null;
 
-        $namaLogoIcon = $logoIconAwal;
-        if ($fileLogoIcon && $fileLogoIcon->isValid() && $fileLogoIcon->getName() !== '') {
-            $namaLogoIcon = $fileLogoIcon->getRandomName();
-            $fileLogoIcon->move('assets/frontend/images/', $namaLogoIcon);
-        }
-
-        $namaLogoHeader = $logoHeaderAwal;
-        if ($fileLogoHeader && $fileLogoHeader->isValid() && $fileLogoHeader->getName() !== '') {
-            $namaLogoHeader = $fileLogoHeader->getRandomName();
-            $fileLogoHeader->move('assets/frontend/images/', $namaLogoHeader);
-        }
-
-        $namaLogoBig = $logoBigAwal;
-        if ($fileLogoBig && $fileLogoBig->isValid() && $fileLogoBig->getName() !== '') {
-            $namaLogoBig = $fileLogoBig->getRandomName();
-            $fileLogoBig->move('assets/frontend/images/', $namaLogoBig);
-        }
+        $namaLogoIcon = $this->replaceUploadedFile($fileLogoIcon, $logoIconAwal, 'setting/web');
+        $namaLogoHeader = $this->replaceUploadedFile($fileLogoHeader, $logoHeaderAwal, 'setting/web');
+        $namaLogoBig = $this->replaceUploadedFile($fileLogoBig, $logoBigAwal, 'setting/web');
 
         $this->siteModel->update($site_id, [
             'site_name' => $name,
@@ -323,23 +341,9 @@ class SettingAdminController extends BaseController
         $imgTestimonialAwal = $home['home_bg_testimonial'] ?? null;
         $imgTestimonial2Awal = $home['home_bg_testimonial2'] ?? null;
 
-        $namaImgHeading = $imgHeadingAwal;
-        if ($fileImgHeading && $fileImgHeading->isValid() && $fileImgHeading->getName() !== '') {
-            $namaImgHeading = $fileImgHeading->getRandomName();
-            $fileImgHeading->move('assets/frontend/img/', $namaImgHeading);
-        }
-
-        $namaImgTestimonial = $imgTestimonialAwal;
-        if ($fileImgTestimonial && $fileImgTestimonial->isValid() && $fileImgTestimonial->getName() !== '') {
-            $namaImgTestimonial = $fileImgTestimonial->getRandomName();
-            $fileImgTestimonial->move('assets/frontend/img/', $namaImgTestimonial);
-        }
-
-        $namaImgTestimonial2 = $imgTestimonial2Awal;
-        if ($fileImgTestimonial2 && $fileImgTestimonial2->isValid() && $fileImgTestimonial2->getName() !== '') {
-            $namaImgTestimonial2 = $fileImgTestimonial2->getRandomName();
-            $fileImgTestimonial2->move('assets/frontend/img/', $namaImgTestimonial2);
-        }
+        $namaImgHeading = $this->replaceUploadedFile($fileImgHeading, $imgHeadingAwal, 'setting/home');
+        $namaImgTestimonial = $this->replaceUploadedFile($fileImgTestimonial, $imgTestimonialAwal, 'setting/home');
+        $namaImgTestimonial2 = $this->replaceUploadedFile($fileImgTestimonial2, $imgTestimonial2Awal, 'setting/home');
 
         $this->homeModel->update($home_id, [
             'home_caption_1' => $caption1,
@@ -421,12 +425,7 @@ class SettingAdminController extends BaseController
         $fileImgAbout = $validated['img_about'];
         $about = $this->aboutModel->find($about_id);
         $imgAboutAwal = $about['about_image'] ?? null;
-        $namaImgAbout = $imgAboutAwal;
-
-        if ($fileImgAbout && $fileImgAbout->isValid() && $fileImgAbout->getName() !== '') {
-            $namaImgAbout = $fileImgAbout->getRandomName();
-            $fileImgAbout->move('assets/frontend/img/', $namaImgAbout);
-        }
+        $namaImgAbout = $this->replaceUploadedFile($fileImgAbout, $imgAboutAwal, 'setting/about');
 
         $this->aboutModel->update($about_id, [
             'about_name' => $name,
@@ -497,7 +496,7 @@ class SettingAdminController extends BaseController
         $fileImage = $validated['slider_image'];
 
         $imageName = $fileImage->getRandomName();
-        $fileImage->move('assets/frontend/img/', $imageName);
+        $fileImage->move($this->uploadDirectory('setting/slider'), $imageName);
 
         $this->sliderModel->insert([
             'slider_title' => $sliderTitle,

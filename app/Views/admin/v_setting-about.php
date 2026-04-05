@@ -71,7 +71,7 @@
                           <label class="form-label">About Image</label>
                           <input type="file" name="img_about" class="form-control">
                           <?php if (!empty($abouts['about_image'])) : ?>
-                            <img src="/assets/frontend/img/<?= esc($abouts['about_image']); ?>" class="img-fluid mt-2 rounded" alt="About Image">
+                            <img src="/assets/lte4/img/setting/about/<?= esc($abouts['about_image']); ?>" class="img-fluid mt-2 rounded" alt="About Image">
                           <?php endif; ?>
                         </div>
                         <div class="col-12 text-end">

@@ -71,21 +71,21 @@
                           <label class="form-label">Background Heading</label>
                           <input type="file" name="img_heading" class="form-control">
                           <?php if (!empty($homes['home_bg_heading'])) : ?>
-                            <img src="/assets/frontend/img/<?= esc($homes['home_bg_heading']); ?>" class="img-fluid mt-2 rounded" alt="Heading Background">
+                            <img src="/assets//lte4/img/setting/home/<?= esc($homes['home_bg_heading']); ?>" class="img-fluid mt-2 rounded" alt="Heading Background">
                           <?php endif; ?>
                         </div>
                         <div class="col-md-4">
                           <label class="form-label">Background Testimonial</label>
                           <input type="file" name="img_testimonial" class="form-control">
                           <?php if (!empty($homes['home_bg_testimonial'])) : ?>
-                            <img src="/assets/frontend/img/<?= esc($homes['home_bg_testimonial']); ?>" class="img-fluid mt-2 rounded" alt="Testimonial Background">
+                            <img src="/assets//lte4/img/setting/home/<?= esc($homes['home_bg_testimonial']); ?>" class="img-fluid mt-2 rounded" alt="Testimonial Background">
                           <?php endif; ?>
                         </div>
                         <div class="col-md-4">
                           <label class="form-label">Background Testimonial 2</label>
                           <input type="file" name="img_testimonial2" class="form-control">
                           <?php if (!empty($homes['home_bg_testimonial2'])) : ?>
-                            <img src="/assets/frontend/img/<?= esc($homes['home_bg_testimonial2']); ?>" class="img-fluid mt-2 rounded" alt="Testimonial Background 2">
+                            <img src="/assets//lte4/img/setting/home/<?= esc($homes['home_bg_testimonial2']); ?>" class="img-fluid mt-2 rounded" alt="Testimonial Background 2">
                           <?php endif; ?>
                         </div>
                         <div class="col-12 text-end">
