@@ -44,25 +44,25 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/<?= session('role'); ?>/setting/web" class="nav-link">
                       <i class="nav-icon bi bi-circle text-info"></i>
                       <p>Basic</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/<?= session('role'); ?>/setting/home" class="nav-link">
                       <i class="nav-icon bi bi-circle text-info"></i>
                       <p>Home</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/<?= session('role'); ?>/setting/about" class="nav-link">
                       <i class="nav-icon bi bi-circle text-info"></i>
                       <p>About</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/<?= session('role'); ?>/setting/slider" class="nav-link">
                       <i class="nav-icon bi bi-circle text-info"></i>
                       <p>Sliders</p>
                     </a>

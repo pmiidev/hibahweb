@@ -114,6 +114,10 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
         // Setting About
         $routes->get('about', 'Admin\SettingAdminController::about');
         $routes->put('about', 'Admin\SettingAdminController::about_update');
+        // Setting Slider
+        $routes->get('slider', 'Admin\SettingAdminController::slider');
+        $routes->post('slider', 'Admin\SettingAdminController::slider_save');
+        $routes->delete('slider/(:num)', 'Admin\SettingAdminController::slider_delete/$1');
     });
 });
     // Author Routes
