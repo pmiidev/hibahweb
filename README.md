@@ -21,10 +21,10 @@ Jika Anda tertarik untuk berkontribusi bisa ajukan pull request!
 >>- [x] [done] User Setting for Admin and Author
 
 > SETTINGS
->>- [ ] Basic
->>- [ ] Home
->>- [ ] About
->>- [ ] Slider
+>>- [x] Basic
+>>- [x] Home
+>>- [x] About
+>>- [x] Slider
 
 > POSTS
 >>- [ ] All Posts
