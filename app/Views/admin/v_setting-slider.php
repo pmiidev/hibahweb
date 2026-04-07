@@ -68,8 +68,9 @@
                       <div class="mb-3">
                         <label class="form-label">Order</label>
                         <input type="number" name="slider_order" class="form-control" value="0" min="0" required>
+                        <div class="form-text">Angka lebih kecil muncul lebih dulu. Untuk perubahan urutan cepat setelah dibuat, gunakan tombol Move Up / Move Down pada tabel.</div>
                       </div>
-                      <button type="submit" class="btn btn-primary">Create Slider Item</button>
+                      <button type="submit" class="btn btn-sm btn-primary">Create Slider Item</button>
                     </form>
                   </div>
                 </div>
@@ -106,10 +107,17 @@
                                   <?php endif; ?>
                                 </td>
                                 <td class="text-end">
-                                  <form action="/<?= session('role'); ?>/setting/slider/<?= esc($slider['slider_id']); ?>" method="post" class="d-inline">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
-                                  </form>
+                                  <div class="d-flex flex-wrap justify-content-end align-items-center gap-1">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary p-1" data-bs-toggle="modal" data-bs-target="#EditSliderModal<?= esc($slider['slider_id']); ?>">
+                                      <i class="bi bi-pencil fs-6"></i>
+                                    </button>
+                                    <form action="/<?= session('role'); ?>/setting/slider/<?= esc($slider['slider_id']); ?>" method="post" class="m-0">
+                                      <input type="hidden" name="_method" value="DELETE">
+                                      <button type="submit" class="btn btn-sm btn-outline-danger p-1">
+                                        <i class="bi bi-trash fs-6"></i>
+                                      </button>
+                                    </form>
+                                  </div>
                                 </td>
                               </tr>
                             <?php endforeach; ?>
@@ -125,6 +133,57 @@
                 </div>
               </div>
             </div>
+
+            <?php if (!empty($sliders) && is_array($sliders)) : ?>
+              <?php foreach ($sliders as $slider) : ?>
+                <div class="modal fade" id="EditSliderModal<?= esc($slider['slider_id']); ?>" tabindex="-1" aria-labelledby="EditSliderModalLabel<?= esc($slider['slider_id']); ?>" aria-hidden="true">
+                  <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="EditSliderModalLabel<?= esc($slider['slider_id']); ?>">Edit Slider</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <form action="/<?= session('role'); ?>/setting/slider/<?= esc($slider['slider_id']); ?>" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="_method" value="PUT">
+                        <div class="modal-body">
+                          <div class="row g-3">
+                            <div class="col-md-6">
+                              <label class="form-label">Slider Title</label>
+                              <input type="text" name="slider_title" class="form-control" value="<?= esc($slider['slider_title']); ?>" required>
+                            </div>
+                            <div class="col-md-6">
+                              <label class="form-label">Order</label>
+                              <input type="number" name="slider_order" class="form-control" value="<?= esc($slider['slider_order']); ?>" min="0" required>
+                            </div>
+                            <div class="col-12">
+                              <label class="form-label">Slider Caption</label>
+                              <textarea name="slider_caption" class="form-control" rows="4" required><?= esc($slider['slider_caption']); ?></textarea>
+                            </div>
+                            <div class="col-md-6">
+                              <label class="form-label">Replace Image</label>
+                              <input type="file" name="slider_image" class="form-control form-control-sm">
+                              <small class="text-muted">Kosongkan jika tidak ingin mengganti gambar.</small>
+                            </div>
+                            <div class="col-md-6">
+                              <?php if (!empty($slider['slider_image'])) : ?>
+                                <label class="form-label">Current Image</label>
+                                <img src="/assets/lte4/img/setting/slider/<?= esc($slider['slider_image']); ?>" alt="Slider Image" class="img-thumbnail d-block mt-2" width="180">
+                              <?php endif; ?>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-sm btn-primary">Save Changes</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            <?php endif; ?>
+
+          </div>
           </div>
         </div>
       </main>

@@ -1,24 +1,28 @@
-# Hibahweb 
+# Hibahweb
 
-## Project description
-Salam Pergerakan! Selamat datang di situs resmi github [@pmiidev](https://github.com/pmiidev) untuk repo project-project kita kedepan. Kali ini pmiidev membagikan salah satu source code website company profile secara free (hibah) untuk para pengurus rayon/komis/rayon/korcab se-Indonesia.
+## Project Description
+Salam Pergerakan! Selamat datang di repositori project hibahweb. Proyek ini adalah source code website company profile yang dibagikan secara gratis untuk pengurus rayon/komis/rayon/korcab se-Indonesia.
 
-Website ini dibangun dengan framework CodeIgniter 4 dilengkapi dengan fasilitas halaman depan dan belakanag. Frontend atau halaman depan adalah halaman website yang dikunjungi oleh pengunjung website, sedangkan halaman belakang untuk mengelola konten oleh administrator maupun author. 
+Website ini dibangun dengan framework CodeIgniter 4 dan menyediakan:
+- Halaman depan untuk pengunjung website
+- Halaman belakang untuk pengelolaan konten oleh administrator dan author
+- Sistem login dan dashboard untuk admin dan author
+- Pengaturan konten `Settings` untuk situs, halaman home, about, dan slider
 
->[!NOTE] 
-Saat ini kami menggunakan CodeIgniter versi 4.6.0 dan sedang on progress upgrade seluruh module sesuai standar PHP 8.x. 
+> [!NOTE]
+> Proyek ini menggunakan CodeIgniter 4 dan disiapkan untuk PHP 8.2+. Periksa `composer.json` untuk detail versi: `codeigniter4/framework` ^4.7.
 
 <hr>
 
-## Project upgrade
-Jika Anda tertarik untuk berkontribusi bisa ajukan pull request!
+## Project Upgrade Status
+Ingin berkontribusi? Silakan ajukan pull request atau buka issue di GitHub.
 
-### BACK
+### BACKEND
 > AUTH
->>- [x] [done] Login page 
->>- [x] [done] Dashboard for Admin and Author 
->>- [x] [done] Page Layouts : Template, Header, Footer, and Sidebar
->>- [x] [done] User Setting for Admin and Author
+>>- [x] Login page
+>>- [x] Dashboard for Admin and Author
+>>- [x] Page layouts: template, header, footer, sidebar
+>>- [x] User settings for Admin and Author
 
 > SETTINGS
 >>- [x] Basic
@@ -27,72 +31,72 @@ Jika Anda tertarik untuk berkontribusi bisa ajukan pull request!
 >>- [x] Slider
 
 > POSTS
->>- [ ] All Posts
->>- [ ] Add Post
+>>- [ ] All posts
+>>- [ ] Add post
 >>- [ ] Categories
 >>- [ ] Tags
 
 > ADDITIONAL
->>- [ ] Users
+>>- [ ] Users management
 >>- [ ] Members
 >>- [ ] Teams
 >>- [ ] Testimonials
 
-### FRONT
-> HOME (ci4 default)
+### FRONTEND
+> HOME (CI4 default)
 
 <hr>
 
-## Installation & updates
+## Installation & Updates
 
-First `git clone https://github.com/pmiidev/hibahweb.git` on your directory
-then `composer update` whenever
-there is a new release of the framework.
+1. Clone repository:
+   ```bash
+   git clone https://github.com/pmiidev/hibahweb.git
+   ```
+2. Install dependencies:
+   ```bash
+   composer install
+   ```
+3. Update composer packages ketika ada rilis baru:
+   ```bash
+   composer update
+   ```
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+Jika Anda memutakhirkan framework, periksa release notes dan terapkan perubahan pada folder `app` jika diperlukan. File yang terpengaruh bisa disalin atau digabung dari `vendor/codeigniter4/framework/app`.
 
 ## Setup
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+1. Salin `env` menjadi `.env`
+2. Sesuaikan `app.baseURL` dan pengaturan database
+3. Pastikan server web mengarah ke folder `public`
 
-## Important Change with index.php
+## Important: Public Folder
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+`index.php` sekarang berada di dalam folder `public` untuk keamanan yang lebih baik. Pastikan konfigurasi web server Anda menunjuk ke folder tersebut, bukan ke root proyek.
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+## Contributing
 
-**Please** read the user guide for a better explanation of how CI4 works!
+Kami sangat menghargai kontribusi!
 
-## Repository Management
+- Buka issue jika menemukan bug atau ingin menambahkan fitur
+- Kirim pull request untuk perbaikan atau penambahan
+- Berikan ⭐ di repositori ini jika Anda menyukai project ini
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+Terima kasih atas dukungan dan kontribusinya.
 
 ## Server Requirements
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+PHP version 8.2 or higher is required, with the following extensions installed:
 
 - [intl](http://php.net/manual/en/intl.requirements.php)
 - [mbstring](http://php.net/manual/en/mbstring.installation.php)
+- json (enabled by default)
+- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if using MySQL
+- [libcurl](http://php.net/manual/en/curl.requirements.php) if using HTTP\CURLRequest
 
 > [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+> - PHP 7.4 reached end of life on November 28, 2022.
+> - PHP 8.0 reached end of life on November 26, 2023.
+> - PHP 8.1 will reach end of life on December 31, 2025.
 
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+Pastikan lingkungan Anda menggunakan PHP 8.2+ untuk keamanan dan kompatibilitas terbaik.

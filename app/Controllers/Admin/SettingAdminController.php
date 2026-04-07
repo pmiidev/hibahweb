@@ -508,6 +508,72 @@ class SettingAdminController extends BaseController
         return redirect()->to('/admin/setting/slider')->with('msg', 'success');
     }
 
+    public function slider_update($id)
+    {
+        $slider = $this->sliderModel->find($id);
+        if (! $slider) {
+            return redirect()->to('/admin/setting/slider')->with('msg', 'error');
+        }
+
+        $data = [
+            'slider_title' => htmlspecialchars(strip_tags($this->request->getPost('slider_title'), ENT_QUOTES)),
+            'slider_caption' => htmlspecialchars(strip_tags($this->request->getPost('slider_caption'), ENT_QUOTES)),
+            'slider_order' => htmlspecialchars(strip_tags($this->request->getPost('slider_order'), ENT_QUOTES)),
+            'slider_image' => $this->request->getFile('slider_image'),
+        ];
+
+        $rules = [
+            'slider_title' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!'
+                ]
+            ],
+            'slider_caption' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!'
+                ]
+            ],
+            'slider_order' => [
+                'rules' => 'required|is_natural',
+                'errors' => [
+                    'required' => 'Kolom {field} harus diisi!',
+                    'is_natural' => 'Inputan harus angka dan tidak negatif'
+                ]
+            ],
+            'slider_image' => [
+                'rules' => 'max_size[slider_image,2048]|is_image[slider_image]|mime_in[slider_image,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran gambar tidak boleh lebih dari 2MB',
+                    'is_image' => 'Yang anda pilih bukan gambar',
+                    'mime_in' => 'Yang anda pilih bukan gambar'
+                ]
+            ]
+        ];
+
+        if (! $this->validateData($data, $rules)) {
+            return redirect()->to('/admin/setting/slider')->with('msg', 'error');
+        }
+
+        $validated = $this->validator->getValidated();
+        $sliderTitle = $validated['slider_title'];
+        $sliderCaption = $validated['slider_caption'];
+        $sliderOrder = $validated['slider_order'];
+        $fileImage = $validated['slider_image'];
+
+        $imageName = $this->replaceUploadedFile($fileImage, $slider['slider_image'], 'setting/slider');
+
+        $this->sliderModel->update($id, [
+            'slider_title' => $sliderTitle,
+            'slider_caption' => $sliderCaption,
+            'slider_image' => $imageName,
+            'slider_order' => $sliderOrder,
+        ]);
+
+        return redirect()->to('/admin/setting/slider')->with('msg', 'success');
+    }
+
     public function slider_delete($id)
     {
         $slider = $this->sliderModel->find($id);
