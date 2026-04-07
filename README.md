@@ -25,10 +25,10 @@ Ingin berkontribusi? Silakan ajukan pull request atau buka issue di GitHub.
 >>- [x] User settings for Admin and Author
 
 > SETTINGS
->>- [x] Basic settings
->>- [x] Home settings
->>- [x] About settings
->>- [x] Slider settings 
+>>- [x] Basic
+>>- [x] Home
+>>- [x] About
+>>- [x] Slider
 
 > POSTS
 >>- [ ] All posts
