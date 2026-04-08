@@ -61,7 +61,7 @@
                     <h3 class="card-title">Members</h3>
                     <div class="card-tools">
                       <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addMemberModal">
-                        <i class="fas fa-plus"></i> Add New Member
+                        <i class="bi bi-plus-lg"></i> Add New Member
                       </button>
                     </div>
                   </div>
@@ -94,10 +94,10 @@
                             <td><?= substr($row['member_desc'], 0, 50); ?>...</td>
                             <td>
                               <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editMemberModal<?= $row['member_id']; ?>">
-                                <i class="fas fa-edit"></i> Edit
+                                <i class="bi bi-pencil-square"></i> Edit
                               </button>
                               <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteMemberModal<?= $row['member_id']; ?>">
-                                <i class="fas fa-trash"></i> Delete
+                                <i class="bi bi-trash"></i> Delete
                               </button>
                             </td>
                           </tr>

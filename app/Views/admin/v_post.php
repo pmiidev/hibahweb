@@ -33,9 +33,13 @@
       <?php endif; ?>
 
       <div class="card mb-4">
-        <div class="card-header d-flex justify-content-between align-items-center">
-          <h5 class="card-title mb-0">All Posts</h5>
-          <a href="/admin/post/add_new" class="btn btn-success btn-sm">Add Post</a>
+        <div class="card-header">
+          <h3 class="card-title">All Posts</h3>
+          <div class="card-tools">
+            <a href="/admin/post/add_new" class="btn btn-success btn-sm">
+              <i class="bi bi-plus-lg"></i> Add Post
+            </a>
+          </div>
         </div>
         <div class="card-body">
           <div class="table-responsive">

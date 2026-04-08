@@ -89,7 +89,7 @@
               <h3 class="card-title">Users Management</h3>
               <div class="card-tools">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUserModal">
-                  <i class="fas fa-plus"></i> Add New User
+                  <i class="bi bi-plus-lg"></i> Add New User
                 </button>
               </div>
             </div>
@@ -137,22 +137,22 @@
                       <td>
                         <?php if ($row['user_status'] == '1'): ?>
                           <a href="/admin/users/deactivate/<?= $row['user_id']; ?>" class="btn btn-success btn-sm">
-                            <i class="fas fa-check"></i> Active
+                            <i class="bi bi-check-lg"></i> Active
                           </a>
                         <?php else: ?>
                           <a href="/admin/users/activate/<?= $row['user_id']; ?>" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-times"></i> Inactive
+                            <i class="bi bi-x-lg"></i> Inactive
                           </a>
                         <?php endif; ?>
                       </td>
                       <td>
                         <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
                           data-bs-target="#editUserModal<?= $row['user_id']; ?>">
-                          <i class="fas fa-edit"></i> Edit
+                          <i class="bi bi-pencil-square"></i> Edit
                         </button>
                         <button class="btn btn-danger btn-sm" data-bs-toggle="modal"
                           data-bs-target="#deleteUserModal<?= $row['user_id']; ?>">
-                          <i class="fas fa-trash"></i> Delete
+                          <i class="bi bi-trash"></i> Delete
                         </button>
                       </td>
                     </tr>
