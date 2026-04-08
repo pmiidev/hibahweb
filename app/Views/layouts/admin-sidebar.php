@@ -28,8 +28,8 @@
         </li>
 
         <?php if (session('role') == 'admin'): ?>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item <?= ($active === 'setting' && uri_string() !== session('role') . '/setting/profile') ? 'menu-open' : ''; ?>">
+            <a href="#" class="nav-link <?= ($active === 'setting' && uri_string() !== session('role') . '/setting/profile') ? 'active' : ''; ?>">
               <i class="nav-icon bi bi-box-seam-fill"></i>
               <p>
                 Settings
@@ -38,33 +38,33 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/<?= session('role'); ?>/setting/web" class="nav-link">
+                <a href="/<?= session('role'); ?>/setting/web" class="nav-link <?= uri_string() === session('role') . '/setting/web' ? 'active' : ''; ?>">
                   <i class="nav-icon bi bi-circle text-info"></i>
                   <p>Basic</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/<?= session('role'); ?>/setting/home" class="nav-link">
+                <a href="/<?= session('role'); ?>/setting/home" class="nav-link <?= uri_string() === session('role') . '/setting/home' ? 'active' : ''; ?>">
                   <i class="nav-icon bi bi-circle text-info"></i>
                   <p>Home</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/<?= session('role'); ?>/setting/about" class="nav-link">
+                <a href="/<?= session('role'); ?>/setting/about" class="nav-link <?= uri_string() === session('role') . '/setting/about' ? 'active' : ''; ?>">
                   <i class="nav-icon bi bi-circle text-info"></i>
                   <p>About</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/<?= session('role'); ?>/setting/slider" class="nav-link">
+                <a href="/<?= session('role'); ?>/setting/slider" class="nav-link <?= uri_string() === session('role') . '/setting/slider' ? 'active' : ''; ?>">
                   <i class="nav-icon bi bi-circle text-info"></i>
                   <p>Sliders</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item <?= in_array($active, ['users', 'member', 'team', 'testimonial']) ? 'menu-open' : ''; ?>">
+            <a href="#" class="nav-link <?= in_array($active, ['users', 'member', 'team', 'testimonial']) ? 'active' : ''; ?>">
               <i class="nav-icon bi bi-table"></i>
               <p>
                 Additional
@@ -73,25 +73,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/<?= session('role'); ?>/users" class="nav-link">
+                <a href="/<?= session('role'); ?>/users" class="nav-link <?= uri_string() === session('role') . '/users' ? 'active' : ''; ?>">
                   <i class="nav-icon bi bi-circle text-success"></i>
                   <p>Users</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/<?= session('role'); ?>/member" class="nav-link">
+                <a href="/<?= session('role'); ?>/member" class="nav-link <?= uri_string() === session('role') . '/member' ? 'active' : ''; ?>">
                   <i class="nav-icon bi bi-circle text-success"></i>
                   <p>Members</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/<?= session('role'); ?>/team" class="nav-link">
+                <a href="/<?= session('role'); ?>/team" class="nav-link <?= uri_string() === session('role') . '/team' ? 'active' : ''; ?>">
                   <i class="nav-icon bi bi-circle text-success"></i>
                   <p>Teams</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/<?= session('role'); ?>/testimonial" class="nav-link">
+                <a href="/<?= session('role'); ?>/testimonial" class="nav-link <?= uri_string() === session('role') . '/testimonial' ? 'active' : ''; ?>">
                   <i class="nav-icon bi bi-circle text-success"></i>
                   <p>Testimonials</p>
                 </a>
@@ -138,8 +138,8 @@
           </ul>
         </li>
 
-        <li class="nav-item">
-          <a href="#" class="nav-link">
+        <li class="nav-item <?= uri_string() === session('role') . '/setting/profile' ? 'menu-open' : ''; ?>">
+          <a href="#" class="nav-link <?= uri_string() === session('role') . '/setting/profile' ? 'active' : ''; ?>">
             <i class="nav-icon bi bi-box-arrow-in-right"></i>
             <p>
               Auth
@@ -148,7 +148,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="/<?= session('role'); ?>/setting/profile" class="nav-link">
+              <a href="/<?= session('role'); ?>/setting/profile" class="nav-link <?= uri_string() === session('role') . '/setting/profile' ? 'active' : ''; ?>">
                 <i class="nav-icon bi bi-circle text-success"></i>
                 <p>My Profile</p>
               </a>
