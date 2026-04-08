@@ -79,31 +79,25 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/<?= session('role'); ?>/users" class="nav-link">
                       <i class="nav-icon bi bi-circle text-success"></i>
                       <p>Users</p>
                     </a>
                   </li>
-                </ul>
-                <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/<?= session('role'); ?>/member" class="nav-link">
                       <i class="nav-icon bi bi-circle text-success"></i>
                       <p>Members</p>
                     </a>
                   </li>
-                </ul>
-                <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/<?= session('role'); ?>/team" class="nav-link">
                       <i class="nav-icon bi bi-circle text-success"></i>
                       <p>Teams</p>
                     </a>
                   </li>
-                </ul>
-                <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/<?= session('role'); ?>/testimonial" class="nav-link">
                       <i class="nav-icon bi bi-circle text-success"></i>
                       <p>Testimonials</p>
                     </a>
