@@ -100,7 +100,7 @@
           </li>
         <?php endif; ?>
 
-        <li class="nav-item">
+        <li class="nav-item <?= $active === 'post' ? 'menu-open' : ''; ?>">
           <a href="#" class="nav-link <?= $active === 'post' ? 'active' : ''; ?>">
             <i class="nav-icon bi bi-clipboard-fill"></i>
             <p>
