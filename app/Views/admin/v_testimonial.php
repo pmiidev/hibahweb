@@ -61,7 +61,7 @@
                     <h3 class="card-title">Testimonials</h3>
                     <div class="card-tools">
                       <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addTestimonialModal">
-                        <i class="fas fa-plus"></i> Add New Testimonial
+                        <i class="bi bi-plus-lg"></i> Add New Testimonial
                       </button>
                     </div>
                   </div>
@@ -94,10 +94,10 @@
                             <td><?= substr($row['testimonial_content'], 0, 50); ?>...</td>
                             <td>
                               <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editTestimonialModal<?= $row['testimonial_id']; ?>">
-                                <i class="fas fa-edit"></i> Edit
+                                <i class="bi bi-pencil-square"></i> Edit
                               </button>
                               <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteTestimonialModal<?= $row['testimonial_id']; ?>">
-                                <i class="fas fa-trash"></i> Delete
+                                <i class="bi bi-trash"></i> Delete
                               </button>
                             </td>
                           </tr>
