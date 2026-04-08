@@ -25,6 +25,7 @@ $routes->group('admin', ['filter' => 'authadmin'], static function ($routes) {
         $routes->put('', 'Admin\PostAdminController::update');
         $routes->get('add_new', 'Admin\PostAdminController::add_new');
         $routes->get('(:num)/edit', 'Admin\PostAdminController::edit/$1');
+        $routes->post('upload_image', 'Admin\PostAdminController::upload_image');
     });
     // Category Route
     $routes->group('category', static function ($routes) {
