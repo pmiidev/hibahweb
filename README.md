@@ -31,10 +31,10 @@ Ingin berkontribusi? Silakan ajukan pull request atau buka issue di GitHub.
 >>- [x] Slider
 
 > POSTS
->>- [ ] All posts
->>- [ ] Add post
->>- [ ] Categories
->>- [ ] Tags
+>>- [X] All posts
+>>- [X] Add post
+>>- [X] Categories
+>>- [X] Tags
 
 > ADDITIONAL
 >>- [X] Users 
