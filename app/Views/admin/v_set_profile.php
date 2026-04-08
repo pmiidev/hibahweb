@@ -90,7 +90,7 @@
                             <!--begin::Body-->
                             <div class="card-body">
                                 <div id="photo" class="form-text">
-                                    <img src="/assets/lte4/img/users/<?= $akun['user_photo']; ?>" class="thumbnail" height="50px">
+                                    <img src="/assets/lte4/img/additional/users/<?= $akun['user_photo']; ?>" class="thumbnail" height="50px">
                                     Foto profile sebaiknya beresolusi 32 x 32 Pixels!
                                 </div><br>
                                 <div class="input-group mb-3">
