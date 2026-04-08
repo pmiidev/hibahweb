@@ -77,21 +77,23 @@
                     <td><?= $no++; ?></td>
                     <td><?= esc($tag['tag_name']); ?></td>
                     <td>
-                      <form action="/admin/tag" method="post" class="d-inline-flex align-items-center gap-2">
-                        <?= csrf_field(); ?>
-                        <input type="hidden" name="_method" value="PUT">
-                        <input type="hidden" name="kode" value="<?= esc($tag['tag_id']); ?>">
-                        <input type="text" name="tag2" value="<?= esc($tag['tag_name']); ?>"
-                          class="form-control form-control-sm me-2" required>
-                        <button type="submit" class="btn btn-sm btn-outline-primary">Update</button>
-                      </form>
-                      <form action="/admin/tag" method="post" class="d-inline">
-                        <?= csrf_field(); ?>
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="id" value="<?= esc($tag['tag_id']); ?>">
-                        <button type="submit" class="btn btn-sm btn-danger"
-                          onclick="return confirm('Delete this tag?');">Delete</button>
-                      </form>
+                      <div class="d-flex align-items-center gap-2">
+                        <form action="/admin/tag" method="post" class="d-inline-flex align-items-center gap-2">
+                          <?= csrf_field(); ?>
+                          <input type="hidden" name="_method" value="PUT">
+                          <input type="hidden" name="kode" value="<?= esc($tag['tag_id']); ?>">
+                          <input type="text" name="tag2" value="<?= esc($tag['tag_name']); ?>"
+                            class="form-control form-control-sm me-2" required>
+                          <button type="submit" class="btn btn-sm btn-outline-primary">Update</button>
+                        </form>
+                        <form action="/admin/tag" method="post" class="d-inline">
+                          <?= csrf_field(); ?>
+                          <input type="hidden" name="_method" value="DELETE">
+                          <input type="hidden" name="id" value="<?= esc($tag['tag_id']); ?>">
+                          <button type="submit" class="btn btn-sm btn-danger"
+                            onclick="return confirm('Delete this tag?');">Delete</button>
+                        </form>
+                      </div>
                     </td>
                   </tr>
                 <?php endforeach; ?>
