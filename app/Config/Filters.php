@@ -42,7 +42,8 @@ class Filters extends BaseFilters
             \App\Filters\Auth::class,
             \App\Filters\AuthAuthor::class
         ],
-        'logedin'       => \App\Filters\LogedIn::class
+        'logedin'       => \App\Filters\LogedIn::class,
+        'methodspoofing' => \App\Filters\MethodSpoofing::class
     ];
 
     /**
@@ -78,6 +79,7 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
+            'methodspoofing', // Handle HTTP method spoofing via _method
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
