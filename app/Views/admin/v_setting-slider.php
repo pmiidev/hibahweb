@@ -68,7 +68,7 @@
                       <div class="mb-3">
                         <label class="form-label">Order</label>
                         <input type="number" name="slider_order" class="form-control" value="0" min="0" required>
-                        <div class="form-text">Angka lebih kecil muncul lebih dulu. Untuk perubahan urutan cepat setelah dibuat, gunakan tombol Move Up / Move Down pada tabel.</div>
+                        <div class="form-text">Angka lebih kecil muncul lebih dulu.</div>
                       </div>
                       <button type="submit" class="btn btn-sm btn-primary">Create Slider Item</button>
                     </form>
