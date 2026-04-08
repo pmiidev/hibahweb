@@ -1,7 +1,7 @@
 # Hibahweb
 
 ## Project Description
-Salam Pergerakan! Selamat datang di repositori project hibahweb. Proyek ini adalah source code website company profile yang dibagikan secara gratis untuk pengurus rayon/komis/rayon/korcab se-Indonesia.
+Salam Pergerakan! Selamat datang di repositori project hibahweb. Proyek ini adalah source code website company profile yang dibagikan secara gratis untuk pengurus rayon/komis/cabang/korcab se-Indonesia.
 
 Website ini dibangun dengan framework CodeIgniter 4 dan menyediakan:
 - Halaman depan untuk pengunjung website
