@@ -37,10 +37,10 @@ Ingin berkontribusi? Silakan ajukan pull request atau buka issue di GitHub.
 >>- [ ] Tags
 
 > ADDITIONAL
->>- [ ] Users management
->>- [ ] Members
->>- [ ] Teams
->>- [ ] Testimonials
+>>- [X] Users 
+>>- [X] Members
+>>- [X] Teams
+>>- [X] Testimonials
 
 ### FRONTEND
 > HOME (CI4 default)

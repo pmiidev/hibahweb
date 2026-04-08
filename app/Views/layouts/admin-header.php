@@ -119,7 +119,7 @@
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img
-                  src="<?= base_url(''); ?>assets/lte4/img/users/<?= $akun['user_photo']; ?>"
+                  src="<?= base_url(''); ?>assets/lte4/img/additional/users/<?= $akun['user_photo']; ?>"
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
@@ -129,7 +129,7 @@
                 <!--begin::User Image-->
                 <li class="user-header text-bg-secondary shadow">
                   <img
-                    src="<?= base_url(''); ?>assets/lte4/img/users/<?= $akun['user_photo']; ?>"
+                    src="<?= base_url(''); ?>assets/lte4/img/additional/users/<?= $akun['user_photo']; ?>"
                     class="rounded-circle shadow"
                     alt="User Image"
                   />
