@@ -48,7 +48,8 @@
                 <tr>
                   <th style="width: 60px;">#</th>
                   <th>Title</th>
-                  <th>Publish Date</th>
+                  <th>Image</th>
+                  <th>Publish</th>
                   <th>Category</th>
                   <th>Views</th>
                   <th style="width: 180px;">Action</th>
@@ -60,6 +61,13 @@
                   <tr>
                     <td><?= $no++; ?></td>
                     <td><?= esc($post['post_title']); ?></td>
+                    <td>
+                      <?php if (!empty($post['post_image'])): ?>
+                        <img src="/assets/lte4/img/posts/<?= esc($post['post_image']); ?>" alt="<?= esc($post['post_title']); ?>" class="img-thumbnail" style="max-width: 100px;">
+                      <?php else: ?>
+                        <span class="text-muted">No Image</span>
+                      <?php endif; ?>
+                    </td>
                     <td><?= esc($post['post_date']); ?></td>
                     <td><?= esc($post['category_name']); ?></td>
                     <td><?= esc($post['post_views']); ?></td>
