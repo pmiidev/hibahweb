@@ -43,7 +43,12 @@ Ingin berkontribusi? Silakan ajukan pull request atau buka issue di GitHub.
 >>- [X] Testimonials
 
 ### FRONTEND
-> HOME (CI4 default)
+> HOME 
+>>- [X] Landing Page (static)
+>>- [X] Latest Posts (static)
+
+> MULTI-PAGE 
+>>- [X] 404 Page Not Found
 
 <hr>
 
